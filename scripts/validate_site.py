@@ -80,6 +80,8 @@ def main() -> int:
         errors.append("pages.json does not contain 359 pages")
     if len(loans) != 23 or len({item["id"] for item in loans}) != 23:
         errors.append("loan program index does not contain 23 unique items")
+    if versions["versions"][0].get("digitalRevision") != "114.0.0-beta.2" or versions["versions"][0].get("status") != "Beta":
+        errors.append("versions.json is not marked 114.0.0-beta.2 Beta")
     required_toc = ["辦理政策性農業專案貸款辦法", "農業發展基金貸款相關規定", "農業天然災害救助辦法", "全國農業金庫貸款", "政策性農業專案貸款增修正規定常見問題"]
     toc_text = json.dumps(toc, ensure_ascii=False)
     for value in required_toc:
@@ -100,6 +102,8 @@ def main() -> int:
             errors.append(f"canonical mismatch: {relative}")
         if IDENTITY not in document or FOOTER not in document or "資料版本：114年度" not in document:
             errors.append(f"version or disclaimer missing: {relative}")
+        if "114.0.0-beta.2" not in document or "Beta" not in document:
+            errors.append(f"Beta revision label missing: {relative}")
         if re.search(r'''(?:href|src)=["']/''', document):
             errors.append(f"domain-root absolute path: {relative}")
         if re.search(r"google-analytics|googletagmanager|segment\.com|openai|anthropic|<form[^>]+action=", document, re.I):
@@ -130,6 +134,10 @@ def main() -> int:
             errors.append(f"search URL target missing: {record['url']}")
         elif parsed.fragment and record.get("type") == "原文頁面" and f'id="{parsed.fragment}"' not in target.read_text(encoding="utf-8"):
             errors.append(f"search anchor missing: {record['url']}")
+    for required in ("index.html", "versions/114/index.html", "quick-index/index.html", "loans/index.html",
+                     "interpretations/index.html", "faq/index.html", "forms/index.html", "versions/index.html"):
+        if not (SITE / required).is_file():
+            errors.append(f"required public page missing: {required}")
     keyword_results = {}
     for keyword in ("青壯年農民", "農機貸款", "電子商務", "寬緩期", "農業天然災害", "週轉金", "購買耕地", "函釋", "農業保險", "中小企業認定標準"):
         count = sum(keyword.casefold() in record["text"].casefold() for record in search)

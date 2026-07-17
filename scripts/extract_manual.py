@@ -119,6 +119,185 @@ APPENDICES = [
     ("attachment-3", "雞蛋友善生產系統定義及指南", 353, 357, "附件"),
 ]
 
+# Faithful transcription of the two printed TOC pages.  The hierarchy and wording
+# intentionally follow the source; the reader-oriented shortcuts live separately
+# in quick-index.json.
+TOC_ROWS = [
+    (1, "part-1", "壹、政策性農業專案貸款", None, "part"),
+    (2, "policy-loan-regulations", "一、辦理政策性農業專案貸款辦法", 1, "section"),
+    (2, "fund-rules", "二、農業發展基金貸款相關規定及函釋", None, "section"),
+    (3, "fund-operating-rules", "（一）農業發展基金貸款作業規範", 30, "rule"),
+    (4, "fund-operating-rules-interpretations", "◎相關函釋", 45, "interpretation"),
+    (3, "loan-program-rules", "（二）各項貸款規定", None, "section"),
+    (4, "farm-machinery-loan", "1. 農機貸款要點", 94, "loan"),
+    (4, "farm-machinery-loan-interpretations", "◎農機貸款相關函釋", 99, "interpretation"),
+    (4, "agri-food-business-loan", "2. 輔導農糧業經營貸款要點", 100, "loan"),
+    (4, "agri-food-business-loan-interpretations", "◎輔導農糧業經營貸款相關函釋", 107, "interpretation"),
+    (4, "fishery-business-loan", "3. 輔導漁業經營貸款要點", 110, "loan"),
+    (4, "fishery-business-loan-interpretations", "◎輔導漁業經營貸款相關函釋", 119, "interpretation"),
+    (4, "livestock-poultry-loan", "4. 提升畜禽產業經營貸款要點", 120, "loan"),
+    (4, "livestock-poultry-loan-interpretations", "◎提升畜禽產業經營貸款相關函釋", 142, "interpretation"),
+    (4, "farmer-production-group-loan", "5. 農民經營及產銷班貸款要點", 146, "loan"),
+    (4, "farmer-production-group-loan-interpretations", "◎農民經營及產銷班貸款相關函釋", 156, "interpretation"),
+    (4, "agri-tech-park-loan", "6. 農業科技園區進駐業者優惠貸款要點", 158, "loan"),
+    (4, "agri-tech-park-loan-interpretations", "◎農業科技園區進駐業者優惠貸款相關函釋", 164, "interpretation"),
+    (4, "hillside-conservation-loan", "7. 山坡地保育利用貸款要點", 165, "loan"),
+    (4, "farm-household-loan", "8. 農家綜合貸款要點", 170, "loan"),
+    (4, "farm-household-loan-interpretations", "◎農家綜合貸款相關函釋", 175, "interpretation"),
+    (4, "association-development-loan", "9. 農漁會事業發展貸款要點", 178, "loan"),
+    (4, "association-development-loan-interpretations", "◎農漁會事業發展貸款相關函釋", 183, "interpretation"),
+    (4, "afforestation-loan", "10. 造林貸款要點", 185, "loan"),
+    (4, "afforestation-loan-interpretations", "◎造林貸款相關函釋", 196, "interpretation"),
+    (4, "small-landlord-professional-farmer-loan", "11. 小地主大專業農貸款要點", 197, "loan"),
+    (4, "agri-energy-saving-loan", "12. 農業節能減碳貸款要點", 203, "loan"),
+    (4, "agri-energy-saving-loan-interpretations", "◎農業節能減碳貸款相關函釋", 208, "interpretation"),
+    (4, "young-farmer-loan", "13. 青壯年農民從農貸款要點", 209, "loan"),
+    (4, "young-farmer-loan-interpretations", "◎青壯年農民從農貸款相關函釋", 219, "interpretation"),
+    (4, "leisure-farm-loan", "14. 休閒農場貸款要點", 222, "loan"),
+    (4, "agri-organization-enterprise-innovation-loan", "15. 農民組織及農企業產銷經營及研發創新貸款要點", 228, "loan"),
+    (4, "agri-organization-enterprise-innovation-loan-interpretations", "◎農民組織及農企業產銷經營及研發創新貸款相關函釋", 240, "interpretation"),
+    (4, "agri-organization-disaster-recovery-loan", "16. 農民組織及農企業天然災害復耕復建貸款要點", 242, "loan"),
+    (4, "agricultural-insurance-loan", "17. 農業保險貸款要點", 251, "loan"),
+    (4, "farmer-relief-loan", "18. 農民紓困貸款要點", 254, "loan"),
+    (4, "farmland-purchase-loan", "19. 擴大家庭農場經營規模協助農民購買耕地貸款辦法", 259, "loan"),
+    (4, "farmland-purchase-loan-interpretations", "◎擴大家庭農場經營規模協助農民購買耕地貸款相關函釋", 267, "interpretation"),
+    (3, "natural-disaster-rules", "（三）農業天然災害救助辦法", 270, "rule"),
+    (4, "natural-disaster-low-interest-loan-interpretations", "◎農業天然災害救助低利貸款相關函釋", 297, "interpretation"),
+    (1, "part-2", "貳、全國農業金庫貸款", None, "part"),
+    (2, "agricultural-rooting-loan", "一、農業紮根貸款作業要點", 300, "loan"),
+    (2, "rice-purchase-working-capital-loan", "二、稻穀收購產銷調節週轉金貸款作業要點", 306, "loan"),
+    (2, "brackish-water-fishery-loan", "三、輔導鹹水漁業改善經營貸款作業要點", 308, "loan"),
+    (1, "appendix-1", "附錄一、全國農業金庫辦理農會漁會信用部資金融通作業規範", 309, "appendix"),
+    (1, "appendix-2", "附錄二、全國農業金庫辦理農會漁會信用部一般性或季節性週轉資金融通注意事項", 311, "appendix"),
+    (1, "appendix-3", "附錄三、政策性農業專案貸款增修正規定常見問題（QA）", None, "appendix"),
+    (2, "faq-112-12", "112年12月專案農貸增修規定（自113年1月1日施行）常見問答", 313, "faq"),
+    (2, "faq-113-08", "113年8月專案農貸增修規定（自113年8月20日施行）常見問題", 324, "faq"),
+    (2, "faq-114-10", "114年10月專案農貸增修規定（自114年10月10日施行）常見問答", 333, "faq"),
+    (2, "faq-young-farmer-114-10", "「青壯年農民從農貸款」增修規定（114年10月更新）常見問答", 338, "faq"),
+    (1, "attachment-1", "附件一、休閒農業輔導管理辦法", 348, "attachment"),
+    (1, "attachment-2", "附件二、中小企業認定標準", 352, "attachment"),
+    (1, "attachment-3", "附件三、雞蛋友善生產系統定義及指南", 353, "attachment"),
+]
+
+FORM_WHITELIST = {
+    38: "農業發展基金貸款利息差額補貼申請書",
+    41: "專案農貸額度控管期限延長申請書",
+    51: "專案農貸延期還款案件申請書（甲式）",
+    52: "專案農貸延期還款案件申請書（乙式）",
+    53: "專案農貸延期還款案件審核表",
+    97: "農機貸款申請書",
+    104: "輔導農糧業經營貸款申請書",
+    115: "輔導漁業經營貸款申請書",
+    126: "提升畜禽產業經營貸款（除污染防治類外）申請書",
+    129: "提升畜禽產業經營貸款申請書",
+    150: "農民經營及產銷班貸款申請書",
+    161: "農業科技園區進駐業者優惠貸款申請書",
+    172: "農家綜合貸款申請書",
+    181: "農漁會事業發展貸款申請書",
+    188: "造林貸款申請書",
+    191: "造林貸款土地勘查申請書",
+    200: "小地主大專業農貸款申請書",
+    205: "農業節能減碳貸款申請書",
+    213: "青壯年農民從農貸款申請書",
+    225: "休閒農場貸款申請書",
+    232: "農民組織及農企業產銷經營及研發創新貸款申請書",
+    245: "農民組織及農企業天然災害復耕復建貸款申請書",
+    249: "農業天然災害受災證明書（復耕復建貸款用）",
+    252: "農業保險貸款申請書",
+    256: "農民紓困貸款申請書",
+    263: "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
+    290: "農業天然災害受災證明書",
+    303: "農業紮根貸款額度動用申請書",
+}
+
+
+def build_toc() -> dict:
+    items = []
+    for order, (level, item_id, title, printed, kind) in enumerate(TOC_ROWS, 1):
+        items.append({
+            "id": item_id, "order": order, "level": level, "title": title,
+            "kind": kind, "printedPage": printed,
+            "pdfPage": printed + 2 if printed is not None else None,
+        })
+    return {
+        "version": VERSION, "title": "114年度政策性農業專案貸款業務手冊",
+        "sourcePdfPages": [1, 2], "structure": "faithful-flat-hierarchy", "items": items,
+    }
+
+
+def build_quick_index(loan_programs: list[dict]) -> dict:
+    return {
+        "version": VERSION, "title": "快速索引", "purpose": "依讀者常用入口重新整理，不取代原書目錄。",
+        "groups": [
+            {"id": "core-rules", "title": "共同規定", "items": [
+                {"id": "policy-loan-regulations", "title": "辦理政策性農業專案貸款辦法", "printedPage": 1},
+                {"id": "fund-operating-rules", "title": "農業發展基金貸款作業規範", "printedPage": 30},
+            ]},
+            {"id": "loan-programs", "title": "貸款方案", "items": [
+                {"id": item["id"], "title": item["title"], "printedPage": item["sourceStartPage"]}
+                for item in loan_programs
+            ]},
+            {"id": "reference", "title": "函釋、FAQ 與附件", "items": [
+                {"id": "interpretations", "title": "函釋索引", "printedPage": 45},
+                {"id": "faq", "title": "常見問題", "printedPage": 313},
+                {"id": "forms", "title": "書表索引", "printedPage": 38},
+                {"id": "appendices", "title": "附錄與附件", "printedPage": 309},
+            ]},
+        ],
+    }
+
+
+def extract_confirmed_interpretations(pages: list[dict]) -> list[dict]:
+    records = []
+    header_pattern = re.compile(r"【([^】]*(?:號函|號公告))】")
+    number_pattern = re.compile(r"([^\d\s【】]{1,12}字第?\s*[A-Z0-9０-９\s]+號)")
+    date_pattern = re.compile(r"(?:中華民國\s*)?[0-9０-９一二三四五六七八九十百零〇○]+年\s*[0-9０-９一二三四五六七八九十]+月\s*[0-9０-９一二三四五六七八九十]+日")
+    for loan_title, start, end in INTERPRETATION_RANGES:
+        for printed in range(start, end + 1):
+            text = pages[printed + 1]["rawText"]
+            matches = list(header_pattern.finditer(text))
+            for index, match in enumerate(matches):
+                block_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+                body = text[match.end():block_end]
+                subject = re.search(r"主旨\s*[：:]\s*(.+?)(?=\n(?:說明|依據|公告事項)\s*[：:]|\n函令摘要|$)", body, re.S)
+                number = number_pattern.search(match.group(1))
+                if not subject or not number:
+                    continue
+                title = normalize_search(subject.group(1))[:240]
+                date = date_pattern.search(match.group(1))
+                records.append({
+                    "id": f"interpretation-{len(records)+1:03d}", "title": title,
+                    "documentNumber": re.sub(r"\s+", "", number.group(1)),
+                    "date": normalize_search(date.group(0)) if date else None,
+                    "loanProgram": loan_title, "printedPageStart": printed, "printedPageEnd": printed,
+                    "pdfPageStart": printed + 2, "pdfPageEnd": printed + 2,
+                    "originalUrl": f"../../downloads/policy-agri-loan-handbook-114.pdf#page={printed+2}",
+                    "verificationStatus": "confirmed", "confirmationBasis": "document-header-and-subject-start",
+                })
+    return records
+
+
+def build_confirmed_forms(candidates: list[dict]) -> tuple[list[dict], list[dict]]:
+    confirmed, excluded = [], []
+    candidate_pages = {item["printedPage"] for item in candidates}
+    for printed, title in FORM_WHITELIST.items():
+        if printed not in candidate_pages:
+            raise RuntimeError(f"whitelisted form page missing from candidates: {printed}")
+        confirmed.append({
+            "id": f"form-{len(confirmed)+1:03d}", "title": title,
+            "printedPageStart": printed, "printedPageEnd": printed,
+            "pdfPageStart": printed + 2, "pdfPageEnd": printed + 2,
+            "kind": "form", "originalUrl": f"../../downloads/policy-agri-loan-handbook-114.pdf#page={printed+2}",
+            "verificationStatus": "confirmed", "confirmationBasis": "explicit-form-whitelist",
+        })
+    for item in candidates:
+        if item["printedPage"] not in FORM_WHITELIST:
+            excluded.append({
+                **item, "verificationStatus": "excluded",
+                "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。",
+            })
+    return confirmed, excluded
+
 
 def section_for(printed: int | None) -> tuple[str, str]:
     if printed is None:
@@ -203,7 +382,8 @@ def main() -> int:
         print(f"ERROR: expected {EXPECTED_PAGES} pages, found {len(reader.pages)}", file=sys.stderr)
         return 1
     raw_pages = [page.extract_text() or "" for page in reader.pages]
-    anchors = {3: 1, 32: 30, 96: 94, 211: 209, 272: 270, 302: 300, 335: 333, 350: 348, 359: 357}
+    anchor_pages = sorted(set([3, 359, *range(12, 359, 10), 32, 47, 96, 211, 272, 302, 335, 350]))
+    anchors = {pdf_page: pdf_page - 2 for pdf_page in anchor_pages}
     failed = []
     for pdf_page, printed in anchors.items():
         tail = [normalize_search(line) for line in raw_pages[pdf_page - 1].splitlines()[-8:]]
@@ -238,29 +418,8 @@ def main() -> int:
             "detailUrl": f"loans/{slug}/index.html", "verificationStatus": "source-indexed",
         })
 
-    toc = {
-        "version": VERSION,
-        "title": "114年度政策性農業專案貸款業務手冊",
-        "groups": [
-            {"id": "part-1", "title": "壹、政策性農業專案貸款", "items": [
-                {"id": "policy-loan-regulations", "title": "一、辦理政策性農業專案貸款辦法", "printedPage": 1, "pdfPage": 3},
-                {"id": "agricultural-development-fund-rules", "title": "二、農業發展基金貸款相關規定及函釋", "printedPage": 30, "pdfPage": 32},
-                {"id": "loan-programs", "title": "（二）各項貸款規定", "printedPage": 94, "pdfPage": 96,
-                 "children": [{"id": item[0], "title": f"{index}. {item[1]}", "printedPage": item[3], "pdfPage": item[3]+2,
-                               "hasInterpretations": item[5]} for index, item in enumerate(LOANS[:19], 1)]},
-                {"id": "natural-disaster-low-interest-loan", "title": "（三）農業天然災害救助辦法及低利貸款相關函釋", "printedPage": 270, "pdfPage": 272,
-                 "hasInterpretations": True},
-            ]},
-            {"id": "part-2", "title": "貳、全國農業金庫貸款", "items": [
-                {"id": item[0], "title": item[1], "printedPage": item[3], "pdfPage": item[3]+2}
-                for item in LOANS[20:]
-            ]},
-            {"id": "appendices", "title": "附錄、FAQ與附件", "items": [
-                {"id": slug, "title": title, "printedPage": start, "pdfPage": start+2, "kind": kind}
-                for slug, title, start, _end, kind in APPENDICES
-            ]},
-        ],
-    }
+    toc = build_toc()
+    quick_index = build_quick_index(loan_programs)
     faq = [{"id": slug, "title": title, "printedPageStart": start, "printedPageEnd": end,
             "pdfPageStart": start+2, "pdfPageEnd": end+2,
             "originalUrl": f"../downloads/policy-agri-loan-handbook-114.pdf#page={start+2}",
@@ -268,28 +427,51 @@ def main() -> int:
     appendices = [{"id": slug, "title": title, "kind": kind, "printedPageStart": start,
                    "printedPageEnd": end, "pdfPageStart": start+2, "pdfPageEnd": end+2,
                    "verificationStatus": "source-indexed"} for slug, title, start, end, kind in APPENDICES]
-    forms = extract_forms(pages)
-    interpretations = extract_interpretations(pages)
-
+    form_candidates = extract_forms(pages)
+    for item in form_candidates:
+        item["verificationStatus"] = "needs-review"
+    forms, form_exclusions = build_confirmed_forms(form_candidates)
+    interpretations = extract_confirmed_interpretations(pages)
+    interpretation_candidates = extract_interpretations(pages)
+    candidate_keys = {(item.get("documentNumber"), item.get("printedPage")) for item in interpretation_candidates}
+    for confirmed in interpretations:
+        key = (confirmed["documentNumber"], confirmed["printedPageStart"])
+        if key in candidate_keys:
+            continue
+        interpretation_candidates.append({
+            "id": "", "title": confirmed["title"], "documentNumber": confirmed["documentNumber"],
+            "date": confirmed["date"], "loanProgram": confirmed["loanProgram"],
+            "printedPage": confirmed["printedPageStart"], "pdfPage": confirmed["pdfPageStart"],
+            "originalUrl": confirmed["originalUrl"], "verificationStatus": "needs-review",
+        })
+        candidate_keys.add(key)
+    interpretation_candidates.sort(key=lambda item: (item["printedPage"], item.get("documentNumber") or ""))
+    for index, item in enumerate(interpretation_candidates, 1):
+        item["id"] = f"interpretation-candidate-{index:03d}"
+    for item in interpretation_candidates:
+        item["verificationStatus"] = "needs-review"
     manual = {
         "id": VERSION, "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0", "sha256": SHA256,
+        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2", "releaseStatus": "Beta", "sha256": SHA256,
         "printedPageMapping": {"strategy": "continuous-offset-after-two-page-toc", "offset": 2,
-                               "verifiedPdfPages": sorted(anchors), "status": "manually-sampled"},
+                               "verifiedPdfPages": sorted(anchors), "status": "sampled-and-consistent"},
         "counts": {"loanPrograms": len(loan_programs), "interpretations": len(interpretations),
-                   "faq": len(faq), "forms": len(forms), "appendices": len(appendices)},
+                   "interpretationCandidates": len(interpretation_candidates), "faq": len(faq),
+                   "forms": len(forms), "formCandidates": len(form_candidates), "appendices": len(appendices),
+                   "tocEntries": len(toc["items"])},
     }
     review = {
         "version": VERSION,
         "sections": [
-            {"id": "page-mapping", "status": "manually-reviewed", "reviewedPages": sorted(anchors),
-             "pendingPages": [], "notes": "以目錄、連續印刷頁碼及九個代表錨點確認 PDF 頁碼與印刷頁碼差 2。"},
+            {"id": "page-mapping", "status": "sampled-and-consistent", "reviewedPages": sorted(anchors),
+             "pendingPages": [], "notes": f"以目錄、連續印刷頁碼及 {len(anchors)} 個分散錨點確認 PDF 頁碼與印刷頁碼差 2。"},
             {"id": "text-extraction", "status": "automatically-extracted", "reviewedPages": [],
              "pendingPages": [p["pdfPage"] for p in pages], "notes": "保留 PDF 既有文字層，尚待逐頁人工校讀。"},
-            {"id": "interpretations", "status": "needs-review", "reviewedPages": [],
-             "pendingPages": sorted({r["pdfPage"] for r in interpretations}), "notes": "文號、日期與主旨由文字層索引，需人工覆核跨頁文件。"},
-            {"id": "faq-and-forms", "status": "needs-review", "reviewedPages": [],
-             "pendingPages": list(range(315, 360)), "notes": "FAQ、附件與書表維持原文入口，需人工內容抽查。"},
+            {"id": "interpretations", "status": "partially-confirmed", "reviewedPages": sorted({r["pdfPageStart"] for r in interpretations}),
+             "pendingPages": sorted({r["pdfPage"] for r in interpretation_candidates}), "notes": "正式索引僅納入可辨識文件標頭及主旨起始者；所有文號候選另存待覆核。"},
+            {"id": "faq-and-forms", "status": "partially-confirmed", "reviewedPages": sorted({r["pdfPageStart"] for r in forms}),
+             "pendingPages": sorted({r["pdfPage"] for r in form_candidates if r["printedPage"] not in FORM_WHITELIST}),
+             "notes": "FAQ 依原目錄；正式書表索引採明確白名單，其餘候選附排除理由。"},
         ],
     }
     complex_patterns = (
@@ -319,18 +501,27 @@ def main() -> int:
     }
     write_json(ROOT / "data" / "versions.json", {"currentVersion": "114", "versions": [{
         "id": "114", "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": 359, "digitalRevision": "114.0.0", "status": "current",
+        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2", "status": "Beta",
         "sourceFile": "policy-agri-loan-handbook-114.pdf"}]})
     write_json(DATA / "manual.json", manual)
     write_json(DATA / "toc.json", toc)
+    write_json(DATA / "quick-index.json", quick_index)
     write_json(DATA / "pages.json", pages)
     write_json(DATA / "loan-programs.json", loan_programs)
     write_json(DATA / "interpretations.json", interpretations)
+    write_json(DATA / "interpretation-candidates.json", interpretation_candidates)
     write_json(DATA / "faq.json", faq)
     write_json(DATA / "forms.json", forms)
+    write_json(DATA / "form-candidates.json", form_candidates)
+    write_json(DATA / "form-exclusions.json", form_exclusions)
     write_json(DATA / "appendices.json", appendices)
     write_json(DATA / "page-rendering-rules.json", rendering_rules)
     write_json(DATA / "review-status.json", review)
+    write_json(DATA / "printed-page-map.json", {
+        "version": VERSION, "status": "sampled-and-consistent", "offset": 2,
+        "anchors": [{"pdfPage": pdf_page, "printedPage": printed, "verificationStatus": "confirmed"}
+                    for pdf_page, printed in anchors.items()],
+    })
     print(f"Extracted {len(pages)} pages; {sum(p['hasTextLayer'] for p in pages)} have text layers")
     print(f"Indexed {len(loan_programs)} loans, {len(interpretations)} interpretation records, {len(forms)} forms/attachments")
     return 0

@@ -1,0 +1,217 @@
+{
+  "version": "114",
+  "status": "sampled-and-consistent",
+  "offset": 2,
+  "anchors": [
+    {
+      "pdfPage": 3,
+      "printedPage": 1,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 12,
+      "printedPage": 10,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 22,
+      "printedPage": 20,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 32,
+      "printedPage": 30,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 42,
+      "printedPage": 40,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 47,
+      "printedPage": 45,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 52,
+      "printedPage": 50,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 62,
+      "printedPage": 60,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 72,
+      "printedPage": 70,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 82,
+      "printedPage": 80,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 92,
+      "printedPage": 90,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 96,
+      "printedPage": 94,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 102,
+      "printedPage": 100,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 112,
+      "printedPage": 110,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 122,
+      "printedPage": 120,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 132,
+      "printedPage": 130,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 142,
+      "printedPage": 140,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 152,
+      "printedPage": 150,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 162,
+      "printedPage": 160,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 172,
+      "printedPage": 170,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 182,
+      "printedPage": 180,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 192,
+      "printedPage": 190,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 202,
+      "printedPage": 200,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 211,
+      "printedPage": 209,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 212,
+      "printedPage": 210,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 222,
+      "printedPage": 220,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 232,
+      "printedPage": 230,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 242,
+      "printedPage": 240,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 252,
+      "printedPage": 250,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 262,
+      "printedPage": 260,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 272,
+      "printedPage": 270,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 282,
+      "printedPage": 280,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 292,
+      "printedPage": 290,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 302,
+      "printedPage": 300,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 312,
+      "printedPage": 310,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 322,
+      "printedPage": 320,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 332,
+      "printedPage": 330,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 335,
+      "printedPage": 333,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 342,
+      "printedPage": 340,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 350,
+      "printedPage": 348,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 352,
+      "printedPage": 350,
+      "verificationStatus": "confirmed"
+    },
+    {
+      "pdfPage": 359,
+      "printedPage": 357,
+      "verificationStatus": "confirmed"
+    }
+  ]
+}

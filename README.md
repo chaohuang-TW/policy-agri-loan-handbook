@@ -7,7 +7,8 @@
 ## 資料版本與來源
 
 - 資料版本：114年度
-- 數位版本：114.0.0
+- 發布狀態：Beta
+- 數位版本：114.0.0-beta.2
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -33,10 +34,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/extract_manual.py
 python scripts/render_page_previews.py
-python scripts/build_search_index.py
 python scripts/build_site.py
 python scripts/build_search_index.py
 python scripts/audit_content.py
+python scripts/validate_display_text.py
+python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
 python scripts/validate_site.py
 python3 -m http.server 8000 --directory site
@@ -58,6 +60,8 @@ python3 -m http.server 8000 --directory site
 
 ```bash
 python scripts/audit_content.py
+python scripts/validate_display_text.py
+python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
 python scripts/validate_site.py
 git diff --check
@@ -73,7 +77,7 @@ git diff --check
 
 ## GitHub Pages部署
 
-`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，安裝Python依賴、重建網站、執行三項驗證，成功後只上傳 `site/`，再使用GitHub官方Pages actions部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
+`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，安裝Python依賴、先清除並重建網站，再產生確認資料限定的搜尋索引及執行五項驗證；成功後只上傳 `site/`，再使用GitHub官方Pages actions部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
 
 正式網址：<https://chaohuang-tw.github.io/policy-agri-loan-handbook/>
 

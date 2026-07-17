@@ -1,0 +1,170 @@
+{
+  "version": "114",
+  "title": "快速索引",
+  "purpose": "依讀者常用入口重新整理，不取代原書目錄。",
+  "groups": [
+    {
+      "id": "core-rules",
+      "title": "共同規定",
+      "items": [
+        {
+          "id": "policy-loan-regulations",
+          "title": "辦理政策性農業專案貸款辦法",
+          "printedPage": 1
+        },
+        {
+          "id": "fund-operating-rules",
+          "title": "農業發展基金貸款作業規範",
+          "printedPage": 30
+        }
+      ]
+    },
+    {
+      "id": "loan-programs",
+      "title": "貸款方案",
+      "items": [
+        {
+          "id": "farm-machinery-loan",
+          "title": "農機貸款",
+          "printedPage": 94
+        },
+        {
+          "id": "agri-food-business-loan",
+          "title": "輔導農糧業經營貸款",
+          "printedPage": 100
+        },
+        {
+          "id": "fishery-business-loan",
+          "title": "輔導漁業經營貸款",
+          "printedPage": 110
+        },
+        {
+          "id": "livestock-poultry-loan",
+          "title": "提升畜禽產業經營貸款",
+          "printedPage": 120
+        },
+        {
+          "id": "farmer-production-group-loan",
+          "title": "農民經營及產銷班貸款",
+          "printedPage": 146
+        },
+        {
+          "id": "agri-tech-park-loan",
+          "title": "農業科技園區進駐業者優惠貸款",
+          "printedPage": 158
+        },
+        {
+          "id": "hillside-conservation-loan",
+          "title": "山坡地保育利用貸款",
+          "printedPage": 165
+        },
+        {
+          "id": "farm-household-loan",
+          "title": "農家綜合貸款",
+          "printedPage": 170
+        },
+        {
+          "id": "association-development-loan",
+          "title": "農漁會事業發展貸款",
+          "printedPage": 178
+        },
+        {
+          "id": "afforestation-loan",
+          "title": "造林貸款",
+          "printedPage": 185
+        },
+        {
+          "id": "small-landlord-professional-farmer-loan",
+          "title": "小地主大專業農貸款",
+          "printedPage": 197
+        },
+        {
+          "id": "agri-energy-saving-loan",
+          "title": "農業節能減碳貸款",
+          "printedPage": 203
+        },
+        {
+          "id": "young-farmer-loan",
+          "title": "青壯年農民從農貸款",
+          "printedPage": 209
+        },
+        {
+          "id": "leisure-farm-loan",
+          "title": "休閒農場貸款",
+          "printedPage": 222
+        },
+        {
+          "id": "agri-organization-enterprise-innovation-loan",
+          "title": "農民組織及農企業產銷經營及研發創新貸款",
+          "printedPage": 228
+        },
+        {
+          "id": "agri-organization-disaster-recovery-loan",
+          "title": "農民組織及農企業天然災害復耕復建貸款",
+          "printedPage": 242
+        },
+        {
+          "id": "agricultural-insurance-loan",
+          "title": "農業保險貸款",
+          "printedPage": 251
+        },
+        {
+          "id": "farmer-relief-loan",
+          "title": "農民紓困貸款",
+          "printedPage": 254
+        },
+        {
+          "id": "farmland-purchase-loan",
+          "title": "擴大家庭農場經營規模協助農民購買耕地貸款",
+          "printedPage": 259
+        },
+        {
+          "id": "natural-disaster-low-interest-loan",
+          "title": "農業天然災害低利貸款",
+          "printedPage": 270
+        },
+        {
+          "id": "agricultural-rooting-loan",
+          "title": "農業紮根貸款",
+          "printedPage": 300
+        },
+        {
+          "id": "rice-purchase-working-capital-loan",
+          "title": "稻穀收購產銷調節週轉金貸款",
+          "printedPage": 306
+        },
+        {
+          "id": "brackish-water-fishery-loan",
+          "title": "輔導鹹水漁業改善經營貸款",
+          "printedPage": 308
+        }
+      ]
+    },
+    {
+      "id": "reference",
+      "title": "函釋、FAQ 與附件",
+      "items": [
+        {
+          "id": "interpretations",
+          "title": "函釋索引",
+          "printedPage": 45
+        },
+        {
+          "id": "faq",
+          "title": "常見問題",
+          "printedPage": 313
+        },
+        {
+          "id": "forms",
+          "title": "書表索引",
+          "printedPage": 38
+        },
+        {
+          "id": "appendices",
+          "title": "附錄與附件",
+          "printedPage": 309
+        }
+      ]
+    }
+  ]
+}

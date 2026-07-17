@@ -11,12 +11,15 @@ import re
 import shutil
 from pathlib import Path, PurePosixPath
 
+from display_text import normalize_display_text
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "114"
 SITE = ROOT / "site"
 TEMPLATES = {p.stem: p.read_text(encoding="utf-8") for p in (ROOT / "templates").glob("*.html")}
 PAGES = json.loads((DATA / "pages.json").read_text(encoding="utf-8"))
 TOC = json.loads((DATA / "toc.json").read_text(encoding="utf-8"))
+QUICK_INDEX = json.loads((DATA / "quick-index.json").read_text(encoding="utf-8"))
 LOANS = json.loads((DATA / "loan-programs.json").read_text(encoding="utf-8"))
 INTERPRETATIONS = json.loads((DATA / "interpretations.json").read_text(encoding="utf-8"))
 FAQ = json.loads((DATA / "faq.json").read_text(encoding="utf-8"))
@@ -80,7 +83,7 @@ def search_box() -> str:
 
 
 def paragraphize(text: str) -> str:
-    blocks = re.split(r"\n\s*\n", text.strip()) if text.strip() else []
+    blocks = normalize_display_text(text)
     return "".join(f"<p>{e(block)}</p>" for block in blocks)
 
 
@@ -118,38 +121,62 @@ def build_home() -> None:
     relative = "index.html"
     keywords = ["青壯年農民", "農機", "週轉金", "資本支出", "寬緩期", "天然災害", "農企業", "購買耕地", "補正期限", "貸後查驗"]
     popular = "".join(f'<button type="button" data-keyword="{e(word)}">{e(word)}</button>' for word in keywords)
-    hero = f'<div class="current-version">目前版本 <strong>114年度</strong></div><h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">公開資料數位閱讀與實務索引版</p>{search_box()}<div class="popular" aria-label="熱門關鍵字"><span>熱門關鍵字</span>{popular}</div>'
+    hero = f'<div class="current-version">目前版本 <strong>114年度 Beta</strong></div><h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">公開資料數位閱讀與實務索引版</p><p class="beta-note">Beta：本輪已重建忠實目錄與確認索引；候選函釋及書表仍保留於資料層供後續人工覆核。</p>{search_box()}<div class="popular" aria-label="熱門關鍵字"><span>熱門關鍵字</span>{popular}</div>'
     links = [
-        ("政策農貸共同規定", "versions/114/sections/policy-loan-regulations/index.html"),
-        ("20項政策性貸款", "loans/index.html#policy-loans"),
+        ("原書完整目錄", "versions/114/index.html"), ("讀者快速索引", "quick-index/index.html"),
         ("農業發展基金作業規範", "versions/114/sections/agricultural-development-fund-rules/index.html"),
-        ("相關函釋", "interpretations/index.html"), ("天然災害低利貸款", "loans/natural-disaster-low-interest-loan/index.html"),
-        ("全國農業金庫貸款", "loans/index.html#bank-loans"), ("增修問答", "faq/index.html"), ("附件與書表", "forms/index.html"),
+        ("23項貸款索引", "loans/index.html"), ("確認函釋", "interpretations/index.html"),
+        ("常見問題", "faq/index.html"), ("確認書表與附件", "forms/index.html"),
     ]
     quick = '<div class="entry-grid">' + "".join(f'<a class="entry{(" primary" if i < 4 else "")}" href="{e(url)}"><strong>{e(label)}</strong><span>開啟資料</span></a>' for i, (label, url) in enumerate(links)) + "</div>"
-    version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>114.0.0</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟本版本完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
+    version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度 Beta</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>114.0.0-beta.2</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
     write(relative, "政策性農業專案貸款業務手冊｜114年度數位閱讀版", wrap("home", HERO=hero, QUICK=quick, VERSION=version))
 
 
 def build_version_index() -> None:
     relative = "versions/114/index.html"
-    groups = []
-    for group in TOC["groups"]:
-        items = []
-        for item in group["items"]:
-            target = f'versions/114/sections/{item["id"]}/index.html'
-            if item["id"] in {loan["id"] for loan in LOANS}:
-                target = f'loans/{item["id"]}/index.html'
-            elif item["id"] in {"appendix-1", "appendix-2", "appendix-3", "attachment-1", "attachment-2", "attachment-3"}:
-                target = "forms/index.html#item-" + item["id"]
-            badge = " <small>含函釋</small>" if item.get("hasInterpretations") else ""
-            children = ""
-            if item.get("children"):
-                children = '<ol class="nested-toc">' + "".join(f'<li><a href="{e(rel(relative, "loans/" + child["id"] + "/index.html"))}">{e(child["title"])}</a> <span>手冊頁 {child["printedPage"]}</span>{(" <small>含函釋</small>" if child.get("hasInterpretations") else "")}</li>' for child in item["children"]) + "</ol>"
-            items.append(f'<li><a href="{e(rel(relative, target))}">{e(item["title"])}</a> <span>手冊頁 {item["printedPage"]}</span>{badge}{children}</li>')
-        groups.append(f'<section class="toc-group"><h2>{e(group["title"])}</h2><ol class="index-rows">{"".join(items)}</ol></section>')
-    content = breadcrumb(relative, [("首頁", "index.html")], "完整目錄") + '<h1>114年度完整目錄</h1><p class="source-meta">忠實依原手冊目錄分組，顯示印刷頁碼、函釋、FAQ與附件入口。</p>' + search_box() + '<div class="toc-layout">' + "".join(groups) + "</div>"
+    loan_ids = {loan["id"] for loan in LOANS}
+    section_targets = {"policy-loan-regulations": "versions/114/sections/policy-loan-regulations/index.html", "fund-operating-rules": "versions/114/sections/agricultural-development-fund-rules/index.html", "loan-program-rules": "versions/114/sections/loan-programs/index.html"}
+    rows = []
+    for item in TOC["items"]:
+        target = None
+        if item["id"] in loan_ids:
+            target = f'loans/{item["id"]}/index.html'
+        elif item["id"] in section_targets:
+            target = section_targets[item["id"]]
+        elif item["kind"] == "interpretation":
+            target = "interpretations/index.html"
+        elif item["kind"] == "faq":
+            target = "faq/index.html#item-" + item["id"]
+        elif item["kind"] in {"appendix", "attachment"}:
+            target = "forms/index.html#item-" + item["id"]
+        label = f'<a href="{e(rel(relative, target))}">{e(item["title"])}</a>' if target else f'<strong>{e(item["title"])}</strong>'
+        page = f'<span>手冊頁 {item["printedPage"]}</span>' if item["printedPage"] is not None else ""
+        rows.append(f'<li class="toc-level-{item["level"]}">{label}{page}</li>')
+    content = breadcrumb(relative, [("首頁", "index.html")], "完整目錄") + f'<h1>114年度原書完整目錄</h1><p class="source-meta">逐項轉錄原始PDF第1–2頁，共 {len(TOC["items"])} 個目錄項目；層級、函釋、FAQ、附錄與附件均與原書分列。</p><p><a href="{e(rel(relative, "quick-index/index.html"))}">需要較精簡的入口？前往讀者快速索引</a></p>' + search_box() + '<ol class="index-rows faithful-toc">' + "".join(rows) + "</ol>"
     write(relative, "114年度完整目錄｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content))
+
+
+def build_quick_index() -> None:
+    relative = "quick-index/index.html"
+    groups = []
+    loan_ids = {loan["id"] for loan in LOANS}
+    for group in QUICK_INDEX["groups"]:
+        rows = []
+        for item in group["items"]:
+            if item["id"] in loan_ids:
+                target = f'loans/{item["id"]}/index.html'
+            elif item["id"] in {"interpretations", "faq", "forms"}:
+                target = f'{item["id"]}/index.html'
+            elif item["id"] == "appendices":
+                target = "forms/index.html"
+            else:
+                section_id = {"fund-operating-rules": "agricultural-development-fund-rules"}.get(item["id"], item["id"])
+                target = f'versions/114/sections/{section_id}/index.html'
+            rows.append(f'<li><a href="{e(rel(relative, target))}">{e(item["title"])}</a><span>手冊頁 {item["printedPage"]}</span></li>')
+        groups.append(f'<section class="toc-group"><h2>{e(group["title"])}</h2><ol class="index-rows">{"".join(rows)}</ol></section>')
+    content = breadcrumb(relative, [("首頁", "index.html")], "快速索引") + '<h1>讀者快速索引</h1><p class="source-meta">依常用閱讀入口整理，不取代原書目錄。</p><p><a href="../versions/114/index.html">查看忠實轉錄的原書完整目錄</a></p><div class="toc-layout">' + "".join(groups) + '</div>'
+    write(relative, "讀者快速索引｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content))
 
 
 def build_sections() -> None:
@@ -215,29 +242,33 @@ def index_items(relative: str, items: list[dict], kind: str) -> str:
 
 def build_indexes() -> None:
     relative = "interpretations/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "函釋索引") + f'<h1>相關函釋索引</h1><p class="source-meta">共 {len(INTERPRETATIONS)} 筆來源索引；未可靠辨識欄位維持待覆核，不自行猜測。</p>' + index_items(relative, INTERPRETATIONS, "函釋") + '<p><a href="../faq/index.html">前往常見問答</a></p>'
+    content = breadcrumb(relative, [("首頁", "index.html")], "函釋索引") + f'<h1>確認函釋索引</h1><p class="source-meta">共 {len(INTERPRETATIONS)} 筆；僅納入可辨識獨立文件標頭與主旨起始的函釋。候選資料不進入公開索引與搜尋。</p>' + index_items(relative, INTERPRETATIONS, "函釋") + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
     content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁依原手冊目錄建立入口，不提供AI摘要。</p>' + index_items(relative, FAQ, "FAQ")
     write(relative, "增修規定常見問答｜政策性農業專案貸款業務手冊", wrap("faq", CONTENT=content))
     relative = "forms/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "附件與書表") + f'<h1>附件與書表索引</h1><p class="source-meta">{len(APPENDICES)} 項正式附錄／附件，另有 {len(FORMS)} 筆書表與附件文字層入口。複雜版面請以原頁預覽及PDF為準。</p><h2>正式附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表索引</h2>' + index_items(relative, FORMS, "書表／附件")
+    content = breadcrumb(relative, [("首頁", "index.html")], "附件與書表") + f'<h1>確認書表與附件索引</h1><p class="source-meta">{len(APPENDICES)} 項正式附錄／附件，另有 {len(FORMS)} 筆經白名單確認的獨立書表。正文提及與殘缺候選不進入公開索引。</p><h2>正式附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>確認書表</h2>' + index_items(relative, FORMS, "書表")
     write(relative, "附件與書表索引｜政策性農業專案貸款業務手冊", wrap("forms", CONTENT=content))
 
 
 def build_versions() -> None:
     relative = "versions/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>初始數位版本：114.0.0</p></div><span class="version-status">目前版本</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div></article><section class="version-policy"><h2>版本保存原則</h2><p>新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。舊版本永久保留。</p><p>本輪不建立Git tag或Release，待人工內容抽查後另案處理。</p></section>'''
+    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：114.0.0-beta.2</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2 內容稽核</h3><p>重建原書目錄與快速索引，將函釋及書表候選資料和確認索引分離，並加入顯示文字完整性及索引品質驗證。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。舊版本永久保留。</p><p>Beta 表示索引已完成第一輪稽核，候選資料仍待後續人工覆核；正式內容始終以原始PDF為準。</p></section>'''
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 
 def main() -> None:
+    if SITE.exists():
+        shutil.rmtree(SITE)
+    SITE.mkdir(parents=True)
     shutil.copytree(ROOT / "assets/css", SITE / "assets/css", dirs_exist_ok=True)
     shutil.copytree(ROOT / "assets/js", SITE / "assets/js", dirs_exist_ok=True)
     shutil.copytree(ROOT / "assets/page-previews", SITE / "assets/page-previews", dirs_exist_ok=True)
     shutil.copy2(ROOT / "assets/favicon.svg", SITE / "assets/favicon.svg")
+    (SITE / "downloads").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "source" / PDF_NAME, SITE / "downloads" / PDF_NAME)
-    build_home(); build_version_index(); build_sections(); build_physical_pages(); build_loans(); build_indexes(); build_versions()
+    build_home(); build_version_index(); build_quick_index(); build_sections(); build_physical_pages(); build_loans(); build_indexes(); build_versions()
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     html_files = sorted(SITE.rglob("*.html"))
     sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" + "".join(f"  <url><loc>{e(canonical(str(p.relative_to(SITE))))}</loc></url>\n" for p in html_files) + "</urlset>\n"

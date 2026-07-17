@@ -32,12 +32,13 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build search index and static site
         run: |
-          python scripts/build_search_index.py
           python scripts/build_site.py
           python scripts/build_search_index.py
       - name: Validate source content and site
         run: |
           python scripts/audit_content.py
+          python scripts/validate_display_text.py
+          python scripts/validate_index_quality.py
           python scripts/validate_page_rendering.py
           python scripts/validate_site.py
       - name: Configure Pages
