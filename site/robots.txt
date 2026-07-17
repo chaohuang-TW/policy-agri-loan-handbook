@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /policy-agri-loan-handbook/
+Sitemap: https://chaohuang-tw.github.io/policy-agri-loan-handbook/sitemap.xml

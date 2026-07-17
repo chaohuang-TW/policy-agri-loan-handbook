@@ -1,0 +1,2 @@
+0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54  source/policy-agri-loan-handbook-114.pdf
+0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54  site/downloads/policy-agri-loan-handbook-114.pdf

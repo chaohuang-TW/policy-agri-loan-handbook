@@ -1,0 +1,244 @@
+{
+  "version": "114",
+  "title": "114年度政策性農業專案貸款業務手冊",
+  "groups": [
+    {
+      "id": "part-1",
+      "title": "壹、政策性農業專案貸款",
+      "items": [
+        {
+          "id": "policy-loan-regulations",
+          "title": "一、辦理政策性農業專案貸款辦法",
+          "printedPage": 1,
+          "pdfPage": 3
+        },
+        {
+          "id": "agricultural-development-fund-rules",
+          "title": "二、農業發展基金貸款相關規定及函釋",
+          "printedPage": 30,
+          "pdfPage": 32
+        },
+        {
+          "id": "loan-programs",
+          "title": "（二）各項貸款規定",
+          "printedPage": 94,
+          "pdfPage": 96,
+          "children": [
+            {
+              "id": "farm-machinery-loan",
+              "title": "1. 農機貸款",
+              "printedPage": 94,
+              "pdfPage": 96,
+              "hasInterpretations": true
+            },
+            {
+              "id": "agri-food-business-loan",
+              "title": "2. 輔導農糧業經營貸款",
+              "printedPage": 100,
+              "pdfPage": 102,
+              "hasInterpretations": true
+            },
+            {
+              "id": "fishery-business-loan",
+              "title": "3. 輔導漁業經營貸款",
+              "printedPage": 110,
+              "pdfPage": 112,
+              "hasInterpretations": true
+            },
+            {
+              "id": "livestock-poultry-loan",
+              "title": "4. 提升畜禽產業經營貸款",
+              "printedPage": 120,
+              "pdfPage": 122,
+              "hasInterpretations": true
+            },
+            {
+              "id": "farmer-production-group-loan",
+              "title": "5. 農民經營及產銷班貸款",
+              "printedPage": 146,
+              "pdfPage": 148,
+              "hasInterpretations": true
+            },
+            {
+              "id": "agri-tech-park-loan",
+              "title": "6. 農業科技園區進駐業者優惠貸款",
+              "printedPage": 158,
+              "pdfPage": 160,
+              "hasInterpretations": true
+            },
+            {
+              "id": "hillside-conservation-loan",
+              "title": "7. 山坡地保育利用貸款",
+              "printedPage": 165,
+              "pdfPage": 167,
+              "hasInterpretations": false
+            },
+            {
+              "id": "farm-household-loan",
+              "title": "8. 農家綜合貸款",
+              "printedPage": 170,
+              "pdfPage": 172,
+              "hasInterpretations": true
+            },
+            {
+              "id": "association-development-loan",
+              "title": "9. 農漁會事業發展貸款",
+              "printedPage": 178,
+              "pdfPage": 180,
+              "hasInterpretations": true
+            },
+            {
+              "id": "afforestation-loan",
+              "title": "10. 造林貸款",
+              "printedPage": 185,
+              "pdfPage": 187,
+              "hasInterpretations": true
+            },
+            {
+              "id": "small-landlord-professional-farmer-loan",
+              "title": "11. 小地主大專業農貸款",
+              "printedPage": 197,
+              "pdfPage": 199,
+              "hasInterpretations": false
+            },
+            {
+              "id": "agri-energy-saving-loan",
+              "title": "12. 農業節能減碳貸款",
+              "printedPage": 203,
+              "pdfPage": 205,
+              "hasInterpretations": true
+            },
+            {
+              "id": "young-farmer-loan",
+              "title": "13. 青壯年農民從農貸款",
+              "printedPage": 209,
+              "pdfPage": 211,
+              "hasInterpretations": true
+            },
+            {
+              "id": "leisure-farm-loan",
+              "title": "14. 休閒農場貸款",
+              "printedPage": 222,
+              "pdfPage": 224,
+              "hasInterpretations": false
+            },
+            {
+              "id": "agri-organization-enterprise-innovation-loan",
+              "title": "15. 農民組織及農企業產銷經營及研發創新貸款",
+              "printedPage": 228,
+              "pdfPage": 230,
+              "hasInterpretations": true
+            },
+            {
+              "id": "agri-organization-disaster-recovery-loan",
+              "title": "16. 農民組織及農企業天然災害復耕復建貸款",
+              "printedPage": 242,
+              "pdfPage": 244,
+              "hasInterpretations": false
+            },
+            {
+              "id": "agricultural-insurance-loan",
+              "title": "17. 農業保險貸款",
+              "printedPage": 251,
+              "pdfPage": 253,
+              "hasInterpretations": false
+            },
+            {
+              "id": "farmer-relief-loan",
+              "title": "18. 農民紓困貸款",
+              "printedPage": 254,
+              "pdfPage": 256,
+              "hasInterpretations": false
+            },
+            {
+              "id": "farmland-purchase-loan",
+              "title": "19. 擴大家庭農場經營規模協助農民購買耕地貸款",
+              "printedPage": 259,
+              "pdfPage": 261,
+              "hasInterpretations": true
+            }
+          ]
+        },
+        {
+          "id": "natural-disaster-low-interest-loan",
+          "title": "（三）農業天然災害救助辦法及低利貸款相關函釋",
+          "printedPage": 270,
+          "pdfPage": 272,
+          "hasInterpretations": true
+        }
+      ]
+    },
+    {
+      "id": "part-2",
+      "title": "貳、全國農業金庫貸款",
+      "items": [
+        {
+          "id": "agricultural-rooting-loan",
+          "title": "農業紮根貸款",
+          "printedPage": 300,
+          "pdfPage": 302
+        },
+        {
+          "id": "rice-purchase-working-capital-loan",
+          "title": "稻穀收購產銷調節週轉金貸款",
+          "printedPage": 306,
+          "pdfPage": 308
+        },
+        {
+          "id": "brackish-water-fishery-loan",
+          "title": "輔導鹹水漁業改善經營貸款",
+          "printedPage": 308,
+          "pdfPage": 310
+        }
+      ]
+    },
+    {
+      "id": "appendices",
+      "title": "附錄、FAQ與附件",
+      "items": [
+        {
+          "id": "appendix-1",
+          "title": "全國農業金庫辦理農會漁會信用部資金融通作業規範",
+          "printedPage": 309,
+          "pdfPage": 311,
+          "kind": "附錄"
+        },
+        {
+          "id": "appendix-2",
+          "title": "全國農業金庫辦理農會漁會信用部一般性或季節性週轉資金融通注意事項",
+          "printedPage": 311,
+          "pdfPage": 313,
+          "kind": "附錄"
+        },
+        {
+          "id": "appendix-3",
+          "title": "政策性農業專案貸款增修正規定常見問題（QA）",
+          "printedPage": 313,
+          "pdfPage": 315,
+          "kind": "附錄"
+        },
+        {
+          "id": "attachment-1",
+          "title": "休閒農業輔導管理辦法",
+          "printedPage": 348,
+          "pdfPage": 350,
+          "kind": "附件"
+        },
+        {
+          "id": "attachment-2",
+          "title": "中小企業認定標準",
+          "printedPage": 352,
+          "pdfPage": 354,
+          "kind": "附件"
+        },
+        {
+          "id": "attachment-3",
+          "title": "雞蛋友善生產系統定義及指南",
+          "printedPage": 353,
+          "pdfPage": 355,
+          "kind": "附件"
+        }
+      ]
+    }
+  ]
+}
