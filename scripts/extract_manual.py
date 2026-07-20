@@ -15,6 +15,7 @@ from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 PDF = ROOT / "source" / "policy-agri-loan-handbook-114.pdf"
 DATA = ROOT / "data" / "114"
+CURATION = ROOT / "curation" / "114" / "interpretation-candidate-decisions.json"
 EXPECTED_PAGES = 359
 VERSION = "114"
 SHA256 = "0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54"
@@ -401,6 +402,28 @@ def extract_interpretation_candidates(pages: list[dict], sources: list[dict]) ->
                          "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。"})
             seen_keys[key] = item["id"]
         records.append(item)
+    decisions = json.loads(CURATION.read_text(encoding="utf-8"))
+    by_key: dict[str, list[dict]] = {}
+    for item in records:
+        by_key.setdefault(item["candidateKey"], []).append(item)
+    for decision in decisions:
+        matches = by_key.get(decision["candidateKey"], [])
+        if len(matches) != 1:
+            raise RuntimeError(f"curation candidateKey must resolve exactly once: {decision['candidateKey']}")
+        item = matches[0]
+        if (item["documentNumber"], item["printedPage"], item["pdfPage"]) != (decision["documentNumber"], decision["printedPage"], decision["pdfPage"]):
+            raise RuntimeError(f"curation metadata mismatch: {decision['candidateKey']}")
+        item.update({"disposition": decision["decision"], "decision": decision["decision"],
+                     "decisionBasis": decision["decisionBasis"], "evidencePages": decision["evidencePages"],
+                     "linkedInterpretationId": decision.get("linkedInterpretationId"),
+                     "linkedCandidateKey": decision.get("linkedCandidateKey"),
+                     "reviewStatus": decision["reviewStatus"], "reviewReason": decision["notes"]})
+    for item in records:
+        item.setdefault("decision", item["disposition"])
+        item.setdefault("decisionBasis", "automatic-candidate-classification")
+        item.setdefault("evidencePages", [])
+        item.setdefault("linkedCandidateKey", None)
+        item.setdefault("reviewStatus", "automatically-detected")
     return records
 
 
@@ -499,7 +522,7 @@ def main() -> int:
     quick_index_entries = sum(len(group["items"]) for group in quick_index["groups"])
     manual = {
         "id": VERSION, "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2.1", "releaseStatus": "Beta", "sha256": SHA256,
+        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2.2", "releaseStatus": "Beta", "sha256": SHA256,
         "printedPageMapping": {"strategy": "continuous-offset-after-two-page-toc", "offset": 2,
                                "verifiedPdfPages": sorted(anchors), "status": "sampled-consistent"},
         "counts": {
@@ -508,6 +531,10 @@ def main() -> int:
             "interpretationCandidateInventoryTotal": len(interpretation_candidates),
             "interpretationCandidatesPromoted": disposition_count(interpretation_candidates, "promoted-to-source-index"),
             "interpretationCandidatesDuplicate": disposition_count(interpretation_candidates, "duplicate-detection"),
+            "interpretationCandidatesCited": disposition_count(interpretation_candidates, "cited-document"),
+            "interpretationCandidatesContinuation": disposition_count(interpretation_candidates, "continuation-reference"),
+            "interpretationCandidatesVariant": disposition_count(interpretation_candidates, "duplicate-variant"),
+            "interpretationCandidatesFalsePositive": disposition_count(interpretation_candidates, "false-positive"),
             "interpretationCandidatesPending": disposition_count(interpretation_candidates, "pending-review"),
             "formsSourceIndexed": len(forms),
             "formCandidateInventoryTotal": len(form_candidates),
@@ -560,7 +587,7 @@ def main() -> int:
     }
     write_json(ROOT / "data" / "versions.json", {"currentVersion": "114", "versions": [{
         "id": "114", "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2.1", "status": "Beta",
+        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2.2", "status": "Beta",
         "sourceFile": "policy-agri-loan-handbook-114.pdf"}]})
     write_json(DATA / "manual.json", manual)
     write_json(DATA / "toc.json", toc)

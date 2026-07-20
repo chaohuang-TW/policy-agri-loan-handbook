@@ -31,7 +31,7 @@ def main() -> int:
     source_ids = {item["id"] for item in interpretations}
     for item in candidates:
         disposition = item.get("disposition")
-        if disposition not in {"promoted-to-source-index", "duplicate-detection", "pending-review"}:
+        if disposition not in {"promoted-to-source-index", "duplicate-detection", "cited-document", "continuation-reference", "duplicate-variant", "false-positive", "pending-review"}:
             errors.append(f"invalid interpretation disposition: {item.get('id')}")
         if disposition == "promoted-to-source-index" and item.get("linkedInterpretationId") not in source_ids:
             errors.append(f"unlinked promoted interpretation candidate: {item.get('id')}")
@@ -56,6 +56,10 @@ def main() -> int:
         "interpretationsSourceIndexed": len(interpretations), "interpretationCandidateInventoryTotal": len(candidates),
         "interpretationCandidatesPromoted": sum(x["disposition"] == "promoted-to-source-index" for x in candidates),
         "interpretationCandidatesDuplicate": sum(x["disposition"] == "duplicate-detection" for x in candidates),
+        "interpretationCandidatesCited": sum(x["disposition"] == "cited-document" for x in candidates),
+        "interpretationCandidatesContinuation": sum(x["disposition"] == "continuation-reference" for x in candidates),
+        "interpretationCandidatesVariant": sum(x["disposition"] == "duplicate-variant" for x in candidates),
+        "interpretationCandidatesFalsePositive": sum(x["disposition"] == "false-positive" for x in candidates),
         "interpretationCandidatesPending": sum(x["disposition"] == "pending-review" for x in candidates),
         "formsSourceIndexed": len(forms), "formCandidateInventoryTotal": len(form_candidates),
         "formCandidatesPromoted": sum(x["disposition"] == "promoted-to-source-index" for x in form_candidates),
@@ -64,7 +68,7 @@ def main() -> int:
     }
     if any(counts[k] != v for k, v in expected_counts.items()):
         errors.append("manual counts do not match classified inventories")
-    if counts["interpretationCandidateInventoryTotal"] != sum(counts[k] for k in ("interpretationCandidatesPromoted", "interpretationCandidatesDuplicate", "interpretationCandidatesPending")):
+    if counts["interpretationCandidateInventoryTotal"] != sum(counts[k] for k in ("interpretationCandidatesPromoted", "interpretationCandidatesDuplicate", "interpretationCandidatesCited", "interpretationCandidatesContinuation", "interpretationCandidatesVariant", "interpretationCandidatesFalsePositive", "interpretationCandidatesPending")):
         errors.append("interpretation inventory equation is invalid")
     if counts["formCandidateInventoryTotal"] != sum(counts[k] for k in ("formCandidatesPromoted", "formCandidatesExcluded", "formCandidatesPending")):
         errors.append("form inventory equation is invalid")

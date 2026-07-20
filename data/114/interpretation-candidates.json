@@ -14,7 +14,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-002",
@@ -31,7 +36,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-003",
@@ -48,7 +58,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-004",
@@ -65,7 +80,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-005",
@@ -82,7 +102,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-006",
@@ -99,7 +124,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-007",
@@ -116,7 +146,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-008",
@@ -133,7 +168,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-009",
@@ -150,7 +190,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-010",
@@ -167,7 +212,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-011",
@@ -184,7 +234,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-012",
@@ -201,7 +256,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-013",
@@ -218,7 +278,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-014",
@@ -235,7 +300,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-015",
@@ -252,7 +322,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-016",
@@ -269,7 +344,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-017",
@@ -286,7 +366,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-018",
@@ -303,7 +388,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-019",
@@ -320,7 +410,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-020",
@@ -337,7 +432,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-021",
@@ -354,7 +454,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-022",
@@ -371,7 +476,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-023",
@@ -388,7 +498,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-024",
@@ -405,7 +520,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-025",
@@ -422,7 +542,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-026",
@@ -439,7 +564,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-027",
@@ -456,7 +586,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-028",
@@ -473,7 +608,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-029",
@@ -490,7 +630,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-030",
@@ -507,7 +652,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-031",
@@ -524,7 +674,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-032",
@@ -541,7 +696,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-033",
@@ -558,7 +718,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-034",
@@ -575,7 +740,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-035",
@@ -592,7 +762,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-036",
@@ -609,7 +784,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-037",
@@ -626,7 +806,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-038",
@@ -643,7 +828,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-039",
@@ -660,7 +850,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-040",
@@ -677,7 +872,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-041",
@@ -694,7 +894,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-042",
@@ -711,7 +916,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-043",
@@ -728,7 +938,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-044",
@@ -745,7 +960,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-045",
@@ -762,7 +982,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-046",
@@ -779,7 +1004,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-047",
@@ -796,7 +1026,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-048",
@@ -813,7 +1048,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-049",
@@ -830,7 +1070,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-050",
@@ -847,7 +1092,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-051",
@@ -864,7 +1114,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-052",
@@ -881,7 +1136,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-053",
@@ -898,7 +1158,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-054",
@@ -915,7 +1180,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-055",
@@ -932,7 +1202,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-056",
@@ -949,7 +1224,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-057",
@@ -966,7 +1246,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-058",
@@ -983,7 +1268,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-059",
@@ -1000,7 +1290,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-060",
@@ -1017,7 +1312,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-061",
@@ -1034,7 +1334,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-062",
@@ -1051,7 +1356,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-063",
@@ -1068,7 +1378,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-064",
@@ -1085,7 +1400,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-065",
@@ -1102,7 +1422,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-066",
@@ -1119,7 +1444,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-067",
@@ -1136,7 +1466,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-068",
@@ -1153,7 +1488,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-069",
@@ -1170,7 +1510,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-070",
@@ -1187,7 +1532,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-071",
@@ -1204,7 +1554,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-072",
@@ -1221,7 +1576,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-073",
@@ -1238,7 +1598,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-074",
@@ -1255,7 +1620,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-075",
@@ -1272,7 +1642,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-076",
@@ -1289,7 +1664,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-077",
@@ -1306,7 +1686,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-078",
@@ -1323,7 +1708,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-079",
@@ -1340,7 +1730,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-080",
@@ -1357,7 +1752,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-081",
@@ -1374,7 +1774,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-082",
@@ -1391,7 +1796,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-083",
@@ -1408,7 +1818,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-084",
@@ -1425,7 +1840,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-085",
@@ -1442,7 +1862,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-086",
@@ -1459,7 +1884,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-087",
@@ -1476,7 +1906,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-088",
@@ -1493,7 +1928,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-089",
@@ -1506,11 +1946,18 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=51",
     "canonicalDocumentNumber": "農金字第0965080053號",
     "candidateKey": "農金字第0965080053號|49|有關農業發展基金貸款作業規範第 2點第 2 項規定補充如說明,請查照。",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-012",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "出現在農授金字第0965080084號函的說明，不是獨立標頭。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      51
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-090",
@@ -1527,7 +1974,12 @@
     "duplicateOf": "interpretation-candidate-023",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-091",
@@ -1544,7 +1996,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-092",
@@ -1557,11 +2014,18 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=67",
     "canonicalDocumentNumber": "農金字第1015080128號",
     "candidateKey": "農金字第1015080128號|65|有關本會101年3月16日函所提專案農貸常見缺失,其中「借款人有農業以外專任職業」乙項,釋如說明,請查照。",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-028",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "出現在農授金字第1015080136號函主旨中的發布令文號。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      67
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-093",
@@ -1578,7 +2042,12 @@
     "duplicateOf": "interpretation-candidate-029",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-094",
@@ -1591,11 +2060,19 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=69",
     "canonicalDocumentNumber": "農金三字第1025013205號",
     "candidateKey": "農金三字第1025013205號|67|農業發展基金貸款共同規定相關函釋",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-031",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "PDF第69頁僅在常見缺失表引用；獨立函釋標頭位於PDF第71頁。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      69,
+      71
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-095",
@@ -1612,7 +2089,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-096",
@@ -1629,7 +2111,12 @@
     "duplicateOf": "interpretation-candidate-032",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-097",
@@ -1646,7 +2133,12 @@
     "duplicateOf": "interpretation-candidate-037",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-098",
@@ -1663,7 +2155,12 @@
     "duplicateOf": "interpretation-candidate-041",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-099",
@@ -1678,9 +2175,16 @@
     "candidateKey": "農金三字第0955010574號|142|有關○○農會函詢畜禽飼養登記證是否比照畜牧場登記證書同為專案貸款之證明文件疑義案,本會意見如說明,復請查照。",
     "linkedInterpretationId": null,
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "出現在無獨立文件標頭之說明依據，屬被引用來函。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      144
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-100",
@@ -1697,7 +2201,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-101",
@@ -1714,7 +2223,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-102",
@@ -1731,7 +2245,12 @@
     "duplicateOf": "interpretation-candidate-044",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-103",
@@ -1748,7 +2267,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-104",
@@ -1765,7 +2289,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-105",
@@ -1782,7 +2311,12 @@
     "duplicateOf": "interpretation-candidate-051",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-106",
@@ -1799,7 +2333,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-107",
@@ -1816,7 +2355,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-108",
@@ -1829,11 +2373,18 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=177",
     "canonicalDocumentNumber": "農金字第0965080263號",
     "candidateKey": "農金字第0965080263號|175|關於貴轄○○鄉農會所詢辦理農家綜合貸款疑義案 , 復如說明 , 請查照並轉知 。",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-054",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "出現在農金字第0965080266號函主旨中的發布令文號。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      177
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-109",
@@ -1850,7 +2401,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-110",
@@ -1867,7 +2423,12 @@
     "duplicateOf": "interpretation-candidate-063",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-111",
@@ -1884,7 +2445,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-112",
@@ -1897,11 +2463,18 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=222",
     "canonicalDocumentNumber": "農授字第10500003929號",
     "candidateKey": "農授字第10500003929號|220|所詢「青年從農創業貸款(下稱本貸款)」借款人為獨資行號負責人,是否符合貸款資格案,復如說明,請查照。",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-070",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "出現在後一函釋的來函文號，不是獨立函釋起點。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      222
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-113",
@@ -1918,7 +2491,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-114",
@@ -1933,9 +2511,16 @@
     "candidateKey": "農金三字第1045043447號|240|修正「農民組織及農企業產銷經營及研發創新貸款」 (下稱農企業貸款)之申辦、 審查作業流程及相關資料,並請依說明事項辦理,請查照。",
     "linkedInterpretationId": null,
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "僅在另一份函釋的說明中被引用。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "cited-document",
+    "decision": "cited-document",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      242
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-115",
@@ -1952,7 +2537,12 @@
     "duplicateOf": "interpretation-candidate-075",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-116",
@@ -1969,7 +2559,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-117",
@@ -1986,7 +2581,12 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-118",
@@ -1999,11 +2599,18 @@
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=269",
     "canonicalDocumentNumber": "農金字第0945018167號",
     "candidateKey": "農金字第0945018167號|267|所詢有關擴大家庭農場經營規模協助農民購買耕地貸款辦法規定疑義案,復如說明, 請查照。",
-    "linkedInterpretationId": null,
+    "linkedInterpretationId": "interpretation-075",
     "duplicateOf": null,
-    "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。",
+    "reviewReason": "候選少了「三」字；同頁完整標頭的來源索引為農金三字第0945018167號。",
     "verificationStatus": "automatically-detected",
-    "disposition": "pending-review"
+    "disposition": "duplicate-variant",
+    "decision": "duplicate-variant",
+    "decisionBasis": "source-page-comparison",
+    "evidencePages": [
+      269
+    ],
+    "linkedCandidateKey": null,
+    "reviewStatus": "machine-assisted-source-review"
   },
   {
     "id": "interpretation-candidate-119",
@@ -2020,7 +2627,12 @@
     "duplicateOf": "interpretation-candidate-080",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-120",
@@ -2037,7 +2649,12 @@
     "duplicateOf": "interpretation-candidate-086",
     "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。",
     "verificationStatus": "automatically-detected",
-    "disposition": "duplicate-detection"
+    "disposition": "duplicate-detection",
+    "decision": "duplicate-detection",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   },
   {
     "id": "interpretation-candidate-121",
@@ -2054,6 +2671,11 @@
     "duplicateOf": null,
     "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。",
     "verificationStatus": "automatically-detected",
-    "disposition": "promoted-to-source-index"
+    "disposition": "promoted-to-source-index",
+    "decision": "promoted-to-source-index",
+    "decisionBasis": "automatic-candidate-classification",
+    "evidencePages": [],
+    "linkedCandidateKey": null,
+    "reviewStatus": "automatically-detected"
   }
 ]
