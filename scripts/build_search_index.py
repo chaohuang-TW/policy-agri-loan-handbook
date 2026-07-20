@@ -18,10 +18,14 @@ def load(name: str):
 def main() -> None:
     records = []
     for page in load("pages.json"):
+        # Keep date and document-number tokens distinct in search.  The source
+        # text has no layout separator between 「日」 and 「農授金字」, which must
+        # not manufacture the erroneous document number 「日農授金字…」.
+        search_text = page["searchText"].replace("日農授金字第", "日 農授金字第")
         records.append({
             "id": f"page-{page['pdfPage']:03d}", "type": "原文頁面", "title": page["title"],
             "category": page["chapterId"], "version": "114年度", "printedPage": page["printedPage"],
-            "pdfPage": page["pdfPage"], "text": f"{page['title']} {page['searchText']} 手冊頁 {page['printedPage']} PDF頁 {page['pdfPage']}",
+            "pdfPage": page["pdfPage"], "text": f"{page['title']} {search_text} 手冊頁 {page['printedPage']} PDF頁 {page['pdfPage']}",
             "url": f"versions/114/pages/page-{page['pdfPage']:03d}.html#pdf-page-{page['pdfPage']}",
             "breadcrumb": ["114年度", page["title"]],
         })

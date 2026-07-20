@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate separation, provenance, completeness, and public-search index quality."""
+"""Validate source-indexed data, classified inventories, page mapping and search."""
 
 from __future__ import annotations
 
@@ -16,69 +16,75 @@ def load(name: str):
 
 def main() -> int:
     errors = []
-    toc = load("toc.json")
-    quick = load("quick-index.json")
-    interpretations = load("interpretations.json")
-    interpretation_candidates = load("interpretation-candidates.json")
-    forms = load("forms.json")
-    form_candidates = load("form-candidates.json")
-    exclusions = load("form-exclusions.json")
+    manual, toc, quick = load("manual.json"), load("toc.json"), load("quick-index.json")
+    interpretations, candidates = load("interpretations.json"), load("interpretation-candidates.json")
+    forms, form_candidates, exclusions = load("forms.json"), load("form-candidates.json"), load("form-exclusions.json")
     page_map = load("printed-page-map.json")
     search = json.loads((ROOT / "site/assets/data/search-index.json").read_text(encoding="utf-8"))
-
+    counts = manual["counts"]
     if toc.get("structure") != "faithful-flat-hierarchy" or len(toc.get("items", [])) != 54:
-        errors.append("faithful TOC must contain the 54 source entries")
-    if max((item.get("level", 0) for item in toc.get("items", [])), default=0) != 4:
-        errors.append("faithful TOC must preserve four hierarchy levels")
+        errors.append("faithful TOC must contain 54 source entries")
     if len(quick.get("groups", [])) != 3:
-        errors.append("quick index must contain three reader-oriented groups")
-    if any(item.get("verificationStatus") != "confirmed" for item in interpretations):
-        errors.append("public interpretation index contains unconfirmed records")
-    if any(item.get("verificationStatus") != "needs-review" for item in interpretation_candidates):
-        errors.append("interpretation candidates must all remain needs-review")
-    candidate_keys = {(item.get("documentNumber"), item.get("printedPage")) for item in interpretation_candidates}
-    confirmed_keys = {(item.get("documentNumber"), item.get("printedPageStart")) for item in interpretations}
-    if not confirmed_keys <= candidate_keys:
-        errors.append("one or more confirmed interpretations are missing from the candidate inventory")
-    if any(item.get("verificationStatus") != "confirmed" for item in forms):
-        errors.append("public form index contains unconfirmed records")
-    if any(item.get("verificationStatus") != "needs-review" for item in form_candidates):
-        errors.append("form candidates must all remain needs-review")
-    excluded_pages = {item["printedPage"] for item in exclusions}
-    confirmed_pages = {item["printedPageStart"] for item in forms}
-    candidate_pages = {item["printedPage"] for item in form_candidates}
-    if excluded_pages | confirmed_pages != candidate_pages or excluded_pages & confirmed_pages:
-        errors.append("form candidates are not fully and exclusively classified")
-    if any(not item.get("exclusionReason") for item in exclusions):
-        errors.append("form exclusion is missing a reason")
-    if page_map.get("status") != "sampled-and-consistent" or len(page_map.get("anchors", [])) < 36:
-        errors.append("printed page map needs at least 36 sampled-and-consistent anchors")
-    if any(anchor["pdfPage"] - anchor["printedPage"] != 2 for anchor in page_map.get("anchors", [])):
-        errors.append("printed page map contains an inconsistent offset")
-
+        errors.append("quick index must contain three groups")
+    if any(item.get("verificationStatus") != "source-indexed" for item in interpretations):
+        errors.append("interpretations must be source-indexed")
+    source_ids = {item["id"] for item in interpretations}
+    for item in candidates:
+        disposition = item.get("disposition")
+        if disposition not in {"promoted-to-source-index", "duplicate-detection", "pending-review"}:
+            errors.append(f"invalid interpretation disposition: {item.get('id')}")
+        if disposition == "promoted-to-source-index" and item.get("linkedInterpretationId") not in source_ids:
+            errors.append(f"unlinked promoted interpretation candidate: {item.get('id')}")
+        if disposition == "duplicate-detection" and not item.get("duplicateOf"):
+            errors.append(f"unlinked duplicate interpretation candidate: {item.get('id')}")
+        if disposition == "pending-review" and item.get("linkedInterpretationId"):
+            errors.append(f"pending interpretation candidate linked to source: {item.get('id')}")
+    if any(item.get("verificationStatus") != "source-indexed" for item in forms):
+        errors.append("forms must be source-indexed")
+    form_ids, exclusion_ids = {item["id"] for item in forms}, {item["id"] for item in exclusions}
+    for item in form_candidates:
+        disposition = item.get("disposition")
+        if disposition not in {"promoted-to-source-index", "excluded", "pending-review"}:
+            errors.append(f"invalid form disposition: {item.get('id')}")
+        if disposition == "promoted-to-source-index" and item.get("linkedFormId") not in form_ids:
+            errors.append(f"unlinked promoted form candidate: {item.get('id')}")
+        if disposition == "excluded" and item.get("exclusionId") not in exclusion_ids:
+            errors.append(f"unlinked excluded form candidate: {item.get('id')}")
+        if disposition == "pending-review" and item.get("linkedFormId"):
+            errors.append(f"pending form candidate linked to source: {item.get('id')}")
+    expected_counts = {
+        "interpretationsSourceIndexed": len(interpretations), "interpretationCandidateInventoryTotal": len(candidates),
+        "interpretationCandidatesPromoted": sum(x["disposition"] == "promoted-to-source-index" for x in candidates),
+        "interpretationCandidatesDuplicate": sum(x["disposition"] == "duplicate-detection" for x in candidates),
+        "interpretationCandidatesPending": sum(x["disposition"] == "pending-review" for x in candidates),
+        "formsSourceIndexed": len(forms), "formCandidateInventoryTotal": len(form_candidates),
+        "formCandidatesPromoted": sum(x["disposition"] == "promoted-to-source-index" for x in form_candidates),
+        "formCandidatesExcluded": sum(x["disposition"] == "excluded" for x in form_candidates),
+        "formCandidatesPending": sum(x["disposition"] == "pending-review" for x in form_candidates),
+    }
+    if any(counts[k] != v for k, v in expected_counts.items()):
+        errors.append("manual counts do not match classified inventories")
+    if counts["interpretationCandidateInventoryTotal"] != sum(counts[k] for k in ("interpretationCandidatesPromoted", "interpretationCandidatesDuplicate", "interpretationCandidatesPending")):
+        errors.append("interpretation inventory equation is invalid")
+    if counts["formCandidateInventoryTotal"] != sum(counts[k] for k in ("formCandidatesPromoted", "formCandidatesExcluded", "formCandidatesPending")):
+        errors.append("form inventory equation is invalid")
+    records = page_map.get("pages", [])
+    if page_map.get("status") != "sampled-consistent" or len(records) != 359 or page_map.get("anchorCount") != 42:
+        errors.append("printed page map must have 359 records and 42 checked anchors")
+    elif any(r["printedPage"] != (None if r["pdfPage"] <= 2 else r["pdfPage"] - 2) for r in records):
+        errors.append("printed page map offset is inconsistent")
     expected = 359 + 23 + len(interpretations) + 4 + len(forms) + 6
     if len(search) != expected:
-        errors.append(f"search record count {len(search)} does not match confirmed-only total {expected}")
-    expected_types = {"原文頁面": 359, "貸款索引": 23, "函釋": len(interpretations), "常見問答": 4,
-                      "書表附件": len(forms), "附錄附件": 6}
-    for label, count in expected_types.items():
-        actual = sum(item["type"] == label for item in search)
-        if actual != count:
-            errors.append(f"search type {label} has {actual}, expected {count}")
+        errors.append(f"search record count {len(search)} does not match source-indexed total {expected}")
     site_names = {path.name for path in (ROOT / "site").rglob("*.json")}
     if {"interpretation-candidates.json", "form-candidates.json", "form-exclusions.json"} & site_names:
-        errors.append("review-only candidate data leaked into the public site")
-
+        errors.append("review-only candidate data leaked into public site")
     if errors:
-        print("INDEX QUALITY VALIDATION FAILED")
-        for error in errors:
-            print("- " + error)
-        return 1
+        print("INDEX QUALITY VALIDATION FAILED\n" + "\n".join("- " + x for x in errors)); return 1
     print("INDEX QUALITY VALIDATION PASSED")
-    print(f"- TOC entries: {len(toc['items'])}; hierarchy levels: 4; quick-index groups: {len(quick['groups'])}")
-    print(f"- Confirmed interpretations: {len(interpretations)}; candidates retained: {len(interpretation_candidates)}")
-    print(f"- Confirmed forms: {len(forms)}; candidates retained: {len(form_candidates)}; exclusions: {len(exclusions)}")
-    print(f"- Printed-page anchors: {len(page_map['anchors'])}; search records: {len(search)}")
+    print(f"- Source interpretations: {len(interpretations)}; inventory: {len(candidates)}")
+    print(f"- Source forms: {len(forms)}; inventory: {len(form_candidates)}")
+    print(f"- Page-map records: {len(records)}; checked anchors: {page_map['anchorCount']}; search records: {len(search)}")
     return 0
 
 

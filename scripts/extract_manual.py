@@ -36,8 +36,9 @@ def digest(path: Path) -> str:
 
 def normalize_search(text: str) -> str:
     text = unicodedata.normalize("NFKC", text)
+    text = re.sub(r"日\s+(?=農授金字)", "日§", text)
     text = re.sub(r"(?<=[\u3400-\u9fff])\s+(?=[\u3400-\u9fff])", "", text)
-    return re.sub(r"\s+", " ", text).strip()
+    return re.sub(r"\s+", " ", text).replace("§", " ").strip()
 
 
 def display_text(raw: str, printed: int | None) -> str:
@@ -52,7 +53,9 @@ def display_text(raw: str, printed: int | None) -> str:
         lines.pop(0)
     while lines and not lines[-1].strip():
         lines.pop()
-    return "\n".join(line.rstrip() for line in lines)
+    # Separate a date from the following document number for faithful readable
+    # layout; this does not alter either token or the source PDF.
+    return re.sub(r"日(?=農授金字)", "日 ", "\n".join(line.rstrip() for line in lines))
 
 
 LOANS = [
@@ -247,56 +250,100 @@ def build_quick_index(loan_programs: list[dict]) -> dict:
     }
 
 
-def extract_confirmed_interpretations(pages: list[dict]) -> list[dict]:
+HEADER_DATE = re.compile(r"(?:中華民國)?\s*(?P<year>[0-9０-９]+)\s*年\s*(?P<month>[0-9０-９]+)\s*月\s*(?P<day>[0-9０-９]+)\s*日")
+STRICT_DOCUMENT_NUMBER = re.compile(r"(?P<number>[\u3400-\u9fffA-Za-z]+字第[A-Za-z0-9]+號)")
+# Candidate detection deliberately starts at a document-number agency prefix,
+# never at the preceding date's final 「日」.
+DOCUMENT_REFERENCE = re.compile(r"(?:農授(?:林務)?|農金(?:三)?|農牧)字第?\s*[A-Za-z0-9０-９\s]+號")
+HEADER_ISSUER = re.compile(r"^(?:行政院農業委員會(?:農業金融局)?|農業部)")
+
+
+def canonicalize_document_number(value: str) -> str:
+    """Normalize layout only; never infer or repair an agency document number."""
+    normalized = unicodedata.normalize("NFKC", value)
+    normalized = re.sub(r"\s+", "", normalized)
+    return re.sub(r"(?:函|公告)$", "", normalized)
+
+
+def parse_interpretation_header(header_text: str) -> dict | None:
+    """Strictly parse an entire source header and reject invalid leading text."""
+    compact = re.sub(r"\s+", "", unicodedata.normalize("NFKC", header_text))
+    if compact.startswith("【") and compact.endswith("】"):
+        compact = compact[1:-1]
+    date_match = HEADER_DATE.search(compact)
+    if not date_match:
+        return None
+    date = f"{int(date_match.group('year'))}年{int(date_match.group('month'))}月{int(date_match.group('day'))}日"
+    remainder = compact[:date_match.start()] + compact[date_match.end():]
+    remainder = re.sub(r"(?:函|公告)$", "", remainder)
+    # The issuing authority is header context, not part of the agency document number.
+    remainder = HEADER_ISSUER.sub("", remainder)
+    number_match = STRICT_DOCUMENT_NUMBER.fullmatch(remainder)
+    if not number_match:
+        return None
+    document_number = canonicalize_document_number(number_match.group("number"))
+    invalid = (not document_number.endswith("號") or "字第" not in document_number or document_number.startswith("日") or
+               any(token in document_number for token in ("年", "月", "日", "中華民國", "(", ")", "（", "）")))
+    if invalid:
+        return None
+    return {"sourceHeader": header_text, "date": date, "documentNumber": document_number,
+            "canonicalDocumentNumber": canonicalize_document_number(document_number)}
+
+
+def subject_from_block(body: str) -> str | None:
+    match = re.search(r"主旨\s*[：:]\s*(.+?)(?=\n(?:說明|依據|公告事項)\s*[：:]|\n函令摘要|$)", body, re.S)
+    return normalize_search(match.group(1))[:240] if match else None
+
+
+def extract_source_indexed_interpretations(pages: list[dict]) -> list[dict]:
     records = []
-    header_pattern = re.compile(r"【([^】]*(?:號函|號公告))】")
-    number_pattern = re.compile(r"([^\d\s【】]{1,12}字第?\s*[A-Z0-9０-９\s]+號)")
-    date_pattern = re.compile(r"(?:中華民國\s*)?[0-9０-９一二三四五六七八九十百零〇○]+年\s*[0-9０-９一二三四五六七八九十]+月\s*[0-9０-９一二三四五六七八九十]+日")
+    header_pattern = re.compile(r"【[^】]+】")
     for loan_title, start, end in INTERPRETATION_RANGES:
         for printed in range(start, end + 1):
             text = pages[printed + 1]["rawText"]
             matches = list(header_pattern.finditer(text))
             for index, match in enumerate(matches):
+                parsed = parse_interpretation_header(match.group(0))
                 block_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-                body = text[match.end():block_end]
-                subject = re.search(r"主旨\s*[：:]\s*(.+?)(?=\n(?:說明|依據|公告事項)\s*[：:]|\n函令摘要|$)", body, re.S)
-                number = number_pattern.search(match.group(1))
-                if not subject or not number:
+                title = subject_from_block(text[match.end():block_end])
+                if not parsed or not title:
                     continue
-                title = normalize_search(subject.group(1))[:240]
-                date = date_pattern.search(match.group(1))
                 records.append({
-                    "id": f"interpretation-{len(records)+1:03d}", "title": title,
-                    "documentNumber": re.sub(r"\s+", "", number.group(1)),
-                    "date": normalize_search(date.group(0)) if date else None,
-                    "loanProgram": loan_title, "printedPageStart": printed, "printedPageEnd": printed,
-                    "pdfPageStart": printed + 2, "pdfPageEnd": printed + 2,
+                    "id": f"interpretation-{len(records)+1:03d}", "title": title, **parsed,
+                    "loanProgram": loan_title, "printedPageStart": printed, "printedPageEnd": None,
+                    "pdfPageStart": printed + 2, "pdfPageEnd": None, "rangeStatus": "start-only",
                     "originalUrl": f"../../downloads/policy-agri-loan-handbook-114.pdf#page={printed+2}",
-                    "verificationStatus": "confirmed", "confirmationBasis": "document-header-and-subject-start",
+                    "verificationStatus": "source-indexed", "indexBasis": "strict-header-date-number-subject",
                 })
     return records
 
 
-def build_confirmed_forms(candidates: list[dict]) -> tuple[list[dict], list[dict]]:
-    confirmed, excluded = [], []
+def build_source_indexed_forms(candidates: list[dict]) -> tuple[list[dict], list[dict]]:
+    forms, exclusions = [], []
     candidate_pages = {item["printedPage"] for item in candidates}
     for printed, title in FORM_WHITELIST.items():
         if printed not in candidate_pages:
             raise RuntimeError(f"whitelisted form page missing from candidates: {printed}")
-        confirmed.append({
-            "id": f"form-{len(confirmed)+1:03d}", "title": title,
+        forms.append({
+            "id": f"form-{len(forms)+1:03d}", "title": title,
             "printedPageStart": printed, "printedPageEnd": printed,
             "pdfPageStart": printed + 2, "pdfPageEnd": printed + 2,
             "kind": "form", "originalUrl": f"../../downloads/policy-agri-loan-handbook-114.pdf#page={printed+2}",
-            "verificationStatus": "confirmed", "confirmationBasis": "explicit-form-whitelist",
+            "verificationStatus": "source-indexed", "indexBasis": "explicit-source-page-list",
         })
+    source_by_page = {item["printedPageStart"]: item["id"] for item in forms}
     for item in candidates:
-        if item["printedPage"] not in FORM_WHITELIST:
-            excluded.append({
-                **item, "verificationStatus": "excluded",
-                "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。",
+        if item["printedPage"] in source_by_page:
+            item.update({"disposition": "promoted-to-source-index", "linkedFormId": source_by_page[item["printedPage"]], "exclusionId": None})
+        else:
+            exclusion_id = f"form-exclusion-{len(exclusions)+1:03d}"
+            item.update({"disposition": "excluded", "linkedFormId": None, "exclusionId": exclusion_id})
+            exclusions.append({
+                "id": exclusion_id, "sourceCandidateId": item["id"], "title": item["title"],
+                "printedPage": item["printedPage"], "pdfPage": item["pdfPage"], "originalUrl": item["originalUrl"],
+                "verificationStatus": "excluded", "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。",
             })
-    return confirmed, excluded
+    return forms, exclusions
 
 
 def section_for(printed: int | None) -> tuple[str, str]:
@@ -308,35 +355,52 @@ def section_for(printed: int | None) -> tuple[str, str]:
     return ("unassigned", "待人工覆核")
 
 
-def extract_interpretations(pages: list[dict]) -> list[dict]:
-    records: list[dict] = []
-    seen: set[tuple[str, int]] = set()
-    document_pattern = re.compile(r"(?:農(?:授金|金|輔|糧|牧|漁|企|業|字)?字)第?\s*[A-Z0-9０-９\s]+號")
-    date_pattern = re.compile(r"中華民國\s*[一二三四五六七八九十百零〇○0-9０-９年月日\s]+")
+def extract_interpretation_candidates(pages: list[dict], sources: list[dict]) -> list[dict]:
+    """Retain automatic detections, while separating promoted, duplicate and pending records."""
+    raw: list[dict] = []
+    for source in sources:
+        raw.append({
+            "title": source["title"], "documentNumber": source["documentNumber"], "date": source["date"],
+            "loanProgram": source["loanProgram"], "printedPage": source["printedPageStart"],
+            "pdfPage": source["pdfPageStart"], "originalUrl": source["originalUrl"],
+        })
     for loan_title, start, end in INTERPRETATION_RANGES:
         for printed in range(start, end + 1):
-            page = pages[printed + 1]
-            text = page["rawText"]
-            subject_lines = [line.strip() for line in text.splitlines() if "主旨" in line]
-            docs = [re.sub(r"\s+", "", value) for value in document_pattern.findall(text)]
-            for number in docs:
-                key = (number, printed)
-                if key in seen:
-                    continue
-                seen.add(key)
-                date_match = date_pattern.search(text)
-                title = subject_lines[0] if subject_lines else f"{loan_title}相關函釋"
-                records.append({
-                    "id": f"interpretation-{len(records)+1:03d}",
-                    "title": normalize_search(title)[:180],
-                    "documentNumber": number,
-                    "date": normalize_search(date_match.group(0)) if date_match else None,
-                    "loanProgram": loan_title,
-                    "printedPage": printed,
-                    "pdfPage": printed + 2,
+            text = pages[printed + 1]["rawText"]
+            title = subject_from_block(text) or f"{loan_title}相關函釋"
+            for value in DOCUMENT_REFERENCE.findall(text):
+                raw.append({
+                    "title": title, "documentNumber": canonicalize_document_number(value), "date": None,
+                    "loanProgram": loan_title, "printedPage": printed, "pdfPage": printed + 2,
                     "originalUrl": f"../../downloads/policy-agri-loan-handbook-114.pdf#page={printed+2}",
-                    "verificationStatus": "source-indexed" if date_match and subject_lines else "needs-review",
                 })
+    source_lookup = {(item["canonicalDocumentNumber"], item["printedPageStart"]): item["id"] for item in sources}
+    seen_keys: dict[tuple[str, int, str], str] = {}
+    records = []
+    for raw_item in raw:
+        canonical = canonicalize_document_number(raw_item["documentNumber"])
+        subject = normalize_search(raw_item["title"])
+        key = (canonical, raw_item["printedPage"], subject)
+        item = {
+            "id": f"interpretation-candidate-{len(records)+1:03d}", **raw_item,
+            "canonicalDocumentNumber": canonical,
+            "candidateKey": "|".join((canonical, str(raw_item["printedPage"]), subject)),
+            "linkedInterpretationId": None, "duplicateOf": None, "reviewReason": None,
+            "verificationStatus": "automatically-detected",
+        }
+        if key in seen_keys:
+            item.update({"disposition": "duplicate-detection", "duplicateOf": seen_keys[key],
+                         "reviewReason": "同頁、同正規化文號及等價主旨的重複偵測。"})
+        elif (canonical, raw_item["printedPage"]) in source_lookup:
+            item.update({"disposition": "promoted-to-source-index",
+                         "linkedInterpretationId": source_lookup[(canonical, raw_item["printedPage"])],
+                         "reviewReason": "與嚴格標頭來源索引的文號及起始頁一致。"})
+            seen_keys[key] = item["id"]
+        else:
+            item.update({"disposition": "pending-review",
+                         "reviewReason": "無法安全判定為嚴格標頭來源索引或確定重複。"})
+            seen_keys[key] = item["id"]
+        records.append(item)
     return records
 
 
@@ -428,50 +492,45 @@ def main() -> int:
                    "printedPageEnd": end, "pdfPageStart": start+2, "pdfPageEnd": end+2,
                    "verificationStatus": "source-indexed"} for slug, title, start, end, kind in APPENDICES]
     form_candidates = extract_forms(pages)
-    for item in form_candidates:
-        item["verificationStatus"] = "needs-review"
-    forms, form_exclusions = build_confirmed_forms(form_candidates)
-    interpretations = extract_confirmed_interpretations(pages)
-    interpretation_candidates = extract_interpretations(pages)
-    candidate_keys = {(item.get("documentNumber"), item.get("printedPage")) for item in interpretation_candidates}
-    for confirmed in interpretations:
-        key = (confirmed["documentNumber"], confirmed["printedPageStart"])
-        if key in candidate_keys:
-            continue
-        interpretation_candidates.append({
-            "id": "", "title": confirmed["title"], "documentNumber": confirmed["documentNumber"],
-            "date": confirmed["date"], "loanProgram": confirmed["loanProgram"],
-            "printedPage": confirmed["printedPageStart"], "pdfPage": confirmed["pdfPageStart"],
-            "originalUrl": confirmed["originalUrl"], "verificationStatus": "needs-review",
-        })
-        candidate_keys.add(key)
-    interpretation_candidates.sort(key=lambda item: (item["printedPage"], item.get("documentNumber") or ""))
-    for index, item in enumerate(interpretation_candidates, 1):
-        item["id"] = f"interpretation-candidate-{index:03d}"
-    for item in interpretation_candidates:
-        item["verificationStatus"] = "needs-review"
+    forms, form_exclusions = build_source_indexed_forms(form_candidates)
+    interpretations = extract_source_indexed_interpretations(pages)
+    interpretation_candidates = extract_interpretation_candidates(pages, interpretations)
+    disposition_count = lambda items, value: sum(item.get("disposition") == value for item in items)
+    quick_index_entries = sum(len(group["items"]) for group in quick_index["groups"])
     manual = {
         "id": VERSION, "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2", "releaseStatus": "Beta", "sha256": SHA256,
+        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2.1", "releaseStatus": "Beta", "sha256": SHA256,
         "printedPageMapping": {"strategy": "continuous-offset-after-two-page-toc", "offset": 2,
-                               "verifiedPdfPages": sorted(anchors), "status": "sampled-and-consistent"},
-        "counts": {"loanPrograms": len(loan_programs), "interpretations": len(interpretations),
-                   "interpretationCandidates": len(interpretation_candidates), "faq": len(faq),
-                   "forms": len(forms), "formCandidates": len(form_candidates), "appendices": len(appendices),
-                   "tocEntries": len(toc["items"])},
+                               "verifiedPdfPages": sorted(anchors), "status": "sampled-consistent"},
+        "counts": {
+            "loanPrograms": len(loan_programs),
+            "interpretationsSourceIndexed": len(interpretations),
+            "interpretationCandidateInventoryTotal": len(interpretation_candidates),
+            "interpretationCandidatesPromoted": disposition_count(interpretation_candidates, "promoted-to-source-index"),
+            "interpretationCandidatesDuplicate": disposition_count(interpretation_candidates, "duplicate-detection"),
+            "interpretationCandidatesPending": disposition_count(interpretation_candidates, "pending-review"),
+            "formsSourceIndexed": len(forms),
+            "formCandidateInventoryTotal": len(form_candidates),
+            "formCandidatesPromoted": disposition_count(form_candidates, "promoted-to-source-index"),
+            "formCandidatesExcluded": disposition_count(form_candidates, "excluded"),
+            "formCandidatesPending": disposition_count(form_candidates, "pending-review"),
+            "faqGroups": len(faq), "appendicesAndAttachments": len(appendices),
+            "tocEntries": len(toc["items"]), "quickIndexEntries": quick_index_entries,
+        },
     }
     review = {
         "version": VERSION,
         "sections": [
-            {"id": "page-mapping", "status": "sampled-and-consistent", "reviewedPages": sorted(anchors),
+            {"id": "page-mapping", "status": "sampled-consistent", "reviewedPages": sorted(anchors),
              "pendingPages": [], "notes": f"以目錄、連續印刷頁碼及 {len(anchors)} 個分散錨點確認 PDF 頁碼與印刷頁碼差 2。"},
             {"id": "text-extraction", "status": "automatically-extracted", "reviewedPages": [],
              "pendingPages": [p["pdfPage"] for p in pages], "notes": "保留 PDF 既有文字層，尚待逐頁人工校讀。"},
-            {"id": "interpretations", "status": "partially-confirmed", "reviewedPages": sorted({r["pdfPageStart"] for r in interpretations}),
-             "pendingPages": sorted({r["pdfPage"] for r in interpretation_candidates}), "notes": "正式索引僅納入可辨識文件標頭及主旨起始者；所有文號候選另存待覆核。"},
-            {"id": "faq-and-forms", "status": "partially-confirmed", "reviewedPages": sorted({r["pdfPageStart"] for r in forms}),
-             "pendingPages": sorted({r["pdfPage"] for r in form_candidates if r["printedPage"] not in FORM_WHITELIST}),
-             "notes": "FAQ 依原目錄；正式書表索引採明確白名單，其餘候選附排除理由。"},
+            {"id": "interpretations", "status": "source-indexed", "reviewedPages": sorted({r["pdfPageStart"] for r in interpretations}),
+             "pendingPages": sorted({r["pdfPage"] for r in interpretation_candidates if r["disposition"] == "pending-review"}),
+             "notes": "正式索引僅納入同頁可通過嚴格標頭、日期、完整文號及主旨起始規則的資料；候選庫另行保留判定結果。"},
+            {"id": "faq-and-forms", "status": "source-indexed", "reviewedPages": sorted({r["pdfPageStart"] for r in forms}),
+             "pendingPages": sorted({r["pdfPage"] for r in form_candidates if r["disposition"] == "pending-review"}),
+             "notes": "FAQ 依原目錄；書表來源索引採明確來源頁清單，候選庫標示納入、排除或待覆核。"},
         ],
     }
     complex_patterns = (
@@ -501,7 +560,7 @@ def main() -> int:
     }
     write_json(ROOT / "data" / "versions.json", {"currentVersion": "114", "versions": [{
         "id": "114", "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2", "status": "Beta",
+        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2.1", "status": "Beta",
         "sourceFile": "policy-agri-loan-handbook-114.pdf"}]})
     write_json(DATA / "manual.json", manual)
     write_json(DATA / "toc.json", toc)
@@ -518,9 +577,14 @@ def main() -> int:
     write_json(DATA / "page-rendering-rules.json", rendering_rules)
     write_json(DATA / "review-status.json", review)
     write_json(DATA / "printed-page-map.json", {
-        "version": VERSION, "status": "sampled-and-consistent", "offset": 2,
-        "anchors": [{"pdfPage": pdf_page, "printedPage": printed, "verificationStatus": "confirmed"}
-                    for pdf_page, printed in anchors.items()],
+        "version": VERSION, "status": "sampled-consistent", "offset": 2, "pageCount": EXPECTED_PAGES,
+        "anchorCount": len(anchors),
+        "pages": [{
+            "pdfPage": pdf_page,
+            "printedPage": pdf_page - 2 if pdf_page >= 3 else None,
+            "mappingMethod": "front-matter" if pdf_page <= 2 else "continuous-offset-after-two-page-toc",
+            "verificationStatus": "checked-anchor" if pdf_page in anchors else "not-individually-checked",
+        } for pdf_page in range(1, EXPECTED_PAGES + 1)],
     })
     print(f"Extracted {len(pages)} pages; {sum(p['hasTextLayer'] for p in pages)} have text layers")
     print(f"Indexed {len(loan_programs)} loans, {len(interpretations)} interpretation records, {len(forms)} forms/attachments")

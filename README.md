@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2
+- 數位版本：114.0.0-beta.2.1
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -34,10 +34,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/extract_manual.py
 python scripts/render_page_previews.py
+python scripts/test_interpretation_parser.py
 python scripts/build_site.py
 python scripts/build_search_index.py
 python scripts/audit_content.py
 python scripts/validate_display_text.py
+python scripts/validate_interpretation_metadata.py
 python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
 python scripts/validate_site.py
@@ -61,13 +63,14 @@ python3 -m http.server 8000 --directory site
 ```bash
 python scripts/audit_content.py
 python scripts/validate_display_text.py
+python scripts/validate_interpretation_metadata.py
 python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
 python scripts/validate_site.py
 git diff --check
 ```
 
-驗證涵蓋兩份PDF、359頁資料、頁碼映射、23項貸款索引、原頁預覽、搜尋URL、內部連結、H1、重複ID、canonical、免責聲明、Project Pages相對路徑、外部程式碼與追蹤服務禁用規則。人工覆核項目見 `docs/REVIEW_GUIDE.md`。
+驗證涵蓋兩份PDF、359頁資料、頁碼映射、23項貸款索引、嚴格函釋標頭、來源索引與候選庫分類、原頁預覽、搜尋URL、內部連結、H1、重複ID、canonical、免責聲明、Project Pages相對路徑、外部程式碼與追蹤服務禁用規則。`source-indexed` 為可依來源規則追溯的索引，不等於人工逐件確認；`pending-review` 才是尚待人工判定的候選，candidate inventory total 則包含提升、重複與待覆核紀錄。人工覆核項目見 `docs/REVIEW_GUIDE.md`。
 
 ## 新版更新與版本保存
 

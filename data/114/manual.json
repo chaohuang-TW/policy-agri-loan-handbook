@@ -3,7 +3,7 @@
   "displayName": "114年度",
   "sourceTitle": "114年度政策性農業專案貸款業務手冊",
   "pdfPages": 359,
-  "digitalRevision": "114.0.0-beta.2",
+  "digitalRevision": "114.0.0-beta.2.1",
   "releaseStatus": "Beta",
   "sha256": "0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54",
   "printedPageMapping": {
@@ -53,16 +53,23 @@
       352,
       359
     ],
-    "status": "sampled-and-consistent"
+    "status": "sampled-consistent"
   },
   "counts": {
     "loanPrograms": 23,
-    "interpretations": 87,
-    "interpretationCandidates": 173,
-    "faq": 4,
-    "forms": 28,
-    "formCandidates": 42,
-    "appendices": 6,
-    "tocEntries": 54
+    "interpretationsSourceIndexed": 87,
+    "interpretationCandidateInventoryTotal": 121,
+    "interpretationCandidatesPromoted": 102,
+    "interpretationCandidatesDuplicate": 11,
+    "interpretationCandidatesPending": 8,
+    "formsSourceIndexed": 28,
+    "formCandidateInventoryTotal": 42,
+    "formCandidatesPromoted": 28,
+    "formCandidatesExcluded": 14,
+    "formCandidatesPending": 0,
+    "faqGroups": 4,
+    "appendicesAndAttachments": 6,
+    "tocEntries": 54,
+    "quickIndexEntries": 29
   }
 }

@@ -3,7 +3,7 @@
   "sections": [
     {
       "id": "page-mapping",
-      "status": "sampled-and-consistent",
+      "status": "sampled-consistent",
       "reviewedPages": [
         3,
         12,
@@ -420,7 +420,7 @@
     },
     {
       "id": "interpretations",
-      "status": "partially-confirmed",
+      "status": "source-indexed",
       "reviewedPages": [
         47,
         48,
@@ -466,55 +466,20 @@
         301
       ],
       "pendingPages": [
-        47,
-        48,
-        49,
-        50,
         51,
-        52,
-        57,
-        58,
-        59,
-        60,
-        63,
-        66,
         67,
-        68,
         69,
-        71,
-        101,
-        109,
-        110,
-        111,
-        121,
         144,
-        145,
-        146,
-        158,
-        166,
         177,
-        178,
-        179,
-        185,
-        186,
-        198,
-        210,
-        221,
         222,
-        223,
         242,
-        269,
-        270,
-        271,
-        299,
-        300,
-        301
+        269
       ],
-      "notes": "正式索引僅納入可辨識文件標頭及主旨起始者；所有文號候選另存待覆核。"
+      "notes": "正式索引僅納入同頁可通過嚴格標頭、日期、完整文號及主旨起始規則的資料；候選庫另行保留判定結果。"
     },
     {
       "id": "faq-and-forms",
-      "status": "partially-confirmed",
+      "status": "source-indexed",
       "reviewedPages": [
         40,
         43,
@@ -545,20 +510,8 @@
         292,
         305
       ],
-      "pendingPages": [
-        37,
-        52,
-        97,
-        103,
-        125,
-        126,
-        244,
-        324,
-        325,
-        334,
-        338
-      ],
-      "notes": "FAQ 依原目錄；正式書表索引採明確白名單，其餘候選附排除理由。"
+      "pendingPages": [],
+      "notes": "FAQ 依原目錄；書表來源索引採明確來源頁清單，候選庫標示納入、排除或待覆核。"
     }
   ]
 }

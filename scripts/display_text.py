@@ -36,6 +36,10 @@ def _normalize_spaces(text: str) -> str:
                 right = following[0]
                 break
         remove = _is_layout_character(left) and _is_layout_character(right)
+        # Preserve the explicit separator between a date and a following agency
+        # document number; otherwise UI text can visually invent 「日農授金字」.
+        if left == "日" and right == "農" and following.startswith("農授金字"):
+            remove = False
         remove = remove or (left.isdigit() and right in "％﹪%")
         result.append("" if remove else " ")
     return "".join(result).strip()

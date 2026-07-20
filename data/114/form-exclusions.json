@@ -1,6 +1,7 @@
 [
   {
-    "id": "form-001",
+    "id": "form-exclusion-001",
+    "sourceCandidateId": "form-001",
     "title": "格式如附件一)與「農業發展基金貸款利息差額補貼申請書」 (格式如附件二)",
     "printedPage": 35,
     "pdfPage": 37,
@@ -9,7 +10,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-004",
+    "id": "form-exclusion-002",
+    "sourceCandidateId": "form-004",
     "title": "件審核表」",
     "printedPage": 50,
     "pdfPage": 52,
@@ -18,7 +20,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-008",
+    "id": "form-exclusion-003",
+    "sourceCandidateId": "form-008",
     "title": "許可證或海關進口證明書核發日為準。",
     "printedPage": 95,
     "pdfPage": 97,
@@ -27,7 +30,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-010",
+    "id": "form-exclusion-004",
+    "sourceCandidateId": "form-010",
     "title": "縣(市)政府核發之證明書影本。",
     "printedPage": 101,
     "pdfPage": 103,
@@ -36,7 +40,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-013",
+    "id": "form-exclusion-005",
+    "sourceCandidateId": "form-013",
     "title": "貸款申請書。",
     "printedPage": 123,
     "pdfPage": 125,
@@ -45,7 +50,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-014",
+    "id": "form-exclusion-006",
+    "sourceCandidateId": "form-014",
     "title": "貸款申請書。",
     "printedPage": 124,
     "pdfPage": 126,
@@ -54,7 +60,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-028",
+    "id": "form-exclusion-007",
+    "sourceCandidateId": "form-028",
     "title": "機關 、 貸款經辦機構申請核發農業天然災害受災證明書(下稱受災證明書)、 各直轄市 、",
     "printedPage": 242,
     "pdfPage": 244,
@@ -63,7 +70,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-029",
+    "id": "form-exclusion-008",
+    "sourceCandidateId": "form-029",
     "title": "市、區)公所、稅捐稽徵機關、貸款經辦機構出具之受災證明書、農業天然災害復耕",
     "printedPage": 242,
     "pdfPage": 244,
@@ -72,7 +80,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-037",
+    "id": "form-exclusion-009",
+    "sourceCandidateId": "form-037",
     "title": "貸款申請書",
     "printedPage": 322,
     "pdfPage": 324,
@@ -81,7 +90,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-038",
+    "id": "form-exclusion-010",
+    "sourceCandidateId": "form-038",
     "title": "切結書增列本專案貸款為政府補貼之低利貸款等說",
     "printedPage": 323,
     "pdfPage": 325,
@@ -90,7 +100,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-039",
+    "id": "form-exclusion-011",
+    "sourceCandidateId": "form-039",
     "title": "期限延長申請書",
     "printedPage": 332,
     "pdfPage": 334,
@@ -99,7 +110,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-040",
+    "id": "form-exclusion-012",
+    "sourceCandidateId": "form-040",
     "title": "班貸款申請書",
     "printedPage": 336,
     "pdfPage": 338,
@@ -108,7 +120,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-041",
+    "id": "form-exclusion-013",
+    "sourceCandidateId": "form-041",
     "title": "貸款申請書",
     "printedPage": 336,
     "pdfPage": 338,
@@ -117,7 +130,8 @@
     "exclusionReason": "正文提及、標題殘缺或位於 FAQ，未能確認為獨立書表起始頁。"
   },
   {
-    "id": "form-042",
+    "id": "form-exclusion-014",
+    "sourceCandidateId": "form-042",
     "title": "復建貸款申請書",
     "printedPage": 336,
     "pdfPage": 338,

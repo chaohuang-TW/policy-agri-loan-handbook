@@ -36,8 +36,10 @@ jobs:
           python scripts/build_search_index.py
       - name: Validate source content and site
         run: |
+          python scripts/test_interpretation_parser.py
           python scripts/audit_content.py
           python scripts/validate_display_text.py
+          python scripts/validate_interpretation_metadata.py
           python scripts/validate_index_quality.py
           python scripts/validate_page_rendering.py
           python scripts/validate_site.py

@@ -27,6 +27,7 @@ FORMS = json.loads((DATA / "forms.json").read_text(encoding="utf-8"))
 APPENDICES = json.loads((DATA / "appendices.json").read_text(encoding="utf-8"))
 RULES = json.loads((DATA / "page-rendering-rules.json").read_text(encoding="utf-8"))
 RENDERING = {p["pdfPage"]: p for p in RULES["pages"]}
+MANUAL = json.loads((DATA / "manual.json").read_text(encoding="utf-8"))
 MANIFEST = {p["pdfPage"]: p for p in json.loads((ROOT / "assets/page-previews/114/manifest.json").read_text(encoding="utf-8"))}
 ORIGIN = "https://chaohuang-tw.github.io/policy-agri-loan-handbook/"
 PDF_NAME = "policy-agri-loan-handbook-114.pdf"
@@ -121,16 +122,19 @@ def build_home() -> None:
     relative = "index.html"
     keywords = ["青壯年農民", "農機", "週轉金", "資本支出", "寬緩期", "天然災害", "農企業", "購買耕地", "補正期限", "貸後查驗"]
     popular = "".join(f'<button type="button" data-keyword="{e(word)}">{e(word)}</button>' for word in keywords)
-    hero = f'<div class="current-version">目前版本 <strong>114年度 Beta</strong></div><h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">公開資料數位閱讀與實務索引版</p><p class="beta-note">Beta：本輪已重建忠實目錄與確認索引；候選函釋及書表仍保留於資料層供後續人工覆核。</p>{search_box()}<div class="popular" aria-label="熱門關鍵字"><span>熱門關鍵字</span>{popular}</div>'
+    counts = MANUAL["counts"]
+    revision = MANUAL["digitalRevision"]
+    hero = f'<div class="current-version">目前版本 <strong>114年度 Beta</strong></div><h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">公開資料數位閱讀與實務索引版</p><p class="beta-note">本網站目前為數位測試版。原文閱讀、完整目錄及全文搜尋已建置；函釋範圍、書表內容及全文仍在持續人工覆核。</p>{search_box()}<div class="popular" aria-label="熱門關鍵字"><span>熱門關鍵字</span>{popular}</div>'
     links = [
         ("原書完整目錄", "versions/114/index.html"), ("讀者快速索引", "quick-index/index.html"),
         ("農業發展基金作業規範", "versions/114/sections/agricultural-development-fund-rules/index.html"),
-        ("23項貸款索引", "loans/index.html"), ("確認函釋", "interpretations/index.html"),
-        ("常見問題", "faq/index.html"), ("確認書表與附件", "forms/index.html"),
+        ("23項貸款索引", "loans/index.html"), ("函釋來源索引", "interpretations/index.html"),
+        ("常見問題", "faq/index.html"), ("書表與附件來源索引", "forms/index.html"),
     ]
     quick = '<div class="entry-grid">' + "".join(f'<a class="entry{(" primary" if i < 4 else "")}" href="{e(url)}"><strong>{e(label)}</strong><span>開啟資料</span></a>' for i, (label, url) in enumerate(links)) + "</div>"
-    version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度 Beta</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>114.0.0-beta.2</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
-    write(relative, "政策性農業專案貸款業務手冊｜114年度數位閱讀版", wrap("home", HERO=hero, QUICK=quick, VERSION=version))
+    review = f'''<h2 id="review-title">內容覆核狀態</h2><p>原始閱讀頁：359頁；函釋來源索引：{counts["interpretationsSourceIndexed"]}筆；函釋真正待覆核：{counts["interpretationCandidatesPending"]}筆；書表來源索引：{counts["formsSourceIndexed"]}筆；書表真正待覆核：{counts["formCandidatesPending"]}筆。</p><p class="layout-note">來源索引依嚴格頁面與欄位規則建立；候選庫總量僅為偵測庫存，不等同待覆核數。全文逐頁校讀、函釋涵蓋範圍及書表內容仍需人工確認。</p>'''
+    version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度 Beta</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>{e(revision)}</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
+    write(relative, "政策性農業專案貸款業務手冊｜114年度數位閱讀版", wrap("home", HERO=hero, QUICK=quick, REVIEW=review, VERSION=version))
 
 
 def build_version_index() -> None:
@@ -235,6 +239,8 @@ def index_items(relative: str, items: list[dict], kind: str) -> str:
             extra += f'<span>文號：{e(item["documentNumber"])}</span>'
         if item.get("date"):
             extra += f'<span>日期：{e(item["date"])}</span>'
+        if item.get("rangeStatus"):
+            extra += f'<span>頁碼範圍：{e(item["rangeStatus"])}（結束頁待人工確認）</span>'
         url = rel(relative, f"downloads/{PDF_NAME}") + f"#page={pdf}"
         blocks.append(f'<li id="item-{e(item["id"])}"><div><strong>{e(item["title"])}</strong><span>{e(kind)}｜手冊頁 {e(printed)}｜PDF頁 {e(pdf)}</span>{extra}</div><a href="{e(url)}">開啟原文</a></li>')
     return '<ol class="index-rows index-detail">' + "".join(blocks) + "</ol>"
@@ -242,19 +248,21 @@ def index_items(relative: str, items: list[dict], kind: str) -> str:
 
 def build_indexes() -> None:
     relative = "interpretations/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "函釋索引") + f'<h1>確認函釋索引</h1><p class="source-meta">共 {len(INTERPRETATIONS)} 筆；僅納入可辨識獨立文件標頭與主旨起始的函釋。候選資料不進入公開索引與搜尋。</p>' + index_items(relative, INTERPRETATIONS, "函釋") + '<p><a href="../faq/index.html">前往常見問答</a></p>'
+    counts = MANUAL["counts"]
+    content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中真正待人工覆核 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p>' + index_items(relative, INTERPRETATIONS, "函釋") + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
     content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁依原手冊目錄建立入口，不提供AI摘要。</p>' + index_items(relative, FAQ, "FAQ")
     write(relative, "增修規定常見問答｜政策性農業專案貸款業務手冊", wrap("faq", CONTENT=content))
     relative = "forms/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "附件與書表") + f'<h1>確認書表與附件索引</h1><p class="source-meta">{len(APPENDICES)} 項正式附錄／附件，另有 {len(FORMS)} 筆經白名單確認的獨立書表。正文提及與殘缺候選不進入公開索引。</p><h2>正式附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>確認書表</h2>' + index_items(relative, FORMS, "書表")
+    content = breadcrumb(relative, [("首頁", "index.html")], "書表與附件來源索引") + f'<h1>書表與附件來源索引</h1><p class="source-meta">書表來源索引 {counts["formsSourceIndexed"]} 筆；候選庫 {counts["formCandidateInventoryTotal"]} 筆，其中已納入 {counts["formCandidatesPromoted"]} 筆、排除 {counts["formCandidatesExcluded"]} 筆、真正待人工覆核 {counts["formCandidatesPending"]} 筆。另列 {len(APPENDICES)} 項原手冊附錄／附件。</p><h2>附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表來源索引</h2>' + index_items(relative, FORMS, "書表")
     write(relative, "附件與書表索引｜政策性農業專案貸款業務手冊", wrap("forms", CONTENT=content))
 
 
 def build_versions() -> None:
     relative = "versions/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：114.0.0-beta.2</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2 內容稽核</h3><p>重建原書目錄與快速索引，將函釋及書表候選資料和確認索引分離，並加入顯示文字完整性及索引品質驗證。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。舊版本永久保留。</p><p>Beta 表示索引已完成第一輪稽核，候選資料仍待後續人工覆核；正式內容始終以原始PDF為準。</p></section>'''
+    revision = MANUAL["digitalRevision"]
+    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.1 緊急資料校正</h3><p>函釋改採嚴格完整標頭解析，區分來源索引、候選庫、重複偵測與真正待人工覆核；書表候選同步標示納入、排除或待覆核。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 

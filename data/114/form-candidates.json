@@ -5,7 +5,10 @@
     "printedPage": 35,
     "pdfPage": 37,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=37",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-001"
   },
   {
     "id": "form-002",
@@ -13,7 +16,10 @@
     "printedPage": 38,
     "pdfPage": 40,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=40",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-001",
+    "exclusionId": null
   },
   {
     "id": "form-003",
@@ -21,7 +27,10 @@
     "printedPage": 41,
     "pdfPage": 43,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=43",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-002",
+    "exclusionId": null
   },
   {
     "id": "form-004",
@@ -29,7 +38,10 @@
     "printedPage": 50,
     "pdfPage": 52,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=52",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-002"
   },
   {
     "id": "form-005",
@@ -37,7 +49,10 @@
     "printedPage": 51,
     "pdfPage": 53,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=53",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-003",
+    "exclusionId": null
   },
   {
     "id": "form-006",
@@ -45,7 +60,10 @@
     "printedPage": 52,
     "pdfPage": 54,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=54",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-004",
+    "exclusionId": null
   },
   {
     "id": "form-007",
@@ -53,7 +71,10 @@
     "printedPage": 53,
     "pdfPage": 55,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=55",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-005",
+    "exclusionId": null
   },
   {
     "id": "form-008",
@@ -61,7 +82,10 @@
     "printedPage": 95,
     "pdfPage": 97,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=97",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-003"
   },
   {
     "id": "form-009",
@@ -69,7 +93,10 @@
     "printedPage": 97,
     "pdfPage": 99,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=99",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-006",
+    "exclusionId": null
   },
   {
     "id": "form-010",
@@ -77,7 +104,10 @@
     "printedPage": 101,
     "pdfPage": 103,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=103",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-004"
   },
   {
     "id": "form-011",
@@ -85,7 +115,10 @@
     "printedPage": 104,
     "pdfPage": 106,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=106",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-007",
+    "exclusionId": null
   },
   {
     "id": "form-012",
@@ -93,7 +126,10 @@
     "printedPage": 115,
     "pdfPage": 117,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=117",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-008",
+    "exclusionId": null
   },
   {
     "id": "form-013",
@@ -101,7 +137,10 @@
     "printedPage": 123,
     "pdfPage": 125,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=125",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-005"
   },
   {
     "id": "form-014",
@@ -109,7 +148,10 @@
     "printedPage": 124,
     "pdfPage": 126,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=126",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-006"
   },
   {
     "id": "form-015",
@@ -117,7 +159,10 @@
     "printedPage": 126,
     "pdfPage": 128,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=128",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-009",
+    "exclusionId": null
   },
   {
     "id": "form-016",
@@ -125,7 +170,10 @@
     "printedPage": 129,
     "pdfPage": 131,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=131",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-010",
+    "exclusionId": null
   },
   {
     "id": "form-017",
@@ -133,7 +181,10 @@
     "printedPage": 150,
     "pdfPage": 152,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=152",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-011",
+    "exclusionId": null
   },
   {
     "id": "form-018",
@@ -141,7 +192,10 @@
     "printedPage": 161,
     "pdfPage": 163,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=163",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-012",
+    "exclusionId": null
   },
   {
     "id": "form-019",
@@ -149,7 +203,10 @@
     "printedPage": 172,
     "pdfPage": 174,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=174",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-013",
+    "exclusionId": null
   },
   {
     "id": "form-020",
@@ -157,7 +214,10 @@
     "printedPage": 181,
     "pdfPage": 183,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=183",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-014",
+    "exclusionId": null
   },
   {
     "id": "form-021",
@@ -165,7 +225,10 @@
     "printedPage": 188,
     "pdfPage": 190,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=190",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-015",
+    "exclusionId": null
   },
   {
     "id": "form-022",
@@ -173,7 +236,10 @@
     "printedPage": 191,
     "pdfPage": 193,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=193",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-016",
+    "exclusionId": null
   },
   {
     "id": "form-023",
@@ -181,7 +247,10 @@
     "printedPage": 200,
     "pdfPage": 202,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=202",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-017",
+    "exclusionId": null
   },
   {
     "id": "form-024",
@@ -189,7 +258,10 @@
     "printedPage": 205,
     "pdfPage": 207,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=207",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-018",
+    "exclusionId": null
   },
   {
     "id": "form-025",
@@ -197,7 +269,10 @@
     "printedPage": 213,
     "pdfPage": 215,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=215",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-019",
+    "exclusionId": null
   },
   {
     "id": "form-026",
@@ -205,7 +280,10 @@
     "printedPage": 225,
     "pdfPage": 227,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=227",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-020",
+    "exclusionId": null
   },
   {
     "id": "form-027",
@@ -213,7 +291,10 @@
     "printedPage": 232,
     "pdfPage": 234,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=234",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-021",
+    "exclusionId": null
   },
   {
     "id": "form-028",
@@ -221,7 +302,10 @@
     "printedPage": 242,
     "pdfPage": 244,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=244",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-007"
   },
   {
     "id": "form-029",
@@ -229,7 +313,10 @@
     "printedPage": 242,
     "pdfPage": 244,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=244",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-008"
   },
   {
     "id": "form-030",
@@ -237,7 +324,10 @@
     "printedPage": 245,
     "pdfPage": 247,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=247",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-022",
+    "exclusionId": null
   },
   {
     "id": "form-031",
@@ -245,7 +335,10 @@
     "printedPage": 249,
     "pdfPage": 251,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=251",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-023",
+    "exclusionId": null
   },
   {
     "id": "form-032",
@@ -253,7 +346,10 @@
     "printedPage": 252,
     "pdfPage": 254,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=254",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-024",
+    "exclusionId": null
   },
   {
     "id": "form-033",
@@ -261,7 +357,10 @@
     "printedPage": 256,
     "pdfPage": 258,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=258",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-025",
+    "exclusionId": null
   },
   {
     "id": "form-034",
@@ -269,7 +368,10 @@
     "printedPage": 263,
     "pdfPage": 265,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=265",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-026",
+    "exclusionId": null
   },
   {
     "id": "form-035",
@@ -277,7 +379,10 @@
     "printedPage": 290,
     "pdfPage": 292,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=292",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-027",
+    "exclusionId": null
   },
   {
     "id": "form-036",
@@ -285,7 +390,10 @@
     "printedPage": 303,
     "pdfPage": 305,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=305",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "promoted-to-source-index",
+    "linkedFormId": "form-028",
+    "exclusionId": null
   },
   {
     "id": "form-037",
@@ -293,7 +401,10 @@
     "printedPage": 322,
     "pdfPage": 324,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=324",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-009"
   },
   {
     "id": "form-038",
@@ -301,7 +412,10 @@
     "printedPage": 323,
     "pdfPage": 325,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=325",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-010"
   },
   {
     "id": "form-039",
@@ -309,7 +423,10 @@
     "printedPage": 332,
     "pdfPage": 334,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=334",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-011"
   },
   {
     "id": "form-040",
@@ -317,7 +434,10 @@
     "printedPage": 336,
     "pdfPage": 338,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=338",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-012"
   },
   {
     "id": "form-041",
@@ -325,7 +445,10 @@
     "printedPage": 336,
     "pdfPage": 338,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=338",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-013"
   },
   {
     "id": "form-042",
@@ -333,6 +456,9 @@
     "printedPage": 336,
     "pdfPage": 338,
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=338",
-    "verificationStatus": "needs-review"
+    "verificationStatus": "automatically-extracted",
+    "disposition": "excluded",
+    "linkedFormId": null,
+    "exclusionId": "form-exclusion-014"
   }
 ]
