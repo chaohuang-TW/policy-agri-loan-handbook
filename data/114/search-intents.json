@@ -1,0 +1,7 @@
+[
+  {"id":"forms","triggers":["申請書","表單","審核表","證明書","切結書","格式"],"preferredTypes":["書表附件"],"boost":300},
+  {"id":"interpretations","triggers":["函釋","函","文號","農授金字","農金字","農金三字"],"preferredTypes":["函釋"],"boost":300},
+  {"id":"loans","triggers":["貸款","資格","對象","用途","額度","期限","寬緩期"],"preferredTypes":["貸款索引","原文頁面"],"boost":180},
+  {"id":"faq","triggers":["常見問答","常見問題","faq","問答"],"preferredTypes":["常見問答"],"boost":280},
+  {"id":"appendices","triggers":["附錄","附件","附表"],"preferredTypes":["附錄附件","書表附件"],"boost":240}
+]

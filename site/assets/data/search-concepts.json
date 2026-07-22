@@ -1,0 +1,17 @@
+[
+  {"id":"young-farmer","terms":["青壯年農民","青農","青年農民","青年從農"]},
+  {"id":"agricultural-machinery","terms":["農機","農業機械","農機貸款"]},
+  {"id":"natural-disaster","terms":["天災","農業天然災害","天然災害低利貸款","災害貸款","災貸"]},
+  {"id":"farmland-purchase","terms":["購買耕地","買農地","購買農地","家庭農場購地"]},
+  {"id":"agri-enterprise","terms":["農企業","農民組織及農企業","研發創新貸款","產銷經營"]},
+  {"id":"agri-food","terms":["農糧","農糧業","輔導農糧業經營貸款"]},
+  {"id":"fishery","terms":["漁業","漁貸","輔導漁業經營貸款"]},
+  {"id":"livestock","terms":["畜牧","畜禽","提升畜禽產業經營貸款"]},
+  {"id":"grace-period","terms":["寬緩期","寬限期"]},
+  {"id":"deferred-repayment","terms":["延期還款","延長還款","還款延期"]},
+  {"id":"working-capital","terms":["週轉金","周轉金","營運週轉"]},
+  {"id":"recovery","terms":["復耕","復建","復耕復建"]},
+  {"id":"agri-insurance","terms":["農業保險","農業保險貸款","保險貸款"]},
+  {"id":"ecommerce","terms":["電子商務","電商","網路銷售"]},
+  {"id":"forms","terms":["申請書","審核表","查驗表","證明書","切結書","表單"]}
+]

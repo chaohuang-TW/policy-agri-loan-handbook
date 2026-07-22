@@ -76,11 +76,11 @@ def canonical(relative: str) -> str:
     return ORIGIN + (relative[:-10] if relative.endswith("index.html") else relative)
 
 
-def write(relative: str, title: str, main: str, description: str = DESCRIPTION) -> None:
+def write(relative: str, title: str, main: str, description: str = DESCRIPTION, body_attrs: str = "") -> None:
     path = SITE / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     document = fill(TEMPLATES["base"], TITLE=e(title), DESCRIPTION=e(description),
-                    CANONICAL=e(canonical(relative)), ROOT=e(rel_root(relative)), MAIN=main)
+                    CANONICAL=e(canonical(relative)), ROOT=e(rel_root(relative)), MAIN=main, BODY_ATTRS=body_attrs)
     path.write_text("\n".join(line.rstrip() for line in document.splitlines()) + "\n", encoding="utf-8")
 
 
@@ -97,7 +97,7 @@ def breadcrumb(relative: str, pairs: list[tuple[str, str | None]], current: str)
 
 
 def search_box() -> str:
-    return '''<div class="search-panel" data-search><form role="search" novalidate><label for="site-search">全文搜尋</label><div class="search-row"><input id="site-search" name="q" type="search" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><p class="search-status" aria-live="polite"></p><div class="search-results"></div></div>'''
+    return '''<div class="search-panel" data-search><form role="search" novalidate><label for="site-search">全文搜尋</label><div class="search-row"><input id="site-search" name="q" type="search" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-filters" aria-label="搜尋類型"></div><p class="search-status" aria-live="polite">請輸入搜尋文字。</p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
 
 
 def paragraphize(text: str) -> str:
@@ -148,6 +148,9 @@ def build_home() -> None:
         ("23項貸款索引", "loans/index.html"), ("函釋來源索引", "interpretations/index.html"),
         ("常見問題", "faq/index.html"), ("書表與附件來源索引", "forms/index.html"),
     ]
+    disaster = next((loan for loan in LOANS if loan["id"] == "natural-disaster-low-interest-loan"), None)
+    if disaster:
+        links.append((disaster["title"], disaster["detailUrl"]))
     quick = '<div class="entry-grid">' + "".join(f'<a class="entry{(" primary" if i < 4 else "")}" href="{e(url)}"><strong>{e(label)}</strong><span>開啟資料</span></a>' for i, (label, url) in enumerate(links)) + "</div>"
     review = f'''<h2 id="review-title">內容覆核狀態</h2><p>原始閱讀頁：{MANUAL["pdfPages"]}頁；原書完整目錄：{counts["tocEntries"]}項；函釋來源索引：{counts["interpretationsSourceIndexed"]}筆；函釋候選庫：{counts["interpretationCandidateInventoryTotal"]}筆；函釋未決候選：{counts["interpretationCandidatesPending"]}筆；書表來源索引：{counts["formsSourceIndexed"]}筆；書表未分類候選：{counts["formCandidatesPending"]}筆。</p><p>書表逐頁人工覆核：尚未完成；函釋結束頁確認：尚未完成；全文逐頁人工校讀：尚未完成。</p><p class="layout-note">來源索引依嚴格頁面與欄位規則建立；候選庫總量僅為偵測庫存，不等同待覆核數。全文逐頁校讀、函釋涵蓋範圍及書表內容仍需人工確認。</p>'''
     version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度 Beta</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>{e(revision)}</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
@@ -218,7 +221,7 @@ def build_sections() -> None:
         related = f'<p><a class="button-link" href="{e(rel(relative, "interpretations/index.html#group-natural-disaster-loan"))}">查看農業天然災害低利貸款相關函釋</a></p>' if slug == "natural-disaster-rules" else ""
         content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}–{end}｜資料版本：114年度</p>{related}' + "".join(page_card(p, relative) for p in page_range(start, end))
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("114年度完整目錄", "versions/114/index.html")], title), NAV=nav, CONTENT=content)
-        write(relative, f"{title}｜114年度", main)
+        write(relative, f"{title}｜114年度", main, body_attrs=f'data-printable="true" data-search-scope="section:{slug}"')
 
 
 def build_physical_pages() -> None:
@@ -231,7 +234,7 @@ def build_physical_pages() -> None:
         printed = page["printedPage"] if page["printedPage"] is not None else "目錄"
         content = f'<h1>{e(page["title"])}</h1><p class="source-meta">手冊頁：{e(printed)}｜PDF實體頁：{number}／359｜資料版本：114年度</p>' + page_card(page, relative)
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("完整目錄", "versions/114/index.html")], f"PDF頁碼 {number}"), NAV=nav, CONTENT=content)
-        write(relative, f"PDF頁碼 {number}｜{page['title']}", main)
+        write(relative, f"PDF頁碼 {number}｜{page['title']}", main, body_attrs=f'data-printable="true" data-search-scope="section:{page["chapterId"]}"')
 
 
 def build_loans() -> None:
@@ -248,7 +251,7 @@ def build_loans() -> None:
         interpretation_link = f'<p><a class="button-link" href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a></p>' if loan["hasInterpretations"] and loan["title"] in INTERPRETATION_GROUPS else ""
         content = f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}–{loan["sourceEndPage"]}｜{"包含相關函釋" if loan["hasInterpretations"] else "原手冊目錄未另列函釋"}</p>{interpretation_link}<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>' + "".join(page_card(page, relative) for page in pages)
         main = wrap("loan-detail", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("貸款索引", "loans/index.html")], loan["title"]), NAV=loan_nav(relative), CONTENT=content)
-        write(relative, f"{loan['title']}｜貸款索引", main)
+        write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-printable="true" data-search-scope="loan:{loan["id"]}"')
 
 
 def index_items(relative: str, items: list[dict], kind: str) -> str:
@@ -299,6 +302,9 @@ def main() -> None:
     SITE.mkdir(parents=True)
     shutil.copytree(ROOT / "assets/css", SITE / "assets/css", dirs_exist_ok=True)
     shutil.copytree(ROOT / "assets/js", SITE / "assets/js", dirs_exist_ok=True)
+    (SITE / "assets/data").mkdir(parents=True, exist_ok=True)
+    for data_file in ("search-concepts.json", "search-intents.json"):
+        shutil.copy2(DATA / data_file, SITE / "assets/data" / data_file)
     shutil.copytree(ROOT / "assets/page-previews", SITE / "assets/page-previews", dirs_exist_ok=True)
     shutil.copy2(ROOT / "assets/favicon.svg", SITE / "assets/favicon.svg")
     (SITE / "downloads").mkdir(parents=True, exist_ok=True)
