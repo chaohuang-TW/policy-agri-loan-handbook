@@ -44,6 +44,7 @@ jobs:
           python scripts/validate_index_quality.py
           python scripts/validate_navigation_targets.py
           python scripts/validate_page_rendering.py
+          python scripts/validate_visual_theme.py
           python scripts/validate_site.py
       - name: Configure Pages
         uses: actions/configure-pages@v6

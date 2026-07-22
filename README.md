@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.2
+- 數位版本：114.0.0-beta.2.3
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -44,6 +44,7 @@ python scripts/validate_interpretation_decisions.py
 python scripts/validate_index_quality.py
 python scripts/validate_navigation_targets.py
 python scripts/validate_page_rendering.py
+python scripts/validate_visual_theme.py
 python scripts/validate_site.py
 python3 -m http.server 8000 --directory site
 ```
@@ -59,6 +60,10 @@ python3 -m http.server 8000 --directory site
 ## 全文搜尋與隱私
 
 搜尋索引由 `scripts/build_search_index.py` 產生，完全在瀏覽器內執行。沒有後端、模型API、向量資料庫、外部搜尋服務、Cookie、分析服務或查詢紀錄上傳。
+
+## 視覺設計
+
+本網站採明亮、清新且專業的公共服務工具風格，以暖白、淡薄荷及自然青綠為主，避免大面積深色背景、官方Logo、照片、外部字型及第三方圖示。視覺系統不影響原始PDF、法規文字、索引資料及搜尋內容。設計 token、版面與可及性規範見 [`docs/VISUAL_DESIGN_SYSTEM.md`](docs/VISUAL_DESIGN_SYSTEM.md)。
 
 ## 驗證
 
