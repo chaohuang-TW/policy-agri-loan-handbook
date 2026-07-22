@@ -16,8 +16,8 @@
   const topButton = document.querySelector("[data-back-to-top]");
   const printButton = document.querySelector("[data-print-section]");
   if (printButton && page.dataset.printable !== "true") printButton.hidden = true;
-  const sentinel = document.querySelector(".top-sentinel");
-  if (topButton && sentinel && "IntersectionObserver" in window) new IntersectionObserver(([entry]) => { topButton.hidden = entry.isIntersecting; }).observe(sentinel);
+  if (printButton && page.dataset.printable === "true") { const label = page.dataset.printLabel || "列印本章"; printButton.hidden = false; printButton.setAttribute("aria-label", label); printButton.querySelector("span:last-child").textContent = label; }
+  if (topButton) { let ticking = false; const updateTop = () => { topButton.hidden = window.scrollY < 650; ticking = false; }; window.addEventListener("scroll", () => { if (!ticking) { window.requestAnimationFrame(updateTop); ticking = true; } }, {passive:true}); updateTop(); }
   topButton?.addEventListener("click", () => { document.documentElement.scrollTo({top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); topButton.focus(); });
   document.querySelector("[data-print-section]")?.addEventListener("click", () => window.print());
   if (tools) tools.hidden = false;

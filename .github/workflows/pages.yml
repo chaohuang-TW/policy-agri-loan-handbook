@@ -28,6 +28,10 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Install build and validation dependencies
         run: pip install -r requirements.txt
       - name: Build search index and static site
@@ -47,6 +51,7 @@ jobs:
           python scripts/validate_visual_theme.py
           python scripts/validate_search_experience.py
           python scripts/validate_site.py
+          node scripts/test_search_core.cjs
       - name: Configure Pages
         uses: actions/configure-pages@v6
       - name: Upload site artifact

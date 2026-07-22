@@ -221,7 +221,7 @@ def build_sections() -> None:
         related = f'<p><a class="button-link" href="{e(rel(relative, "interpretations/index.html#group-natural-disaster-loan"))}">查看農業天然災害低利貸款相關函釋</a></p>' if slug == "natural-disaster-rules" else ""
         content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}–{end}｜資料版本：114年度</p>{related}' + "".join(page_card(p, relative) for p in page_range(start, end))
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("114年度完整目錄", "versions/114/index.html")], title), NAV=nav, CONTENT=content)
-        write(relative, f"{title}｜114年度", main, body_attrs=f'data-printable="true" data-search-scope="section:{slug}"')
+        write(relative, f"{title}｜114年度", main, body_attrs=f'data-printable="true" data-print-label="列印本章" data-search-scope="section:{slug}"')
 
 
 def build_physical_pages() -> None:
@@ -234,7 +234,7 @@ def build_physical_pages() -> None:
         printed = page["printedPage"] if page["printedPage"] is not None else "目錄"
         content = f'<h1>{e(page["title"])}</h1><p class="source-meta">手冊頁：{e(printed)}｜PDF實體頁：{number}／359｜資料版本：114年度</p>' + page_card(page, relative)
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("完整目錄", "versions/114/index.html")], f"PDF頁碼 {number}"), NAV=nav, CONTENT=content)
-        write(relative, f"PDF頁碼 {number}｜{page['title']}", main, body_attrs=f'data-printable="true" data-search-scope="section:{page["chapterId"]}"')
+        write(relative, f"PDF頁碼 {number}｜{page['title']}", main, body_attrs=f'data-printable="true" data-print-label="列印本頁" data-search-scope="section:{page["chapterId"]}"')
 
 
 def build_loans() -> None:
@@ -251,7 +251,7 @@ def build_loans() -> None:
         interpretation_link = f'<p><a class="button-link" href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a></p>' if loan["hasInterpretations"] and loan["title"] in INTERPRETATION_GROUPS else ""
         content = f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}–{loan["sourceEndPage"]}｜{"包含相關函釋" if loan["hasInterpretations"] else "原手冊目錄未另列函釋"}</p>{interpretation_link}<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>' + "".join(page_card(page, relative) for page in pages)
         main = wrap("loan-detail", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("貸款索引", "loans/index.html")], loan["title"]), NAV=loan_nav(relative), CONTENT=content)
-        write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-printable="true" data-search-scope="loan:{loan["id"]}"')
+        write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-printable="true" data-print-label="列印本貸款" data-search-scope="section:{loan["id"]}" data-search-scope-group="loan:{loan["id"]}"')
 
 
 def index_items(relative: str, items: list[dict], kind: str) -> str:

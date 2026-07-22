@@ -27,7 +27,8 @@ def main():
     concepts = json.loads((DATA / "search-concepts.json").read_text())
     intents = json.loads((DATA / "search-intents.json").read_text())
     if len(records) != 507: fail(f"expected 507 records, got {len(records)}")
-    if sum(sum(r.get("type") == t for r in records) for t in TYPES) != 507: fail("type totals do not equal 507")
+    expected_types = {"原文頁面":359, "貸款索引":23, "函釋":87, "常見問答":4, "書表附件":28, "附錄附件":6}
+    if {t:sum(r.get("type") == t for r in records) for t in TYPES} != expected_types: fail("type counts changed")
     if len({c["id"] for c in concepts}) != len(concepts) or any(len(c.get("terms", [])) < 2 or any(not str(t).strip() for t in c["terms"]) for c in concepts): fail("invalid concepts")
     if any(not set(i.get("preferredTypes", [])).issubset(TYPES) for i in intents): fail("invalid intent type")
     if any(not r.get("scope") or not r.get("url") or not r.get("id") for r in records): fail("record missing scope/url/id")
@@ -37,12 +38,29 @@ def main():
         text = path.read_text(encoding="utf-8")
         c = Counter(); c.feed(text)
         if c.dialog != 1 or c.openers != 1 or c.top != 1: fail(f"tool topology {path}")
-        if "results.innerHTML" in text or "innerHTML =" in text: fail(f"unsafe result rendering {path}")
+        if any(token in text for token in ("results.innerHTML", "innerHTML =", "insertAdjacentHTML", "document.write", "eval(", "new Function")): fail(f"unsafe result rendering {path}")
         if len(c.ids) != len(set(c.ids)): fail(f"duplicate ids {path}")
     js = (ROOT / "assets/js/search.js").read_text()
-    if "results.innerHTML" in js or "innerHTML =" in js or any(x in js for x in ("localStorage", "sessionStorage", "document.cookie")): fail("unsafe or persistent search implementation")
-    if "fetch(" not in js or "Ctrl" not in (ROOT / "templates/base.html").read_text(): fail("missing local fetch or shortcut")
-    if "#286b57" not in (ROOT / "templates/base.html").read_text(): fail("theme-color mismatch")
+    core = (ROOT / "assets/js/search-core.js").read_text()
+    if any(token in js + core for token in ("results.innerHTML", "innerHTML =", "insertAdjacentHTML", "document.write", "eval(", "new Function", "localStorage", "sessionStorage", "document.cookie")): fail("unsafe or persistent search implementation")
+    base = (ROOT / "templates/base.html").read_text()
+    if base.find("search-core.js") > base.find("search.js"): fail("search core must load first")
+    if "fetch(" not in js or "Ctrl" not in base: fail("missing local fetch or shortcut")
+    if "#286b57" not in base: fail("theme-color mismatch")
+    for name in ("search-core.js", "search.js", "site-tools.js"):
+        if (SITE / "assets/js" / name).read_bytes() != (ROOT / "assets/js" / name).read_bytes(): fail(f"built script differs: {name}")
+    groups = {r["scopeGroup"] for r in records if r.get("scopeGroup")}
+    for group in groups:
+        if not any(r.get("scopeGroup") == group and r["type"] == "貸款索引" for r in records): fail(f"scopeGroup without loan index: {group}")
+    for path in html_files:
+        text = path.read_text(encoding="utf-8")
+        if 'data-search-scope-group="' in text:
+            group = re.search(r'data-search-scope-group="([^"]+)', text).group(1)
+            if group not in groups: fail(f"page scopeGroup missing from index: {path}")
+        if 'data-printable="true"' in text:
+            label = re.search(r'data-print-label="([^"]+)', text)
+            if not label: fail(f"print label missing: {path}")
+        if 'data-printable="true"' not in text and 'data-print-section' in text and 'hidden' not in text[text.find('data-print-section')-100:text.find('data-print-section')+100]: fail(f"print button visible on non-reading page: {path}")
     expected = ["青農", "買農地", "寬限期", "農機申請書", "農授金字第0955080181號", "天災", "農企業", "電商", "復耕", "週轉金", "常見問題", "申請書"]
     corpus = "\n".join(r["title"] + " " + r["text"] for r in records)
     for query in expected:
