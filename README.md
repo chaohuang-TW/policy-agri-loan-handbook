@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.4.1
+- 數位版本：114.0.0-beta.2.5
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -35,8 +35,7 @@ pip install -r requirements.txt
 python scripts/extract_manual.py
 python scripts/render_page_previews.py
 python scripts/test_interpretation_parser.py
-python scripts/build_site.py
-python scripts/build_search_index.py
+python scripts/build_all.py
 python scripts/audit_content.py
 python scripts/validate_display_text.py
 python scripts/validate_interpretation_metadata.py
@@ -50,7 +49,7 @@ python scripts/validate_site.py
 python3 -m http.server 8000 --directory site
 ```
 
-所有必要套件均列於 `requirements.txt`，不依賴Codex私有工具、Node建置鏈、後端、資料庫或雲端API。
+正式網站只有單一建置入口 `python scripts/build_all.py`。建置先在 `site.__building__` 完成全部頁面及搜尋索引，通過完整性檢查後才原子替換 `site/`；失敗時保留既有網站。Python相依套件列於 `requirements.txt`，Node與Playwright只用於測試，不是網站runtime依賴。
 
 ## PDF文字與頁面呈現原則
 
@@ -60,7 +59,7 @@ python3 -m http.server 8000 --directory site
 
 ## 全文搜尋與隱私
 
-搜尋索引由 `scripts/build_search_index.py` 產生，完全在瀏覽器內執行。沒有後端、模型API、向量資料庫、外部搜尋服務、Cookie、分析服務或查詢紀錄上傳。
+搜尋索引由 `scripts/build_all.py` 透過 `build_search_index.py` 產生，完全在瀏覽器內執行。資料載入後只預先正規化一次，首頁與dialog共用同一份prepared records、概念與意圖資料。正規化查詢上限256字、唯一token上限16、單一token上限128；超限會顯示錯誤且不掃描索引。沒有AI、後端、模型API、向量資料庫、外部搜尋服務、Cookie、分析服務或查詢紀錄上傳。
 
 ## 搜尋與閱讀工具
 
@@ -78,7 +77,16 @@ python scripts/validate_display_text.py
 python scripts/validate_interpretation_metadata.py
 python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
+python scripts/validate_visual_theme.py
+python scripts/validate_search_experience.py
 python scripts/validate_site.py
+node scripts/test_search_core.cjs
+node scripts/benchmark_search_core.cjs
+python scripts/test_build_reproducibility.py
+python scripts/test_validator_mutations.py
+npm ci
+npx playwright install chromium
+npx playwright test
 git diff --check
 ```
 
@@ -92,7 +100,7 @@ git diff --check
 
 ## GitHub Pages部署
 
-`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，安裝Python依賴、先清除並重建網站，再產生確認資料限定的搜尋索引及執行五項驗證；成功後只上傳 `site/`，再使用GitHub官方Pages actions部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
+`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，使用唯一建置入口，執行Python驗證器、Node搜尋核心與效能測試、可重現建置、15項突變及Playwright Chromium整合測試；全部成功後才上傳 `site/` 並部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
 
 正式網址：<https://chaohuang-tw.github.io/policy-agri-loan-handbook/>
 

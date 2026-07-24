@@ -522,7 +522,7 @@ def main() -> int:
     quick_index_entries = sum(len(group["items"]) for group in quick_index["groups"])
     manual = {
         "id": VERSION, "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2.2", "releaseStatus": "Beta", "sha256": SHA256,
+        "pdfPages": EXPECTED_PAGES, "digitalRevision": "114.0.0-beta.2.5", "releaseStatus": "Beta", "sha256": SHA256,
         "printedPageMapping": {"strategy": "continuous-offset-after-two-page-toc", "offset": 2,
                                "verifiedPdfPages": sorted(anchors), "status": "sampled-consistent"},
         "counts": {
@@ -587,7 +587,7 @@ def main() -> int:
     }
     write_json(ROOT / "data" / "versions.json", {"currentVersion": "114", "versions": [{
         "id": "114", "displayName": "114年度", "sourceTitle": "114年度政策性農業專案貸款業務手冊",
-        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2.2", "status": "Beta",
+        "pdfPages": 359, "digitalRevision": "114.0.0-beta.2.5", "status": "Beta",
         "sourceFile": "policy-agri-loan-handbook-114.pdf"}]})
     write_json(DATA / "manual.json", manual)
     write_json(DATA / "toc.json", toc)

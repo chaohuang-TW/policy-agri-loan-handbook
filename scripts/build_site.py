@@ -11,6 +11,13 @@ import re
 import shutil
 from pathlib import Path, PurePosixPath
 
+from content_model import (
+    interpretation_group_slug,
+    interpretation_programs,
+    section_scopes,
+    sections,
+    toc_interpretation_group_slug,
+)
 from display_text import normalize_display_text
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,23 +35,8 @@ APPENDICES = json.loads((DATA / "appendices.json").read_text(encoding="utf-8"))
 RULES = json.loads((DATA / "page-rendering-rules.json").read_text(encoding="utf-8"))
 RENDERING = {p["pdfPage"]: p for p in RULES["pages"]}
 MANUAL = json.loads((DATA / "manual.json").read_text(encoding="utf-8"))
-INTERPRETATION_GROUPS = {
-    "農業發展基金貸款共同規定": "common-rules", "農機貸款": "farm-machinery-loan",
-    "輔導農糧業經營貸款": "agri-food-business-loan", "輔導漁業經營貸款": "fishery-business-loan",
-    "提升畜禽產業經營貸款": "livestock-poultry-loan", "農民經營及產銷班貸款": "farmer-production-group-loan",
-    "農業科技園區進駐業者優惠貸款": "agri-tech-park-loan", "農家綜合貸款": "farm-household-loan",
-    "農漁會事業發展貸款": "association-development-loan", "造林貸款": "afforestation-loan",
-    "農業節能減碳貸款": "agri-energy-saving-loan", "青壯年農民從農貸款": "young-farmer-loan",
-    "農民組織及農企業產銷經營及研發創新貸款": "agri-enterprise-innovation-loan",
-    "擴大家庭農場經營規模協助農民購買耕地貸款": "farmland-purchase-loan",
-    "農業天然災害低利貸款": "natural-disaster-loan",
-}
-TOC_INTERPRETATION_GROUPS = {"fund-operating-rules": "common-rules", "agri-organization-enterprise-innovation-loan": "agri-enterprise-innovation-loan"}
-TOC_INTERPRETATION_GROUPS.update({loan["id"]: INTERPRETATION_GROUPS[loan["title"]] for loan in LOANS if loan["title"] in INTERPRETATION_GROUPS})
-
-
 def interpretation_target(loan_program: str) -> str:
-    return f"interpretations/index.html#group-{INTERPRETATION_GROUPS[loan_program]}"
+    return f"interpretations/index.html#group-{interpretation_group_slug(loan_program)}"
 MANIFEST = {p["pdfPage"]: p for p in json.loads((ROOT / "assets/page-previews/114/manifest.json").read_text(encoding="utf-8"))}
 ORIGIN = "https://chaohuang-tw.github.io/policy-agri-loan-handbook/"
 PDF_NAME = "policy-agri-loan-handbook-114.pdf"
@@ -80,7 +72,8 @@ def write(relative: str, title: str, main: str, description: str = DESCRIPTION, 
     path = SITE / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     document = fill(TEMPLATES["base"], TITLE=e(title), DESCRIPTION=e(description),
-                    CANONICAL=e(canonical(relative)), ROOT=e(rel_root(relative)), MAIN=main, BODY_ATTRS=body_attrs)
+                    CANONICAL=e(canonical(relative)), ROOT=e(rel_root(relative)), MAIN=main, BODY_ATTRS=body_attrs,
+                    DIGITAL_REVISION=e(MANUAL["digitalRevision"]))
     path.write_text("\n".join(line.rstrip() for line in document.splitlines()) + "\n", encoding="utf-8")
 
 
@@ -97,7 +90,7 @@ def breadcrumb(relative: str, pairs: list[tuple[str, str | None]], current: str)
 
 
 def search_box() -> str:
-    return '''<div class="search-panel" data-search><form role="search" novalidate><label for="site-search">全文搜尋</label><div class="search-row"><input id="site-search" name="q" type="search" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-filters" aria-label="搜尋類型"></div><p class="search-status" aria-live="polite">請輸入搜尋文字。</p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
+    return '''<div class="search-panel" data-search><form role="search" novalidate><label for="site-search">全文搜尋</label><div class="search-row"><input id="site-search" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-filters" aria-label="搜尋類型"></div><p class="search-status" aria-live="polite" tabindex="-1">請輸入搜尋文字。</p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
 
 
 def paragraphize(text: str) -> str:
@@ -169,7 +162,7 @@ def build_version_index() -> None:
         elif item["id"] in section_targets:
             target = section_targets[item["id"]]
         elif item["kind"] == "interpretation":
-            target = "interpretations/index.html#group-" + TOC_INTERPRETATION_GROUPS[item["id"].removesuffix("-interpretations")]
+            target = "interpretations/index.html#group-" + toc_interpretation_group_slug(item["id"].removesuffix("-interpretations"))
         elif item["id"] == "natural-disaster-rules":
             target = "versions/114/sections/natural-disaster-rules/index.html"
         elif item["kind"] == "faq":
@@ -206,22 +199,16 @@ def build_quick_index() -> None:
 
 
 def build_sections() -> None:
-    sections = [
-        ("policy-loan-regulations", "辦理政策性農業專案貸款辦法", 1, 29),
-        ("agricultural-development-fund-rules", "農業發展基金貸款作業規範及相關函釋", 30, 93),
-        ("loan-programs", "各項貸款規定", 94, 269),
-        ("bank-operating-rules-appendices", "全國農業金庫作業規範附錄", 309, 312),
-        ("amendment-faq", "政策性農業專案貸款增修正規定常見問題", 313, 347),
-        ("attachments", "附件", 348, 357),
-        ("natural-disaster-rules", "農業天然災害救助辦法及低利貸款相關規定", 270, 299),
-    ]
-    for slug, title, start, end in sections:
+    for section in sections():
+        slug, title = section["id"], section["title"]
+        start, end = section["printedPageStart"], section["printedPageEnd"]
         relative = f"versions/114/sections/{slug}/index.html"
         nav = '<details open><summary>本篇頁面</summary><ol>' + "".join(f'<li><a href="#pdf-page-{p["pdfPage"]}">手冊頁 {p["printedPage"]}</a></li>' for p in page_range(start, end)) + "</ol></details>"
         related = f'<p><a class="button-link" href="{e(rel(relative, "interpretations/index.html#group-natural-disaster-loan"))}">查看農業天然災害低利貸款相關函釋</a></p>' if slug == "natural-disaster-rules" else ""
         content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}–{end}｜資料版本：114年度</p>{related}' + "".join(page_card(p, relative) for p in page_range(start, end))
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("114年度完整目錄", "versions/114/index.html")], title), NAV=nav, CONTENT=content)
-        write(relative, f"{title}｜114年度", main, body_attrs=f'data-printable="true" data-print-label="列印本章" data-search-scope="section:{slug}"')
+        scopes = ",".join(section_scopes(slug))
+        write(relative, f"{title}｜114年度", main, body_attrs=f'data-printable="true" data-print-label="列印本章" data-search-scopes="{e(scopes)}"')
 
 
 def build_physical_pages() -> None:
@@ -248,7 +235,7 @@ def build_loans() -> None:
     for loan in LOANS:
         relative = f'loans/{loan["id"]}/index.html'
         pages = page_range(loan["sourceStartPage"], loan["sourceEndPage"])
-        interpretation_link = f'<p><a class="button-link" href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a></p>' if loan["hasInterpretations"] and loan["title"] in INTERPRETATION_GROUPS else ""
+        interpretation_link = f'<p><a class="button-link" href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a></p>' if loan["hasInterpretations"] else ""
         content = f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}–{loan["sourceEndPage"]}｜{"包含相關函釋" if loan["hasInterpretations"] else "原手冊目錄未另列函釋"}</p>{interpretation_link}<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>' + "".join(page_card(page, relative) for page in pages)
         main = wrap("loan-detail", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("貸款索引", "loans/index.html")], loan["title"]), NAV=loan_nav(relative), CONTENT=content)
         write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-printable="true" data-print-label="列印本貸款" data-search-scope="section:{loan["id"]}" data-search-scope-group="loan:{loan["id"]}"')
@@ -275,10 +262,11 @@ def build_indexes() -> None:
     relative = "interpretations/index.html"
     counts = MANUAL["counts"]
     groups = []
-    for loan_program, slug in INTERPRETATION_GROUPS.items():
+    groups_data = [(program, interpretation_group_slug(program)) for program in interpretation_programs()]
+    for loan_program, slug in groups_data:
         items = [item for item in INTERPRETATIONS if item["loanProgram"] == loan_program]
         groups.append(f'<section id="group-{slug}" class="interpretation-group"><h2>{e(loan_program)}</h2><p class="source-meta">{len(items)} 筆函釋</p>{index_items(relative, items, "函釋")}<p><a href="#main-content">返回函釋頁頂端</a></p></section>')
-    quick_links = '<nav class="index-rows" aria-label="依類別快速前往"><h2>依類別快速前往</h2><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in INTERPRETATION_GROUPS.items()) + '</ul></nav>'
+    quick_links = '<nav class="index-rows" aria-label="依類別快速前往"><h2>依類別快速前往</h2><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in groups_data) + '</ul></nav>'
     content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p>' + quick_links + ''.join(groups) + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
@@ -296,7 +284,9 @@ def build_versions() -> None:
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 
-def main() -> None:
+def build_site(output_dir: Path) -> None:
+    global SITE
+    SITE = Path(output_dir)
     if SITE.exists():
         shutil.rmtree(SITE)
     SITE.mkdir(parents=True)
@@ -319,4 +309,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    from build_all import main
     main()

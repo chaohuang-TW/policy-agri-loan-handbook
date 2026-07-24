@@ -80,8 +80,9 @@ def main() -> int:
         errors.append("pages.json does not contain 359 pages")
     if len(loans) != 23 or len({item["id"] for item in loans}) != 23:
         errors.append("loan program index does not contain 23 unique items")
-    if versions["versions"][0].get("digitalRevision") != "114.0.0-beta.2.4.1" or versions["versions"][0].get("status") != "Beta":
-        errors.append("versions.json is not marked 114.0.0-beta.2.4.1 Beta")
+    expected_revision = json.loads((ROOT / "data/114/manual.json").read_text(encoding="utf-8"))["digitalRevision"]
+    if versions["versions"][0].get("digitalRevision") != expected_revision or versions["versions"][0].get("status") != "Beta":
+        errors.append(f"versions.json is not marked {expected_revision} Beta")
     required_toc = ["辦理政策性農業專案貸款辦法", "農業發展基金貸款相關規定", "農業天然災害救助辦法", "全國農業金庫貸款", "政策性農業專案貸款增修正規定常見問題"]
     toc_text = json.dumps(toc, ensure_ascii=False)
     for value in required_toc:
@@ -102,7 +103,7 @@ def main() -> int:
             errors.append(f"canonical mismatch: {relative}")
         if IDENTITY not in document or FOOTER not in document or "資料版本：114年度" not in document:
             errors.append(f"version or disclaimer missing: {relative}")
-        if "114.0.0-beta.2.4.1" not in document or "Beta" not in document:
+        if expected_revision not in document or "Beta" not in document:
             errors.append(f"Beta revision label missing: {relative}")
         if re.search(r'''(?:href|src)=["']/''', document):
             errors.append(f"domain-root absolute path: {relative}")

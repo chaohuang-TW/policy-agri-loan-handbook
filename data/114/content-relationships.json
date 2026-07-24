@@ -1,0 +1,24 @@
+{
+  "sections": [
+    {"id": "policy-loan-regulations", "title": "辦理政策性農業專案貸款辦法", "printedPageStart": 1, "printedPageEnd": 29},
+    {"id": "agricultural-development-fund-rules", "title": "農業發展基金貸款作業規範及相關函釋", "printedPageStart": 30, "printedPageEnd": 93},
+    {"id": "loan-programs", "title": "各項貸款規定", "printedPageStart": 94, "printedPageEnd": 269},
+    {"id": "natural-disaster-rules", "title": "農業天然災害救助辦法及低利貸款相關規定", "printedPageStart": 270, "printedPageEnd": 299},
+    {"id": "bank-operating-rules-appendices", "title": "全國農業金庫作業規範附錄", "printedPageStart": 309, "printedPageEnd": 312},
+    {"id": "amendment-faq", "title": "政策性農業專案貸款增修正規定常見問題", "printedPageStart": 313, "printedPageEnd": 347},
+    {"id": "attachments", "title": "附件", "printedPageStart": 348, "printedPageEnd": 357}
+  ],
+  "commonInterpretationProgram": "農業發展基金貸款共同規定",
+  "commonInterpretationSlug": "common-rules",
+  "interpretationSlugOverrides": {
+    "agri-organization-enterprise-innovation-loan": "agri-enterprise-innovation-loan",
+    "natural-disaster-low-interest-loan": "natural-disaster-loan"
+  },
+  "tocInterpretationAliases": {
+    "fund-operating-rules": "common-rules"
+  },
+  "formScopeGroupExceptions": {
+    "form-023": null,
+    "form-027": null
+  }
+}

@@ -1,15 +1,63 @@
-# 搜尋與閱讀工具
+# 搜尋體驗與驗證
 
-114.0.0-beta.2.4.1 的搜尋是瀏覽器端、唯讀的全文檢索工具，不是 AI、聊天或資格判斷功能。索引由既有 `data/114` 資料建置，維持507筆：359筆原文頁面、23筆貸款索引、87筆函釋、4筆常見問答、28筆書表附件及6筆附錄附件。
+114.0.0-beta.2.5 的搜尋是瀏覽器端、唯讀的全文檢索工具，不是AI、聊天、資格判斷或貸款推薦。索引固定為507筆：359筆原文頁面、23筆貸款索引、87筆函釋、4筆常見問答、28筆書表附件及6筆附錄附件。
 
-搜尋核心集中在 `assets/js/search.js`，先做 NFKC 與空白正規化，再拆解多詞、套用 `search-concepts.json` 別稱與 `search-intents.json` 意圖排序。標題、標頭、麵包屑及正文使用固定權重；完整文號、完整標題、多詞鄰近及類型意圖提高分數，同一 scope 會確定性分散。原始索引只載入一次並快取 Promise。
+## 單一內容歸屬模型
 
-每筆索引同時保存直接 `scope` 與可共同搜尋的 `scopeGroup`。貸款頁使用 `scopeGroup`，因此本貸款搜尋可涵蓋貸款索引、該貸款原文、函釋及書表；章節頁使用直接 `scope`。首頁搜尋框與原生 `<dialog>`「搜尋手冊」共用搜尋核心、排序、類型篩選、範圍切換與每批20筆的載入更多。
+`scripts/content_model.py` 從正式的貸款、原文、函釋、書表、FAQ及附錄資料推導歸屬。`data/114/content-relationships.json` 只保存無法直接推導的section組合、既有公開函釋slug及少數共同規定例外。建站與搜尋索引都呼叫此模型；`search_scope.py` 只保留相容轉呼叫，不另維護映射。
 
-結果由 DOM API 建立，片段使用文字節點與安全 `<mark>` 標示命中詞，不使用 `innerHTML`，也不修改來源文字。無結果時提供縮短關鍵字、正式名稱、完整目錄、快速索引與PDF入口的引導。搜尋資料不會送出、不寫入 Cookie、localStorage 或 sessionStorage。
+Section頁由實際顯示的原文頁集合取得全部唯一scope，輸出 `data-search-scopes`。貸款頁使用 `data-search-scope-group="loan:<id>"`。FAQ使用 `faq:<id>`，附錄使用 `appendix`，兩者的scopeGroup均為null。
 
-全站工具包含 Ctrl+K／Command+K 開啟搜尋、Escape 關閉並還原焦點、浮動搜尋按鈕、長頁回到頂端與閱讀頁列印本章。工具尊重 `prefers-reduced-motion`，列印時隱藏導覽、搜尋與浮動工具，保留標題、頁碼、來源及正文。
+## Prepared search data
 
-維護時請先執行 `scripts/build_search_index.py`，再執行既有內容驗證與 `scripts/validate_search_experience.py`。固定回歸查詢包含青農、買農地、寬限期、農機申請書、完整農授金字文號、天災、農企業、電商、復耕、週轉金、常見問題及申請書；另須測試空白、HTML字串、超長查詢、全形數字、重複詞與不存在詞。
+JSON只載入一次。`prepareSearchData()` 預先建立normalized title、headings、breadcrumb、text、canonical document number與stable original index；首頁搜尋及全站dialog共用同一Promise及prepared資料。每次查詢先驗證與正規化一次、去除重複token，再先套用scope及type，最後計分、排序和渲染需要的結果。
 
-本輪不提供 AI 問答、RAG、外部搜尋、推薦、貸款資格結論、利率試算、登入、個資輸入、追蹤或後端服務。
+查詢限制為：
+
+- 正規化後最多256字。
+- 唯一token最多16個。
+- 單一token最多128字。
+- 空字串與純空白直接回傳空結果。
+- 超限回傳可朗讀錯誤，不掃描507筆索引。
+
+搜尋不使用Web Worker，因同步核心已低於效能門檻。
+
+## 排名定義
+
+所有權重集中在 `search-core.js` 的 `WEIGHTS`：
+
+- `exactTitle` 只在完整正規化標題等於完整正規化查詢時套用。
+- `phraseTitle` 只在標題包含完整查詢且不是完整相等時套用。
+- `phraseBody` 是正文完整片語的較低權重。
+- title token、headings、breadcrumb與body依不同原始token計分。
+- `allTerms` 只考慮使用者原始token，不納入概念擴充詞。
+- proximity在每詞有限命中位置中找最小涵蓋視窗。
+- 文號使用NFKC、大小寫與空白正規化後的欄位精確比對。
+
+基礎結果先以確定性O(n log n)排序，只對前80筆做有限動態分散；後段保持基礎順序。不使用隨機值。
+
+## Unicode與搜尋片段
+
+`normalizeWithMap()` 以UTF-16 code unit作為normalized text、startMap及endMap的共同索引單位。優先使用 `Intl.Segmenter` 的grapheme cluster；fallback至少保持代理對完整。NFKC轉換後的每個UTF-16 unit都映回完整原始grapheme。
+
+片段蒐集每個詞最多8次命中，以固定240字視窗比較不同原始詞涵蓋、相關詞涵蓋、距離與權重；硬上限320字。只標記視窗內命中，重疊範圍合併，邊界不切斷grapheme。沒有命中時顯示前160字且不建立mark。直接詞使用 `search-highlight`；概念擴充詞使用較淡的 `search-highlight-related` 並附「包含相關詞命中」說明。
+
+## 驗證
+
+`scripts/test_search_core.cjs` 驗證12組固定查詢、23項貸款、87筆文號、28份書表、4組FAQ、6項附錄、7個section、20組Unicode及snippet邊界。`benchmark_search_core.cjs` 使用真實507筆索引，門檻為prepare 1000ms、一般平均100ms、p95 250ms、最大500ms、scope/type p95 200ms、超長防禦50ms、空查詢10ms，且任何搜尋不得超過1秒。
+
+`validate_search_experience.py` 驗證scope、scopeGroup、URL、fragment、版本、列印標籤、安全API、資產一致性與索引計數。`test_validator_mutations.py` 必須攔截15/15突變。Playwright則以真正DOM驗證dialog、鍵盤、焦點、scope、type、注入安全、四個視口、網路、console、回頂端及列印呼叫。
+
+完整命令：
+
+```bash
+python scripts/build_all.py
+python scripts/validate_search_experience.py
+node scripts/test_search_core.cjs
+node scripts/benchmark_search_core.cjs
+python scripts/test_build_reproducibility.py
+python scripts/test_validator_mutations.py
+npm ci
+npx playwright install chromium
+npx playwright test
+```

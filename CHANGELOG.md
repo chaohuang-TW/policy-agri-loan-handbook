@@ -1,5 +1,35 @@
 # Changelog
 
+## 114.0.0-beta.2.5
+
+### Added
+
+- 新增單一內容歸屬模型，集中管理貸款、原文、函釋、書表及section關係。
+- 新增原子化單一建置入口與建置可重現測試。
+- 新增預先正規化搜尋資料及搜尋效能benchmark。
+- 新增真正DOM與四視口Playwright整合測試。
+- 新增15項驗證器突變測試。
+
+### Changed
+
+- Section搜尋改由實際頁面集合推導多scope範圍。
+- 搜尋改為先限制scope及type，再進行評分與分散排序。
+- 精確標題、標題片語及精確文號使用符合名稱的判定方式。
+- Unicode位置映射改為UTF-16及grapheme安全模型。
+- 搜尋片段改採固定長度最佳命中視窗。
+- FAQ改用正確搜尋scope。
+- 正式建置統一改用scripts/build_all.py。
+
+### Fixed
+
+- 修正loan-programs及natural-disaster-rules本章搜尋0筆。
+- 修正emoji及代理對後方命中標記錯位。
+- 修正搜尋片段可能延伸至整頁全文。
+- 修正搜尋索引出現「手冊頁 None」。
+- 修正builder執行順序會遺失搜尋索引。
+- 修正搜尋效能可能達數秒以上。
+- 修正驗證器無法攔截部分scope、fragment、列印及Unicode錯誤。
+
 ## 114.0.0-beta.2.3
 
 ### Changed

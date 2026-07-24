@@ -1,20 +1,22 @@
-"""Single-source scope-group derivation from the version's loan index."""
+"""Compatibility wrappers around the single content ownership model."""
 from __future__ import annotations
 
-def loan_map(loans: list[dict]) -> dict[str, str]:
-    return {loan["title"]: loan["id"] for loan in loans}
+from content_model import (
+    scope_group_for_form,
+    scope_group_for_interpretation,
+    scope_group_for_page as model_scope_group_for_page,
+)
 
-def loan_id_for_text(value: str, loans: list[dict]) -> str | None:
-    text = str(value or "")
-    matches = [loan for loan in loans if loan["title"] in text]
-    return max(matches, key=lambda loan: len(loan["title"]))["id"] if matches else None
 
 def scope_group_for_page(page: dict, loans: list[dict]) -> str | None:
-    return f"loan:{loan_id_for_text(page.get('title'), loans)}" if loan_id_for_text(page.get('title'), loans) else None
+    del loans
+    return model_scope_group_for_page(page)
+
 
 def scope_group_for_item(item: dict, loans: list[dict], kind: str) -> str | None:
+    del loans
     if kind == "函釋":
-        loan_id = loan_map(loans).get(item.get("loanProgram"))
-    else:
-        loan_id = loan_id_for_text(item.get("title"), loans)
-    return f"loan:{loan_id}" if loan_id else None
+        return scope_group_for_interpretation(item)
+    if kind == "書表附件":
+        return scope_group_for_form(item)
+    return None
