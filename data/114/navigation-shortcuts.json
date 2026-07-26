@@ -4,13 +4,14 @@
   {"id":"popular-working-capital","label":"週轉金","query":"週轉金","kind":"popular","order":3},
   {"id":"popular-grace-period","label":"寬緩期","query":"寬緩期","kind":"popular","order":4},
   {"id":"popular-disaster","label":"天然災害","query":"天然災害","kind":"popular","order":5},
-  {"id":"popular-enterprise","label":"農企業","query":"農企業","kind":"popular","order":6},
+  {"id":"popular-application-form","label":"申請書","query":"申請書","kind":"popular","order":6},
   {"id":"popular-farmland","label":"購買耕地","query":"購買耕地","kind":"popular","order":7},
-  {"id":"popular-correction","label":"補正期限","query":"補正期限","kind":"popular","order":8},
+  {"id":"popular-loan-amount","label":"貸款額度","query":"貸款額度","kind":"popular","order":8},
   {"id":"task-eligibility","label":"申請資格","query":"申請資格","kind":"task:home,loan","order":1},
   {"id":"task-purpose","label":"貸款用途","query":"貸款用途","kind":"task:home,loan","order":2},
   {"id":"task-term","label":"期限與寬緩期","query":"貸款期限 寬緩期","kind":"task:home,loan","order":3},
-  {"id":"task-interest","label":"利率與補貼","query":"利率 利息差額補貼","kind":"task:home,common","order":4},
-  {"id":"task-interpretation","label":"相關函釋","query":"函釋","kind":"task:home,loan,common,disaster","order":5},
-  {"id":"task-forms","label":"申請書表","query":"申請書","kind":"task:home,loan,common,disaster","order":6}
+  {"id":"task-amount","label":"可以貸多少","query":"貸款額度","kind":"task:home,loan,common,disaster","order":4},
+  {"id":"task-interest","label":"利率","query":"利率 利息差額補貼","kind":"task:home,loan,common,disaster","order":5},
+  {"id":"task-documents","label":"應備文件","query":"應備文件 申請書","kind":"task:home,loan,common,disaster","order":6},
+  {"id":"task-post-loan","label":"貸後管理","query":"貸後管理","kind":"task:home,common,disaster","order":7}
 ]
