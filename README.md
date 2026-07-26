@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.5
+- 數位版本：114.0.0-beta.2.6
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -45,11 +45,12 @@ python scripts/validate_navigation_targets.py
 python scripts/validate_page_rendering.py
 python scripts/validate_visual_theme.py
 python scripts/validate_search_experience.py
+python scripts/validate_ux_structure.py
 python scripts/validate_site.py
 python3 -m http.server 8000 --directory site
 ```
 
-正式網站只有單一建置入口 `python scripts/build_all.py`。建置先在 `site.__building__` 完成全部頁面及搜尋索引，通過完整性檢查後才原子替換 `site/`；失敗時保留既有網站。Python相依套件列於 `requirements.txt`，Node與Playwright只用於測試，不是網站runtime依賴。
+完整正式 artifact 僅保證透過 `python scripts/build_all.py` 產生。`build_site(output_dir)` 與其他底層 builder function 是 `build_all.py` 使用的 internal building components，不保證可各自獨立形成完整網站。建置先在 `site.__building__` 完成全部頁面及搜尋索引，通過完整性檢查後才原子替換 `site/`；失敗時保留既有網站。Python相依套件列於 `requirements.txt`，Node與Playwright只用於測試，不是網站runtime依賴。
 
 ## PDF文字與頁面呈現原則
 
@@ -63,7 +64,7 @@ python3 -m http.server 8000 --directory site
 
 ## 搜尋與閱讀工具
 
-首頁搜尋與全站「搜尋手冊」視窗共用同一套瀏覽器端搜尋核心，可依原文、貸款、函釋、常見問答、書表及附錄篩選；章節頁可切換本章與全手冊搜尋。支援 Ctrl+K／Command+K、載入更多結果、長頁回到頂端及列印本章。搜尋不使用 AI、後端、Cookie 或外部服務，查詢不會上傳。詳細規則見 [`docs/SEARCH_EXPERIENCE.md`](docs/SEARCH_EXPERIENCE.md)。
+首頁搜尋與全站搜尋視窗共用同一套瀏覽器端搜尋核心，可依原文、貸款、函釋、常見問答、書表及附錄篩選；章節與貸款頁可切換目前範圍及全手冊搜尋。支援 Ctrl+K／Command+K、載入更多結果與長頁回到頂端。搜尋不使用 AI、後端、Cookie 或外部服務，查詢不會上傳。使用者旅程見 [`docs/UX_INFORMATION_ARCHITECTURE.md`](docs/UX_INFORMATION_ARCHITECTURE.md)，搜尋規則見 [`docs/SEARCH_EXPERIENCE.md`](docs/SEARCH_EXPERIENCE.md)。
 
 ## 視覺設計
 
@@ -79,6 +80,7 @@ python scripts/validate_index_quality.py
 python scripts/validate_page_rendering.py
 python scripts/validate_visual_theme.py
 python scripts/validate_search_experience.py
+python scripts/validate_ux_structure.py
 python scripts/validate_site.py
 node scripts/test_search_core.cjs
 node scripts/benchmark_search_core.cjs

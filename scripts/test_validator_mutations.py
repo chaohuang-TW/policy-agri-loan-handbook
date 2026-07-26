@@ -12,12 +12,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY_DIRS = ("assets", "data", "scripts", "site", "templates")
-NODE_FALLBACK = Path(
-    "/Users/huanghsinchao/.cache/codex-runtimes/"
-    "codex-primary-runtime/dependencies/node/bin/node"
-)
-
-
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
@@ -54,7 +48,7 @@ def html_with(root: Path, needle: str) -> Path:
 
 
 def main() -> None:
-    node = shutil.which("node") or (str(NODE_FALLBACK) if NODE_FALLBACK.is_file() else None)
+    node = shutil.which("node")
     if not node:
         raise SystemExit("Node.js is required for mutation tests")
 

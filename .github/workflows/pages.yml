@@ -52,6 +52,7 @@ jobs:
           python scripts/validate_page_rendering.py
           python scripts/validate_visual_theme.py
           python scripts/validate_search_experience.py
+          python scripts/validate_ux_structure.py
           python scripts/validate_site.py
       - name: Test browser search core
         run: node scripts/test_search_core.cjs

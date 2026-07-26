@@ -1,12 +1,14 @@
 # 搜尋體驗與驗證
 
-114.0.0-beta.2.5 的搜尋是瀏覽器端、唯讀的全文檢索工具，不是AI、聊天、資格判斷或貸款推薦。索引固定為507筆：359筆原文頁面、23筆貸款索引、87筆函釋、4筆常見問答、28筆書表附件及6筆附錄附件。
+114.0.0-beta.2.6 的搜尋是瀏覽器端、唯讀的全文檢索工具，不是AI、聊天、資格判斷或貸款推薦。索引固定為507筆：359筆原文頁面、23筆貸款索引、87筆函釋、4筆常見問答、28筆書表附件及6筆附錄附件。
 
 ## 單一內容歸屬模型
 
 `scripts/content_model.py` 從正式的貸款、原文、函釋、書表、FAQ及附錄資料推導歸屬。`data/114/content-relationships.json` 只保存無法直接推導的section組合、既有公開函釋slug及少數共同規定例外。建站與搜尋索引都呼叫此模型；`search_scope.py` 只保留相容轉呼叫，不另維護映射。
 
 Section頁由實際顯示的原文頁集合取得全部唯一scope，輸出 `data-search-scopes`。貸款頁使用 `data-search-scope-group="loan:<id>"`。FAQ使用 `faq:<id>`，附錄使用 `appendix`，兩者的scopeGroup均為null。
+
+每筆索引新增由內容模型推導的 `contextTitle`。結果卡依序呈現所屬貸款或章節、資料類型、標題、實際命中片段、直接或相關命中、來源頁碼，以及查看原文與PDF頁面入口。它不組合或產生任何結構化答案。
 
 ## Prepared search data
 
@@ -46,13 +48,14 @@ JSON只載入一次。`prepareSearchData()` 預先建立normalized title、headi
 
 `scripts/test_search_core.cjs` 驗證12組固定查詢、23項貸款、87筆文號、28份書表、4組FAQ、6項附錄、7個section、20組Unicode及snippet邊界。`benchmark_search_core.cjs` 使用真實507筆索引，門檻為prepare 1000ms、一般平均100ms、p95 250ms、最大500ms、scope/type p95 200ms、超長防禦50ms、空查詢10ms，且任何搜尋不得超過1秒。
 
-`validate_search_experience.py` 驗證scope、scopeGroup、URL、fragment、版本、列印標籤、安全API、資產一致性與索引計數。`test_validator_mutations.py` 必須攔截15/15突變。Playwright則以真正DOM驗證dialog、鍵盤、焦點、scope、type、注入安全、四個視口、網路、console、回頂端及列印呼叫。
+`validate_search_experience.py` 驗證scope、scopeGroup、contextTitle、URL、fragment、版本、列印標籤、安全API、資產一致性與索引計數。`validate_ux_structure.py` 驗證首頁、Mobile menu、Section Hub、Loan工作頁與證據層。`test_validator_mutations.py` 必須攔截15/15突變。Playwright以真正DOM驗證常用查詢、任務捷徑、dialog、鍵盤、焦點、scope、type、fallback、注入安全、四個視口、網路、console、回頂端及內容工具列列印。
 
 完整命令：
 
 ```bash
 python scripts/build_all.py
 python scripts/validate_search_experience.py
+python scripts/validate_ux_structure.py
 node scripts/test_search_core.cjs
 node scripts/benchmark_search_core.cjs
 python scripts/test_build_reproducibility.py

@@ -25,7 +25,7 @@ function observeRuntime(page) {
 }
 
 async function openDialog(page) {
-  await page.locator("[data-open-search]").click();
+  await page.locator("[data-open-search]:visible").first().click();
   await expect(page.locator("#manual-search-dialog")).toHaveJSProperty("open", true);
   await expect(page.locator("#dialog-site-search")).toBeFocused();
 }
@@ -48,7 +48,7 @@ test("dialog keyboard, backdrop, Escape and focus restoration", async ({page}) =
   const runtime = observeRuntime(page);
   await page.goto(paths.home);
   await expect(page.locator("h1")).toHaveCount(1);
-  const opener = page.locator("[data-open-search]");
+  const opener = page.locator("[data-open-search]:visible").first();
   await openDialog(page);
   await page.locator("#manual-search-dialog").press("Escape");
   await expect(page.locator("#manual-search-dialog")).not.toHaveAttribute("open");
@@ -102,7 +102,7 @@ for (const [name, url] of [
     await page.goto(url);
     const scopes = (await page.locator("body").getAttribute("data-search-scopes")).split(",");
     await openDialog(page);
-    await page.locator("[data-scope=chapter]").click();
+    await page.locator("#manual-search-dialog [data-scope=chapter]").click();
     await searchDialog(page, "貸款");
     await expect(page.locator("#manual-search-dialog .search-result").first()).toBeVisible();
     const urls = await page.locator("#manual-search-dialog .search-result a").evaluateAll(
@@ -123,7 +123,7 @@ test("loan scope, empty chapter fallback and post-search focus", async ({page}) 
   const runtime = observeRuntime(page);
   await page.goto(paths.loan);
   await openDialog(page);
-  await page.locator("[data-scope=chapter]").click();
+  await page.locator("#manual-search-dialog [data-scope=chapter]").click();
   await searchDialog(page, "青壯年農民");
   const text = await page.locator("#manual-search-dialog .search-result").allTextContents();
   expect(text.length).toBeGreaterThan(0);
@@ -131,41 +131,130 @@ test("loan scope, empty chapter fallback and post-search focus", async ({page}) 
 
   await page.goto(paths.section);
   await openDialog(page);
-  await page.locator("[data-scope=chapter]").click();
+  await page.locator("#manual-search-dialog [data-scope=chapter]").click();
   await searchDialog(page, "ZZZ無此詞天然災害");
   await expect(page.locator(".search-search-all")).toBeVisible();
   await page.locator(".search-search-all").click();
-  await expect(page.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("#manual-search-dialog [data-scope=all]")).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#dialog-site-search")).not.toBeFocused();
   const focused = await page.evaluate(() => document.activeElement?.matches(".search-status, .search-result a"));
   expect(focused).toBe(true);
   expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
 });
 
-test("back to top and print labels/calls", async ({page}) => {
-  for (const [url, label] of [
-    [paths.page, "列印本頁"],
-    [paths.loan, "列印本貸款"],
-    [paths.section, "列印本章"]
-  ]) {
-    await page.goto(url);
-    await expect(page.locator("[data-print-section]")).toHaveAttribute("aria-label", label);
-    await page.evaluate(() => {
-      window.__printCalled = false;
-      window.print = () => { window.__printCalled = true; };
-    });
-    await page.locator("[data-print-section]").click();
-    expect(await page.evaluate(() => window.__printCalled)).toBe(true);
-  }
-  await page.goto(paths.home);
-  await expect(page.locator("[data-print-section]")).toBeHidden();
+test("page action print and 900px back-to-top threshold", async ({page}) => {
   await page.goto(paths.page);
-  await page.evaluate(() => window.scrollTo(0, 649));
+  await page.evaluate(() => {
+    window.__printCalled = false;
+    window.print = () => { window.__printCalled = true; };
+  });
+  await page.locator("[data-print-page]").click();
+  expect(await page.evaluate(() => window.__printCalled)).toBe(true);
+  await page.goto(paths.home);
+  await expect(page.locator("[data-print-page]")).toHaveCount(0);
+  await expect(page.locator(".floating-tools")).toHaveCount(0);
+  await page.goto(paths.page);
+  await page.evaluate(() => window.scrollTo(0, 899));
   await expect(page.locator("[data-back-to-top]")).toBeHidden();
-  await page.evaluate(() => window.scrollTo(0, 700));
+  await page.evaluate(() => window.scrollTo(0, 950));
   await expect(page.locator("[data-back-to-top]")).toBeVisible();
   await page.locator("[data-back-to-top]").click();
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+});
+
+test("homepage common queries and task shortcuts run immediately", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.goto(paths.home);
+  await expect(page.locator(".primary-entries .entry")).toHaveCount(4);
+  await expect(page.locator(".popular button")).toHaveCount(8);
+  for (const label of ["農機", "天然災害"]) {
+    await page.locator(".popular button", {hasText: label}).click();
+    await expect(page.locator("#home-search")).toHaveValue(label);
+    await expect(page.locator(".hero .search-result").first()).toBeVisible();
+  }
+  await page.locator(".task-shortcuts button", {hasText: "期限與寬緩期"}).click();
+  await expect(page.locator("#home-search")).toHaveValue("貸款期限 寬緩期");
+  await expect(page.locator(".hero .search-result").first()).toBeVisible();
+  await expect(page.locator(".hero .search-results [data-structured-answer]")).toHaveCount(0);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("390px mobile menu is closed, accessible and restores focus", async ({page}) => {
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto(paths.home);
+  const menu = page.locator("#mobile-menu");
+  const toggle = page.locator("[data-menu-toggle]");
+  await expect(menu).toBeHidden();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator("#home-search")).toBeInViewport();
+  await toggle.click();
+  await expect(menu).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Escape");
+  await expect(menu).toBeHidden();
+  await expect(toggle).toBeFocused();
+  await expect(page.locator(".floating-tools")).toHaveCount(0);
+});
+
+test("semantic section hubs keep page lists secondary", async ({page}) => {
+  for (const [url, expected] of [
+    ["/versions/114/sections/agricultural-development-fund-rules/", null],
+    ["/versions/114/sections/loan-programs/", 19],
+    ["/versions/114/sections/natural-disaster-rules/", null],
+    ["/versions/114/sections/amendment-faq/", null],
+    ["/versions/114/sections/attachments/", null]
+  ]) {
+    await page.goto(url);
+    await expect(page.getByText("在本章查規定", {exact: true})).toBeVisible();
+    const details = page.locator(".source-page-list");
+    await expect(details).not.toHaveAttribute("open");
+    await expect(page.locator("text=本篇頁面")).toHaveCount(0);
+    if (expected) await expect(page.locator(".hub-primary .loan-grid li")).toHaveCount(expected);
+    await details.locator("summary").click();
+    await expect(details.locator("a").first()).toBeVisible();
+  }
+});
+
+for (const loan of ["young-farmer-loan", "farm-machinery-loan", "natural-disaster-low-interest-loan"]) {
+  test(`${loan} is a scoped loan work page`, async ({page}) => {
+    await page.goto(`/loans/${loan}/`);
+    await expect(page.locator("h1")).toHaveCount(1);
+    await expect(page.getByText("在本貸款中搜尋", {exact: true})).toBeVisible();
+    await expect(page.getByRole("heading", {name: "貸款原文", exact: true})).toBeVisible();
+    await expect(page.getByRole("heading", {name: "相關函釋", exact: true})).toBeVisible();
+    await expect(page.getByRole("heading", {name: "相關書表", exact: true})).toBeVisible();
+    await expect(page.locator(".source-page-list")).not.toHaveAttribute("open");
+    await openDialog(page);
+    await page.locator("#manual-search-dialog [data-scope=chapter]").click();
+    await searchDialog(page, loan === "farm-machinery-loan" ? "農機" : "貸款");
+    const groups = await page.locator("#manual-search-dialog .search-result").evaluateAll(
+      (cards) => cards.map((card) => card.textContent)
+    );
+    expect(groups.length).toBeGreaterThan(0);
+  });
+}
+
+test("search result prioritizes context and fallback uses the real catalog", async ({page}) => {
+  await page.goto(paths.home);
+  await openDialog(page);
+  await searchDialog(page, "寬緩期");
+  const first = page.locator("#manual-search-dialog .search-result").first();
+  await expect(first.locator(".result-context")).toBeVisible();
+  await expect(first.locator(".result-type-badge")).toBeVisible();
+  await expect(first.locator(".result-snippet")).toBeVisible();
+  await expect(first.locator(".result-pages")).toBeVisible();
+  await expect(first.locator(".result-actions a").first()).toBeVisible();
+
+  await page.route("**/assets/data/search-index.json", (route) =>
+    route.fulfill({status: 500, body: "failed"})
+  );
+  await page.reload();
+  await openDialog(page);
+  await page.locator("#dialog-site-search").fill("農機");
+  await page.locator("#manual-search-dialog form button[type=submit]").click();
+  await expect(page.locator("#manual-search-dialog .search-status")).toContainText("搜尋索引目前無法載入");
+  const catalog = page.getByRole("link", {name: "查看原書完整目錄"});
+  await expect(catalog).toHaveAttribute("href", /versions\/114\/(?:index\.html)?$/);
 });
 
 for (const width of [390, 768, 1024, 1440]) {

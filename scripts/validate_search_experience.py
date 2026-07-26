@@ -71,8 +71,8 @@ def validate(root: Path) -> list[str]:
         fail(errors, f"type counts changed: {dict(counts)}")
     if len({(record.get("id"), record.get("url")) for record in records}) != len(records):
         fail(errors, "duplicate search id/url")
-    if any(not record.get("id") or not record.get("scope") or not record.get("url") for record in records):
-        fail(errors, "record missing id, scope or URL")
+    if any(not record.get("id") or not record.get("scope") or not record.get("url") or not record.get("contextTitle") for record in records):
+        fail(errors, "record missing id, scope, contextTitle or URL")
     for record in records:
         text = str(record.get("text", ""))
         for token in FORBIDDEN_TEXT:

@@ -7,6 +7,10 @@ from pathlib import Path
 
 from content_model import (
     interpretation_group_slug,
+    loan_for_form,
+    loan_for_interpretation,
+    loan_for_printed_page,
+    section_by_id,
     scope_for_page,
     scope_group_for_form,
     scope_group_for_interpretation,
@@ -37,6 +41,11 @@ def build_search_index(output_dir: Path) -> list[dict]:
             "scopeGroup": scope_group_for_page(page),
             "url": f"versions/114/pages/page-{page['pdfPage']:03d}.html#pdf-page-{page['pdfPage']}",
             "breadcrumb": ["114年度", page["title"]],
+            "contextTitle": (
+                (loan_for_printed_page(page.get("printedPage")) or {}).get("title")
+                or (section_by_id(page["chapterId"]) or {}).get("title")
+                or page["title"]
+            ),
         })
     for loan in loans:
         records.append({
@@ -46,6 +55,7 @@ def build_search_index(output_dir: Path) -> list[dict]:
             "text": f"{loan['title']} {loan['category']} 函釋 原文 手冊頁 {loan['sourceStartPage']}",
             "headings": [loan["title"]], "scope": f"loan:{loan['id']}", "scopeGroup": f"loan:{loan['id']}",
             "url": loan["detailUrl"], "breadcrumb": ["貸款索引", loan["title"]],
+            "contextTitle": loan["title"],
         })
     sources = (
         ("interpretations.json", "函釋", "interpretations"),
@@ -79,6 +89,15 @@ def build_search_index(output_dir: Path) -> list[dict]:
                 "loanProgram": item.get("loanProgram"),
                 "url": f"{folder}/index.html#item-{item['id']}",
                 "breadcrumb": [label, item["title"]],
+                "contextTitle": (
+                    (loan_for_interpretation(item) or {}).get("title")
+                    if label == "函釋"
+                    else (loan_for_form(item) or {}).get("title")
+                    if label == "書表附件"
+                    else "政策性農業專案貸款增修正規定常見問題"
+                    if label == "常見問答"
+                    else "附錄與附件"
+                ) or "共通貸款規定",
             })
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(records, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")

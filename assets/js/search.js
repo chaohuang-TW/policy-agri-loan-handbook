@@ -43,16 +43,21 @@
     const record = item.record;
     const article = document.createElement("article");
     article.className = "search-result";
+    const context = document.createElement("p");
+    context.className = "result-context";
+    context.textContent = record.contextTitle || (record.breadcrumb || [record.category])[0];
+    article.append(context);
+    const badge = document.createElement("span");
+    badge.className = "result-type-badge";
+    badge.textContent = TYPE_LABELS[record.type] || record.type;
+    article.append(badge);
     const h3 = document.createElement("h3");
-    const link = document.createElement("a");
-    link.href = new URL(record.url, siteRoot).href;
-    link.textContent = record.title;
-    h3.append(link);
+    h3.textContent = record.title;
     article.append(h3);
 
     const meta = document.createElement("p");
     meta.className = "result-match-meta";
-    meta.textContent = `${TYPE_LABELS[record.type] || record.type}｜${(record.breadcrumb || []).join(" › ")}`;
+    meta.textContent = item.originalTerms?.length ? "直接命中查詢文字" : "相關詞命中";
     article.append(meta);
 
     const snippet = Core.createSnippetRange(record.text, item.originalTerms, item.relatedTerms);
@@ -69,16 +74,9 @@
     if (snippet.end < record.text.length) paragraph.append(document.createTextNode("…"));
     article.append(paragraph);
 
-    if (snippet.matches.some((range) => range.kind === "related")) {
-      const related = document.createElement("p");
-      related.className = "result-related-meta";
-      related.textContent = "包含相關詞命中";
-      article.append(related);
-    }
-
     const pages = document.createElement("p");
     pages.className = "result-pages";
-    pages.textContent = `版本：${record.version}｜手冊頁：${record.printedPage || "目錄"}｜PDF頁：${record.pdfPage}／359`;
+    pages.textContent = `出處：${record.version}｜手冊頁 ${record.printedPage || "目錄"}｜PDF頁 ${record.pdfPage}／359`;
     article.append(pages);
     if (record.documentNumber || record.date || record.loanProgram) {
       const extra = document.createElement("p");
@@ -86,6 +84,22 @@
       extra.textContent = [record.date, record.documentNumber, record.loanProgram].filter(Boolean).join("｜");
       article.append(extra);
     }
+    const actions = document.createElement("p");
+    actions.className = "result-actions";
+    const primary = document.createElement("a");
+    primary.href = new URL(record.url, siteRoot).href;
+    primary.textContent = record.type === "貸款索引" ? "查看貸款" :
+      record.type === "函釋" ? "查看函釋" :
+      record.type === "書表附件" || record.type === "附錄附件" ? "查看書表" : "查看原文";
+    actions.append(primary);
+    if (record.pdfPage) {
+      const pdf = document.createElement("a");
+      pdf.className = "secondary-action";
+      pdf.href = new URL(`downloads/policy-agri-loan-handbook-114.pdf#page=${record.pdfPage}`, siteRoot).href;
+      pdf.textContent = "開啟PDF頁面";
+      actions.append(pdf);
+    }
+    article.append(actions);
     return article;
   }
 
@@ -137,6 +151,7 @@
 
     function render(focusAfter = false) {
       results.replaceChildren(...state.ranked.slice(0, state.shown).map(createResult));
+      status.hidden = false;
       status.textContent = `找到 ${state.ranked.length} 筆結果，目前顯示 ${Math.min(state.shown, state.ranked.length)} 筆。`;
       more.hidden = state.shown >= state.ranked.length;
       renderFilters();
@@ -175,6 +190,7 @@
       results.append(paragraph);
       more.hidden = true;
       status.textContent = "沒有符合目前搜尋範圍的結果。";
+      status.hidden = false;
       if (focusAfter) status.focus();
     }
 
@@ -184,8 +200,8 @@
       paragraph.className = "search-empty-guidance";
       paragraph.append(document.createTextNode("搜尋索引目前無法載入。您仍可"));
       const catalog = document.createElement("a");
-      catalog.href = new URL("manual/index.html", siteRoot).href;
-      catalog.textContent = "查看完整目錄";
+      catalog.href = new URL("versions/114/index.html", siteRoot).href;
+      catalog.textContent = "查看原書完整目錄";
       const pdf = document.createElement("a");
       pdf.href = new URL("downloads/policy-agri-loan-handbook-114.pdf", siteRoot).href;
       pdf.textContent = "開啟完整 PDF";
@@ -193,6 +209,7 @@
       results.append(paragraph);
       more.hidden = true;
       status.textContent = "搜尋索引目前無法載入。";
+      status.hidden = false;
     }
 
     async function run(focusAfter = false) {
@@ -204,6 +221,7 @@
         results.replaceChildren();
         more.hidden = true;
         status.textContent = validation.error;
+        status.hidden = false;
         if (focusAfter) status.focus();
         return;
       }
@@ -213,11 +231,13 @@
         state.shown = 0;
         results.replaceChildren();
         more.hidden = true;
-        status.textContent = "請輸入搜尋文字。";
+        status.textContent = "";
+        status.hidden = true;
         return;
       }
 
       status.textContent = "搜尋中…";
+      status.hidden = false;
       try {
         state.prepared = await loadData();
         state.query = validation.normalized;
@@ -263,4 +283,17 @@
   }
 
   document.querySelectorAll("[data-search]").forEach(attach);
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-keyword], button[data-query]");
+    if (!button) return;
+    const selector = button.dataset.searchTarget || "#home-search";
+    const panel = document.querySelector(selector)?.closest("[data-search]") ||
+      button.closest("main")?.querySelector("[data-search]") ||
+      document.querySelector("[data-search]");
+    const api = panel?.__manualSearch;
+    if (!api) return;
+    api.input.value = button.dataset.query || button.dataset.keyword || "";
+    api.run(false);
+    panel.scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start"});
+  });
 })();

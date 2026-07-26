@@ -10,12 +10,12 @@ python scripts/build_all.py
 
 若任何步驟失敗，暫存目錄會清除，既有 `site/` 維持不變。替換期間若發生錯誤，`site.__previous__` 會復原；成功後備份目錄會清除。
 
-兩個底層builder都可匯入且在import時不執行：
+兩個底層builder是可匯入且在import時不執行的 internal building components：
 
-- `build_site(output_dir)`：建立網站本體，不依賴舊搜尋索引。
+- `build_site(output_dir)`：建立網站本體，不依賴舊搜尋索引，但不保證單獨形成完整正式artifact。
 - `build_search_index(output_dir)`：只安全更新指定輸出的搜尋索引，不刪除其他內容。
 
-為維持舊操作安全，直接執行 `build_site.py` 會轉呼叫完整的 `build_all.py`；直接執行 `build_search_index.py` 只更新已存在網站的索引，不清除網站。
+完整正式artifact僅保證透過 `build_all.py` 產生。為維持舊操作安全，直接執行 `build_site.py` 會轉呼叫完整的 `build_all.py`；直接執行 `build_search_index.py` 只更新已存在網站的索引，不清除網站。
 
 `scripts/test_build_reproducibility.py` 在不同暫存輸出驗證：
 
