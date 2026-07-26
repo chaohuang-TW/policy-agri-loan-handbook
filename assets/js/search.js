@@ -90,7 +90,9 @@
     primary.href = new URL(record.url, siteRoot).href;
     primary.textContent = record.type === "貸款索引" ? "查看貸款" :
       record.type === "函釋" ? "查看函釋" :
-      record.type === "書表附件" || record.type === "附錄附件" ? "查看書表" : "查看原文";
+      record.type === "書表附件" ? "查看書表" :
+      record.type === "附錄附件" ? "查看附錄" :
+      record.type === "常見問答" ? "查看問答" : "查看原文";
     actions.append(primary);
     if (record.pdfPage) {
       const pdf = document.createElement("a");
@@ -114,6 +116,10 @@
     const pageScopes = (page.dataset.searchScopes || page.dataset.searchScope || "all")
       .split(",").map((value) => value.trim()).filter(Boolean);
     const pageGroup = page.dataset.searchScopeGroup || "";
+    const contextScope = pageGroup || (pageScopes.includes("all") ? "all" : pageScopes);
+    const defaultScope = panel.dataset.searchDefaultScope === "context" && contextScope !== "all"
+      ? "context"
+      : "all";
     let timer;
     const state = {
       allRanked: [], ranked: [], shown: 0, type: "all", scope: "all",
@@ -124,6 +130,19 @@
       scopeOptions.hidden = false;
       scopeOptions.querySelector("[data-scope=chapter]").textContent = pageGroup ? "本貸款" : "本章";
     }
+
+    function setScope(mode, rerun = false) {
+      const resolvedMode = mode === "context" && contextScope !== "all" ? "context" : "all";
+      state.scope = resolvedMode === "context" ? contextScope : "all";
+      scopeOptions?.querySelectorAll("button").forEach((button) => {
+        const buttonMode = button.dataset.scope === "chapter" ? "context" : "all";
+        button.setAttribute("aria-pressed", String(buttonMode === resolvedMode));
+      });
+      if (rerun && input.value.trim()) return run(true);
+      return Promise.resolve();
+    }
+
+    setScope(defaultScope);
 
     function focusResults() {
       (results.querySelector("a") || status).focus();
@@ -180,10 +199,7 @@
       button.className = "search-search-all";
       button.textContent = "改查全手冊";
       button.addEventListener("click", () => {
-        state.scope = "all";
-        scopeOptions?.querySelectorAll("button").forEach((item) =>
-          item.setAttribute("aria-pressed", String(item.dataset.scope === "all"))
-        );
+        setScope("all");
         run(true);
       });
       paragraph.append(button);
@@ -272,18 +288,14 @@
     });
     scopeOptions?.querySelectorAll("button").forEach((button) =>
       button.addEventListener("click", () => {
-        scopeOptions.querySelectorAll("button").forEach((item) =>
-          item.setAttribute("aria-pressed", String(item === button))
-        );
-        state.scope = button.dataset.scope === "chapter" ? (pageGroup || pageScopes) : "all";
-        if (input.value.trim()) run(true);
+        setScope(button.dataset.scope === "chapter" ? "context" : "all", true);
       })
     );
-    panel.__manualSearch = { run, input, state };
+    panel.__manualSearch = { run, input, state, setScope };
   }
 
   document.querySelectorAll("[data-search]").forEach(attach);
-  document.addEventListener("click", (event) => {
+  document.addEventListener("click", async (event) => {
     const button = event.target.closest("button[data-keyword], button[data-query]");
     if (!button) return;
     const selector = button.dataset.searchTarget || "#home-search";
@@ -292,8 +304,16 @@
       document.querySelector("[data-search]");
     const api = panel?.__manualSearch;
     if (!api) return;
+    await api.setScope(button.dataset.searchScope || "all");
     api.input.value = button.dataset.query || button.dataset.keyword || "";
-    api.run(false);
-    panel.scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start"});
+    const bounds = panel.getBoundingClientRect();
+    const fullyVisible = bounds.top >= 0 && bounds.bottom <= window.innerHeight;
+    if (!fullyVisible) {
+      panel.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      });
+    }
+    await api.run(true);
   });
 })();

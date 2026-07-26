@@ -100,6 +100,12 @@
     return concepts.map((concept) => ({
       ...concept,
       normalizedTerms: [...new Set((concept.terms || []).map(normalize).filter(Boolean))],
+      normalizedTriggerTerms: [...new Set(
+        (concept.triggerTerms || concept.terms || []).map(normalize).filter(Boolean)
+      )],
+      normalizedRelatedTerms: [...new Set(
+        (concept.relatedTerms || concept.terms || []).map(normalize).filter(Boolean)
+      )],
     }));
   }
 
@@ -121,9 +127,14 @@
   function expandedConceptTerms(queryInfo, concepts) {
     const expanded = [];
     for (const concept of concepts) {
-      const normalizedTerms = concept.normalizedTerms || (concept.terms || []).map(normalize);
-      if (normalizedTerms.some((term) => queryInfo.terms.some((token) => term.includes(token) || token.includes(term)))) {
-        expanded.push(...normalizedTerms);
+      const normalizedTriggers = concept.normalizedTriggerTerms
+        || (concept.triggerTerms || concept.terms || []).map(normalize);
+      const normalizedRelated = concept.normalizedRelatedTerms
+        || (concept.relatedTerms || concept.terms || []).map(normalize);
+      if (normalizedTriggers.some((term) =>
+        queryInfo.terms.some((token) => term.includes(token) || token.includes(term))
+      )) {
+        expanded.push(...normalizedRelated);
       }
     }
     return [...new Set(expanded)].filter((term) => !queryInfo.terms.includes(term));

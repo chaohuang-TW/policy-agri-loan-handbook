@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.6
+- 數位版本：114.0.0-beta.2.6.1
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -51,6 +51,15 @@ python3 -m http.server 8000 --directory site
 ```
 
 完整正式 artifact 僅保證透過 `python scripts/build_all.py` 產生。`build_site(output_dir)` 與其他底層 builder function 是 `build_all.py` 使用的 internal building components，不保證可各自獨立形成完整網站。建置先在 `site.__building__` 完成全部頁面及搜尋索引，通過完整性檢查後才原子替換 `site/`；失敗時保留既有網站。Python相依套件列於 `requirements.txt`，Node與Playwright只用於測試，不是網站runtime依賴。
+
+## 搜尋範圍
+
+- 首頁搜尋：預設全手冊。
+- 貸款工作頁的inline搜尋：預設本貸款。
+- Section Hub的inline搜尋：預設本章。
+- Header搜尋：不論目前頁面，預設仍為全手冊；在有情境的頁面可自行切換本貸款／本章。
+
+任務捷徑只擴充至來源語料實際存在的正式用語，不產生資格、額度、利率或期限答案。語意依據見 `docs/TASK_SEARCH_SEMANTICS.md`。
 
 ## PDF文字與頁面呈現原則
 

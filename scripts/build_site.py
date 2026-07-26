@@ -93,8 +93,12 @@ def breadcrumb(relative: str, pairs: list[tuple[str, str | None]], current: str)
     return '<nav class="breadcrumb" aria-label="麵包屑">' + '<span aria-hidden="true">›</span>'.join(result) + "</nav>"
 
 
-def search_box(input_id: str = "site-search", label: str = "你想查什麼？") -> str:
-    return f'''<div class="search-panel" data-search><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-scope-options" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
+def search_box(
+    input_id: str = "site-search",
+    label: str = "你想查什麼？",
+    default_scope: str = "all",
+) -> str:
+    return f'''<div class="search-panel" data-search data-search-default-scope="{e(default_scope)}"><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-scope-options" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
 
 
 def paragraphize(text: str) -> str:
@@ -132,8 +136,9 @@ def shortcut_buttons(context: str, target: str) -> str:
         item for item in SHORTCUTS
         if item["kind"].startswith("task:") and context in item["kind"].split(":", 1)[1].split(",")
     ]
+    scope = "all" if context == "home" else "context"
     return '<div class="task-shortcuts">' + "".join(
-        f'<button type="button" data-query="{e(item["query"])}" data-search-target="#{e(target)}">{e(item["label"])}</button>'
+        f'<button type="button" data-query="{e(item["query"])}" data-search-target="#{e(target)}" data-search-scope="{scope}">{e(item["label"])}</button>'
         for item in sorted(items, key=lambda item: item["order"])
     ) + "</div>"
 
@@ -177,7 +182,7 @@ def loan_nav(relative: str) -> str:
 def build_home() -> None:
     relative = "index.html"
     popular_items = sorted((item for item in SHORTCUTS if item["kind"] == "popular"), key=lambda item: item["order"])
-    popular = "".join(f'<button type="button" data-keyword="{e(item["query"])}" data-search-target="#home-search">{e(item["label"])}</button>' for item in popular_items)
+    popular = "".join(f'<button type="button" data-keyword="{e(item["query"])}" data-search-target="#home-search" data-search-scope="all">{e(item["label"])}</button>' for item in popular_items)
     counts = MANUAL["counts"]
     revision = MANUAL["digitalRevision"]
     hero = f'<h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">快速找到貸款規定、函釋與書表，並可回到原始手冊核對。</p><p class="version-inline">114年度 Beta</p>{search_box("home-search")}<div class="popular" aria-label="常用查詢"><span>常用查詢</span>{popular}</div>'
@@ -253,7 +258,7 @@ def build_sections() -> None:
         pages = page_range(start, end)
         search_id = f"section-search-{slug}"
         context = "common" if slug == "agricultural-development-fund-rules" else "disaster" if slug == "natural-disaster-rules" else ""
-        search = f'<section class="hub-search"><h2>在本章查規定</h2>{search_box(search_id)}{shortcut_buttons(context, search_id) if context else ""}</section>'
+        search = f'<section class="hub-search"><h2>在本章查規定</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons(context, search_id) if context else ""}</section>'
         first_page = f'versions/114/pages/page-{pages[0]["pdfPage"]:03d}.html'
         original = f'<section class="hub-original"><h2>原文</h2><p>依本章原始頁次閱讀，條文內容以正式資料為準。</p><a class="button-link secondary" href="{e(rel(relative, first_page))}">從本章第一頁開始</a></section>'
         primary = ""
@@ -290,7 +295,7 @@ def build_physical_pages() -> None:
         relative = f"versions/114/pages/page-{number:03d}.html"
         previous = f'<a href="page-{number-1:03d}.html">上一頁</a>' if number > 1 else "<span>已是第一頁</span>"
         following = f'<a href="page-{number+1:03d}.html">下一頁</a>' if number < 359 else "<span>已是最後一頁</span>"
-        nav = f'<details open><summary>逐頁閱讀</summary><p>{previous}　{following}</p><p><a href="../index.html">回完整目錄</a></p></details>'
+        nav = f'<details open><summary>逐頁閱讀</summary><p>{previous}　{following}</p><p><a href="../index.html">回原書完整目錄</a></p></details>'
         printed = page["printedPage"] if page["printedPage"] is not None else "目錄"
         owner = loan_for_printed_page(page.get("printedPage"))
         section = section_by_id(page["chapterId"])
@@ -302,7 +307,7 @@ def build_physical_pages() -> None:
             context_links.append(f'<a href="{e(rel(relative, section_target))}">回到本章</a>')
         tools = '<div class="page-actions"><button type="button" data-print-page>列印本頁</button>' + "".join(context_links) + "</div>"
         content = f'<h1>{e(page["title"])}</h1><p class="source-meta">手冊頁：{e(printed)}｜PDF實體頁：{number}／359｜資料版本：114年度</p>{tools}' + page_card(page, relative)
-        main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("完整目錄", "versions/114/index.html")], f"PDF頁碼 {number}"), NAV=nav, CONTENT=content)
+        main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("原書完整目錄", "versions/114/index.html")], f"PDF頁碼 {number}"), NAV=nav, CONTENT=content)
         write(relative, f"PDF頁碼 {number}｜{page['title']}", main, body_attrs=f'data-printable="true" data-print-label="列印本頁" data-search-scope="section:{page["chapterId"]}"')
 
 
@@ -326,7 +331,7 @@ def build_loans() -> None:
         content = (
             f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}-{loan["sourceEndPage"]}</p>'
             f'<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>'
-            f'<section class="loan-context-search"><h2>在本貸款中搜尋</h2>{search_box(search_id)}{shortcut_buttons("loan", search_id)}</section>'
+            f'<section class="loan-context-search"><h2>在本貸款中搜尋</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons("loan", search_id)}</section>'
             f'{continuous_source(pages)}'
             f'<section class="loan-related"><h2>相關函釋</h2>{interpretation_block}</section>'
             f'<section class="loan-related"><h2>相關書表</h2>{forms_block}</section>'
@@ -376,7 +381,7 @@ def build_indexes() -> None:
 def build_versions() -> None:
     relative = "versions/index.html"
     revision = MANUAL["digitalRevision"]
-    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.6 使用者旅程與資訊架構</h3><p>首頁改以搜尋與實務任務為主，Section與貸款頁形成語意型工作頁，359個逐頁頁面完整保留為證據層。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
+    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.6.1 情境搜尋與任務語意校正</h3><p>貸款與Section inline搜尋預設套用目前情境，Header搜尋維持全手冊；任務捷徑以來源語料驗證的正式用語擴充搜尋。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 

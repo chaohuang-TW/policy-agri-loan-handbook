@@ -13,5 +13,12 @@
   {"id":"recovery","terms":["復耕","復建","復耕復建"]},
   {"id":"agri-insurance","terms":["農業保險","農業保險貸款","保險貸款"]},
   {"id":"ecommerce","terms":["電子商務","電商","網路銷售"]},
-  {"id":"forms","terms":["申請書","審核表","查驗表","證明書","切結書","表單"]}
+  {"id":"forms","terms":["申請書","審核表","查驗表","證明書","切結書","表單"]},
+  {"id":"task-eligibility","triggerTerms":["申請資格"],"relatedTerms":["申請資格條件","申貸資格","貸款對象","本貸款之對象","救助對象"]},
+  {"id":"task-loan-purpose","triggerTerms":["貸款用途"],"relatedTerms":["資金用途","所需資金"]},
+  {"id":"task-loan-amount","triggerTerms":["貸款額度","可以貸多少"],"relatedTerms":["最高貸款額度","最高額度"]},
+  {"id":"task-loan-term","triggerTerms":["貸款期限","期限與寬緩期"],"relatedTerms":["還款期限"]},
+  {"id":"task-interest","triggerTerms":["利率"],"relatedTerms":["貸款利率","利息差額補貼"]},
+  {"id":"task-required-documents","triggerTerms":["應備文件"],"relatedTerms":["應檢具","應檢附","申請書","證明文件"]},
+  {"id":"task-post-loan-management","triggerTerms":["貸放後管理","貸後管理"],"relatedTerms":["貸款用途及經營狀況查驗","用途查驗","經營狀況查驗"]}
 ]

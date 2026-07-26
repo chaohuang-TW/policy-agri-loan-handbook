@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prove that 15 high-risk mutations are rejected by real validators/tests."""
+"""Prove that 20 high-risk content, search and context mutations are rejected."""
 from __future__ import annotations
 
 import json
@@ -116,6 +116,32 @@ def main() -> None:
         text = path.read_text(encoding="utf-8")
         safe_write(path, re_sub_scope(text, ""))
 
+    def loan_inline_default_all(root: Path):
+        path = html_with(root, "在本貸款中搜尋")
+        replace(path, 'data-search-default-scope="context"', 'data-search-default-scope="all"')
+
+    def section_inline_default_all(root: Path):
+        path = root / "site/versions/114/sections/agricultural-development-fund-rules/index.html"
+        replace(path, 'data-search-default-scope="context"', 'data-search-default-scope="all"')
+
+    def global_dialog_default_context(root: Path):
+        replace(
+            root / "templates/base.html",
+            'dialog-search-panel" data-search data-search-default-scope="all"',
+            'dialog-search-panel" data-search data-search-default-scope="context"',
+        )
+
+    def loan_shortcut_without_context(root: Path):
+        path = html_with(root, "在本貸款中搜尋")
+        replace(path, 'data-search-scope="context"', 'data-search-scope="all"')
+
+    def appendix_action_as_form(root: Path):
+        replace(
+            root / "assets/js/search.js",
+            'record.type === "附錄附件" ? "查看附錄"',
+            'record.type === "附錄附件" ? "查看書表"',
+        )
+
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
         ("unknown loan page scopeGroup", unknown_loan_page_group, "python"),
@@ -132,6 +158,11 @@ def main() -> None:
         ("Unicode mark offset", unicode_offset, "node"),
         ("1000-character snippet", oversized_snippet, "node"),
         ("section scope with no records", empty_section_scope, "python"),
+        ("loan inline default scope changed to all", loan_inline_default_all, "ux"),
+        ("section inline default scope changed to all", section_inline_default_all, "ux"),
+        ("global dialog default scope changed to context", global_dialog_default_context, "ux"),
+        ("loan shortcut context scope removed", loan_shortcut_without_context, "ux"),
+        ("appendix action changed back to 查看書表", appendix_action_as_form, "ux"),
     ]
 
     results = []
@@ -141,11 +172,12 @@ def main() -> None:
             fixture = base / f"case-{index:02d}"
             copy_fixture(fixture)
             mutation(fixture)
-            command = (
-                [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
-                if validator == "python"
-                else [node, "scripts/test_search_core.cjs"]
-            )
+            if validator == "python":
+                command = [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
+            elif validator == "ux":
+                command = [sys.executable, "scripts/validate_ux_structure.py"]
+            else:
+                command = [node, "scripts/test_search_core.cjs"]
             completed = subprocess.run(
                 command, cwd=fixture, text=True, capture_output=True, timeout=120
             )
@@ -155,7 +187,11 @@ def main() -> None:
             results.append({
                 "mutation": index,
                 "name": name,
-                "validator": "validate_search_experience.py" if validator == "python" else "test_search_core.cjs",
+                "validator": (
+                    "validate_search_experience.py" if validator == "python"
+                    else "validate_ux_structure.py" if validator == "ux"
+                    else "test_search_core.cjs"
+                ),
                 "caught": True,
                 "evidence": evidence[0][:160] if evidence else f"exit {completed.returncode}",
             })

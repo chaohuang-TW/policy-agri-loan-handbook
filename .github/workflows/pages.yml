@@ -54,8 +54,11 @@ jobs:
           python scripts/validate_search_experience.py
           python scripts/validate_ux_structure.py
           python scripts/validate_site.py
+          python scripts/audit_task_search_quality.py
       - name: Test browser search core
-        run: node scripts/test_search_core.cjs
+        run: |
+          node scripts/test_search_core.cjs
+          node scripts/test_task_search_semantics.cjs
       - name: Benchmark browser search core
         run: node scripts/benchmark_search_core.cjs
       - name: Verify reproducible atomic builds

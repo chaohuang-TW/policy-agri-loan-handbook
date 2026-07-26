@@ -204,8 +204,23 @@ def validate(root: Path) -> list[str]:
         fail(errors, "search-core must load before search.js")
     if "maxlength=\"256\"" not in base or "maxlength=\"256\"" not in (root / "scripts/build_site.py").read_text():
         fail(errors, "search maxlength missing")
-    if len(concepts) != 15 or len({item["id"] for item in concepts}) != 15:
-        fail(errors, "search concepts are not 15 unique records")
+    if len(concepts) != 22 or len({item["id"] for item in concepts}) != len(concepts):
+        fail(errors, "search concepts are not 22 unique records")
+    concept_definitions = set()
+    for concept in concepts:
+        terms = concept.get("terms", [])
+        triggers = concept.get("triggerTerms", [])
+        related = concept.get("relatedTerms", [])
+        if not terms and (not triggers or not related):
+            fail(errors, f"search concept has empty terms: {concept.get('id')}")
+        definition = (
+            tuple(sorted(terms)),
+            tuple(sorted(triggers)),
+            tuple(sorted(related)),
+        )
+        if definition in concept_definitions:
+            fail(errors, f"duplicate search concept definition: {concept.get('id')}")
+        concept_definitions.add(definition)
     if len(intents) != 5 or any(
         not set(item.get("preferredTypes", [])).issubset(EXPECTED_TYPES)
         for item in intents

@@ -13,5 +13,5 @@
   {"id":"task-amount","label":"可以貸多少","query":"貸款額度","kind":"task:home,loan,common,disaster","order":4},
   {"id":"task-interest","label":"利率","query":"利率 利息差額補貼","kind":"task:home,loan,common,disaster","order":5},
   {"id":"task-documents","label":"應備文件","query":"應備文件 申請書","kind":"task:home,loan,common,disaster","order":6},
-  {"id":"task-post-loan","label":"貸後管理","query":"貸後管理","kind":"task:home,common,disaster","order":7}
+  {"id":"task-post-loan","label":"貸放後管理","query":"貸放後管理","kind":"task:home,common,disaster","order":7}
 ]

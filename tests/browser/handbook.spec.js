@@ -1,4 +1,6 @@
 const {test, expect} = require("@playwright/test");
+const appendixTitle = require("../../data/114/appendices.json")
+  .find((item) => item.id.startsWith("appendix-")).title;
 
 const paths = {
   home: "/",
@@ -255,6 +257,113 @@ test("search result prioritizes context and fallback uses the real catalog", asy
   await expect(page.locator("#manual-search-dialog .search-status")).toContainText("搜尋索引目前無法載入");
   const catalog = page.getByRole("link", {name: "查看原書完整目錄"});
   await expect(catalog).toHaveAttribute("href", /versions\/114\/(?:index\.html)?$/);
+});
+
+for (const loan of ["young-farmer-loan", "farm-machinery-loan", "natural-disaster-low-interest-loan"]) {
+  test(`${loan} inline search defaults to the current loan and task restores context`, async ({page}) => {
+    await page.goto(`/loans/${loan}/`);
+    const panel = page.locator(".loan-context-search [data-search]");
+    await expect(panel.locator("[data-scope=chapter]")).toHaveAttribute("aria-pressed", "true");
+    await expect(panel.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "false");
+    await panel.locator("input[type=search]").fill("貸款");
+    await panel.locator("form button[type=submit]").click();
+    await expect(panel.locator(".search-result").first()).toBeVisible();
+    expect(await panel.evaluate((element, expected) =>
+      element.__manualSearch.state.ranked.every(({record}) => record.scopeGroup === `loan:${expected}`)
+    , loan)).toBe(true);
+
+    await panel.locator("[data-scope=all]").click();
+    await page.locator(".loan-context-search .task-shortcuts button", {hasText: "申請資格"}).click();
+    await expect(panel.locator("[data-scope=chapter]")).toHaveAttribute("aria-pressed", "true");
+    await expect(panel.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "false");
+    await expect(panel.locator(".search-result").first()).toBeVisible();
+    const taskState = await panel.evaluate((element, expected) => ({
+      leaked: element.__manualSearch.state.ranked.filter(
+        ({record}) => record.scopeGroup !== `loan:${expected}`
+      ).length,
+      semantic: element.__manualSearch.state.ranked.slice(0, 10).filter(
+        ({record}) => /申請資格條件|申貸資格|貸款對象|本貸款之對象|救助對象/.test(record.text)
+      ).length,
+      focused: document.activeElement?.matches(".search-result a, .search-status")
+    }), loan);
+    expect(taskState).toEqual({leaked: 0, semantic: expect.any(Number), focused: true});
+    expect(taskState.semantic).toBeGreaterThan(0);
+  });
+}
+
+for (const section of ["agricultural-development-fund-rules", "natural-disaster-rules"]) {
+  test(`${section} inline search defaults to the section and shortcut stays scoped`, async ({page}) => {
+    await page.goto(`/versions/114/sections/${section}/`);
+    const panel = page.locator(".hub-search [data-search]");
+    const scopes = (await page.locator("body").getAttribute("data-search-scopes")).split(",");
+    await expect(panel.locator("[data-scope=chapter]")).toHaveAttribute("aria-pressed", "true");
+    await expect(panel.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "false");
+    await panel.locator("input[type=search]").fill("貸款");
+    await panel.locator("form button[type=submit]").click();
+    await expect(panel.locator(".search-result").first()).toBeVisible();
+    expect(await panel.evaluate((element, expectedScopes) =>
+      element.__manualSearch.state.ranked
+        .filter(({record}) => record.type === "原文頁面")
+        .every(({record}) => expectedScopes.includes(record.scope))
+    , scopes)).toBe(true);
+    await panel.locator("[data-scope=all]").click();
+    await page.locator(".hub-search .task-shortcuts button", {hasText: "可以貸多少"}).click();
+    await expect(panel.locator("[data-scope=chapter]")).toHaveAttribute("aria-pressed", "true");
+    await expect(panel.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "false");
+    const state = await panel.evaluate((element, expectedScopes) => ({
+      leaked: element.__manualSearch.state.ranked.filter(
+        ({record}) => record.type === "原文頁面" && !expectedScopes.includes(record.scope)
+      ).length,
+      semantic: element.__manualSearch.state.ranked.slice(0, 10).filter(
+        ({record}) => /貸款額度|最高貸款額度|最高額度/.test(record.text)
+      ).length
+    }), scopes);
+    expect(state.leaked).toBe(0);
+    expect(state.semantic).toBeGreaterThan(0);
+  });
+}
+
+test("global dialog stays all-scope on a loan page", async ({page}) => {
+  await page.goto(paths.loan);
+  await openDialog(page);
+  const dialog = page.locator("#manual-search-dialog");
+  await expect(dialog.locator("[data-scope=all]")).toHaveAttribute("aria-pressed", "true");
+  await expect(dialog.locator("[data-scope=chapter]")).toHaveAttribute("aria-pressed", "false");
+  expect(await dialog.locator("[data-search]").evaluate(
+    (panel) => panel.__manualSearch.state.scope
+  )).toBe("all");
+});
+
+test("homepage task is semantic, global and moves focus to results", async ({page}) => {
+  await page.goto(paths.home);
+  await page.locator(".task-shortcuts button", {hasText: "申請資格"}).click();
+  const panel = page.locator(".hero [data-search]");
+  await expect(panel.locator(".search-result").first()).toBeVisible();
+  const state = await panel.evaluate((element) => ({
+    scope: element.__manualSearch.state.scope,
+    semantic: element.__manualSearch.state.ranked.slice(0, 10).filter(
+      ({record}) => /申請資格條件|申貸資格|貸款對象|本貸款之對象|救助對象/.test(record.text)
+    ).length,
+    focused: document.activeElement?.matches(".search-result a, .search-status")
+  }));
+  expect(state.scope).toBe("all");
+  expect(state.semantic).toBeGreaterThan(0);
+  expect(state.focused).toBe(true);
+});
+
+test("appendix action and evidence catalog wording are correct", async ({page}) => {
+  await page.goto(paths.home);
+  await openDialog(page);
+  await searchDialog(page, appendixTitle);
+  const appendix = page.locator("#manual-search-dialog .search-result")
+    .filter({has: page.locator(".result-type-badge", {hasText: "附錄附件"})}).first();
+  await expect(appendix.getByRole("link", {name: "查看附錄", exact: true})).toBeVisible();
+  await expect(appendix.getByRole("link", {name: "查看書表", exact: true})).toHaveCount(0);
+
+  await page.goto("/versions/114/pages/page-211.html");
+  await expect(page.locator(".breadcrumb").getByText("原書完整目錄", {exact: true})).toBeVisible();
+  await expect(page.getByRole("link", {name: "回原書完整目錄", exact: true})).toBeVisible();
+  await expect(page.getByText("回完整目錄", {exact: true})).toHaveCount(0);
 });
 
 for (const width of [390, 768, 1024, 1440]) {

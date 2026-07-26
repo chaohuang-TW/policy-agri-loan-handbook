@@ -1,5 +1,31 @@
 # Changelog
 
+## 114.0.0-beta.2.6.1
+
+### Fixed
+
+- 修正貸款頁「在本貸款中搜尋」實際預設仍搜尋全手冊。
+- 修正Section頁「在本章查規定」實際預設仍搜尋全手冊。
+- 修正貸款及章節任務快捷未自動套用目前情境搜尋範圍。
+- 修正快捷搜尋完成後鍵盤焦點未移至結果。
+- 修正附錄搜尋結果錯誤顯示「查看書表」。
+- 統一證據頁「原書完整目錄」用語。
+
+### Changed
+
+- 任務型搜尋加入經來源語料驗證的使用者語言與手冊正式用語映射。
+- Loan inline search預設本貸款。
+- Section inline search預設本章。
+- Global search dialog仍預設全手冊。
+- 任務快捷搜尋改為驗證語意相關性，而非只驗證有結果。
+- 「貸後管理」依來源實際用語調整為「貸放後管理」。
+
+### Added
+
+- 新增Task Search Semantics來源詞彙文件。
+- 新增Task搜尋品質audit。
+- 新增Context search與Task semantics瀏覽器回歸測試。
+
 ## 114.0.0-beta.2.6
 
 ### Changed
