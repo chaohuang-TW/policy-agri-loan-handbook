@@ -170,6 +170,41 @@ def main() -> None:
             items.append(copy)
         mutate_json(search_index(root), append_record)
 
+    def update_http_url(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(sourceUrl="http://law.afna.gov.tw/view.php?id=50"))
+
+    def update_invalid_calendar_date(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(publishedDate="2026-02-31"))
+
+    def update_reverse_application_period(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(applicationPeriod={"start":"2026-12-31","end":"2026-01-01"}))
+
+    def coverage_complete_agribank_partial(root: Path):
+        mutate_json(root / "data/current/coverage.json", lambda value: value["officialUpdateReview"].update(coverageStatus="complete", verifiedThrough="2026-07-28"))
+
+    def coverage_exceeds_source(root: Path):
+        mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(status="complete", reviewedThrough="2026-01-01"))
+        mutate_json(root / "data/current/coverage.json", lambda value: value["officialUpdateReview"].update(coverageStatus="complete", verifiedThrough="2026-07-28"))
+
+    def disaster_missing_include(root: Path):
+        mutate_json(root / "data/current/disaster-loan-announcements.json", lambda items: items.pop())
+
+    def disaster_needs_review_in_data(root: Path):
+        mutate_json(root / "curation/current/disaster-loan-announcement-decisions.json", lambda items: items[0].update(decision="needs-human-review"))
+
+    def disaster_duplicate(root: Path):
+        def change(items):
+            copy = dict(items[0]); copy["id"] = "duplicate-disaster"; items.append(copy)
+        mutate_json(root / "data/current/disaster-loan-announcements.json", change)
+
+    def delete_disaster_page(root: Path):
+        (root / "site/updates/disasters/index.html").unlink()
+
+    def mix_disaster_into_system(root: Path):
+        def change(items):
+            copy = dict(items[0]); copy["id"] = "moa-bawi-typhoon-20260713"; items.append(copy)
+        mutate_json(root / "data/current/official-updates.json", change)
+
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
         ("unknown loan page scopeGroup", unknown_loan_page_group, "python"),
@@ -199,6 +234,16 @@ def main() -> None:
         ("official coverage included count is false", update_bad_coverage_count, "official"),
         ("candidate decision is empty", update_empty_candidate_decision, "official"),
         ("official update leaks into handbook search", update_leaks_into_search, "official"),
+        ("official update uses http", update_http_url, "official"),
+        ("official update invalid calendar date", update_invalid_calendar_date, "official"),
+        ("official update reverse application period", update_reverse_application_period, "official"),
+        ("coverage complete while Agribank partial", coverage_complete_agribank_partial, "coverage"),
+        ("global coverage exceeds source review", coverage_exceeds_source, "coverage"),
+        ("disaster include has no formal record", disaster_missing_include, "disaster"),
+        ("disaster needs-review enters formal data", disaster_needs_review_in_data, "disaster"),
+        ("duplicate disaster announcement", disaster_duplicate, "disaster"),
+        ("disaster page deleted", delete_disaster_page, "python"),
+        ("disaster announcement mixed into system track", mix_disaster_into_system, "official"),
     ]
 
     results = []
@@ -212,6 +257,10 @@ def main() -> None:
                 command = [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
             elif validator == "official":
                 command = [sys.executable, "scripts/validate_official_updates.py", "--root", str(fixture)]
+            elif validator == "disaster":
+                command = [sys.executable, "scripts/validate_disaster_loan_announcements.py", "--root", str(fixture)]
+            elif validator == "coverage":
+                command = [sys.executable, "scripts/validate_official_coverage.py", "--root", str(fixture)]
             elif validator == "ux":
                 command = [sys.executable, "scripts/validate_ux_structure.py"]
             else:
@@ -228,6 +277,8 @@ def main() -> None:
                 "validator": (
                     "validate_search_experience.py" if validator == "python"
                     else "validate_official_updates.py" if validator == "official"
+                    else "validate_disaster_loan_announcements.py" if validator == "disaster"
+                    else "validate_official_coverage.py" if validator == "coverage"
                     else "validate_ux_structure.py" if validator == "ux"
                     else "test_search_core.cjs"
                 ),

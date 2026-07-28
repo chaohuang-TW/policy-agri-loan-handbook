@@ -395,8 +395,8 @@ test("official update layer preserves explicit matched and no-match states", asy
   );
 
   await page.goto(paths.disaster);
-  await expect(page.locator(".loan-current-updates")).toContainText("8 筆明確對應紀錄");
-  await expect(page.locator(".loan-current-updates")).toContainText("農業天然災害救助辦法");
+  await expect(page.locator(".loan-current-updates").first()).toContainText("10 筆明確對應紀錄");
+  await expect(page.locator(".loan-current-updates").first()).toContainText("農業天然災害救助辦法");
 });
 
 for (const width of [390, 768, 1024, 1440]) {
@@ -434,7 +434,7 @@ test("all HTML has one H1, unique IDs and no external runtime request", async ({
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
     new URL(match[1]).pathname.replace(/^\/policy-agri-loan-handbook/, "") || "/"
   );
-  expect(urls).toHaveLength(398);
+  expect(urls).toHaveLength(399);
   for (const url of urls) {
     await page.goto(url);
     await page.evaluate(() => Promise.all([...document.images].map((image) => {

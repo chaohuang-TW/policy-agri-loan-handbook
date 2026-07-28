@@ -27,12 +27,13 @@ def verify_staging(path: Path) -> None:
         "assets/data/search-concepts.json",
         "assets/data/search-intents.json",
         "assets/data/official-updates.json",
+        "assets/data/disaster-loan-announcements.json",
         "assets/data/current-coverage.json",
         "downloads/policy-agri-loan-handbook-114.pdf",
     )
     missing = [name for name in required if not (path / name).is_file()]
     html_count = len(list(path.rglob("*.html")))
-    if missing or html_count != 398:
+    if missing or html_count != 399:
         raise RuntimeError(f"incomplete staged site: missing={missing}, html={html_count}")
 
 

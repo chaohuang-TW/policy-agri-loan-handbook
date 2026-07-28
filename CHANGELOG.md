@@ -1,5 +1,29 @@
 # Changelog
 
+## 114.0.0-beta.2.7.1
+
+### Fixed
+
+- 修正官方來源檢核日期可能超過實際系統性盤點範圍。
+- 補強官方更新Candidate discovery，不再以已納入URL驗證取代Coverage驗證。
+- 修正文件版本日期可能被誤作發布日期。
+- 補強官方URL、日期、受理期間與重複紀錄驗證。
+
+### Added
+
+- 新增天然災害低利貸款公告獨立資料層。
+- 新增天然災害低利貸款公告頁。
+- 新增四類官方來源逐來源review log。
+- 新增Coverage completeness validator。
+- 新增disaster announcement validator與online source audit。
+- 補列手冊出版後遺漏之正式制度更新。
+
+### Changed
+
+- 首頁分開顯示制度／業務更新與天然災害低利貸款公告數量。
+- verifiedThrough改依各指定官方來源實際盤點狀態決定。
+- 官方更新主列表不再混入大量地方型天然災害公告。
+
 ## 114.0.0-beta.2.7
 
 ### Added

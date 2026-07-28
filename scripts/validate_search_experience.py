@@ -120,8 +120,8 @@ def validate(root: Path) -> list[str]:
             fail(errors, f"page-{page['pdfPage']:03d} scopeGroup {actual}, expected {expected_group}")
 
     html_files = sorted(site.rglob("*.html"))
-    if len(html_files) != 398:
-        fail(errors, f"expected 398 HTML pages, got {len(html_files)}")
+    if len(html_files) != 399:
+        fail(errors, f"expected 399 HTML pages, got {len(html_files)}")
     html_docs: dict[Path, tuple[str, Document]] = {}
     known_scopes = {record["scope"] for record in records}
     for path in html_files:
@@ -239,7 +239,7 @@ def main() -> int:
         for error in errors:
             print("- " + error)
         return 1
-    print("SEARCH EXPERIENCE VALIDATION PASSED: 507 records, 398 HTML pages, 7 sections")
+    print("SEARCH EXPERIENCE VALIDATION PASSED: 507 records, 399 HTML pages, 7 sections")
     return 0
 
 

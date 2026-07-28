@@ -117,8 +117,8 @@ def main() -> int:
             errors.append(f"evidence catalog wording missing: {path.name}")
 
     html_files = sorted(SITE.rglob("*.html"))
-    if len(html_files) != 398:
-        errors.append(f"HTML count is {len(html_files)}, expected 398")
+    if len(html_files) != 399:
+        errors.append(f"HTML count is {len(html_files)}, expected 399")
     for path in html_files:
         parser = Structure()
         parser.feed(path.read_text(encoding="utf-8"))

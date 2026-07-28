@@ -36,10 +36,13 @@ def source_text(body: bytes, content_type: str) -> str:
 
 def title_candidates(title: str) -> list[str]:
     candidates = [title]
-    core = re.sub(r"^附件\s*\d+\s*[、,，]?\s*", "", title)
+    core = re.sub(r"^附件(?:\s*\d+)?\s*[-、,，]?\s*", "", title)
     core = re.sub(r"-{1,2}\s*\d+\s*版$", "", core)
     if core != title:
         candidates.append(core)
+    if "申請書及審核表" in title:
+        candidates.append(title.replace("申請書及審核表", "申請書及檢核表"))
+        candidates.append(core.replace("申請書及審核表", "申請書及檢核表"))
     return candidates
 
 
