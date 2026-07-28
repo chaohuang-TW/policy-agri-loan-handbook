@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the beta.2.6.1 user journey, context search and task semantics."""
+"""Validate the user journey, context search, task semantics and page inventory."""
 from __future__ import annotations
 
 import json
@@ -117,8 +117,8 @@ def main() -> int:
             errors.append(f"evidence catalog wording missing: {path.name}")
 
     html_files = sorted(SITE.rglob("*.html"))
-    if len(html_files) != 397:
-        errors.append(f"HTML count is {len(html_files)}, expected 397")
+    if len(html_files) != 398:
+        errors.append(f"HTML count is {len(html_files)}, expected 398")
     for path in html_files:
         parser = Structure()
         parser.feed(path.read_text(encoding="utf-8"))

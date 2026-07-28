@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prove that 20 high-risk content, search and context mutations are rejected."""
+"""Prove that 28 high-risk content, search, context and official-update mutations are rejected."""
 from __future__ import annotations
 
 import json
@@ -11,7 +11,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-COPY_DIRS = ("assets", "data", "scripts", "site", "templates")
+COPY_DIRS = ("assets", "curation", "data", "scripts", "site", "templates")
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
@@ -142,6 +142,34 @@ def main() -> None:
             'record.type === "附錄附件" ? "查看書表"',
         )
 
+    def update_untrusted_domain(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(sourceUrl="https://example.com/update"))
+
+    def update_invalid_type(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(sourceType="summary"))
+
+    def update_empty_relation_evidence(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relationEvidence=""))
+
+    def update_unknown_loan(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedLoanIds=["unknown-loan"]))
+
+    def update_missing_included_record(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items.pop())
+
+    def update_bad_coverage_count(root: Path):
+        mutate_json(root / "data/current/coverage.json", lambda value: value["officialUpdateReview"].update(included=999))
+
+    def update_empty_candidate_decision(root: Path):
+        mutate_json(root / "curation/current/official-update-decisions.json", lambda items: items[0].update(decision=""))
+
+    def update_leaks_into_search(root: Path):
+        def append_record(items):
+            copy = dict(items[0])
+            copy["id"] = "official-update-leak"
+            items.append(copy)
+        mutate_json(search_index(root), append_record)
+
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
         ("unknown loan page scopeGroup", unknown_loan_page_group, "python"),
@@ -163,6 +191,14 @@ def main() -> None:
         ("global dialog default scope changed to context", global_dialog_default_context, "ux"),
         ("loan shortcut context scope removed", loan_shortcut_without_context, "ux"),
         ("appendix action changed back to 查看書表", appendix_action_as_form, "ux"),
+        ("official update uses untrusted domain", update_untrusted_domain, "official"),
+        ("official update has invalid source type", update_invalid_type, "official"),
+        ("official update relation evidence is empty", update_empty_relation_evidence, "official"),
+        ("official update references unknown loan", update_unknown_loan, "official"),
+        ("include decision has no update record", update_missing_included_record, "official"),
+        ("official coverage included count is false", update_bad_coverage_count, "official"),
+        ("candidate decision is empty", update_empty_candidate_decision, "official"),
+        ("official update leaks into handbook search", update_leaks_into_search, "official"),
     ]
 
     results = []
@@ -174,6 +210,8 @@ def main() -> None:
             mutation(fixture)
             if validator == "python":
                 command = [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
+            elif validator == "official":
+                command = [sys.executable, "scripts/validate_official_updates.py", "--root", str(fixture)]
             elif validator == "ux":
                 command = [sys.executable, "scripts/validate_ux_structure.py"]
             else:
@@ -189,6 +227,7 @@ def main() -> None:
                 "name": name,
                 "validator": (
                     "validate_search_experience.py" if validator == "python"
+                    else "validate_official_updates.py" if validator == "official"
                     else "validate_ux_structure.py" if validator == "ux"
                     else "test_search_core.cjs"
                 ),

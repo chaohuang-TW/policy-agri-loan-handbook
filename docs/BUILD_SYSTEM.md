@@ -6,7 +6,7 @@
 python scripts/build_all.py
 ```
 
-`build_all.py` 在目標旁建立 `site.__building__`，先由 `build_site.build_site(output_dir)` 產生HTML、CSS、JavaScript、預覽、PDF、概念與意圖資料，再由 `build_search_index.build_search_index(output_dir)` 產生507筆搜尋索引。只有397份HTML與全部必要資產存在時，才以檔案系統rename原子替換 `site/`。
+`build_all.py` 在目標旁建立 `site.__building__`，先由 `build_site.build_site(output_dir)` 產生HTML、CSS、JavaScript、預覽、PDF、概念與意圖資料，再由 `build_search_index.build_search_index(output_dir)` 產生507筆搜尋索引。只有398份HTML與全部必要資產存在時，才以檔案系統rename原子替換 `site/`。
 
 若任何步驟失敗，暫存目錄會清除，既有 `site/` 維持不變。替換期間若發生錯誤，`site.__previous__` 會復原；成功後備份目錄會清除。
 

@@ -39,6 +39,11 @@ RULES = json.loads((DATA / "page-rendering-rules.json").read_text(encoding="utf-
 RENDERING = {p["pdfPage"]: p for p in RULES["pages"]}
 MANUAL = json.loads((DATA / "manual.json").read_text(encoding="utf-8"))
 SHORTCUTS = json.loads((DATA / "navigation-shortcuts.json").read_text(encoding="utf-8"))
+CURRENT = ROOT / "data" / "current"
+COVERAGE = json.loads((CURRENT / "coverage.json").read_text(encoding="utf-8"))
+OFFICIAL_UPDATES = json.loads((CURRENT / "official-updates.json").read_text(encoding="utf-8"))
+DECISIONS = json.loads((ROOT / "curation/current/official-update-decisions.json").read_text(encoding="utf-8"))
+LOAN_TITLES = {item["id"]: item["title"] for item in LOANS}
 def interpretation_target(loan_program: str) -> str:
     return f"interpretations/index.html#group-{interpretation_group_slug(loan_program)}"
 MANIFEST = {p["pdfPage"]: p for p in json.loads((ROOT / "assets/page-previews/114/manifest.json").read_text(encoding="utf-8"))}
@@ -98,7 +103,67 @@ def search_box(
     label: str = "你想查什麼？",
     default_scope: str = "all",
 ) -> str:
-    return f'''<div class="search-panel" data-search data-search-default-scope="{e(default_scope)}"><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><div class="search-scope-options" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
+    return f'''<div class="search-panel" data-search data-search-default-scope="{e(default_scope)}"><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><p class="search-scope-note">目前全文搜尋範圍：114年度手冊底本。手冊出版後資料請查看「官方更新」。</p><div class="search-scope-options" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
+
+
+TYPE_LABELS = {
+    "regulation": "法規", "administrative-rule": "行政規則",
+    "interpretation": "函示", "announcement": "公告", "faq": "FAQ",
+    "form": "表單／附件", "disaster-measure": "災害措施", "other-official": "其他官方資料",
+}
+
+
+def roc_date(value: str | None) -> str:
+    if not value:
+        return ""
+    year, month, day = (int(part) for part in value.split("-"))
+    return f"{year - 1911}/{month:02d}/{day:02d}"
+
+
+def update_relation(item: dict) -> str:
+    loans = [LOAN_TITLES[loan_id] for loan_id in item["relatedLoanIds"]]
+    if loans:
+        return "、".join(loans)
+    if "natural-disaster-rules" in item["relatedSectionIds"]:
+        return "天然災害"
+    if any(section in item["relatedSectionIds"] for section in ("policy-loan-regulations", "agricultural-development-fund-rules")):
+        return "共同規定"
+    return "政策農貸"
+
+
+def update_rows(relative: str, items: list[dict], compact: bool = False) -> str:
+    rows = []
+    ordered = sorted(
+        items,
+        key=lambda record: (-int(record["publishedDate"].replace("-", "")), record["id"]),
+    )
+    for item in ordered:
+        metadata = [roc_date(item["publishedDate"]), TYPE_LABELS[item["sourceType"]], item["officialAgency"]]
+        if not compact and item.get("effectiveDate"):
+            metadata.append("生效 " + roc_date(item["effectiveDate"]))
+        if not compact and item.get("documentNumber"):
+            metadata.append(item["documentNumber"])
+        period = item["applicationPeriod"]
+        period_text = ""
+        if not compact and (period["start"] or period["end"]):
+            period_text = f'<p class="update-period">官方資料所載受理期間：{e((period["start"] or "未載明").replace("-", "/"))}－{e((period["end"] or "未載明").replace("-", "/"))}</p>'
+        rows.append(
+            f'<li class="official-update-item" data-update-type="{e(item["sourceType"])}" '
+            f'data-update-year="{e(item["publishedDate"][:4])}" data-update-relations="{e(" ".join(item["relatedLoanIds"] + item["relatedSectionIds"]))}">'
+            f'<p class="update-meta">{"｜".join(e(value) for value in metadata)}</p>'
+            f'<h3>{e(item["officialTitle"])}</h3>'
+            f'{"" if compact else f"<p>關聯：{e(update_relation(item))}</p>"}{period_text}'
+            f'<a href="{e(item["sourceUrl"])}" target="_blank" rel="noopener noreferrer">查看官方來源<span class="visually-hidden">（另開新視窗）</span></a></li>'
+        )
+    return '<ol class="official-update-list">' + "".join(rows) + "</ol>"
+
+
+def current_update_block(relative: str, items: list[dict], empty_context: str = "") -> str:
+    if items:
+        body = f'<p>{len(items)} 筆明確對應紀錄。</p>{update_rows(relative, items)}'
+    else:
+        body = f'<p>在目前已檢核的官方更新索引中，尚未建立與{e(empty_context)}明確對應的手冊出版後更新。</p>'
+    return f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2>{body}<p><a href="{e(rel(relative, "updates/index.html"))}">查看全部官方更新</a></p></section>'
 
 
 def paragraphize(text: str) -> str:
@@ -186,6 +251,20 @@ def build_home() -> None:
     counts = MANUAL["counts"]
     revision = MANUAL["digitalRevision"]
     hero = f'<h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">快速找到貸款規定、函釋與書表，並可回到原始手冊核對。</p><p class="version-inline">114年度 Beta</p>{search_box("home-search")}<div class="popular" aria-label="常用查詢"><span>常用查詢</span>{popular}</div>'
+    review_info = COVERAGE["officialUpdateReview"]
+    recent = sorted(
+        OFFICIAL_UPDATES,
+        key=lambda item: (-int(item["publishedDate"].replace("-", "")), item["id"]),
+    )[:3]
+    status = (
+        f'<div class="current-status-head"><div><p class="eyebrow">資料狀態</p><h2 id="current-status-title">114手冊底本與後續官方資料分開呈現</h2></div>'
+        f'<a class="button-link secondary" href="updates/index.html">查看手冊出版後官方更新</a></div>'
+        f'<dl class="current-status-meta"><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div>'
+        f'<div><dt>官方來源檢核</dt><dd>{roc_date(review_info["searchStartDate"])}－{roc_date(review_info["verifiedThrough"])}</dd></div>'
+        f'<div><dt>官方更新索引</dt><dd>{len(OFFICIAL_UPDATES)} 筆</dd></div></dl>'
+        f'<p class="scope-caveat">114年度手冊原文保持不變；後續官方規定另列於更新索引。實際適用仍以主管機關及貸款經辦機構最新正式資料為準。</p>'
+        f'<div class="recent-updates"><h3>最近官方更新</h3>{update_rows(relative, recent, compact=True)}<p><a href="updates/index.html">查看全部官方更新</a></p></div>'
+    )
     tasks = '<h2 id="task-title">我想查……</h2><p>選擇常見任務後直接搜尋原始資料。</p>' + shortcut_buttons("home", "home-search")
     links = [
         ("找貸款", "依名稱與類別瀏覽23項貸款", "loans/index.html", "依需求找資料", "quick-index/index.html"),
@@ -199,7 +278,7 @@ def build_home() -> None:
     ) + "</div>"
     review = f'''<h2 id="review-title">內容覆核狀態</h2><p>原始閱讀頁：{MANUAL["pdfPages"]}頁；原書完整目錄：{counts["tocEntries"]}項；函釋來源索引：{counts["interpretationsSourceIndexed"]}筆；函釋候選庫：{counts["interpretationCandidateInventoryTotal"]}筆；函釋未決候選：{counts["interpretationCandidatesPending"]}筆；書表來源索引：{counts["formsSourceIndexed"]}筆；書表未分類候選：{counts["formCandidatesPending"]}筆。</p><p>書表逐頁人工覆核：尚未完成；函釋結束頁確認：尚未完成；全文逐頁人工校讀：尚未完成。</p><p class="layout-note">來源索引依嚴格頁面與欄位規則建立；候選庫總量僅為偵測庫存，不等同待覆核數。全文逐頁校讀、函釋涵蓋範圍及書表內容仍需人工確認。</p>'''
     version = f'''<h2 id="version-title">版本資訊</h2><dl><div><dt>資料版本</dt><dd>114年度 Beta</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div><dt>數位版本</dt><dd>{e(revision)}</dd></div><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div></dl><div class="version-actions"><a class="button-link" href="versions/114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="downloads/{PDF_NAME}">開啟／下載原始PDF</a><a href="versions/index.html">查看版本紀錄與更新說明</a></div>'''
-    write(relative, "政策性農業專案貸款業務手冊｜114年度數位閱讀版", wrap("home", HERO=hero, TASKS=tasks, QUICK=quick, REVIEW=review, VERSION=version))
+    write(relative, "政策性農業專案貸款業務手冊｜114年度數位閱讀版", wrap("home", HERO=hero, STATUS=status, TASKS=tasks, QUICK=quick, REVIEW=review, VERSION=version))
 
 
 def build_version_index() -> None:
@@ -224,7 +303,7 @@ def build_version_index() -> None:
         label = f'<a href="{e(rel(relative, target))}">{e(item["title"])}</a>' if target else f'<strong>{e(item["title"])}</strong>'
         page = f'<span>手冊頁 {item["printedPage"]}</span>' if item["printedPage"] is not None else ""
         rows.append(f'<li class="toc-level-{item["level"]}">{label}{page}</li>')
-    content = breadcrumb(relative, [("首頁", "index.html")], "原書完整目錄") + f'<h1>114年度原書完整目錄</h1><p class="source-meta">依原始手冊順序瀏覽。逐項轉錄原始PDF第1–2頁，共 {len(TOC["items"])} 個目錄項目。</p><p><a href="{e(rel(relative, "quick-index/index.html"))}">需要較精簡的入口？前往依需求找資料</a></p>' + search_box("toc-search") + '<ol class="index-rows faithful-toc">' + "".join(rows) + "</ol>"
+    content = breadcrumb(relative, [("首頁", "index.html")], "原書完整目錄") + f'<h1>114年度原書完整目錄</h1><p class="source-meta">本目錄忠實對應114年度手冊，不因後續官方更新重新編排。逐項轉錄原始PDF第1–2頁，共 {len(TOC["items"])} 個目錄項目。</p><p><a href="{e(rel(relative, "quick-index/index.html"))}">需要較精簡的入口？前往依需求找資料</a>｜<a href="{e(rel(relative, "updates/index.html"))}">查看手冊出版後官方更新</a></p>' + search_box("toc-search") + '<ol class="index-rows faithful-toc">' + "".join(rows) + "</ol>"
     write(relative, "114年度完整目錄｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content))
 
 
@@ -259,6 +338,17 @@ def build_sections() -> None:
         search_id = f"section-search-{slug}"
         context = "common" if slug == "agricultural-development-fund-rules" else "disaster" if slug == "natural-disaster-rules" else ""
         search = f'<section class="hub-search"><h2>在本章查規定</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons(context, search_id) if context else ""}</section>'
+        section_updates = [item for item in OFFICIAL_UPDATES if slug in item["relatedSectionIds"]]
+        if slug in {"policy-loan-regulations", "agricultural-development-fund-rules", "natural-disaster-rules"}:
+            current = current_update_block(relative, section_updates, "本章")
+        elif slug == "loan-programs":
+            current = f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2><p><a href="{e(rel(relative, "updates/index.html"))}">查看手冊出版後各貸款官方更新</a></p></section>'
+        elif slug == "amendment-faq":
+            current = f'<section class="loan-current-updates"><h2>資料範圍</h2><p>114年度手冊收錄FAQ如下；手冊出版後之官方問答另見官方更新。</p><p><a href="{e(rel(relative, "updates/index.html?type=faq"))}">查看手冊出版後官方問答</a></p></section>'
+        elif slug == "attachments":
+            current = f'<section class="loan-current-updates"><h2>手冊出版後官方表單／附件</h2><p><a href="{e(rel(relative, "updates/index.html?type=form"))}">查看官方更新中的表單／附件</a></p></section>'
+        else:
+            current = ""
         first_page = f'versions/114/pages/page-{pages[0]["pdfPage"]:03d}.html'
         original = f'<section class="hub-original"><h2>原文</h2><p>依本章原始頁次閱讀，條文內容以正式資料為準。</p><a class="button-link secondary" href="{e(rel(relative, first_page))}">從本章第一頁開始</a></section>'
         primary = ""
@@ -282,7 +372,7 @@ def build_sections() -> None:
             primary = f'<section class="hub-primary"><h2>相關函釋與書表</h2><div class="hub-links"><a href="{e(rel(relative, common_target))}">共同規定函釋</a><a href="{e(rel(relative, "forms/index.html"))}">共通書表</a></div></section>'
         else:
             primary = f'<section class="hub-primary"><h2>下一步</h2><div class="hub-links"><a href="{e(rel(relative, "loans/index.html"))}">找貸款</a><a href="{e(rel(relative, "interpretations/index.html"))}">查函釋</a><a href="{e(rel(relative, "forms/index.html"))}">找書表</a></div></section>'
-        content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}-{end}｜資料版本：114年度</p>{search}{primary}{original}{source_page_details(relative, pages)}'
+        content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}-{end}｜資料版本：114年度</p>{current}{search}{primary}{original}{source_page_details(relative, pages)}'
         nav = '<nav class="hub-nav" aria-label="本章使用方式"><a href="#main-content">本章概覽</a><a href="#section-search-' + e(slug) + '">搜尋</a><a href="#source-pages">來源頁面</a></nav>'
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("原書完整目錄", "versions/114/index.html")], title), NAV=nav, CONTENT=content)
         scopes = ",".join(section_scopes(slug))
@@ -323,6 +413,7 @@ def build_loans() -> None:
         search_id = f'loan-search-{loan["id"]}'
         related_interpretations = [item for item in INTERPRETATIONS if item["loanProgram"] == loan["title"]]
         related_forms = [item for item in FORMS if (owner := loan_for_form(item)) and owner["id"] == loan["id"]]
+        related_updates = [item for item in OFFICIAL_UPDATES if loan["id"] in item["relatedLoanIds"]]
         if related_interpretations:
             interpretation_block = f'<p>{len(related_interpretations)}筆來源索引。</p><a href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a>'
         else:
@@ -331,6 +422,7 @@ def build_loans() -> None:
         content = (
             f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}-{loan["sourceEndPage"]}</p>'
             f'<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>'
+            f'{current_update_block(relative, related_updates, "本貸款")}'
             f'<section class="loan-context-search"><h2>在本貸款中搜尋</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons("loan", search_id)}</section>'
             f'{continuous_source(pages)}'
             f'<section class="loan-related"><h2>相關函釋</h2>{interpretation_block}</section>'
@@ -368,20 +460,41 @@ def build_indexes() -> None:
         items = [item for item in INTERPRETATIONS if item["loanProgram"] == loan_program]
         groups.append(f'<section id="group-{slug}" class="interpretation-group"><h2>{e(loan_program)}</h2><p class="source-meta">{len(items)} 筆函釋</p>{index_items(relative, items, "函釋")}<p><a href="#main-content">返回函釋頁頂端</a></p></section>')
     quick_links = '<nav class="index-rows" aria-label="依類別快速前往"><h2>依類別快速前往</h2><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in groups_data) + '</ul></nav>'
-    content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p>' + quick_links + ''.join(groups) + '<p><a href="../faq/index.html">前往常見問答</a></p>'
+    content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">本頁為114年度手冊所收錄函釋索引；依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p><p><a href="../updates/index.html?type=interpretation">查看手冊出版後官方函示</a></p>' + quick_links + ''.join(groups) + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁依原手冊目錄建立入口，不提供AI摘要。</p>' + index_items(relative, FAQ, "FAQ")
+    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁列示114年度手冊內收錄之FAQ；手冊出版後官方發布之問答，請查看「官方更新」。本頁不提供AI摘要。</p><p><a href="../updates/index.html?type=faq">查看手冊出版後官方問答</a></p>' + index_items(relative, FAQ, "FAQ")
     write(relative, "增修規定常見問答｜政策性農業專案貸款業務手冊", wrap("faq", CONTENT=content))
     relative = "forms/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "書表與附件來源索引") + f'<h1>書表與附件來源索引</h1><p class="source-meta">書表來源索引 {counts["formsSourceIndexed"]} 筆；候選庫 {counts["formCandidateInventoryTotal"]} 筆，其中已納入 {counts["formCandidatesPromoted"]} 筆、排除 {counts["formCandidatesExcluded"]} 筆、真正待人工覆核 {counts["formCandidatesPending"]} 筆。另列 {len(APPENDICES)} 項原手冊附錄／附件。</p><h2>附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表來源索引</h2>' + index_items(relative, FORMS, "書表")
+    content = breadcrumb(relative, [("首頁", "index.html")], "書表與附件來源索引") + f'<h1>書表與附件來源索引</h1><p class="source-meta">本頁列示114手冊收錄書表。書表來源索引 {counts["formsSourceIndexed"]} 筆；候選庫 {counts["formCandidateInventoryTotal"]} 筆，其中已納入 {counts["formCandidatesPromoted"]} 筆、排除 {counts["formCandidatesExcluded"]} 筆、真正待人工覆核 {counts["formCandidatesPending"]} 筆。另列 {len(APPENDICES)} 項原手冊附錄／附件。</p><section class="loan-current-updates"><h2>手冊出版後官方表單／附件</h2><p>後續官方表單不改寫114手冊書表。</p><p><a href="../updates/index.html?type=form">查看官方更新中的表單／附件</a></p></section><h2>附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表來源索引</h2>' + index_items(relative, FORMS, "書表")
     write(relative, "附件與書表索引｜政策性農業專案貸款業務手冊", wrap("forms", CONTENT=content))
+
+
+def build_updates() -> None:
+    relative = "updates/index.html"
+    review = COVERAGE["officialUpdateReview"]
+    years = sorted({item["publishedDate"][:4] for item in OFFICIAL_UPDATES}, reverse=True)
+    loan_options = "".join(f'<option value="{e(item["id"])}">{e(item["title"])}</option>' for item in LOANS)
+    filters = (
+        '<form class="update-filters" data-update-filters>'
+        '<label>類型<select name="type"><option value="">全部</option><option value="regulation">法規</option><option value="administrative-rule">行政規則</option><option value="interpretation">函示</option><option value="announcement">公告</option><option value="faq">FAQ</option><option value="form">表單／附件</option><option value="disaster-measure">災害措施</option></select></label>'
+        '<label>年份<select name="year"><option value="">全部</option>' + "".join(f'<option value="{year}">{int(year)-1911}</option>' for year in years) + '</select></label>'
+        '<label>關聯<select name="relation"><option value="">全部</option><option value="policy-loan-regulations">共同規定</option><option value="natural-disaster-rules">天然災害</option>' + loan_options + '</select></label>'
+        '<button type="reset">清除篩選</button><p class="update-filter-status" aria-live="polite"></p></form>'
+    )
+    content = (
+        breadcrumb(relative, [("首頁", "index.html")], "官方更新")
+        + '<h1>手冊出版後官方更新</h1><p class="subtitle">114年度手冊原文保持不變；本頁整理手冊出版後經人工核對之官方資料。</p>'
+        + f'<section class="coverage-panel"><h2>資料基準</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>官方來源檢核範圍</dt><dd>{roc_date(review["searchStartDate"])}－{roc_date(review["verifiedThrough"])}</dd></div><div><dt>已納入</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div><div><dt>待人工核對</dt><dd>{review["needsHumanReview"]}筆</dd></div></dl><p>{e(review["statement"])}</p></section>'
+        + '<section class="updates-index"><h2>官方更新列表</h2>' + filters + update_rows(relative, OFFICIAL_UPDATES) + '</section>'
+    )
+    write(relative, "手冊出版後官方更新｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-update-index="true"')
 
 
 def build_versions() -> None:
     relative = "versions/index.html"
     revision = MANUAL["digitalRevision"]
-    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.6.1 情境搜尋與任務語意校正</h3><p>貸款與Section inline搜尋預設套用目前情境，Header搜尋維持全手冊；任務捷徑以來源語料驗證的正式用語擴充搜尋。</p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
+    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.7 現行官方更新層</h3><p>114手冊原文保持不變；新增手冊出版後官方資料索引、候選決策與來源檢核狀態。</p><p><a href="../updates/index.html">查看官方更新</a></p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 
@@ -396,11 +509,13 @@ def build_site(output_dir: Path) -> None:
     (SITE / "assets/data").mkdir(parents=True, exist_ok=True)
     for data_file in ("search-concepts.json", "search-intents.json", "navigation-shortcuts.json"):
         shutil.copy2(DATA / data_file, SITE / "assets/data" / data_file)
+    shutil.copy2(CURRENT / "official-updates.json", SITE / "assets/data" / "official-updates.json")
+    shutil.copy2(CURRENT / "coverage.json", SITE / "assets/data" / "current-coverage.json")
     shutil.copytree(ROOT / "assets/page-previews", SITE / "assets/page-previews", dirs_exist_ok=True)
     shutil.copy2(ROOT / "assets/favicon.svg", SITE / "assets/favicon.svg")
     (SITE / "downloads").mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "source" / PDF_NAME, SITE / "downloads" / PDF_NAME)
-    build_home(); build_version_index(); build_quick_index(); build_sections(); build_physical_pages(); build_loans(); build_indexes(); build_versions()
+    build_home(); build_version_index(); build_quick_index(); build_sections(); build_physical_pages(); build_loans(); build_indexes(); build_updates(); build_versions()
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     html_files = sorted(SITE.rglob("*.html"))
     sitemap = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" + "".join(f"  <url><loc>{e(canonical(str(p.relative_to(SITE))))}</loc></url>\n" for p in html_files) + "</urlset>\n"

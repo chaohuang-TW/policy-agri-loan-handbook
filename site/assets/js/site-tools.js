@@ -79,4 +79,40 @@
       details.open = true;
     });
   }
+
+  const updateFilters = document.querySelector("[data-update-filters]");
+  if (updateFilters) {
+    const items = [...document.querySelectorAll(".updates-index .official-update-item")];
+    const status = updateFilters.querySelector(".update-filter-status");
+    const applyUpdateFilters = () => {
+      const values = new FormData(updateFilters);
+      const type = String(values.get("type") || "");
+      const year = String(values.get("year") || "");
+      const relation = String(values.get("relation") || "");
+      let visible = 0;
+      items.forEach((item) => {
+        const match = (!type || item.dataset.updateType === type)
+          && (!year || item.dataset.updateYear === year)
+          && (!relation || item.dataset.updateRelations.split(" ").includes(relation));
+        item.hidden = !match;
+        if (match) visible += 1;
+      });
+      status.textContent = `顯示 ${visible} 筆官方更新`;
+      const params = new URLSearchParams();
+      if (type) params.set("type", type);
+      if (year) params.set("year", year);
+      if (relation) params.set("relation", relation);
+      history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}`);
+    };
+    const params = new URLSearchParams(location.search);
+    ["type", "year", "relation"].forEach((name) => {
+      const control = updateFilters.elements.namedItem(name);
+      if (control && [...control.options].some((option) => option.value === params.get(name))) {
+        control.value = params.get(name);
+      }
+    });
+    updateFilters.addEventListener("change", applyUpdateFilters);
+    updateFilters.addEventListener("reset", () => window.setTimeout(applyUpdateFilters, 0));
+    applyUpdateFilters();
+  }
 })();

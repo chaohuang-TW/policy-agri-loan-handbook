@@ -135,10 +135,19 @@ def main() -> int:
             errors.append(f"search URL target missing: {record['url']}")
         elif parsed.fragment and record.get("type") == "原文頁面" and f'id="{parsed.fragment}"' not in target.read_text(encoding="utf-8"):
             errors.append(f"search anchor missing: {record['url']}")
-    for required in ("index.html", "versions/114/index.html", "quick-index/index.html", "loans/index.html",
-                     "interpretations/index.html", "faq/index.html", "forms/index.html", "versions/index.html"):
+    for required in (
+        "index.html", "versions/114/index.html", "quick-index/index.html", "loans/index.html",
+        "interpretations/index.html", "faq/index.html", "forms/index.html", "versions/index.html",
+        "updates/index.html", "assets/data/official-updates.json", "assets/data/current-coverage.json",
+    ):
         if not (SITE / required).is_file():
             errors.append(f"required public page missing: {required}")
+    for source_path, public_path in (
+        (ROOT / "data/current/official-updates.json", SITE / "assets/data/official-updates.json"),
+        (ROOT / "data/current/coverage.json", SITE / "assets/data/current-coverage.json"),
+    ):
+        if public_path.is_file() and source_path.read_bytes() != public_path.read_bytes():
+            errors.append(f"published current data differs from source: {public_path.relative_to(SITE)}")
     keyword_results = {}
     for keyword in ("青壯年農民", "農機貸款", "電子商務", "寬緩期", "農業天然災害", "週轉金", "購買耕地", "函釋", "農業保險", "中小企業認定標準"):
         count = sum(keyword.casefold() in record["text"].casefold() for record in search)

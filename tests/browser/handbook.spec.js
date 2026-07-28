@@ -366,6 +366,39 @@ test("appendix action and evidence catalog wording are correct", async ({page}) 
   await expect(page.getByText("回完整目錄", {exact: true})).toHaveCount(0);
 });
 
+test("official update filters load from query and keep a shareable URL", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.goto("/updates/?type=faq");
+  const filters = page.locator("[data-update-filters]");
+  await expect(filters.locator('select[name="type"]')).toHaveValue("faq");
+  await expect(filters.locator(".update-filter-status")).toHaveText("顯示 3 筆官方更新");
+  await expect(page.locator(".official-update-item:visible")).toHaveCount(3);
+
+  await filters.locator('select[name="relation"]').selectOption("farmer-relief-loan");
+  await expect(page).toHaveURL(/type=faq&relation=farmer-relief-loan$/);
+  await expect(filters.locator(".update-filter-status")).toHaveText("顯示 1 筆官方更新");
+  await expect(page.locator(".official-update-item:visible")).toHaveCount(1);
+  await expect(page.locator(".official-update-item:visible")).toContainText("115年「農民紓困貸款」公告事項常見問答");
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("official update layer preserves explicit matched and no-match states", async ({page}) => {
+  await page.goto("/loans/young-farmer-loan/");
+  const matched = page.locator(".loan-current-updates");
+  await expect(matched.getByRole("heading", {name: "手冊出版後官方更新"})).toBeVisible();
+  await expect(matched).toContainText("辦理政策性農業專案貸款辦法");
+  await expect(matched).toContainText("農業發展基金貸款作業規範");
+
+  await page.goto("/loans/agricultural-rooting-loan/");
+  await expect(page.locator(".loan-current-updates")).toContainText(
+    "在目前已檢核的官方更新索引中，尚未建立與本貸款明確對應的手冊出版後更新。"
+  );
+
+  await page.goto(paths.disaster);
+  await expect(page.locator(".loan-current-updates")).toContainText("8 筆明確對應紀錄");
+  await expect(page.locator(".loan-current-updates")).toContainText("農業天然災害救助辦法");
+});
+
 for (const width of [390, 768, 1024, 1440]) {
   test(`${width}px has no horizontal or dialog overflow`, async ({page}) => {
     const runtime = observeRuntime(page);
@@ -401,7 +434,7 @@ test("all HTML has one H1, unique IDs and no external runtime request", async ({
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
     new URL(match[1]).pathname.replace(/^\/policy-agri-loan-handbook/, "") || "/"
   );
-  expect(urls).toHaveLength(397);
+  expect(urls).toHaveLength(398);
   for (const url of urls) {
     await page.goto(url);
     await page.evaluate(() => Promise.all([...document.images].map((image) => {

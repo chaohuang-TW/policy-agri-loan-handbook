@@ -53,6 +53,8 @@ jobs:
           python scripts/validate_visual_theme.py
           python scripts/validate_search_experience.py
           python scripts/validate_ux_structure.py
+          python scripts/validate_official_updates.py
+          python scripts/report_official_update_inventory.py
           python scripts/validate_site.py
           python scripts/audit_task_search_quality.py
       - name: Test browser search core
