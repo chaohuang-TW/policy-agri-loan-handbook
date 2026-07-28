@@ -120,14 +120,19 @@ def main() -> int:
     if len(html_files) != 399:
         errors.append(f"HTML count is {len(html_files)}, expected 399")
     for path in html_files:
+        text = path.read_text(encoding="utf-8")
         parser = Structure()
-        parser.feed(path.read_text(encoding="utf-8"))
+        parser.feed(text)
         if parser.h1 != 1:
             errors.append(f"H1 count {parser.h1}: {path.relative_to(SITE)}")
         if len(parser.ids) != len(set(parser.ids)):
             errors.append(f"duplicate IDs: {path.relative_to(SITE)}")
         if parser.canonicals != 1:
             errors.append(f"canonical count {parser.canonicals}: {path.relative_to(SITE)}")
+        for metadata in re.findall(r'<p class="update-meta">(.*?)</p>', text):
+            for label in ("發布", "生效", "版本"):
+                if metadata.count(label) > 1:
+                    errors.append(f"duplicate update date label {label}: {path.relative_to(SITE)}")
     if len(evidence_paths) != 359:
         errors.append("359 page URLs were not preserved")
 

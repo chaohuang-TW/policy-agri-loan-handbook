@@ -425,10 +425,17 @@
     "publishedDate": "2026-03-24",
     "effectiveDate": "2026-03-24",
     "versionDate": null,
-    "applicationPeriod": {"start": null, "end": null},
+    "applicationPeriod": {
+      "start": null,
+      "end": null
+    },
     "sourceUrl": "https://law.afna.gov.tw/view.php?id=50",
-    "relatedLoanIds": ["natural-disaster-low-interest-loan"],
-    "relatedSectionIds": ["natural-disaster-rules"],
+    "relatedLoanIds": [
+      "natural-disaster-low-interest-loan"
+    ],
+    "relatedSectionIds": [
+      "natural-disaster-rules"
+    ],
     "relationBasis": "disaster-rule",
     "relationEvidence": "本辦法所稱救助，指現金救助、補助或低利貸款。",
     "verifiedOn": "2026-07-28"
@@ -442,10 +449,18 @@
     "publishedDate": "2025-12-23",
     "effectiveDate": "2025-12-23",
     "versionDate": null,
-    "applicationPeriod": {"start": "2025-12-23", "end": "2026-12-31"},
+    "applicationPeriod": {
+      "start": "2025-12-23",
+      "end": "2026-12-31"
+    },
     "sourceUrl": "https://law.afna.gov.tw/view.php?id=1544",
-    "relatedLoanIds": ["livestock-poultry-loan", "young-farmer-loan"],
-    "relatedSectionIds": ["loan-programs"],
+    "relatedLoanIds": [
+      "livestock-poultry-loan",
+      "young-farmer-loan"
+    ],
+    "relatedSectionIds": [
+      "loan-programs"
+    ],
     "relationBasis": "explicit-body",
     "relationEvidence": "借款人應符合提升畜禽產業經營貸款或青壯年農民從農貸款規定。",
     "verifiedOn": "2026-07-28"
@@ -459,10 +474,19 @@
     "publishedDate": "2025-12-23",
     "effectiveDate": null,
     "versionDate": null,
-    "applicationPeriod": {"start": "2025-12-23", "end": "2026-12-31"},
+    "applicationPeriod": {
+      "start": "2025-12-23",
+      "end": "2026-12-31"
+    },
     "sourceUrl": "https://law.afna.gov.tw/files/boaf/law/1544/A01_2.pdf",
-    "relatedLoanIds": ["livestock-poultry-loan", "young-farmer-loan"],
-    "relatedSectionIds": ["loan-programs", "attachments"],
+    "relatedLoanIds": [
+      "livestock-poultry-loan",
+      "young-farmer-loan"
+    ],
+    "relatedSectionIds": [
+      "loan-programs",
+      "attachments"
+    ],
     "relationBasis": "explicit-body",
     "relationEvidence": "作業原則附件列表列有「附件-廚餘養豬場轉型貸款利息補助措施申請書及審核表」。",
     "verifiedOn": "2026-07-28"
@@ -476,12 +500,20 @@
     "publishedDate": "2025-10-09",
     "effectiveDate": null,
     "versionDate": null,
-    "applicationPeriod": {"start": null, "end": null},
+    "applicationPeriod": {
+      "start": null,
+      "end": null
+    },
     "sourceUrl": "https://law.afna.gov.tw/view.php?id=1521",
-    "relatedLoanIds": ["natural-disaster-low-interest-loan"],
-    "relatedSectionIds": ["natural-disaster-rules"],
+    "relatedLoanIds": [
+      "natural-disaster-low-interest-loan",
+      "agri-organization-disaster-recovery-loan"
+    ],
+    "relatedSectionIds": [
+      "natural-disaster-rules"
+    ],
     "relationBasis": "explicit-title",
-    "relationEvidence": "提供因114年樺加沙颱風申貸之「農業天然災害低利貸款」自撥貸日起1年內免息措施。",
+    "relationEvidence": "提供因114年樺加沙颱風申貸之「農業天然災害低利貸款」及「農民組織及農企業天然災害復耕復建貸款」自撥貸日起1年內免息措施。",
     "verifiedOn": "2026-07-28"
   }
 ]

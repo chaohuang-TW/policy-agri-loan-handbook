@@ -24,7 +24,7 @@ def main():
   required={"id","officialTitle","officialAgency","documentNumber","publishedDate","effectiveDate","applicationPeriod","sourceUrl","disasterName","areaText","itemText","relationEvidence","verifiedOn"}
   if required-set(x):errs.append(f"missing fields: {x.get('id')}");continue
   period=x["applicationPeriod"]; key=(x["sourceUrl"],x["publishedDate"],x["documentNumber"])
-  if not x["officialTitle"] or not x["officialAgency"] or not x["relationEvidence"] or not all(valid(x[k]) for k in ("publishedDate","effectiveDate","verifiedOn")) or not valid(period.get("start")) or not valid(period.get("end")) or (period.get("start") and period.get("end") and period["start"]>period["end"]):errs.append(f"invalid disaster metadata: {x['id']}")
+  if not x["officialTitle"] or not x["officialAgency"] or not x["relationEvidence"] or not x["publishedDate"] or not x["verifiedOn"] or not isinstance(period,dict) or not all(valid(x[k]) for k in ("publishedDate","effectiveDate","verifiedOn")) or not valid(period.get("start")) or not valid(period.get("end")) or (period.get("start") and period.get("end") and period["start"]>period["end"]):errs.append(f"invalid disaster metadata: {x['id']}")
   if not okurl(x["sourceUrl"]):errs.append(f"non-HTTPS allowlisted disaster source: {x['id']}")
   if key in keys:errs.append(f"duplicate disaster announcement: {x['id']}")
   keys.add(key)

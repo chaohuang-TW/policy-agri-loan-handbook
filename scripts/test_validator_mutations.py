@@ -205,6 +205,24 @@ def main() -> None:
             copy = dict(items[0]); copy["id"] = "moa-bawi-typhoon-20260713"; items.append(copy)
         mutate_json(root / "data/current/official-updates.json", change)
 
+    def update_unknown_section(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))
+
+    def update_verified_on_null(root: Path):
+        mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(verifiedOn=None))
+
+    def disaster_verified_on_null(root: Path):
+        mutate_json(root / "data/current/disaster-loan-announcements.json", lambda items: items[0].update(verifiedOn=None))
+
+    def lineage_count_mismatch(root: Path):
+        mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(candidateCount=999))
+
+    def lineage_unknown_candidate(root: Path):
+        mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(candidateIds=["unknown-candidate"], candidateCount=1))
+
+    def lineage_orphan(root: Path):
+        mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(candidateIds=items[0]["candidateIds"][1:], candidateCount=len(items[0]["candidateIds"][1:])))
+
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
         ("unknown loan page scopeGroup", unknown_loan_page_group, "python"),
@@ -244,6 +262,12 @@ def main() -> None:
         ("duplicate disaster announcement", disaster_duplicate, "disaster"),
         ("disaster page deleted", delete_disaster_page, "python"),
         ("disaster announcement mixed into system track", mix_disaster_into_system, "official"),
+        ("official update unknown related section", update_unknown_section, "official"),
+        ("official update verifiedOn null", update_verified_on_null, "official"),
+        ("disaster verifiedOn null", disaster_verified_on_null, "disaster"),
+        ("source review candidate count mismatch", lineage_count_mismatch, "coverage"),
+        ("source review unknown candidate", lineage_unknown_candidate, "coverage"),
+        ("decision candidate has no source lineage", lineage_orphan, "coverage"),
     ]
 
     results = []

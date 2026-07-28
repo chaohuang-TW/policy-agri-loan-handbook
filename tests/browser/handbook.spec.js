@@ -399,6 +399,60 @@ test("official update layer preserves explicit matched and no-match states", asy
   await expect(page.locator(".loan-current-updates").first()).toContainText("農業天然災害救助辦法");
 });
 
+test("disaster announcement pages state partial coverage and do not overclaim zero results", async ({page}) => {
+  await page.goto("/updates/disasters/");
+  await expect(page.getByText("資料狀態：官方來源盤點進行中。以下僅列目前已完成來源核對之公告，不代表完整公告清單。")).toBeVisible();
+  await page.locator('[data-disaster-filters] input[name="q"]').fill("不存在的公告");
+  await expect(page.locator(".update-filter-status")).toHaveText("目前已核對索引中沒有符合條件的公告；官方來源盤點仍在進行中。");
+});
+
+test("disaster loan and section retain the partial-coverage notice", async ({page}) => {
+  for (const url of ["/loans/natural-disaster-low-interest-loan/", paths.disaster]) {
+    await page.goto(url);
+    await expect(page.getByText("以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。")).toBeVisible();
+  }
+});
+
+test("Hagibis interest exemption is linked to both explicitly named loans", async ({page}) => {
+  await page.goto("/loans/agri-organization-disaster-recovery-loan/");
+  await expect(page.locator(".loan-current-updates")).toContainText("114年樺加沙颱風");
+});
+
+test("official update dates have unique labels and version-only forms do not claim publication", async ({page}) => {
+  await page.goto("/updates/");
+  const metadata = await page.locator(".official-update-item .update-meta").allTextContents();
+  for (const text of metadata) for (const label of ["發布", "生效", "版本"]) expect(text.split(label).length - 1).toBeLessThanOrEqual(1);
+  const form = page.locator(".official-update-item", {hasText: "1150330版"});
+  await expect(form.locator(".update-meta")).toContainText("版本 115/03/30");
+  await expect(form.locator(".update-meta")).not.toContainText("發布 115/03/30");
+});
+
+test("single-ended official application deadlines use ROC dates", async ({page}) => {
+  await page.goto("/updates/");
+  const item = page.locator(".official-update-item", {hasText: "花蓮馬太鞍溪堰塞湖受災農漁民家計週轉金貸款"}).first();
+  await expect(item).toContainText("官方資料所載受理期限：至 115/03/13");
+  await expect(item).not.toContainText("2026/03/13");
+});
+
+test("disaster index filters locally by year", async ({page}) => {
+  await page.goto("/updates/disasters/");
+  await page.locator('[data-disaster-filters] select[name="year"]').selectOption("2026");
+  await expect(page.locator(".disaster-announcement:visible")).toHaveCount(3);
+});
+
+test("disaster update links remain official HTTPS sources", async ({page}) => {
+  await page.goto("/updates/disasters/");
+  const hrefs = await page.locator(".disaster-announcement a[target=_blank]").evaluateAll((links) => links.map((link) => link.href));
+  expect(hrefs).toHaveLength(3);
+  expect(hrefs.every((href) => href.startsWith("https://www.moa.gov.tw/"))).toBe(true);
+});
+
+test("disaster index has no horizontal overflow at 390px", async ({page}) => {
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto("/updates/disasters/");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
 for (const width of [390, 768, 1024, 1440]) {
   test(`${width}px has no horizontal or dialog overflow`, async ({page}) => {
     const runtime = observeRuntime(page);

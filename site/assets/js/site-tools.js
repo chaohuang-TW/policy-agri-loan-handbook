@@ -129,7 +129,9 @@
         item.hidden = !match;
         if (match) visible += 1;
       });
-      status.textContent = `顯示 ${visible} 筆天然災害低利貸款公告`;
+      status.textContent = visible
+        ? `顯示 ${visible} 筆天然災害低利貸款公告`
+        : "目前已核對索引中沒有符合條件的公告；官方來源盤點仍在進行中。";
     };
     disasterFilters.addEventListener("input", apply);
     disasterFilters.addEventListener("change", apply);

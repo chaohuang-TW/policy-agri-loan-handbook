@@ -5,6 +5,7 @@ import argparse, json
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
+from content_model import sections
 
 ALLOWED={"law.afna.gov.tw","afna.gov.tw","www.afna.gov.tw","moa.gov.tw","www.moa.gov.tw","wm.moa.gov.tw","agribank.com.tw","www.agribank.com.tw"}
 TYPES={"regulation","administrative-rule","interpretation","announcement","faq","form","disaster-measure","other-official"}
@@ -28,19 +29,20 @@ def main():
     if {x["id"] for x in decisions if x.get("decision")=="include"}!={x["id"] for x in updates}: errors.append("include decisions and official-updates records do not match exactly")
     for d in decisions:
         if d.get("decision") not in DECISIONS or not d.get("reason") or not d.get("evidence") or not https(d.get("sourceUrl","")): errors.append(f"invalid decision: {d.get('id')}")
-    keys=set(); loan_ids={x["id"] for x in load(root/"data/114/loan-programs.json")}
+    keys=set(); loan_ids={x["id"] for x in load(root/"data/114/loan-programs.json")}; section_ids={x["id"] for x in sections()}
     for x in updates:
         required={"id","officialTitle","sourceType","officialAgency","documentNumber","publishedDate","effectiveDate","versionDate","applicationPeriod","sourceUrl","relatedLoanIds","relatedSectionIds","relationBasis","relationEvidence","verifiedOn"}
         if required-set(x): errors.append(f"missing fields: {x.get('id')}"); continue
         if not x["officialTitle"] or not x["officialAgency"] or not x["relationEvidence"] or x["sourceType"] not in TYPES or x["relationBasis"] not in BASES: errors.append(f"invalid metadata: {x['id']}")
-        if not any(x[k] for k in ("publishedDate","effectiveDate","versionDate")) or not all(valid(x[k]) for k in ("publishedDate","effectiveDate","versionDate","verifiedOn")): errors.append(f"invalid date: {x['id']}")
+        if not any(x[k] for k in ("publishedDate","effectiveDate","versionDate")) or not x["verifiedOn"] or not all(valid(x[k]) for k in ("publishedDate","effectiveDate","versionDate","verifiedOn")): errors.append(f"invalid date: {x['id']}")
         p=x["applicationPeriod"]
-        if set(p)!={"start","end"} or not valid(p["start"]) or not valid(p["end"]) or (p["start"] and p["end"] and p["start"]>p["end"]): errors.append(f"invalid application period: {x['id']}")
+        if not isinstance(x["relatedLoanIds"], list) or not isinstance(x["relatedSectionIds"], list) or not isinstance(p, dict) or set(p)!={"start","end"} or not valid(p["start"]) or not valid(p["end"]) or (p["start"] and p["end"] and p["start"]>p["end"]): errors.append(f"invalid application period: {x['id']}")
         key=(x["sourceUrl"],x["publishedDate"],x["documentNumber"])
         if key in keys: errors.append(f"duplicate official update event: {x['id']}")
         keys.add(key)
         if not https(x["sourceUrl"]): errors.append(f"non-HTTPS allowlisted official source: {x['id']}")
         if set(x["relatedLoanIds"])-loan_ids: errors.append(f"unknown related loan: {x['id']}")
+        if set(x["relatedSectionIds"])-section_ids: errors.append(f"unknown related section: {x['id']}")
     review=coverage.get("officialUpdateReview",{})
     if review.get("included")!=len(updates) or review.get("needsHumanReview")!=sum(x.get("decision")=="needs-human-review" for x in decisions): errors.append("coverage counts do not match data")
     search=root/"site/assets/data/search-index.json"

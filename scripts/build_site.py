@@ -121,6 +121,24 @@ def roc_date(value: str | None) -> str:
     return f"{year - 1911}/{month:02d}/{day:02d}"
 
 
+def roc_time(value: str) -> str:
+    return f'<time datetime="{e(value)}">{e(roc_date(value))}</time>'
+
+
+def application_period(item: dict) -> str:
+    start, end = item["applicationPeriod"]["start"], item["applicationPeriod"]["end"]
+    if start and end:
+        return f'<p class="update-period">官方資料所載受理期間：{roc_time(start)}－{roc_time(end)}</p>'
+    if end:
+        return f'<p class="update-period">官方資料所載受理期限：至 {roc_time(end)}</p>'
+    if start:
+        return f'<p class="update-period">官方資料所載受理期間：自 {roc_time(start)} 起</p>'
+    return ""
+
+
+DISASTER_PARTIAL_NOTICE = "資料狀態：官方來源盤點進行中。以下僅列目前已完成來源核對之公告，不代表完整公告清單。"
+
+
 def update_relation(item: dict) -> str:
     loans = [LOAN_TITLES[loan_id] for loan_id in item["relatedLoanIds"]]
     if loans:
@@ -139,18 +157,14 @@ def update_rows(relative: str, items: list[dict], compact: bool = False) -> str:
         key=lambda record: (-int(event_sort_date(record).replace("-", "")), record["id"]),
     )
     for item in ordered:
-        metadata = [TYPE_LABELS[item["sourceType"]], item["officialAgency"]]
+        metadata = []
         for field, label in (("publishedDate", "發布"), ("effectiveDate", "生效"), ("versionDate", "版本")):
             if item.get(field):
-                metadata.insert(0, f"{label} {roc_date(item[field])}")
-        if not compact and item.get("effectiveDate"):
-            metadata.append("生效 " + roc_date(item["effectiveDate"]))
+                metadata.append(f"{label} {roc_date(item[field])}")
+        metadata.extend([TYPE_LABELS[item["sourceType"]], item["officialAgency"]])
         if not compact and item.get("documentNumber"):
             metadata.append(item["documentNumber"])
-        period = item["applicationPeriod"]
-        period_text = ""
-        if not compact and (period["start"] or period["end"]):
-            period_text = f'<p class="update-period">官方資料所載受理期間：{e((period["start"] or "未載明").replace("-", "/"))}－{e((period["end"] or "未載明").replace("-", "/"))}</p>'
+        period_text = "" if compact else application_period(item)
         rows.append(
             f'<li class="official-update-item" data-update-type="{e(item["sourceType"])}" '
             f'data-update-year="{e(event_sort_date(item)[:4])}" data-update-relations="{e(" ".join(item["relatedLoanIds"] + item["relatedSectionIds"]))}">'
@@ -169,10 +183,7 @@ def event_sort_date(item: dict) -> str:
 def disaster_rows(relative: str, items: list[dict]) -> str:
     rows = []
     for item in sorted(items, key=lambda x: (x["publishedDate"], x["id"]), reverse=True):
-        period = item["applicationPeriod"]
-        period_text = ""
-        if period["start"] or period["end"]:
-            period_text = f'<p class="update-period">官方資料所載受理期間：{e(roc_date(period["start"]) or "未載明")}－{e(roc_date(period["end"]) or "未載明")}</p>'
+        period_text = application_period(item)
         details = "".join(f'<p>{e(label)}：{e(item[key])}</p>' for key, label in (("areaText", "地區"), ("itemText", "品項")) if item.get(key))
         searchable = " ".join(str(item.get(k) or "") for k in ("officialTitle", "documentNumber", "areaText", "itemText", "disasterName"))
         rows.append(f'<li class="official-update-item disaster-announcement" data-disaster-year="{e(item["publishedDate"][:4])}" data-disaster-search="{e(searchable)}"><p class="update-meta">公告 {e(roc_date(item["publishedDate"]))}｜{e(item["officialAgency"])}{("｜" + e(item["documentNumber"])) if item["documentNumber"] else ""}</p><h3>{e(item["officialTitle"])}</h3>{period_text}{details}<a href="{e(item["sourceUrl"])}" target="_blank" rel="noopener noreferrer">查看官方來源<span class="visually-hidden">（另開新視窗）</span></a></li>')
@@ -363,7 +374,7 @@ def build_sections() -> None:
         if slug in {"policy-loan-regulations", "agricultural-development-fund-rules", "natural-disaster-rules"}:
             current = current_update_block(relative, section_updates, "本章")
             if slug == "natural-disaster-rules":
-                current += f'<section class="loan-current-updates"><h2>近期天然災害低利貸款公告</h2>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
+                current += f'<section class="loan-current-updates"><h2>近期天然災害低利貸款公告</h2><p class="layout-note">以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。</p>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
         elif slug == "loan-programs":
             current = f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2><p><a href="{e(rel(relative, "updates/index.html"))}">查看手冊出版後各貸款官方更新</a></p></section>'
         elif slug == "amendment-faq":
@@ -439,7 +450,7 @@ def build_loans() -> None:
         related_updates = [item for item in OFFICIAL_UPDATES if loan["id"] in item["relatedLoanIds"]]
         disaster_block = ""
         if loan["id"] == "natural-disaster-low-interest-loan":
-            disaster_block = f'<section class="loan-current-updates"><h2>天然災害低利貸款公告</h2>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
+            disaster_block = f'<section class="loan-current-updates"><h2>天然災害低利貸款公告</h2><p class="layout-note">以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。</p>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
         if related_interpretations:
             interpretation_block = f'<p>{len(related_interpretations)}筆來源索引。</p><a href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a>'
         else:
@@ -521,7 +532,7 @@ def build_disaster_updates() -> None:
     relative = "updates/disasters/index.html"
     years = sorted({x["publishedDate"][:4] for x in DISASTER_ANNOUNCEMENTS}, reverse=True)
     filters = '<form class="update-filters" data-disaster-filters><label>年份<select name="year"><option value="">全部</option>' + ''.join(f'<option value="{x}">{int(x)-1911}</option>' for x in years) + '</select></label><label>關鍵字<input name="q" type="search" placeholder="標題、文號、地區、品項或災害"></label><button type="reset">清除篩選</button><p class="update-filter-status" aria-live="polite"></p></form>'
-    content = breadcrumb(relative, [("首頁", "index.html"), ("官方更新", "updates/index.html")], "天然災害低利貸款公告") + '<h1>天然災害低利貸款公告</h1><p class="subtitle">依指定官方來源整理手冊出版後中央主管機關發布、明確涉及低利貸款之天然災害公告。</p><p class="layout-note">本頁為公告索引及來源導引，不代表個別申請人當然符合資格。</p><section class="updates-index"><h2>公告列表</h2>' + filters + disaster_rows(relative, DISASTER_ANNOUNCEMENTS) + '</section>'
+    content = breadcrumb(relative, [("首頁", "index.html"), ("官方更新", "updates/index.html")], "天然災害低利貸款公告") + '<h1>天然災害低利貸款公告</h1><p class="subtitle">依指定官方來源整理手冊出版後中央主管機關發布、明確涉及低利貸款之天然災害公告。</p><p class="layout-note">' + DISASTER_PARTIAL_NOTICE + '</p><p class="layout-note">本頁為公告索引及來源導引，不代表個別申請人當然符合資格。</p><section class="updates-index"><h2>公告列表</h2>' + filters + disaster_rows(relative, DISASTER_ANNOUNCEMENTS) + '</section>'
     write(relative, "天然災害低利貸款公告｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-disaster-index="true"')
 
 

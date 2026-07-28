@@ -1,5 +1,28 @@
 # Changelog
 
+## 114.0.0-beta.2.7.1.1
+
+### Fixed
+
+- 修正樺加沙颱風免息措施漏列「農民組織及農企業天然災害復耕復建貸款」關聯。
+- 修正天然災害公告索引在Coverage尚未完整時缺乏明確資料範圍提示。
+- 修正官方更新日期metadata重複顯示生效日期。
+- 修正部分受理期間以西元日期顯示，未與全站民國年格式一致。
+- 修正official-update validator未驗證relatedSectionIds。
+- 修正verifiedOn可被null繞過日期驗證。
+
+### Changed
+
+- Source review log明確區分discovery hit與正式candidate。
+- Candidate lineage現在可由source review追溯至decision inventory。
+- 原discover_official_candidates工具改名為report_source_review_plan，避免誤導為自動Discovery工具。
+
+### Added
+
+- 新增candidate lineage validator規則。
+- 新增天然災害公告partial coverage提示。
+- 新增relatedSectionIds及verifiedOn mutation regression。
+
 ## 114.0.0-beta.2.7.1
 
 ### Fixed
