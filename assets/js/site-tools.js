@@ -115,27 +115,4 @@
     updateFilters.addEventListener("reset", () => window.setTimeout(applyUpdateFilters, 0));
     applyUpdateFilters();
   }
-  const disasterFilters = document.querySelector("[data-disaster-filters]");
-  if (disasterFilters) {
-    const items = [...document.querySelectorAll(".disaster-announcement")];
-    const status = disasterFilters.querySelector(".update-filter-status");
-    const apply = () => {
-      const values = new FormData(disasterFilters);
-      const year = String(values.get("year") || "");
-      const keyword = String(values.get("q") || "").trim().toLocaleLowerCase();
-      let visible = 0;
-      items.forEach((item) => {
-        const match = (!year || item.dataset.disasterYear === year) && (!keyword || item.dataset.disasterSearch.toLocaleLowerCase().includes(keyword));
-        item.hidden = !match;
-        if (match) visible += 1;
-      });
-      status.textContent = visible
-        ? `顯示 ${visible} 筆天然災害低利貸款公告`
-        : "目前已核對索引中沒有符合條件的公告；官方來源盤點仍在進行中。";
-    };
-    disasterFilters.addEventListener("input", apply);
-    disasterFilters.addEventListener("change", apply);
-    disasterFilters.addEventListener("reset", () => window.setTimeout(apply, 0));
-    apply();
-  }
 })();

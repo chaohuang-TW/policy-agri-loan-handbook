@@ -10,7 +10,7 @@ def load(path): return json.loads(path.read_text(encoding="utf-8"))
 def main():
     p=argparse.ArgumentParser(); p.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1]); root=p.parse_args().root
     logs=load(root/"curation/current/source-review-log.json"); review=load(root/"data/current/coverage.json")["officialUpdateReview"]
-    decisions=load(root/"curation/current/official-update-decisions.json")+load(root/"curation/current/disaster-loan-announcement-decisions.json")
+    decisions=load(root/"curation/current/official-update-decisions.json")
     decision_ids={x["id"] for x in decisions}; errors=[]; referenced=set()
     if {x.get("sourceId") for x in logs}!=REQ: errors.append("required source reviews missing")
     for x in logs:
@@ -18,7 +18,10 @@ def main():
         except (KeyError,ValueError): errors.append(f"invalid review date: {x.get('sourceId')}")
         ids=x.get("candidateIds")
         if x.get("status") not in {"complete","partial","blocked"} or not x.get("reviewMethods") or not x.get("queries") or not x.get("listingPagesReviewed") or not isinstance(x.get("discoveryHitCount"),int) or not isinstance(x.get("candidateCount"),int) or not isinstance(ids,list): errors.append(f"incomplete source review: {x.get('sourceId')}"); continue
-        if x["candidateCount"] != len(ids) or x["discoveryHitCount"] < x["candidateCount"]: errors.append(f"invalid candidate count lineage: {x['sourceId']}")
+        out=x.get("outOfScopeDiscoveryHitCount", 0)
+        if not isinstance(out, int) or out < 0: errors.append(f"invalid out-of-scope count: {x['sourceId']}")
+        if x["candidateCount"] != len(ids) or x["discoveryHitCount"] < x["candidateCount"] + out: errors.append(f"invalid candidate count lineage: {x['sourceId']}")
+        if out > 0 and (not x.get("outOfScopePolicy") or not x.get("notes")): errors.append(f"missing out-of-scope policy: {x['sourceId']}")
         unknown=set(ids)-decision_ids
         if unknown: errors.append(f"unknown candidate refs: {x['sourceId']}")
         referenced.update(ids)

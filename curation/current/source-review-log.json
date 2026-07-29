@@ -116,14 +116,12 @@
       "https://www.moa.gov.tw/sp_theme_data.php?id=9650&theme=publication",
       "https://www.moa.gov.tw/theme_data.php?id=9758&theme=publication"
     ],
-    "candidateCount": 3,
-    "notes": "6個原始hit含同一3項正式公告的公告列表與站內搜尋重複入口；依 canonical 官方公告頁歸併為3個災害公告 candidate。",
+    "candidateCount": 0,
+    "notes": "本次發現之地區／品項型天然災害低利貸款公告，依產品政策不建立本站candidate或鏡像資料，統一導向農業金融署天然災害低利貸款官方專區。",
     "discoveryHitCount": 6,
-    "candidateIds": [
-      "moa-bawi-typhoon-20260713",
-      "moa-june-heavy-rain-20260626",
-      "moa-bawi-rice-20260721"
-    ]
+    "candidateIds": [],
+    "outOfScopeDiscoveryHitCount": 6,
+    "outOfScopePolicy": "routine-local-disaster-notices-official-gateway"
   },
   {
     "sourceId": "agribank",

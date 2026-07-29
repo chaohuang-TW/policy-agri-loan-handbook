@@ -12,10 +12,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY_DIRS = ("assets", "curation", "data", "scripts", "site", "templates")
+COPY_FILES = ("README.md", "CHANGELOG.md", "package.json", "package-lock.json")
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
         shutil.copytree(ROOT / name, destination / name, copy_function=os.link)
+    for name in COPY_FILES:
+        shutil.copy2(ROOT / name, destination / name)
 
 
 def safe_write(path: Path, value: str) -> None:
@@ -186,33 +189,41 @@ def main() -> None:
         mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(status="complete", reviewedThrough="2026-01-01"))
         mutate_json(root / "data/current/coverage.json", lambda value: value["officialUpdateReview"].update(coverageStatus="complete", verifiedThrough="2026-07-28"))
 
-    def disaster_missing_include(root: Path):
-        mutate_json(root / "data/current/disaster-loan-announcements.json", lambda items: items.pop())
+    def restore_disaster_json(root: Path):
+        (root / "data/current/disaster-loan-announcements.json").write_text("[]\n", encoding="utf-8")
 
-    def disaster_needs_review_in_data(root: Path):
-        mutate_json(root / "curation/current/disaster-loan-announcement-decisions.json", lambda items: items[0].update(decision="needs-human-review"))
+    def homepage_disaster_count(root: Path):
+        replace(root / "site/index.html", "農業金融署官方專區", "天然災害低利貸款公告 3筆")
 
-    def disaster_duplicate(root: Path):
-        def change(items):
-            copy = dict(items[0]); copy["id"] = "duplicate-disaster"; items.append(copy)
-        mutate_json(root / "data/current/disaster-loan-announcements.json", change)
+    def gateway_local_list(root: Path):
+        replace(root / "site/updates/disasters/index.html", "農業金融署官方公告入口", "公告列表" + '<ol class="disaster-announcement"></ol>')
 
-    def delete_disaster_page(root: Path):
-        (root / "site/updates/disasters/index.html").unlink()
+    def gateway_url_missing(root: Path):
+        replace(root / "site/updates/disasters/index.html", "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=", "https://example.com/")
 
-    def mix_disaster_into_system(root: Path):
-        def change(items):
-            copy = dict(items[0]); copy["id"] = "moa-bawi-typhoon-20260713"; items.append(copy)
-        mutate_json(root / "data/current/official-updates.json", change)
+    def gateway_url_http(root: Path):
+        replace(root / "site/updates/disasters/index.html", "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=", "http://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=")
+
+    def gateway_url_wrong_host(root: Path):
+        replace(root / "site/updates/disasters/index.html", "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=", "https://example.com/list.php?theme=natural_disaster&subtheme=")
+
+    def loan_gateway_missing(root: Path):
+        replace(root / "site/loans/natural-disaster-low-interest-loan/index.html", "updates/disasters/", "updates/missing/")
+
+    def section_gateway_missing(root: Path):
+        replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
+
+    def readme_revision_wrong(root: Path):
+        replace(root / "README.md", "114.0.0-beta.2.7.2", "114.0.0-beta.2.7.1.1.1")
+
+    def package_revision_wrong(root: Path):
+        replace(root / "package.json", "114.0.0-beta.2.7.2", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))
 
     def update_verified_on_null(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(verifiedOn=None))
-
-    def disaster_verified_on_null(root: Path):
-        mutate_json(root / "data/current/disaster-loan-announcements.json", lambda items: items[0].update(verifiedOn=None))
 
     def lineage_count_mismatch(root: Path):
         mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(candidateCount=999))
@@ -257,14 +268,18 @@ def main() -> None:
         ("official update reverse application period", update_reverse_application_period, "official"),
         ("coverage complete while Agribank partial", coverage_complete_agribank_partial, "coverage"),
         ("global coverage exceeds source review", coverage_exceeds_source, "coverage"),
-        ("disaster include has no formal record", disaster_missing_include, "disaster"),
-        ("disaster needs-review enters formal data", disaster_needs_review_in_data, "disaster"),
-        ("duplicate disaster announcement", disaster_duplicate, "disaster"),
-        ("disaster page deleted", delete_disaster_page, "python"),
-        ("disaster announcement mixed into system track", mix_disaster_into_system, "official"),
+        ("local disaster JSON restored", restore_disaster_json, "gateway"),
+        ("homepage restores disaster count", homepage_disaster_count, "gateway"),
+        ("gateway restores local announcement list", gateway_local_list, "gateway"),
+        ("gateway removes official URL", gateway_url_missing, "gateway"),
+        ("gateway URL becomes HTTP", gateway_url_http, "gateway"),
+        ("gateway URL changes host", gateway_url_wrong_host, "gateway"),
+        ("natural-disaster loan removes gateway CTA", loan_gateway_missing, "gateway"),
+        ("natural-disaster section removes gateway CTA", section_gateway_missing, "gateway"),
+        ("README revision becomes wrong", readme_revision_wrong, "revision"),
+        ("package revision becomes inconsistent", package_revision_wrong, "revision"),
         ("official update unknown related section", update_unknown_section, "official"),
         ("official update verifiedOn null", update_verified_on_null, "official"),
-        ("disaster verifiedOn null", disaster_verified_on_null, "disaster"),
         ("source review candidate count mismatch", lineage_count_mismatch, "coverage"),
         ("source review unknown candidate", lineage_unknown_candidate, "coverage"),
         ("decision candidate has no source lineage", lineage_orphan, "coverage"),
@@ -281,8 +296,10 @@ def main() -> None:
                 command = [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
             elif validator == "official":
                 command = [sys.executable, "scripts/validate_official_updates.py", "--root", str(fixture)]
-            elif validator == "disaster":
-                command = [sys.executable, "scripts/validate_disaster_loan_announcements.py", "--root", str(fixture)]
+            elif validator == "gateway":
+                command = [sys.executable, "scripts/validate_disaster_official_gateway.py"]
+            elif validator == "revision":
+                command = [sys.executable, "scripts/validate_revision_consistency.py"]
             elif validator == "coverage":
                 command = [sys.executable, "scripts/validate_official_coverage.py", "--root", str(fixture)]
             elif validator == "ux":
@@ -301,7 +318,8 @@ def main() -> None:
                 "validator": (
                     "validate_search_experience.py" if validator == "python"
                     else "validate_official_updates.py" if validator == "official"
-                    else "validate_disaster_loan_announcements.py" if validator == "disaster"
+                    else "validate_disaster_official_gateway.py" if validator == "gateway"
+                    else "validate_revision_consistency.py" if validator == "revision"
                     else "validate_official_coverage.py" if validator == "coverage"
                     else "validate_ux_structure.py" if validator == "ux"
                     else "test_search_core.cjs"

@@ -42,7 +42,6 @@ SHORTCUTS = json.loads((DATA / "navigation-shortcuts.json").read_text(encoding="
 CURRENT = ROOT / "data" / "current"
 COVERAGE = json.loads((CURRENT / "coverage.json").read_text(encoding="utf-8"))
 OFFICIAL_UPDATES = json.loads((CURRENT / "official-updates.json").read_text(encoding="utf-8"))
-DISASTER_ANNOUNCEMENTS = json.loads((CURRENT / "disaster-loan-announcements.json").read_text(encoding="utf-8"))
 DECISIONS = json.loads((ROOT / "curation/current/official-update-decisions.json").read_text(encoding="utf-8"))
 LOAN_TITLES = {item["id"]: item["title"] for item in LOANS}
 def interpretation_target(loan_program: str) -> str:
@@ -136,7 +135,7 @@ def application_period(item: dict) -> str:
     return ""
 
 
-DISASTER_PARTIAL_NOTICE = "資料狀態：官方來源盤點進行中。以下僅列目前已完成來源核對之公告，不代表完整公告清單。"
+DISASTER_GATEWAY_URL = "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme="
 
 
 def update_relation(item: dict) -> str:
@@ -178,16 +177,6 @@ def update_rows(relative: str, items: list[dict], compact: bool = False) -> str:
 
 def event_sort_date(item: dict) -> str:
     return item.get("publishedDate") or item.get("effectiveDate") or item.get("versionDate")
-
-
-def disaster_rows(relative: str, items: list[dict]) -> str:
-    rows = []
-    for item in sorted(items, key=lambda x: (x["publishedDate"], x["id"]), reverse=True):
-        period_text = application_period(item)
-        details = "".join(f'<p>{e(label)}：{e(item[key])}</p>' for key, label in (("areaText", "地區"), ("itemText", "品項")) if item.get(key))
-        searchable = " ".join(str(item.get(k) or "") for k in ("officialTitle", "documentNumber", "areaText", "itemText", "disasterName"))
-        rows.append(f'<li class="official-update-item disaster-announcement" data-disaster-year="{e(item["publishedDate"][:4])}" data-disaster-search="{e(searchable)}"><p class="update-meta">公告 {e(roc_date(item["publishedDate"]))}｜{e(item["officialAgency"])}{("｜" + e(item["documentNumber"])) if item["documentNumber"] else ""}</p><h3>{e(item["officialTitle"])}</h3>{period_text}{details}<a href="{e(item["sourceUrl"])}" target="_blank" rel="noopener noreferrer">查看官方來源<span class="visually-hidden">（另開新視窗）</span></a></li>')
-    return '<ol class="official-update-list">' + "".join(rows) + "</ol>"
 
 
 def current_update_block(relative: str, items: list[dict], empty_context: str = "") -> str:
@@ -293,9 +282,9 @@ def build_home() -> None:
         f'<a class="button-link secondary" href="updates/index.html">查看手冊出版後官方更新</a></div>'
         f'<dl class="current-status-meta"><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div>'
         f'<div><dt>官方來源檢核</dt><dd>{"指定官方來源已檢核至" + roc_date(review_info["verifiedThrough"]) if review_info["coverageStatus"] == "complete" else "官方來源盤點進行中"}（<a href="updates/index.html#coverage">查看檢核範圍</a>）</dd></div>'
-        f'<div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)} 筆</dd></div><div><dt>天然災害低利貸款公告</dt><dd>{len(DISASTER_ANNOUNCEMENTS)} 筆</dd></div></dl>'
+        f'<div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)} 筆</dd></div><div><dt>天然災害低利貸款最新公告</dt><dd><a href="updates/disasters/index.html">農業金融署官方專區</a></dd></div></dl>'
         f'<p class="scope-caveat">114年度手冊原文保持不變；後續官方規定另列於更新索引。實際適用仍以主管機關及貸款經辦機構最新正式資料為準。</p>'
-        f'<div class="recent-updates"><h3>最近官方更新</h3>{update_rows(relative, recent, compact=True)}<p><a href="updates/index.html">查看全部制度與業務更新</a></p><p>天然災害低利貸款公告 {len(DISASTER_ANNOUNCEMENTS)} 筆｜<a href="updates/disasters/index.html">查看公告</a></p></div>'
+        f'<div class="recent-updates"><h3>最近官方更新</h3>{update_rows(relative, recent, compact=True)}<p><a href="updates/index.html">查看全部制度與業務更新</a></p><p>天然災害低利貸款的地區、品項及申請期間，請查閱農業金融署最新公告。</p><p><a href="updates/disasters/index.html">前往官方公告入口</a></p></div>'
     )
     tasks = '<h2 id="task-title">我想查……</h2><p>選擇常見任務後直接搜尋原始資料。</p>' + shortcut_buttons("home", "home-search")
     links = [
@@ -374,7 +363,7 @@ def build_sections() -> None:
         if slug in {"policy-loan-regulations", "agricultural-development-fund-rules", "natural-disaster-rules"}:
             current = current_update_block(relative, section_updates, "本章")
             if slug == "natural-disaster-rules":
-                current += f'<section class="loan-current-updates"><h2>近期天然災害低利貸款公告</h2><p class="layout-note">以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。</p>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
+                current += f'<section class="loan-current-updates"><h2>最新天然災害低利貸款公告</h2><p class="layout-note">最新地區、品項及申請期間請以農業金融署公告為準。</p><p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查詢最新官方公告</a></p></section>'
         elif slug == "loan-programs":
             current = f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2><p><a href="{e(rel(relative, "updates/index.html"))}">查看手冊出版後各貸款官方更新</a></p></section>'
         elif slug == "amendment-faq":
@@ -450,7 +439,7 @@ def build_loans() -> None:
         related_updates = [item for item in OFFICIAL_UPDATES if loan["id"] in item["relatedLoanIds"]]
         disaster_block = ""
         if loan["id"] == "natural-disaster-low-interest-loan":
-            disaster_block = f'<section class="loan-current-updates"><h2>天然災害低利貸款公告</h2><p class="layout-note">以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。</p>{disaster_rows(relative, DISASTER_ANNOUNCEMENTS[:5])}<p><a href="{e(rel(relative, "updates/disasters/index.html"))}">查看全部公告</a></p></section>'
+            disaster_block = f'<section class="loan-current-updates"><h2>最新地區及品項公告</h2><p class="layout-note">天然災害低利貸款之公告地區、品項及申請期間可能持續更新，本站不另行同步，請以農業金融署正式公告為準。</p><p><a href="{e(rel(relative, "updates/disasters/index.html"))}">前往農業金融署天然災害低利貸款專區</a></p></section>'
         if related_interpretations:
             interpretation_block = f'<p>{len(related_interpretations)}筆來源索引。</p><a href="{e(rel(relative, interpretation_target(loan["title"])))}">查看本貸款相關函釋</a>'
         else:
@@ -521,8 +510,8 @@ def build_updates() -> None:
     )
     content = (
         breadcrumb(relative, [("首頁", "index.html")], "官方更新")
-        + '<h1>手冊出版後官方更新</h1><p class="subtitle">114年度手冊原文保持不變；制度與業務更新及地方型天然災害公告分軌整理。</p>'
-        + f'<section id="coverage" class="coverage-panel"><h2>資料基準與檢核範圍</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>Coverage</dt><dd>{"指定官方來源已檢核至" + roc_date(review["verifiedThrough"]) if review["coverageStatus"] == "complete" else "官方來源盤點進行中"}</dd></div><div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div><div><dt>天然災害低利貸款公告</dt><dd>{len(DISASTER_ANNOUNCEMENTS)}筆</dd></div></dl><p>{e(review["statement"])}</p><p><a href="disasters/index.html">查看天然災害低利貸款公告</a></p></section>'
+        + '<h1>手冊出版後官方更新</h1><p class="subtitle">114年度手冊原文保持不變；本站整理制度與業務更新。</p>'
+        + f'<section id="coverage" class="coverage-panel"><h2>資料基準與檢核範圍</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>Coverage</dt><dd>{"指定官方來源已檢核至" + roc_date(review["verifiedThrough"]) if review["coverageStatus"] == "complete" else "官方來源盤點進行中"}</dd></div><div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div></dl><p>{e(review["statement"])}</p></section><section class="loan-current-updates"><h2>最新天然災害低利貸款公告</h2><p>本站不另行同步個別地區及品項公告，請直接查閱農業金融署官方專區。</p><p><a href="disasters/index.html">查詢農業金融署最新公告</a></p></section>'
         + '<section class="updates-index"><h2>制度與業務更新</h2>' + filters + update_rows(relative, OFFICIAL_UPDATES) + '</section>'
     )
     write(relative, "手冊出版後官方更新｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-update-index="true"')
@@ -530,16 +519,14 @@ def build_updates() -> None:
 
 def build_disaster_updates() -> None:
     relative = "updates/disasters/index.html"
-    years = sorted({x["publishedDate"][:4] for x in DISASTER_ANNOUNCEMENTS}, reverse=True)
-    filters = '<form class="update-filters" data-disaster-filters><label>年份<select name="year"><option value="">全部</option>' + ''.join(f'<option value="{x}">{int(x)-1911}</option>' for x in years) + '</select></label><label>關鍵字<input name="q" type="search" placeholder="標題、文號、地區、品項或災害"></label><button type="reset">清除篩選</button><p class="update-filter-status" aria-live="polite"></p></form>'
-    content = breadcrumb(relative, [("首頁", "index.html"), ("官方更新", "updates/index.html")], "天然災害低利貸款公告") + '<h1>天然災害低利貸款公告</h1><p class="subtitle">依指定官方來源整理手冊出版後中央主管機關發布、明確涉及低利貸款之天然災害公告。</p><p class="layout-note">' + DISASTER_PARTIAL_NOTICE + '</p><p class="layout-note">本頁為公告索引及來源導引，不代表個別申請人當然符合資格。</p><section class="updates-index"><h2>公告列表</h2>' + filters + disaster_rows(relative, DISASTER_ANNOUNCEMENTS) + '</section>'
-    write(relative, "天然災害低利貸款公告｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-disaster-index="true"')
+    content = breadcrumb(relative, [("首頁", "index.html"), ("官方更新", "updates/index.html")], "天然災害低利貸款最新公告") + f'<h1>天然災害低利貸款最新公告</h1><p class="subtitle">各地區、品項及申請期間可能持續更新，請直接查閱農業金融署官方專區。</p><section class="loan-current-updates"><h2>農業金融署官方公告入口</h2><p>天然災害低利貸款的公告地區、品項及申請期間，會依災害情形持續更新。本站不另行複製或追蹤個別公告，請以農業金融署正式公告為準。</p><p><a class="button-link" href="{DISASTER_GATEWAY_URL}" target="_blank" rel="noopener noreferrer">前往農業金融署天然災害低利貸款專區<span class="visually-hidden">（外部官方網站，另開新視窗）</span></a></p><p class="layout-note">外部官方網站</p></section>'
+    write(relative, "天然災害低利貸款最新公告｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content))
 
 
 def build_versions() -> None:
     relative = "versions/index.html"
     revision = MANUAL["digitalRevision"]
-    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.7.1 官方更新 Coverage 完整性校正版</h3><p>114手冊原文保持不變；制度與業務更新、天然災害公告與Coverage review分軌保存。</p><p><a href="../updates/index.html">查看官方更新</a></p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
+    content = breadcrumb(relative, [("首頁", "index.html")], "版本紀錄") + f'''<h1>版本紀錄與資料來源</h1><article class="version-record"><div class="version-record-head"><div><h2>114年度</h2><p>數位版本：{e(revision)}</p></div><span class="version-status">Beta</span></div><dl class="version-meta"><div><dt>來源文件</dt><dd>114年度政策性農業專案貸款業務手冊</dd></div><div><dt>PDF實體頁數</dt><dd>359頁</dd></div><div class="version-sha"><dt>SHA-256</dt><dd><code>0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54</code></dd></div></dl><div class="version-actions"><a class="button-link" href="114/index.html">開啟原書完整目錄</a><a class="button-link secondary" href="../downloads/{PDF_NAME}">開啟／下載原始PDF</a></div><div class="version-update"><h3>Beta.2.7.2 天然災害公告官方導引版</h3><p>114手冊原文保持不變；制度與業務更新由本站整理，地方型天然災害公告統一導向農業金融署官方專區。</p><p><a href="../updates/index.html">查看官方更新</a></p></div></article><section class="version-policy"><h2>版本保存原則</h2><p>來源索引是依既定來源規則可定位的資料；候選庫為自動偵測庫存，並不等同待覆核數。新版PDF不得覆蓋舊版；新版本使用新version ID，重新計算頁數、SHA-256、頁碼映射、文字擷取、目錄、呈現規則與搜尋索引。正式內容始終以原始PDF為準。</p></section>'''
     write(relative, "版本紀錄與資料來源｜政策性農業專案貸款業務手冊", wrap("versions", CONTENT=content))
 
 
@@ -556,7 +543,6 @@ def build_site(output_dir: Path) -> None:
         shutil.copy2(DATA / data_file, SITE / "assets/data" / data_file)
     shutil.copy2(CURRENT / "official-updates.json", SITE / "assets/data" / "official-updates.json")
     shutil.copy2(CURRENT / "coverage.json", SITE / "assets/data" / "current-coverage.json")
-    shutil.copy2(CURRENT / "disaster-loan-announcements.json", SITE / "assets/data" / "disaster-loan-announcements.json")
     shutil.copytree(ROOT / "assets/page-previews", SITE / "assets/page-previews", dirs_exist_ok=True)
     shutil.copy2(ROOT / "assets/favicon.svg", SITE / "assets/favicon.svg")
     (SITE / "downloads").mkdir(parents=True, exist_ok=True)

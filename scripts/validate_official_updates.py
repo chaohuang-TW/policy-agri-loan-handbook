@@ -21,10 +21,8 @@ def https(v):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1]); root=parser.parse_args().root
     updates=load(root/"data/current/official-updates.json"); decisions=load(root/"curation/current/official-update-decisions.json"); coverage=load(root/"data/current/coverage.json"); errors=[]
-    disaster_ids={x["id"] for x in load(root/"data/current/disaster-loan-announcements.json")}
     ids=[x.get("id") for x in updates]; decisions_ids=[x.get("id") for x in decisions]
     if len(ids)!=len(set(ids)): errors.append("duplicate official update id")
-    if set(ids) & disaster_ids: errors.append("disaster announcement mixed into system update track")
     if len(decisions_ids)!=len(set(decisions_ids)): errors.append("duplicate candidate decision id")
     if {x["id"] for x in decisions if x.get("decision")=="include"}!={x["id"] for x in updates}: errors.append("include decisions and official-updates records do not match exactly")
     for d in decisions:
@@ -43,6 +41,9 @@ def main():
         if not https(x["sourceUrl"]): errors.append(f"non-HTTPS allowlisted official source: {x['id']}")
         if set(x["relatedLoanIds"])-loan_ids: errors.append(f"unknown related loan: {x['id']}")
         if set(x["relatedSectionIds"])-section_ids: errors.append(f"unknown related section: {x['id']}")
+        title=x["officialTitle"]
+        if x["sourceType"] == "announcement" and "天然災害" in title and "低利貸款" in title and not any(term in title for term in ("免息", "利息", "展延", "規定", "辦法", "表單", "證明書", "專案")):
+            errors.append(f"routine local disaster notice is out of scope: {x['id']}")
     review=coverage.get("officialUpdateReview",{})
     if review.get("included")!=len(updates) or review.get("needsHumanReview")!=sum(x.get("decision")=="needs-human-review" for x in decisions): errors.append("coverage counts do not match data")
     search=root/"site/assets/data/search-index.json"

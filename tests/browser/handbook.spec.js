@@ -399,17 +399,22 @@ test("official update layer preserves explicit matched and no-match states", asy
   await expect(page.locator(".loan-current-updates").first()).toContainText("農業天然災害救助辦法");
 });
 
-test("disaster announcement pages state partial coverage and do not overclaim zero results", async ({page}) => {
+test("disaster gateway is an AFNA official entry, not a local announcement index", async ({page}) => {
   await page.goto("/updates/disasters/");
-  await expect(page.getByText("資料狀態：官方來源盤點進行中。以下僅列目前已完成來源核對之公告，不代表完整公告清單。")).toBeVisible();
-  await page.locator('[data-disaster-filters] input[name="q"]').fill("不存在的公告");
-  await expect(page.locator(".update-filter-status")).toHaveText("目前已核對索引中沒有符合條件的公告；官方來源盤點仍在進行中。");
+  await expect(page.getByRole("heading", {name: "天然災害低利貸款最新公告"})).toBeVisible();
+  await expect(page.getByText("本站不另行複製或追蹤個別公告")).toBeVisible();
+  await expect(page.locator(".disaster-announcement, [data-disaster-filters]")).toHaveCount(0);
+  const link = page.getByRole("link", {name: /前往農業金融署天然災害低利貸款專區/});
+  await expect(link).toHaveAttribute("href", "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=");
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", "noopener noreferrer");
 });
 
-test("disaster loan and section retain the partial-coverage notice", async ({page}) => {
+test("disaster loan and section use the official gateway", async ({page}) => {
   for (const url of ["/loans/natural-disaster-low-interest-loan/", paths.disaster]) {
     await page.goto(url);
-    await expect(page.getByText("以下為目前已完成來源核對之公告索引，官方來源盤點仍在進行中。")).toBeVisible();
+    await expect(page.locator('a[href*="updates/disasters/"]')).toBeVisible();
+    await expect(page.locator(".disaster-announcement")).toHaveCount(0);
   }
 });
 
@@ -434,23 +439,25 @@ test("single-ended official application deadlines use ROC dates", async ({page})
   await expect(item).not.toContainText("2026/03/13");
 });
 
-test("disaster index filters locally by year", async ({page}) => {
-  await page.goto("/updates/disasters/");
-  await page.locator('[data-disaster-filters] select[name="year"]').selectOption("2026");
-  await expect(page.locator(".disaster-announcement:visible")).toHaveCount(3);
-});
-
-test("disaster update links remain official HTTPS sources", async ({page}) => {
-  await page.goto("/updates/disasters/");
-  const hrefs = await page.locator(".disaster-announcement a[target=_blank]").evaluateAll((links) => links.map((link) => link.href));
-  expect(hrefs).toHaveLength(3);
-  expect(hrefs.every((href) => href.startsWith("https://www.moa.gov.tw/"))).toBe(true);
+test("home and updates keep 20 institutional updates without a disaster count", async ({page}) => {
+  await page.goto("/");
+  await expect(page.getByText("制度與業務更新20 筆", {exact: true})).toBeVisible();
+  await expect(page.getByText("天然災害低利貸款公告 3筆")).toHaveCount(0);
+  await expect(page.getByRole("link", {name: "前往官方公告入口"})).toBeVisible();
+  await page.goto("/updates/");
+  await expect(page.locator(".official-update-item")).toHaveCount(20);
+  await expect(page.getByText("天然災害低利貸款公告 3筆")).toHaveCount(0);
 });
 
 test("disaster index has no horizontal overflow at 390px", async ({page}) => {
   await page.setViewportSize({width: 390, height: 844});
   await page.goto("/updates/disasters/");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test("all published pages use beta 2.7.2", async ({page}) => {
+  await page.goto("/");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.2.7.2");
 });
 
 for (const width of [390, 768, 1024, 1440]) {
