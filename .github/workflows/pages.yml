@@ -57,6 +57,8 @@ jobs:
           python scripts/validate_official_coverage.py
           python scripts/validate_revision_consistency.py
           python scripts/validate_disaster_official_gateway.py
+          python scripts/audit_search_precision.py
+          python scripts/report_source_review_plan.py
           python scripts/report_official_update_inventory.py
           python scripts/report_official_coverage.py
           python scripts/validate_site.py

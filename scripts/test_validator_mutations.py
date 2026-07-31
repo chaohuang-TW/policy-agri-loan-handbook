@@ -214,10 +214,10 @@ def main() -> None:
         replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
 
     def readme_revision_wrong(root: Path):
-        replace(root / "README.md", "114.0.0-beta.2.7.2", "114.0.0-beta.2.7.1.1.1")
+        replace(root / "README.md", "114.0.0-beta.2.8", "114.0.0-beta.2.7.1.1.1")
 
     def package_revision_wrong(root: Path):
-        replace(root / "package.json", "114.0.0-beta.2.7.2", "114.0.0-beta.0.0.0")
+        replace(root / "package.json", "114.0.0-beta.2.8", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))
@@ -233,6 +233,48 @@ def main() -> None:
 
     def lineage_orphan(root: Path):
         mutate_json(root / "curation/current/source-review-log.json", lambda items: items[0].update(candidateIds=items[0]["candidateIds"][1:], candidateCount=len(items[0]["candidateIds"][1:])))
+
+    def remove_retrieval_filter(root: Path):
+        replace(root / "assets/js/search-core.js", ".filter((item) => item.hasRetrievalEvidence === true)", ".filter((item) => item.score > 0)")
+
+    def intent_before_evidence(root: Path):
+        path = root / "assets/js/search-core.js"
+        replace(path, "else score = 0;", "else score += intentBoost;")
+        replace(path, ".filter((item) => item.hasRetrievalEvidence === true)", ".filter((item) => item.score > 0)")
+
+    def legacy_direct_ui(root: Path):
+        for path in (root / "assets/js/search.js", root / "site/assets/js/search.js"):
+            replace(path, "item.hasDirectEvidence ?", "item.originalTerms?.length ?")
+
+    def bidirectional_task_trigger(root: Path):
+        replace(root / "assets/js/search-core.js", "queryInfo.normalized.includes(term)", "term.includes(queryInfo.normalized) || queryInfo.normalized.includes(term)")
+
+    def return_all_query_terms(root: Path):
+        replace(root / "assets/js/search-core.js", "const matchedOriginalTerms = directTerms;", "const matchedOriginalTerms = originalTerms;")
+
+    def return_all_related_terms(root: Path):
+        replace(root / "assets/js/search-core.js", "const matchedRelatedTerms = [...new Set(Object.values(relatedMatches).flat())];", "const matchedRelatedTerms = relatedTerms;")
+
+    def snippet_uses_unmatched_related(root: Path):
+        for path in (root / "assets/js/search.js", root / "site/assets/js/search.js"):
+            replace(path, "Core.createSnippetRange(record.text, directBodyTerms, relatedBodyTerms)", "Core.createSnippetRange(record.text, directBodyTerms, item.matchedRelatedTerms)")
+
+    def disable_exact_document(root: Path):
+        replace(root / "assets/js/search-core.js", "const exactDocumentNumberMatch = Boolean(", "const exactDocumentNumberMatch = false && Boolean(")
+
+    def disable_scope_filter(root: Path):
+        replace(root / "assets/js/search-core.js", "const scopeMatch = !allowedScopes || allowedScopes.has(record.scope) || allowedScopes.has(record.scopeGroup);", "const scopeMatch = true;")
+
+    def allow_false_evidence(root: Path):
+        replace(root / "assets/js/search-core.js", "const hasRetrievalEvidence = hasDirectEvidence || hasRelatedEvidence || hasStructuredEvidence;", "const hasRetrievalEvidence = true;")
+
+    def blank_direct_label_terms(root: Path):
+        for path in (root / "assets/js/search.js", root / "site/assets/js/search.js"):
+            replace(path, "sample(item.matchedOriginalTerms || [])", "sample([])")
+
+    def blank_related_label_terms(root: Path):
+        for path in (root / "assets/js/search.js", root / "site/assets/js/search.js"):
+            replace(path, "sample(item.matchedRelatedTerms || [])", "sample([])")
 
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
@@ -283,6 +325,18 @@ def main() -> None:
         ("source review candidate count mismatch", lineage_count_mismatch, "coverage"),
         ("source review unknown candidate", lineage_unknown_candidate, "coverage"),
         ("decision candidate has no source lineage", lineage_orphan, "coverage"),
+        ("retrieval evidence filter removed", remove_retrieval_filter, "python"),
+        ("intent boost creates a pre-gate positive score", intent_before_evidence, "node"),
+        ("UI labels direct from legacy originalTerms", legacy_direct_ui, "python"),
+        ("task trigger uses bidirectional substring", bidirectional_task_trigger, "node"),
+        ("matchedOriginalTerms returns all query terms", return_all_query_terms, "node"),
+        ("matchedRelatedTerms returns all expanded terms", return_all_related_terms, "node"),
+        ("snippet uses unmatched related terms", snippet_uses_unmatched_related, "python"),
+        ("exact document evidence disabled", disable_exact_document, "node"),
+        ("context scope filtering disabled", disable_scope_filter, "node"),
+        ("false retrieval evidence allowed", allow_false_evidence, "node"),
+        ("direct label has no matched terms", blank_direct_label_terms, "python"),
+        ("related label has no matched terms", blank_related_label_terms, "python"),
     ]
 
     results = []

@@ -139,8 +139,9 @@ test("loan scope, empty chapter fallback and post-search focus", async ({page}) 
   await page.locator(".search-search-all").click();
   await expect(page.locator("#manual-search-dialog [data-scope=all]")).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("#dialog-site-search")).not.toBeFocused();
-  const focused = await page.evaluate(() => document.activeElement?.matches(".search-status, .search-result a"));
-  expect(focused).toBe(true);
+  await expect.poll(() => page.evaluate(() =>
+    document.activeElement?.matches(".search-status, .search-result a, .search-empty-guidance a")
+  )).toBe(true);
   expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
 });
 
@@ -455,9 +456,135 @@ test("disaster index has no horizontal overflow at 390px", async ({page}) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
-test("all published pages use beta 2.7.2", async ({page}) => {
+test("eligibility search excludes historic intent-only flood and exposes evidence labels", async ({page}) => {
   await page.goto("/");
-  await expect(page.locator("body")).toContainText("114.0.0-beta.2.7.2");
+  await openDialog(page);
+  await searchDialog(page, "申請資格");
+  const panel = page.locator("#manual-search-dialog [data-search]");
+  const state = await panel.evaluate((element) => ({
+    total: element.__manualSearch.state.ranked.length,
+    invalid: element.__manualSearch.state.ranked.filter((item) => !item.hasRetrievalEvidence).length
+  }));
+  expect(state.total).toBeGreaterThan(0);
+  expect(state.total).not.toBe(386);
+  expect(state.invalid).toBe(0);
+  await expect(panel.locator(".result-match-meta").first()).toContainText(/直接命中|相關詞命中/);
+});
+
+test("direct evidence label is backed by actual matched terms", async ({page}) => {
+  await page.goto("/");
+  await openDialog(page);
+  await searchDialog(page, "青壯年農民");
+  const valid = await page.locator("#manual-search-dialog [data-search]").evaluate((element) =>
+    element.__manualSearch.state.ranked
+      .filter((item) => item.hasDirectEvidence)
+      .every((item) => item.matchedOriginalTerms.length > 0 && item.matchedOriginalTerms.every((term) =>
+        [item.record.normalizedTitle, item.record.normalizedHeadings, item.record.normalizedBreadcrumb,
+          item.record.normalizedText, item.record.canonicalDocumentNumber, item.record.normalizedKeywords,
+          item.record.normalizedAliases, item.record.normalizedSourceTitle].some((field) => field.includes(term))
+      ))
+  );
+  expect(valid).toBe(true);
+});
+
+test("related evidence label is backed by actual matched terms", async ({page}) => {
+  await page.goto("/");
+  await openDialog(page);
+  await searchDialog(page, "申請資格");
+  const valid = await page.locator("#manual-search-dialog [data-search]").evaluate((element) =>
+    element.__manualSearch.state.ranked
+      .filter((item) => item.hasRelatedEvidence && !item.hasDirectEvidence)
+      .every((item) => item.matchedRelatedTerms.length > 0 && item.matchedRelatedTerms.every((term) =>
+        [item.record.normalizedTitle, item.record.normalizedHeadings, item.record.normalizedBreadcrumb,
+          item.record.normalizedText, item.record.canonicalDocumentNumber, item.record.normalizedKeywords,
+          item.record.normalizedAliases, item.record.normalizedSourceTitle].some((field) => field.includes(term))
+      ))
+  );
+  expect(valid).toBe(true);
+});
+
+for (const [query, forbidden] of [
+  ["資格", "貸款對象"],
+  ["文件", "應檢具"],
+  ["期限", "還款期限"],
+  ["管理", "用途查驗"]
+]) {
+  test(`${query} stays lexical and does not trigger the full task concept`, async ({page}) => {
+    await page.goto("/");
+    await openDialog(page);
+    await searchDialog(page, query);
+    const state = await page.locator("#manual-search-dialog [data-search]").evaluate(
+      (element, forbiddenTerm) => ({
+        invalid: element.__manualSearch.state.ranked.filter((item) => !item.hasRetrievalEvidence).length,
+        expanded: element.__manualSearch.state.ranked.some((item) =>
+          !item.hasDirectEvidence && item.matchedRelatedTerms.includes(forbiddenTerm)
+        )
+      }), forbidden
+    );
+    expect(state).toEqual({invalid: 0, expanded: false});
+  });
+}
+
+test("indexed full document number ranks first with exact label", async ({page}) => {
+  await page.goto("/");
+  await openDialog(page);
+  await searchDialog(page, "農授金字第0955080181號");
+  const first = page.locator("#manual-search-dialog .search-result").first();
+  await expect(first).toContainText("農授金字第0955080181號");
+  await expect(first.locator(".result-match-meta")).toHaveText("精確文號命中");
+});
+
+test("indexed document-number core resolves to the same first record", async ({page}) => {
+  await page.goto("/");
+  await openDialog(page);
+  await searchDialog(page, "0955080181");
+  await expect(page.locator("#manual-search-dialog .search-result").first()).toContainText("農授金字第0955080181號");
+});
+
+for (const query of ["農授金字第1147467200A號", "1147467200A"]) {
+  test(`out-of-index document number ${query} stays an honest no-result`, async ({page}) => {
+    await page.goto("/");
+    await openDialog(page);
+    await searchDialog(page, query);
+    await expect(page.locator("#manual-search-dialog .search-result")).toHaveCount(0);
+    await expect(page.locator("#manual-search-dialog .search-empty-guidance")).toContainText("查看官方更新");
+  });
+}
+
+test("loan eligibility search has no scope-group leak", async ({page}) => {
+  await page.goto("/loans/young-farmer-loan/");
+  const panel = page.locator(".loan-context-search [data-search]");
+  await panel.locator("input[type=search]").fill("申請資格");
+  await panel.locator("form button[type=submit]").click();
+  expect(await panel.evaluate((element) => element.__manualSearch.state.ranked.every(
+    (item) => item.record.scopeGroup === "loan:young-farmer-loan"
+  ))).toBe(true);
+});
+
+test("section term search has no source-scope leak", async ({page}) => {
+  await page.goto("/versions/114/sections/loan-programs/");
+  const panel = page.locator(".hub-search [data-search]");
+  const scopes = (await page.locator("body").getAttribute("data-search-scopes")).split(",");
+  await panel.locator("input[type=search]").fill("期限");
+  await panel.locator("form button[type=submit]").click();
+  expect(await panel.evaluate((element, allowed) => element.__manualSearch.state.ranked
+    .filter((item) => item.record.type === "原文頁面")
+    .every((item) => allowed.includes(item.record.scope)), scopes)).toBe(true);
+});
+
+test("390px search results have no overflow or runtime errors", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto("/");
+  await openDialog(page);
+  await searchDialog(page, "申請資格");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("all published pages use beta 2.8", async ({page}) => {
+  await page.goto("/");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.2.8");
 });
 
 for (const width of [390, 768, 1024, 1440]) {

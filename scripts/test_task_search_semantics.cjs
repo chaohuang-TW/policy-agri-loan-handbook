@@ -42,7 +42,10 @@ function distribution(items, key) {
 function reportTask(task, scope = "all") {
   const results = search(task.query, scope);
   const top10 = results.slice(0, 10);
+  const top5 = results.slice(0, 5);
   const semanticMatches = top10.filter(({record}) => matchesTask(record, task));
+  const top5Relevant = top5.filter(({record}) => matchesTask(record, task)).length;
+  const top10Relevant = semanticMatches.length;
   const concept = concepts.find((item) => item.id === task.id);
   assert(concept, `missing task concept: ${task.id}`);
   assert((concept.triggerTerms || []).length, `${task.id} has no triggerTerms`);
@@ -56,6 +59,15 @@ function reportTask(task, scope = "all") {
       related: concept.relatedTerms,
     },
     totalResults: results.length,
+    intentOnlyCount: results.filter((item) => !item.hasRetrievalEvidence).length,
+    top1Relevant: Boolean(results[0] && matchesTask(results[0].record, task)),
+    top5Relevant,
+    top5Precision: top5Relevant / Math.max(1, top5.length),
+    top10Relevant,
+    top10Precision: top10Relevant / Math.max(1, top10.length),
+    directCount: results.filter((item) => item.matchKind === "direct").length,
+    relatedCount: results.filter((item) => item.matchKind === "related").length,
+    exactDocumentCount: results.filter((item) => item.matchKind === "exact-document").length,
     top10Types: distribution(top10, "type"),
     top10Ids: top10.map(({record}) => record.id),
     top10Titles: top10.map(({record}) => record.title),
@@ -68,7 +80,11 @@ function reportTask(task, scope = "all") {
       printedPage: top10[0].record.printedPage,
       contextTitle: top10[0].record.contextTitle,
     } : null,
-    pass: results.length > 0 && semanticMatches.length > 0,
+    pass: results.length > 0
+      && results.every((item) => item.hasRetrievalEvidence)
+      && results[0] && matchesTask(results[0].record, task)
+      && top5Relevant / Math.max(1, top5.length) >= .60
+      && top10Relevant / Math.max(1, top10.length) >= .50,
   };
 }
 

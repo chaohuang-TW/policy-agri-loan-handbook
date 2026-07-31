@@ -194,6 +194,21 @@ def validate(root: Path) -> list[str]:
     for token in UNSAFE:
         if token in js or token in core:
             fail(errors, f"unsafe search implementation: {token}")
+    for token in ("hasRetrievalEvidence", "matchedOriginalTerms", "matchedRelatedTerms", "matchedBodyTerms", "exactDocumentNumberMatch"):
+        if token not in core:
+            fail(errors, f"search evidence metadata missing: {token}")
+    if '.filter((item) => item.hasRetrievalEvidence === true)' not in core:
+        fail(errors, "retrieval evidence gate missing")
+    if 'queryInfo.normalized.includes(term)' not in core:
+        fail(errors, "task concept complete trigger policy missing")
+    if 'item.originalTerms?.length' in js:
+        fail(errors, "UI still labels direct match from legacy originalTerms")
+    if ': item.hasDirectEvidence ? `直接命中：${sample(item.matchedOriginalTerms || [])}`' not in js:
+        fail(errors, "direct label is not backed by matchedOriginalTerms")
+    if ': `相關詞命中：${sample(item.matchedRelatedTerms || [])}`' not in js:
+        fail(errors, "related label is not backed by matchedRelatedTerms")
+    if 'Core.createSnippetRange(record.text, directBodyTerms, relatedBodyTerms)' not in js:
+        fail(errors, "snippet is not constrained to actual body evidence")
     for name in ("search-core.js", "search.js", "site-tools.js"):
         if (site / "assets/js" / name).read_bytes() != (root / "assets/js" / name).read_bytes():
             fail(errors, f"source and site JavaScript differ: {name}")

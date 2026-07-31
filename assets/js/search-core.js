@@ -91,6 +91,9 @@
         normalizedHeadings: normalize((record.headings || []).join(" ")),
         normalizedBreadcrumb: normalize((record.breadcrumb || []).join(" ")),
         normalizedText: normalize(record.text),
+        normalizedKeywords: normalize((record.keywords || []).join(" ")),
+        normalizedAliases: normalize((record.aliases || []).join(" ")),
+        normalizedSourceTitle: normalize(record.sourceTitle),
         canonicalDocumentNumber: canonicalizeDocumentNumber(record.documentNumber),
       };
     });
@@ -131,9 +134,15 @@
         || (concept.triggerTerms || concept.terms || []).map(normalize);
       const normalizedRelated = concept.normalizedRelatedTerms
         || (concept.relatedTerms || concept.terms || []).map(normalize);
-      if (normalizedTriggers.some((term) =>
-        queryInfo.terms.some((token) => term.includes(token) || token.includes(term))
-      )) {
+      // Task concepts deliberately require their complete, explicit phrase.
+      // Legacy concepts retain the existing synonym-friendly token policy.
+      const isTaskConcept = (concept.triggerTerms || []).length > 0;
+      const triggered = isTaskConcept
+        ? normalizedTriggers.some((term) => queryInfo.normalized.includes(term))
+        : normalizedTriggers.some((term) => queryInfo.terms.some((token) =>
+          term.includes(token) || token.includes(term)
+        ));
+      if (triggered) {
         expanded.push(...normalizedRelated);
       }
     }
@@ -182,22 +191,44 @@
       headings: record.normalizedHeadings,
       breadcrumb: record.normalizedBreadcrumb,
       body: record.normalizedText,
+      documentNumber: record.canonicalDocumentNumber,
+      keywords: record.normalizedKeywords,
+      aliases: record.normalizedAliases,
+      sourceTitle: record.normalizedSourceTitle,
     };
     const matches = {};
     for (const [name, value] of Object.entries(fields)) {
       matches[name] = originalTerms.filter((term) => value.includes(term));
     }
+    const directTerms = [...new Set(Object.values(matches).flat())];
+    const relatedMatches = {};
+    for (const [name, value] of Object.entries(fields)) {
+      relatedMatches[name] = relatedTerms.filter((term) => value.includes(term));
+    }
+    const matchedRelatedTerms = [...new Set(Object.values(relatedMatches).flat())];
+    const canonicalQuery = canonicalizeDocumentNumber(queryInfo.normalized);
+    const exactDocumentNumberMatch = Boolean(canonicalQuery && record.canonicalDocumentNumber
+      && (canonicalQuery === record.canonicalDocumentNumber
+        || record.canonicalDocumentNumber.includes(canonicalQuery)));
+    const matchedDocumentNumberTerms = [...new Set([
+      ...matches.documentNumber,
+      ...relatedMatches.documentNumber,
+      ...(exactDocumentNumberMatch ? [canonicalQuery] : []),
+    ])];
+    const hasDirectEvidence = directTerms.length > 0;
+    const hasRelatedEvidence = matchedRelatedTerms.length > 0;
+    const hasStructuredEvidence = exactDocumentNumberMatch;
+    const hasRetrievalEvidence = hasDirectEvidence || hasRelatedEvidence || hasStructuredEvidence;
     let score = matches.title.length * WEIGHTS.title
       + matches.headings.length * WEIGHTS.heading
       + matches.breadcrumb.length * WEIGHTS.breadcrumb
       + matches.body.length * WEIGHTS.body;
-    score += relatedTerms.filter((term) => fields.title.includes(term)).length * WEIGHTS.conceptTitle;
-    score += relatedTerms.filter((term) => fields.body.includes(term)).length * WEIGHTS.conceptBody;
+    score += relatedMatches.title.length * WEIGHTS.conceptTitle;
+    score += relatedMatches.body.length * WEIGHTS.conceptBody;
     if (record.normalizedTitle === queryInfo.normalized) score += WEIGHTS.exactTitle;
     else if (queryInfo.normalized.length >= 2 && record.normalizedTitle.includes(queryInfo.normalized)) score += WEIGHTS.phraseTitle;
     if (queryInfo.normalized.length >= 8 && record.normalizedText.includes(queryInfo.normalized)) score += WEIGHTS.phraseBody;
-    const canonicalQuery = canonicalizeDocumentNumber(queryInfo.normalized);
-    if (canonicalQuery && record.canonicalDocumentNumber && canonicalQuery === record.canonicalDocumentNumber) {
+    if (exactDocumentNumberMatch) {
       score += WEIGHTS.exactNumber;
     }
     if (originalTerms.length > 1 && originalTerms.every((term) => fields.body.includes(term))) score += WEIGHTS.allTerms;
@@ -205,18 +236,34 @@
     if (distance !== null && distance <= 180) score += Math.max(0, WEIGHTS.proximity - Math.floor(distance / 3));
     if (record.type === "貸款索引" && matches.title.length) score += WEIGHTS.loanTitle;
     if (record.type === "書表附件" && matches.title.length) score += WEIGHTS.formTitle;
+    let intentBoost = 0;
     for (const intent of intents) {
       const triggers = intent.normalizedTriggers || (intent.triggers || []).map(normalize);
       if (triggers.some((trigger) => queryInfo.normalized.includes(trigger)) && intent.preferredTypes.includes(record.type)) {
-        score += intent.boost;
+        intentBoost += intent.boost;
       }
     }
-    return {score, terms: originalTerms.concat(relatedTerms), originalTerms, relatedTerms};
+    if (hasRetrievalEvidence) score += intentBoost;
+    else score = 0;
+    const matchedOriginalTerms = directTerms;
+    const matchedTitleTerms = [...new Set([...matches.title, ...relatedMatches.title])];
+    const matchedBodyTerms = [...new Set([...matches.body, ...relatedMatches.body])];
+    return {
+      score, intentBoost: hasRetrievalEvidence ? intentBoost : 0,
+      queryOriginalTerms: originalTerms, matchedOriginalTerms, matchedRelatedTerms,
+      matchedTitleTerms, matchedBodyTerms, matchedDocumentNumberTerms,
+      exactDocumentNumberMatch, hasDirectEvidence, hasRelatedEvidence,
+      hasStructuredEvidence, hasRetrievalEvidence,
+      matchKind: exactDocumentNumberMatch ? "exact-document" : hasDirectEvidence ? "direct" : "related",
+      // Compatibility aliases; these are actual matches, never query expansion.
+      terms: matchedOriginalTerms.concat(matchedRelatedTerms),
+      originalTerms: matchedOriginalTerms, relatedTerms: matchedRelatedTerms,
+    };
   }
 
   function scoreRecord(record, query, concepts, intents) {
     const info = typeof query === "object" && query.normalized ? query : validateQuery(query);
-    if (!info.ok || info.empty) return {score: 0, terms: [], originalTerms: [], relatedTerms: []};
+    if (!info.ok || info.empty) return {score: 0, terms: [], originalTerms: [], relatedTerms: [], hasRetrievalEvidence: false};
     const prepared = record._prepared ? record : prepareRecords([record])[0];
     return scorePreparedRecord(prepared, info, prepareConceptData(concepts), prepareIntentData(intents));
   }
@@ -279,7 +326,7 @@
       return typeMatch && scopeMatch;
     });
     const scored = candidates.map((record) => ({record, ...scorePreparedRecord(record, queryInfo, preparedConcepts, preparedIntents)}))
-      .filter((item) => item.score > 0);
+      .filter((item) => item.hasRetrievalEvidence === true);
     return diversifyResults(scored);
   }
 

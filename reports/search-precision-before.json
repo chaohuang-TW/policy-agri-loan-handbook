@@ -1,0 +1,2234 @@
+{
+  "baselineCommit": "b8e7a177f631e19c35121a40ce6aa0cc5c87aed2",
+  "source": "pre-change search core",
+  "searchCoreSha256": "7d23a055cd5262205d359d323da3a87055fad030b0a264a326644f5dd3bd8270",
+  "generatedAt": "2026-07-31T07:48:53.068Z",
+  "queries": [
+    {
+      "query": "申請資格",
+      "totalResults": 386,
+      "intentOnlyCount": 283,
+      "directMatchCount": 3,
+      "relatedMatchCount": 100,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "page-231",
+        "page-263",
+        "page-100",
+        "page-108",
+        "page-117",
+        "page-119",
+        "page-130",
+        "page-148",
+        "page-154",
+        "page-163"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "page-231",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請資格"
+          ],
+          "matchedRelatedTerms": [
+            "申請資格條件",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-263",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請資格"
+          ],
+          "matchedRelatedTerms": [
+            "申請資格條件"
+          ]
+        },
+        {
+          "id": "page-100",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-108",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-117",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "本貸款之對象"
+          ]
+        },
+        {
+          "id": "page-119",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-130",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-148",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款對象",
+            "本貸款之對象"
+          ]
+        },
+        {
+          "id": "page-154",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-163",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "資格",
+      "totalResults": 391,
+      "intentOnlyCount": 240,
+      "directMatchCount": 117,
+      "relatedMatchCount": 34,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-029",
+        "interpretations-interpretation-071",
+        "interpretations-interpretation-021",
+        "interpretations-interpretation-053",
+        "interpretations-interpretation-056",
+        "interpretations-interpretation-069",
+        "interpretations-interpretation-022",
+        "page-100",
+        "page-108",
+        "page-117"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-029",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": [
+            "申貸資格"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-071",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": [
+            "申貸資格"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-021",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-053",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-056",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-069",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-022",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-100",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-108",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "貸款對象"
+          ]
+        },
+        {
+          "id": "page-117",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "資格"
+          ],
+          "matchedRelatedTerms": [
+            "申貸資格",
+            "本貸款之對象"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "貸款用途",
+      "totalResults": 386,
+      "intentOnlyCount": 236,
+      "directMatchCount": 134,
+      "relatedMatchCount": 16,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-005",
+        "interpretations-interpretation-010",
+        "interpretations-interpretation-044",
+        "page-028",
+        "page-149",
+        "page-153",
+        "page-253",
+        "page-015",
+        "page-035",
+        "page-058"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-005",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-010",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-044",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-028",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-149",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-153",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-253",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-015",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途"
+          ]
+        },
+        {
+          "id": "page-035",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途"
+          ]
+        },
+        {
+          "id": "page-058",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "用途",
+      "totalResults": 388,
+      "intentOnlyCount": 222,
+      "directMatchCount": 160,
+      "relatedMatchCount": 6,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-002",
+        "interpretations-interpretation-005",
+        "interpretations-interpretation-044",
+        "interpretations-interpretation-010",
+        "interpretations-interpretation-025",
+        "page-028",
+        "page-149",
+        "page-153",
+        "page-253",
+        "page-313"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-002",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-005",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-044",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-010",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-025",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-028",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-149",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-153",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-253",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        },
+        {
+          "id": "page-313",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "用途"
+          ],
+          "matchedRelatedTerms": [
+            "資金用途",
+            "所需資金"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "貸款額度",
+      "totalResults": 386,
+      "intentOnlyCount": 310,
+      "directMatchCount": 76,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "forms-form-028",
+        "interpretations-interpretation-001",
+        "interpretations-interpretation-020",
+        "interpretations-interpretation-036",
+        "page-058",
+        "page-014",
+        "page-018",
+        "page-033",
+        "page-097",
+        "page-103"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "forms-form-028",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-001",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-020",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-036",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-058",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度",
+            "最高額度"
+          ]
+        },
+        {
+          "id": "page-014",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-018",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-033",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-097",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-103",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "額度",
+      "totalResults": 388,
+      "intentOnlyCount": 283,
+      "directMatchCount": 105,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "forms-form-002",
+        "forms-form-028",
+        "interpretations-interpretation-001",
+        "interpretations-interpretation-020",
+        "interpretations-interpretation-036",
+        "interpretations-interpretation-072",
+        "page-058",
+        "page-014",
+        "page-018",
+        "page-033"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "forms-form-002",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-028",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-001",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-020",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-036",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-072",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-058",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度",
+            "最高額度"
+          ]
+        },
+        {
+          "id": "page-014",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-018",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        },
+        {
+          "id": "page-033",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "額度"
+          ],
+          "matchedRelatedTerms": [
+            "最高貸款額度"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "貸款期限",
+      "totalResults": 382,
+      "intentOnlyCount": 332,
+      "directMatchCount": 49,
+      "relatedMatchCount": 1,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "page-005",
+        "page-006",
+        "page-036",
+        "page-037",
+        "page-097",
+        "page-101",
+        "page-103",
+        "page-114",
+        "page-124",
+        "page-150"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "page-005",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-006",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-036",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-037",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-097",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-101",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-103",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-114",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-124",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-150",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸款期限"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "期限",
+      "totalResults": 385,
+      "intentOnlyCount": 284,
+      "directMatchCount": 101,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "forms-form-002",
+        "interpretations-interpretation-009",
+        "interpretations-interpretation-034",
+        "page-346",
+        "page-005",
+        "page-006",
+        "page-036",
+        "page-037",
+        "page-097",
+        "page-101"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "forms-form-002",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-009",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-034",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-346",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": [
+            "還款期限"
+          ]
+        },
+        {
+          "id": "page-005",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-006",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-036",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-037",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-097",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-101",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "期限"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "寬緩期",
+      "totalResults": 382,
+      "intentOnlyCount": 350,
+      "directMatchCount": 32,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "page-346",
+        "page-055",
+        "page-097",
+        "page-105",
+        "page-116",
+        "page-126",
+        "page-150",
+        "page-161",
+        "page-168",
+        "page-181"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "page-346",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": [
+            "還款期限"
+          ]
+        },
+        {
+          "id": "page-055",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-097",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-105",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-116",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-126",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-150",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-161",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-168",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-181",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "寬緩期"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "應備文件",
+      "totalResults": 156,
+      "intentOnlyCount": 0,
+      "directMatchCount": 0,
+      "relatedMatchCount": 156,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "forms-form-001",
+        "forms-form-002",
+        "interpretations-interpretation-014",
+        "forms-form-006",
+        "forms-form-007",
+        "forms-form-008",
+        "forms-form-009",
+        "forms-form-010",
+        "interpretations-interpretation-041",
+        "forms-form-011"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "forms-form-001",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-002",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-014",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-006",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-007",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-008",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-009",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-010",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-041",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "證明文件"
+          ]
+        },
+        {
+          "id": "forms-form-011",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "文件",
+      "totalResults": 187,
+      "intentOnlyCount": 0,
+      "directMatchCount": 123,
+      "relatedMatchCount": 64,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-041",
+        "interpretations-interpretation-029",
+        "interpretations-interpretation-047",
+        "page-149",
+        "forms-form-001",
+        "forms-form-002",
+        "interpretations-interpretation-014",
+        "forms-form-006",
+        "forms-form-007",
+        "forms-form-008"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-041",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "文件"
+          ],
+          "matchedRelatedTerms": [
+            "證明文件"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-029",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "文件"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-047",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "文件"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-149",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "文件"
+          ],
+          "matchedRelatedTerms": [
+            "應檢具",
+            "應檢附",
+            "申請書",
+            "證明文件"
+          ]
+        },
+        {
+          "id": "forms-form-001",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-002",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-014",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-006",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-007",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        },
+        {
+          "id": "forms-form-008",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "申請書"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "貸放後管理",
+      "totalResults": 17,
+      "intentOnlyCount": 0,
+      "directMatchCount": 1,
+      "relatedMatchCount": 16,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "page-058",
+        "page-015",
+        "page-035",
+        "page-105",
+        "page-116",
+        "page-127",
+        "page-214",
+        "page-226",
+        "page-233",
+        "page-181"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "page-058",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "貸放後管理"
+          ],
+          "matchedRelatedTerms": [
+            "用途查驗"
+          ]
+        },
+        {
+          "id": "page-015",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-035",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-105",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-116",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-127",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-214",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-226",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-233",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-181",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "用途查驗"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "管理",
+      "totalResults": 87,
+      "intentOnlyCount": 0,
+      "directMatchCount": 71,
+      "relatedMatchCount": 16,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-013",
+        "interpretations-interpretation-019",
+        "interpretations-interpretation-042",
+        "interpretations-interpretation-054",
+        "interpretations-interpretation-070",
+        "forms-attachment-1",
+        "interpretations-interpretation-025",
+        "page-058",
+        "page-015",
+        "page-035"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-013",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-019",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-042",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-054",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-070",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-attachment-1",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-025",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-058",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "管理"
+          ],
+          "matchedRelatedTerms": [
+            "用途查驗"
+          ]
+        },
+        {
+          "id": "page-015",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        },
+        {
+          "id": "page-035",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "貸款用途及經營狀況查驗",
+            "經營狀況查驗"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "農授金字第0955080181號",
+      "totalResults": 88,
+      "intentOnlyCount": 86,
+      "directMatchCount": 2,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 1,
+      "top10ResultIds": [
+        "interpretations-interpretation-001",
+        "interpretations-interpretation-002",
+        "interpretations-interpretation-032",
+        "interpretations-interpretation-033",
+        "interpretations-interpretation-035",
+        "interpretations-interpretation-036",
+        "interpretations-interpretation-040",
+        "interpretations-interpretation-041",
+        "interpretations-interpretation-042",
+        "interpretations-interpretation-049"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-001",
+          "matchKind": "exact-document",
+          "matchedOriginalTerms": [
+            "農授金字第0955080181號"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-002",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-032",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-033",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-035",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-036",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-040",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-041",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-042",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-049",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "0955080181",
+      "totalResults": 2,
+      "intentOnlyCount": 0,
+      "directMatchCount": 2,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 1,
+      "top10ResultIds": [
+        "page-047",
+        "interpretations-interpretation-001"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "page-047",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "0955080181"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-001",
+          "matchKind": "exact-document",
+          "matchedOriginalTerms": [
+            "0955080181"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "農授金字第1147467200A號",
+      "totalResults": 87,
+      "intentOnlyCount": 87,
+      "directMatchCount": 0,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-001",
+        "interpretations-interpretation-002",
+        "interpretations-interpretation-032",
+        "interpretations-interpretation-033",
+        "interpretations-interpretation-035",
+        "interpretations-interpretation-036",
+        "interpretations-interpretation-040",
+        "interpretations-interpretation-041",
+        "interpretations-interpretation-042",
+        "interpretations-interpretation-049"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-001",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-002",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-032",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-033",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-035",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-036",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-040",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-041",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-042",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-049",
+          "matchKind": "intent-only",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "1147467200A",
+      "totalResults": 0,
+      "intentOnlyCount": 0,
+      "directMatchCount": 0,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [],
+      "top10MatchReasons": []
+    },
+    {
+      "query": "青壯年農民",
+      "totalResults": 79,
+      "intentOnlyCount": 0,
+      "directMatchCount": 65,
+      "relatedMatchCount": 14,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "loan-young-farmer-loan",
+        "forms-form-019",
+        "page-223",
+        "page-212",
+        "faq-faq-young-farmer-114-10",
+        "page-215",
+        "page-221",
+        "page-222",
+        "page-211",
+        "page-213"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "loan-young-farmer-loan",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-019",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-223",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": [
+            "青農",
+            "青年農民",
+            "青年從農"
+          ]
+        },
+        {
+          "id": "page-212",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": [
+            "青年農民"
+          ]
+        },
+        {
+          "id": "faq-faq-young-farmer-114-10",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-215",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": [
+            "青年農民"
+          ]
+        },
+        {
+          "id": "page-221",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": [
+            "青年從農"
+          ]
+        },
+        {
+          "id": "page-222",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": [
+            "青年從農"
+          ]
+        },
+        {
+          "id": "page-211",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "page-213",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "青壯年農民"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    },
+    {
+      "query": "農機",
+      "totalResults": 27,
+      "intentOnlyCount": 0,
+      "directMatchCount": 27,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "loan-farm-machinery-loan",
+        "forms-form-006",
+        "page-096",
+        "page-097",
+        "page-099",
+        "interpretations-interpretation-033",
+        "interpretations-interpretation-034",
+        "page-098",
+        "page-100",
+        "page-101"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "loan-farm-machinery-loan",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "forms-form-006",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-096",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農業機械",
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-097",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農業機械",
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-099",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農業機械",
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-033",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-034",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-098",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-100",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        },
+        {
+          "id": "page-101",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "農機"
+          ],
+          "matchedRelatedTerms": [
+            "農機貸款"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "天然災害",
+      "totalResults": 75,
+      "intentOnlyCount": 0,
+      "directMatchCount": 75,
+      "relatedMatchCount": 0,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "loan-natural-disaster-low-interest-loan",
+        "forms-form-023",
+        "forms-form-027",
+        "loan-agri-organization-disaster-recovery-loan",
+        "forms-form-022",
+        "interpretations-interpretation-055",
+        "page-272",
+        "page-273",
+        "interpretations-interpretation-082",
+        "interpretations-interpretation-085"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "loan-natural-disaster-low-interest-loan",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        },
+        {
+          "id": "forms-form-023",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害"
+          ]
+        },
+        {
+          "id": "forms-form-027",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害"
+          ]
+        },
+        {
+          "id": "loan-agri-organization-disaster-recovery-loan",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-022",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "interpretations-interpretation-055",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        },
+        {
+          "id": "page-272",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        },
+        {
+          "id": "page-273",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-082",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-085",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "天然災害"
+          ],
+          "matchedRelatedTerms": [
+            "農業天然災害",
+            "天然災害低利貸款"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "利率",
+      "totalResults": 125,
+      "intentOnlyCount": 0,
+      "directMatchCount": 80,
+      "relatedMatchCount": 45,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "interpretations-interpretation-086",
+        "interpretations-interpretation-087",
+        "interpretations-interpretation-047",
+        "forms-form-001",
+        "interpretations-interpretation-004",
+        "interpretations-interpretation-018",
+        "interpretations-interpretation-028",
+        "page-005",
+        "page-006",
+        "page-038"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "interpretations-interpretation-086",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": [
+            "貸款利率"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-087",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": [
+            "貸款利率"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-047",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-001",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-004",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-018",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "interpretations-interpretation-028",
+          "matchKind": "related",
+          "matchedOriginalTerms": [],
+          "matchedRelatedTerms": [
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "page-005",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": [
+            "貸款利率",
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "page-006",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": [
+            "貸款利率",
+            "利息差額補貼"
+          ]
+        },
+        {
+          "id": "page-038",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "利率"
+          ],
+          "matchedRelatedTerms": [
+            "貸款利率",
+            "利息差額補貼"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "申請書",
+      "totalResults": 136,
+      "intentOnlyCount": 0,
+      "directMatchCount": 79,
+      "relatedMatchCount": 57,
+      "exactDocumentNumberCount": 0,
+      "top10ResultIds": [
+        "forms-form-001",
+        "forms-form-002",
+        "forms-form-006",
+        "forms-form-007",
+        "forms-form-008",
+        "forms-form-009",
+        "forms-form-010",
+        "forms-form-011",
+        "forms-form-012",
+        "forms-form-013"
+      ],
+      "top10MatchReasons": [
+        {
+          "id": "forms-form-001",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-002",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-006",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-007",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-008",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-009",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-010",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-011",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-012",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        },
+        {
+          "id": "forms-form-013",
+          "matchKind": "direct",
+          "matchedOriginalTerms": [
+            "申請書"
+          ],
+          "matchedRelatedTerms": []
+        }
+      ]
+    }
+  ]
+}

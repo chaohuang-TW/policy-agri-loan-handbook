@@ -57,10 +57,19 @@
 
     const meta = document.createElement("p");
     meta.className = "result-match-meta";
-    meta.textContent = item.originalTerms?.length ? "直接命中查詢文字" : "相關詞命中";
+    const sample = (terms) => terms.slice(0, 3).join("、") + (terms.length > 3 ? "等" : "");
+    meta.textContent = item.exactDocumentNumberMatch ? "精確文號命中"
+      : item.hasDirectEvidence ? `直接命中：${sample(item.matchedOriginalTerms || [])}`
+      : `相關詞命中：${sample(item.matchedRelatedTerms || [])}`;
     article.append(meta);
 
-    const snippet = Core.createSnippetRange(record.text, item.originalTerms, item.relatedTerms);
+    const directBodyTerms = (item.matchedOriginalTerms || []).filter((term) =>
+      (item.matchedBodyTerms || []).includes(term)
+    );
+    const relatedBodyTerms = (item.matchedRelatedTerms || []).filter((term) =>
+      (item.matchedBodyTerms || []).includes(term)
+    );
+    const snippet = Core.createSnippetRange(record.text, directBodyTerms, relatedBodyTerms);
     const snippetText = record.text.slice(snippet.start, snippet.end);
     const snippetRanges = snippet.matches.map((range) => ({
       start: range.start - snippet.start,
@@ -171,7 +180,22 @@
     function render(focusAfter = false) {
       results.replaceChildren(...state.ranked.slice(0, state.shown).map(createResult));
       status.hidden = false;
-      status.textContent = `找到 ${state.ranked.length} 筆結果，目前顯示 ${Math.min(state.shown, state.ranked.length)} 筆。`;
+      if (!state.ranked.length) {
+        const paragraph = document.createElement("p");
+        paragraph.className = "search-empty-guidance";
+        paragraph.append(document.createTextNode("目前在114年度手冊底本中找不到直接或相關文字命中。您可"));
+        const catalog = document.createElement("a");
+        catalog.href = new URL("versions/114/index.html", siteRoot).href;
+        catalog.textContent = "查看原書完整目錄";
+        const updates = document.createElement("a");
+        updates.href = new URL("updates/index.html", siteRoot).href;
+        updates.textContent = "查看官方更新";
+        paragraph.append(catalog, document.createTextNode("或"), updates, document.createTextNode("。"));
+        results.append(paragraph);
+        status.textContent = "沒有找到具直接或相關文字證據的結果。";
+      } else {
+        status.textContent = `找到 ${state.ranked.length} 筆結果，目前顯示 ${Math.min(state.shown, state.ranked.length)} 筆。`;
+      }
       more.hidden = state.shown >= state.ranked.length;
       renderFilters();
       if (focusAfter) focusResults();

@@ -169,6 +169,42 @@ assert.doesNotThrow(() => search("<img src=x onerror=alert(1)>"));
 assert.deepStrictEqual(core.tokenizeQuery("農機 農機 農機"), ["農機"]);
 const first = search("青農").map(({record}) => record.id);
 assert.deepStrictEqual(first, search("青農").map(({record}) => record.id));
+
+// Evidence is a retrieval gate, never an inference from a positive score.
+const syntheticConcepts = [{id: "task-eligibility", triggerTerms: ["申請資格"], relatedTerms: ["貸款對象", "完全未出現"]}, {id: "legacy", terms: ["青農", "青壯年農民"]}];
+const syntheticIntents = [{triggers: ["申請資格"], preferredTypes: ["原文頁面"], boost: 999}];
+const synthetic = core.prepareSearchData([
+  {id: "direct", type: "原文頁面", title: "規定", text: "申請資格應符合規定。", scope: "all"},
+  {id: "related", type: "原文頁面", title: "規定", text: "貸款對象為農民。", scope: "all"},
+  {id: "intent-only", type: "原文頁面", title: "規定", text: "完全無關文字。", scope: "all"},
+  {id: "document", type: "函釋", title: "函釋", text: "正文無文號。", documentNumber: "農授金字第1147467200A號", scope: "all"},
+  {id: "title-only", type: "原文頁面", title: "申請資格", text: "正文沒有對應詞。", scope: "all"},
+], syntheticConcepts, syntheticIntents);
+const syntheticResults = core.searchRecords(synthetic.records, "申請資格", synthetic.concepts, synthetic.intents);
+assert(!syntheticResults.some((item) => item.record.id === "intent-only"), "intent-only record entered results");
+assert(syntheticResults.every((item) => item.hasRetrievalEvidence), "formal result lacks retrieval evidence");
+const directFixture = syntheticResults.find((item) => item.record.id === "direct");
+assert(directFixture.hasDirectEvidence && directFixture.matchedOriginalTerms.includes("申請資格"));
+const relatedFixture = syntheticResults.find((item) => item.record.id === "related");
+assert(relatedFixture.hasRelatedEvidence && relatedFixture.matchedRelatedTerms.includes("貸款對象"));
+const titleFixture = syntheticResults.find((item) => item.record.id === "title-only");
+assert(titleFixture.matchedTitleTerms.includes("申請資格") && !titleFixture.matchedBodyTerms.includes("申請資格"));
+const documentFixture = core.searchRecords(synthetic.records, "1147467200A", synthetic.concepts, synthetic.intents)[0];
+assert(documentFixture.record.id === "document" && documentFixture.exactDocumentNumberMatch && documentFixture.matchKind === "exact-document");
+assert.deepStrictEqual(relatedFixture.matchedOriginalTerms, []);
+assert.deepStrictEqual(relatedFixture.matchedRelatedTerms, ["貸款對象"]);
+assert(!core.prepareConcepts("資格", syntheticConcepts).includes("貸款對象"), "short task token triggered concept");
+assert(core.prepareConcepts("青農", syntheticConcepts).includes("青壯年農民"), "legacy concept compatibility failed");
+
+const indexedDocument = "農授金字第0955080181號";
+const indexedDocumentId = "interpretations-interpretation-001";
+for (const query of [indexedDocument, "0955080181"]) {
+  const results = search(query);
+  assert.strictEqual(results[0]?.record.id, indexedDocumentId, `${query} did not rank indexed document first`);
+  assert(results[0].exactDocumentNumberMatch && results[0].matchKind === "exact-document");
+}
+assert.strictEqual(search("農授金字第1147467200A號").length, 0);
+assert.strictEqual(search("1147467200A").length, 0);
 assert.deepStrictEqual(first, search("青農").map(({record}) => record.id));
 
 assert(!records.some((record) => /手冊頁 None|undefined|\[object Object\]|\bnan\b/i.test(record.text)));
