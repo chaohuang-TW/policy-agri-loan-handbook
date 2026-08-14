@@ -119,6 +119,36 @@ test("FAQ source group links preserve all four ranges", async ({page}) => {
   await expect(page.locator(".lookup-source-groups")).toContainText("349");
 });
 
+test("FAQ search form has an accessible label and preserves group URL state", async ({page}) => {
+  const tool = await faq(page);
+  await expect(tool.getByRole("searchbox", {name: "搜尋FAQ問題或關鍵字"})).toBeVisible();
+  await tool.locator('[data-lookup-group-filter="faq-114-10"]').click();
+  await expect(page).toHaveURL(/group=faq-114-10/);
+});
+
+test("FAQ first record evidence starts at its declared source page", async ({page}) => {
+  await faq(page);
+  const card = page.locator(".faq-lookup-result:visible").first();
+  await expect(card).toHaveAttribute("data-lookup-id", "faq-112-12-q01");
+  await expect(card.getByRole("link", {name: "在手冊中開啟", exact: true})).toHaveAttribute("href", /page-315\.html$/);
+});
+
+test("FAQ group filter exposes selected state to assistive technology", async ({page}) => {
+  const tool = await faq(page);
+  const filter = tool.locator('[data-lookup-group-filter="faq-young-farmer-114-10"]');
+  await filter.click();
+  await expect(filter).toHaveAttribute("aria-pressed", "true");
+  await expect(tool.locator('[data-lookup-group-filter=""]')).toHaveAttribute("aria-pressed", "false");
+});
+
+test("FAQ group URL state survives reload without changing the record set", async ({page}) => {
+  const tool = await faq(page);
+  await tool.locator('[data-lookup-group-filter="faq-114-10"]').click();
+  await page.reload();
+  await expect(page).toHaveURL(/group=faq-114-10/);
+  await expect(tool.locator("[data-lookup-status]")).toHaveText("找到 7 筆FAQ。");
+});
+
 test("interpretations opens with all 87 records", async ({page}) => {
   const tool = await interpretations(page);
   await expect(tool.locator("[data-lookup-status]")).toHaveText("找到 87 筆函釋。");
@@ -218,6 +248,40 @@ test("interpretation empty result is explicit", async ({page}) => {
   await expect(page.locator(".interpretation-lookup-result:visible")).toHaveCount(0);
 });
 
+test("interpretation filters preserve program and year in the shareable URL", async ({page}) => {
+  const tool = await interpretations(page);
+  await tool.locator("select[data-lookup-program]").selectOption("common-rules");
+  await tool.locator("select[data-lookup-year]").selectOption({index: 1});
+  await expect(page).toHaveURL(/program=common-rules/);
+  await expect(page).toHaveURL(/year=/);
+});
+
+test("interpretation result keeps start-only evidence semantics", async ({page}) => {
+  const tool = await interpretations(page);
+  await tool.locator("input[type=search]").fill("0955080181");
+  await tool.locator("button[type=submit]").click();
+  const card = page.locator(".interpretation-lookup-result:visible").first();
+  await expect(card).toContainText("頁碼範圍：start-only");
+  await expect(card.getByRole("link", {name: "開啟PDF原文", exact: true})).toHaveAttribute("href", /#page=\d+$/);
+});
+
+test("interpretation loan-program filter keeps every visible result in scope", async ({page}) => {
+  const tool = await interpretations(page);
+  await tool.locator("select[data-lookup-program]").selectOption("common-rules");
+  const values = await page.locator(".interpretation-lookup-result:visible").evaluateAll(cards => cards.map(card => card.getAttribute("data-lookup-program")));
+  expect(values.length).toBeGreaterThan(0);
+  expect(new Set(values)).toEqual(new Set(["common-rules"]));
+});
+
+test("interpretation document number search keeps the result heading and source link together", async ({page}) => {
+  const tool = await interpretations(page);
+  await tool.locator("input[type=search]").fill("0955080181");
+  await tool.locator("button[type=submit]").click();
+  const card = page.locator(".interpretation-lookup-result:visible").first();
+  await expect(card.locator("h3")).not.toBeEmpty();
+  await expect(card.getByRole("link", {name: "在手冊中開啟", exact: true})).toHaveAttribute("href", /versions\/114\/pages\/page-\d{3}\.html/);
+});
+
 for (const width of [375, 390, 430]) {
   test(`FAQ and interpretation have no overflow at ${width}px`, async ({page}) => {
     await page.setViewportSize({width, height: 844});
@@ -227,6 +291,14 @@ for (const width of [375, 390, 430]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 }
+
+test("FAQ and interpretation have no overflow at the requested 393px width", async ({page}) => {
+  await page.setViewportSize({width: 393, height: 852});
+  await faq(page);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await interpretations(page);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
 
 test("FAQ and interpretation lookup are usable at desktop width", async ({page}) => {
   await page.setViewportSize({width: 1440, height: 1000});

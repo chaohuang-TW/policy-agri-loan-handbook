@@ -1,0 +1,18 @@
+{
+  "faq": [
+    {"query": "本次專案農貸增修規定，主要重點有哪些？", "expectedGroup": "faq-112-12", "expectedQuestionId": "faq-112-12-q01", "expectedPrintedPage": 313},
+    {"query": "本次修正規定生效前", "expectedGroup": "faq-113-08", "expectedQuestionId": "faq-113-08-q02", "expectedPrintedPage": 324},
+    {"query": "屠宰場登記證書", "expectedGroup": "faq-114-10", "expectedQuestionId": "faq-114-10-q03", "expectedPrintedPage": 334},
+    {"query": "農業經營現況自主申報", "expectedGroup": "faq-young-farmer-114-10", "expectedQuestionId": "faq-young-farmer-114-10-q09", "expectedPrintedPage": 341},
+    {"query": "沒有土地可以申貸嗎", "expectedGroup": "faq-young-farmer-114-10", "expectedQuestionId": "faq-young-farmer-114-10-q21", "expectedPrintedPage": 345},
+    {"query": "相關規定可在哪裡查詢", "expectedGroup": "faq-young-farmer-114-10", "expectedQuestionId": "faq-young-farmer-114-10-q12", "expectedPrintedPage": 343}
+  ],
+  "interpretations": [
+    {"query": "農授金字第0955080181號", "expectedId": "interpretation-001"},
+    {"query": "0955080181", "expectedId": "interpretation-001"},
+    {"query": "借新還舊", "expectedId": "interpretation-005"},
+    {"query": "支付憑證", "expectedId": "interpretation-011"},
+    {"query": "動用期限", "expectedId": "interpretation-009"},
+    {"query": "重覆申貸", "expectedId": "interpretation-002"}
+  ]
+}
