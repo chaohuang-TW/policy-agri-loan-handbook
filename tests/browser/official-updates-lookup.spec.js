@@ -54,6 +54,79 @@ for (const [query, id] of [["農輔字第1150022928C號", "afna-disaster-relief-
   });
 }
 
+async function visibleIds(tool) {
+  return tool.locator("[data-official-update-result]:visible").evaluateAll((cards) => cards.map((card) => card.dataset.officialUpdateId));
+}
+
+test("Official Updates multi-keyword matching is non-contiguous AND", async ({page}) => {
+  const tool = await updates(page);
+  await tool.locator("input[name=q]").fill("農民 對象");
+  await tool.locator("button[type=submit]").click();
+  await expect(tool.locator("[data-official-update-result]:visible")).toHaveCount(2);
+  expect(await visibleIds(tool)).toEqual(["afna-farmer-relief-object-announcement-20251219", "afna-farmer-relief-object-letter-20251219"]);
+  const targetText = await tool.locator('[data-official-update-result][data-official-update-id="afna-farmer-relief-object-letter-20251219"]').innerText();
+  expect(targetText).toContain("農民");
+  expect(targetText).toContain("對象");
+  expect(targetText).not.toContain("農民對象");
+});
+
+test("Official Updates multi-keyword results require every token", async ({page}) => {
+  const tool = await updates(page);
+  await tool.locator("input[name=q]").fill("農民 貸款");
+  await tool.locator("button[type=submit]").click();
+  const ids = await visibleIds(tool);
+  expect(ids).toHaveLength(12);
+  const texts = await tool.locator("[data-official-update-result]:visible").allInnerTexts();
+  for (const text of texts) {
+    expect(text).toContain("農民");
+    expect(text).toContain("貸款");
+  }
+});
+
+test("Official Updates negative multi-keyword query returns zero", async ({page}) => {
+  const tool = await updates(page);
+  await tool.locator("input[name=q]").fill("農民 不存在詞");
+  await tool.locator("button[type=submit]").click();
+  await expect(tool.locator("[data-official-update-result]:visible")).toHaveCount(0);
+  await expect(tool.locator("[data-official-update-status]")).toHaveText("目前顯示 0 筆官方更新");
+});
+
+test("Official Updates whitespace variants preserve multi-keyword results", async ({page}) => {
+  const tool = await updates(page);
+  const variants = ["農民 貸款", "農民  貸款", "農民　貸款", "農民\t貸款"];
+  const results = [];
+  for (const query of variants) {
+    await tool.locator("input[name=q]").fill(query);
+    await tool.locator("button[type=submit]").click();
+    results.push(await visibleIds(tool));
+  }
+  for (const result of results.slice(1)) expect(result).toEqual(results[0]);
+});
+
+test("Official Updates multi-keyword query survives reload", async ({page}) => {
+  const tool = await updates(page);
+  await tool.locator("input[name=q]").fill("天然災害 貸款");
+  await tool.locator("button[type=submit]").click();
+  const before = await visibleIds(tool);
+  await page.reload();
+  expect(await page.locator("[data-official-updates-lookup] input[name=q]").inputValue()).toBe("天然災害 貸款");
+  expect(await visibleIds(page.locator("[data-official-updates-lookup]").first())).toEqual(before);
+});
+
+test("Official Updates Back and Forward restore multi-keyword state", async ({page}) => {
+  const tool = await updates(page);
+  await tool.locator("input[name=q]").fill("農民 對象");
+  await tool.locator("button[type=submit]").click();
+  await tool.locator("input[name=q]").fill("青壯 農民");
+  await tool.locator("button[type=submit]").click();
+  await page.goBack();
+  expect(new URL(page.url()).searchParams.get("q")).toBe("農民 對象");
+  expect(await visibleIds(page.locator("[data-official-updates-lookup]").first())).toHaveLength(2);
+  await page.goForward();
+  expect(new URL(page.url()).searchParams.get("q")).toBe("青壯 農民");
+  expect(await visibleIds(page.locator("[data-official-updates-lookup]").first())).toHaveLength(6);
+});
+
 test("Official Updates program filter is data-derived", async ({page}) => {
   const tool = await updates(page);
   const select = tool.locator("select[name=program]");

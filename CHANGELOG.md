@@ -1,5 +1,23 @@
 # Changelog
 
+## 114.0.0-beta.3.1.1
+
+### Fixed
+
+- 修正 Official Updates 多關鍵詞查詢在正規化時提前移除空白，造成查詢詞邊界消失的問題。
+- 多關鍵詞查詢改為保留原始 query 邊界後分詞，再逐詞正規化並採 AND matching。
+- 修正 JavaScript lookup 與 Python validator reference implementation 的相同邏輯。
+
+### Added
+
+- 新增非連續多關鍵詞、空白變體與負面 AND matching regression tests。
+- 新增多關鍵詞 token boundary mutation tests。
+
+### Preserved
+
+- 20筆 Official Updates、507筆114年度手冊搜尋索引、beta.3.1 文號搜尋與篩選排序。
+- partial Coverage、`verifiedThrough = null`、天然災害農業金融署官方Gateway、399個既有HTML routes與359頁Evidence。
+
 ## 114.0.0-beta.3.1
 
 ### Added

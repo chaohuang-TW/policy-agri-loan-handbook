@@ -59,6 +59,10 @@ def main() -> None:
         ("URL state handler removed", lambda root: replace_all(root / "assets/js/official-updates-lookup.js", "URLSearchParams", "BrokenSearchParams")),
         ("coverage changed to complete", lambda root: mutate_json(root / "data/current/coverage.json", lambda value: value["officialUpdateReview"].update(coverageStatus="complete", verifiedThrough="2026-07-28"))),
         ("version mismatch", lambda root: mutate_json(root / "data/114/manual.json", lambda value: value.update(digitalRevision="114.0.0-beta.3.0"))),
+        ("tokenization uses normalized query", lambda root: replace(root / "assets/js/official-updates-lookup.js", "const terms = tokenizeQuery(rawQuery);", "const terms = q.split(/\\s+/).filter(Boolean);")),
+        ("multi-keyword AND changed to OR", lambda root: replace(root / "assets/js/official-updates-lookup.js", "terms.length >= 2 && terms.every((term) => body.includes(term))", "terms.length >= 2 && terms.some((term) => body.includes(term))")),
+        ("only first multi-keyword token checked", lambda root: replace(root / "assets/js/official-updates-lookup.js", "terms.length >= 2 && terms.every((term) => body.includes(term))", "terms.length >= 2 && terms.slice(0, 1).every((term) => body.includes(term))")),
+        ("full-width whitespace tokenization removed", lambda root: replace(root / "assets/js/official-updates-lookup.js", "split(/\\s+/)", "split(/[ \\t]+/)")),
     ]
     results = []
     with tempfile.TemporaryDirectory(prefix="handbook-official-updates-mutations-") as raw:

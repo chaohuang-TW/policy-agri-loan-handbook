@@ -14,6 +14,14 @@
       .replace(/號/g, "");
   }
 
+  function tokenizeQuery(value) {
+    return String(value || "")
+      .trim()
+      .split(/\s+/)
+      .map((term) => normalizeText(term))
+      .filter(Boolean);
+  }
+
   function dateValue(record) {
     return record.publishedDate || record.effectiveDate || record.versionDate || "";
   }
@@ -24,7 +32,9 @@
   }
 
   function score(record, query) {
-    const q = normalizeText(query);
+    const rawQuery = String(query || "");
+    const q = normalizeText(rawQuery);
+    const terms = tokenizeQuery(rawQuery);
     if (!q) return 0;
     if (/^\d+$/.test(q) && q.length < 6) return 0;
     const doc = normalizeOfficialDocumentNumber(record.documentNumber);
@@ -50,8 +60,7 @@
     if (programs.includes(q)) return 70000;
     if (sections.includes(q)) return 65000;
     if (body.includes(q)) return 50000;
-    const terms = q.split(/\s+/).filter(Boolean);
-    return terms.length && terms.every((term) => body.includes(term)) ? 30000 + terms.length : 0;
+    return terms.length >= 2 && terms.every((term) => body.includes(term)) ? 30000 + terms.length : 0;
   }
 
   function sortRecords(records, query) {
@@ -166,6 +175,6 @@
     readUrl();
   }
 
-  window.OfficialUpdatesLookup = {normalizeOfficialDocumentNumber, sortRecords};
+  window.OfficialUpdatesLookup = {normalizeText, tokenizeQuery, normalizeOfficialDocumentNumber, score, sortRecords};
   document.querySelectorAll(".updates-index[data-official-updates-lookup]").forEach(attach);
 })();

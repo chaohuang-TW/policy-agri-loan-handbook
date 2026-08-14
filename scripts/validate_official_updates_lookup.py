@@ -33,6 +33,10 @@ def normalize_text(value) -> str:
     return re.sub(r"[，。；：！？、（）「」『』【】《》〈〉／/%％﹪﹖?.,:;()\[\]{}]", "", re.sub(r"\s+", "", str(value or "").lower()))
 
 
+def tokenize_query(value) -> list[str]:
+    return [normalize_text(term) for term in re.split(r"\s+", str(value or "").strip()) if normalize_text(term)]
+
+
 def normalize_document_number(value) -> str:
     return normalize_text(value).replace("字第", "").replace("號", "")
 
@@ -42,11 +46,13 @@ def event_date(record: dict) -> str:
 
 
 def score(record: dict, query: str, loan_titles: dict[str, str], section_titles: dict[str, str]) -> int:
-    q = normalize_text(query)
+    raw_query = str(query or "")
+    q = normalize_text(raw_query)
+    terms = tokenize_query(raw_query)
     if not q or (q.isdigit() and len(q) < 6):
         return 0
     document = normalize_document_number(record.get("documentNumber"))
-    document_query = normalize_document_number(query)
+    document_query = normalize_document_number(raw_query)
     title = normalize_text(record.get("officialTitle"))
     programs = normalize_text(" ".join(loan_titles.get(value, "") for value in record.get("relatedLoanIds", [])))
     sections_text = normalize_text(" ".join(section_titles.get(value, "") for value in record.get("relatedSectionIds", [])))
@@ -68,8 +74,18 @@ def score(record: dict, query: str, loan_titles: dict[str, str], section_titles:
         return 65000
     if q in body:
         return 50000
-    terms = [term for term in re.split(r"\s+", q) if term]
-    return 30000 + len(terms) if terms and all(term in body for term in terms) else 0
+    return 30000 + len(terms) if len(terms) >= 2 and all(term in body for term in terms) else 0
+
+
+def searchable_body(record: dict, loan_titles: dict[str, str], section_titles: dict[str, str]) -> str:
+    programs = " ".join(loan_titles.get(value, "") for value in record.get("relatedLoanIds", []))
+    sections_text = " ".join(section_titles.get(value, "") for value in record.get("relatedSectionIds", []))
+    return normalize_text(" ".join(str(value or "") for value in [
+        record.get("officialTitle", ""), record.get("documentNumber", ""), record.get("officialAgency", ""),
+        TYPE_LABELS.get(record.get("sourceType", ""), ""), record.get("publishedDate", ""),
+        record.get("effectiveDate", ""), record.get("versionDate", ""), record.get("relationEvidence", ""),
+        programs, sections_text,
+    ]))
 
 
 def ranked(records: list[dict], query: str, loan_titles: dict[str, str], section_titles: dict[str, str]) -> list[dict]:
@@ -209,6 +225,30 @@ def main() -> int:
             errors.append(f"fixture result mismatch: {query['name']}")
         if query.get("expectedTopId") and (not results or results[0]["id"] != query["expectedTopId"]):
             errors.append(f"fixture top result mismatch: {query['name']}")
+
+    non_contiguous = [item for item in fixture["queries"] if item.get("nonContiguous")]
+    if not non_contiguous:
+        errors.append("missing non-contiguous multi-keyword fixture")
+    for item in non_contiguous:
+        target = update_by_id.get(item.get("targetId"))
+        terms = tokenize_query(item.get("query"))
+        body = searchable_body(target, loan_titles, section_titles) if target else ""
+        concatenated = normalize_text(item.get("concatenatedPhrase", ""))
+        if not target or len(terms) < 2 or not all(term in body for term in terms):
+            errors.append(f"non-contiguous fixture tokens are not evidenced: {item['name']}")
+        if concatenated and concatenated in body:
+            errors.append(f"non-contiguous fixture phrase is unexpectedly contiguous: {item['name']}")
+        if not any(record["id"] == item.get("targetId") for record in ranked(updates, item["query"], loan_titles, section_titles)):
+            errors.append(f"non-contiguous fixture target did not match: {item['name']}")
+    negative_and = [item for item in fixture["queries"] if item.get("name") == "negative-and" and item.get("expectedIds") == []]
+    if not negative_and or any(len(tokenize_query(item["query"])) < 2 for item in negative_and):
+        errors.append("missing negative multi-keyword AND fixture")
+    whitespace = fixture.get("whitespaceVariants", [])
+    if len(whitespace) >= 2:
+        baseline = [record["id"] for record in ranked(updates, whitespace[0], loan_titles, section_titles)]
+        for variant in whitespace[1:]:
+            if [record["id"] for record in ranked(updates, variant, loan_titles, section_titles)] != baseline:
+                errors.append(f"whitespace variant mismatch: {variant!r}")
     for item in fixture["filters"]:
         results = updates[:]
         if item.get("program"):
@@ -231,15 +271,30 @@ def main() -> int:
     if coverage.get("coverageStatus") != "partial" or coverage.get("verifiedThrough") is not None:
         errors.append("coverage changed from partial/null")
     js = (ROOT / "assets/js/official-updates-lookup.js").read_text(encoding="utf-8")
-    for required in ("normalizeOfficialDocumentNumber", "replace(/字第/g", "replace(/號/g", "URLSearchParams", "popstate", "data-official-update"):
+    for required in ("normalizeOfficialDocumentNumber", "tokenizeQuery", "replace(/字第/g", "replace(/號/g", "URLSearchParams", "popstate", "data-official-update"):
         if required not in js:
             errors.append(f"lookup JS missing required behavior: {required}")
+    if "const rawQuery = String(query || \"\");" not in js or "const terms = tokenizeQuery(rawQuery);" not in js:
+        errors.append("lookup JS does not tokenize from raw query boundaries")
+    if "split(/\\s+/)" not in js:
+        errors.append("lookup JS whitespace tokenization is incomplete")
+    if "terms.length >= 2 && terms.every((term) => body.includes(term))" not in js:
+        errors.append("lookup JS does not enforce multi-keyword AND matching")
+    if re.search(r"const terms = q\.split", js):
+        errors.append("lookup JS tokenizes the already-normalized query")
+    py = (ROOT / "scripts/validate_official_updates_lookup.py").read_text(encoding="utf-8")
+    if "raw_query = str(query or \"\")" not in py or "terms = tokenize_query(raw_query)" not in py:
+        errors.append("Python reference does not tokenize from raw query boundaries")
+    if 're.split(r"\\s+"' not in py:
+        errors.append("Python reference whitespace tokenization is incomplete")
+    if "len(terms) >= 2 and all(term in body for term in terms)" not in py:
+        errors.append("Python reference does not enforce multi-keyword AND matching")
     if re.search(r"fetch\(|XMLHttpRequest|https?://", js):
         errors.append("lookup JS introduces network search")
     manual = load(ROOT / "data/114/manual.json")
     package = load(ROOT / "package.json")
-    if manual.get("digitalRevision") != "114.0.0-beta.3.1" or package.get("version") != "114.0.0-beta.3.1":
-        errors.append("version metadata is not beta.3.1")
+    if manual.get("digitalRevision") != "114.0.0-beta.3.1.1" or package.get("version") != "114.0.0-beta.3.1.1":
+        errors.append("version metadata is not beta.3.1.1")
     disaster = SITE / "updates/disasters/index.html"
     if disaster.is_file():
         disaster_text = disaster.read_text(encoding="utf-8")
