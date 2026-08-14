@@ -26,6 +26,7 @@ def verify_staging(path: Path) -> None:
         "assets/data/search-index.json",
         "assets/data/search-concepts.json",
         "assets/data/search-intents.json",
+        "assets/data/faq-items.json",
         "assets/data/official-updates.json",
         "assets/data/current-coverage.json",
         "downloads/policy-agri-loan-handbook-114.pdf",

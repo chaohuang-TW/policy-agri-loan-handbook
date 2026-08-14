@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import shutil
 import subprocess
@@ -17,7 +16,7 @@ COPY_FILES = ("README.md", "CHANGELOG.md", "package.json", "package-lock.json")
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
-        shutil.copytree(ROOT / name, destination / name, copy_function=os.link)
+        shutil.copytree(ROOT / name, destination / name, copy_function=shutil.copy2)
     for name in COPY_FILES:
         shutil.copy2(ROOT / name, destination / name)
 
@@ -226,10 +225,10 @@ def main() -> None:
         replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
 
     def readme_revision_wrong(root: Path):
-        replace(root / "README.md", "114.0.0-beta.2.9", "114.0.0-beta.2.7.1.1.1")
+        replace(root / "README.md", "114.0.0-beta.3.0", "114.0.0-beta.2.7.1.1.1")
 
     def package_revision_wrong(root: Path):
-        replace(root / "package.json", "114.0.0-beta.2.9", "114.0.0-beta.0.0.0")
+        replace(root / "package.json", "114.0.0-beta.3.0", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))

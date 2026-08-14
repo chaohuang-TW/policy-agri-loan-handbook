@@ -39,7 +39,9 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Build complete static site atomically
-        run: python scripts/build_all.py
+        run: |
+          python scripts/audit_faq_source.py
+          python scripts/build_all.py
       - name: Validate source content and site
         run: |
           python scripts/test_interpretation_parser.py
@@ -58,6 +60,7 @@ jobs:
           python scripts/validate_revision_consistency.py
           python scripts/validate_disaster_official_gateway.py
           python scripts/validate_reading_navigation.py
+          python scripts/validate_reference_lookup.py
           python scripts/audit_search_precision.py
           python scripts/report_source_review_plan.py
           python scripts/report_official_update_inventory.py
@@ -73,7 +76,9 @@ jobs:
       - name: Verify reproducible atomic builds
         run: python scripts/test_build_reproducibility.py
       - name: Verify all validator mutations are caught
-        run: python scripts/test_validator_mutations.py
+        run: |
+          python scripts/test_validator_mutations.py
+          python scripts/test_reference_lookup_mutations.py
       - name: Start local server and run Playwright Chromium
         run: npx playwright test
       - name: Configure Pages

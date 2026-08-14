@@ -29,6 +29,7 @@ from reading_navigation import (
     task_anchor_id,
     task_mappings,
 )
+from faq_lookup import faq_items
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "114"
@@ -40,6 +41,7 @@ QUICK_INDEX = json.loads((DATA / "quick-index.json").read_text(encoding="utf-8")
 LOANS = json.loads((DATA / "loan-programs.json").read_text(encoding="utf-8"))
 INTERPRETATIONS = json.loads((DATA / "interpretations.json").read_text(encoding="utf-8"))
 FAQ = json.loads((DATA / "faq.json").read_text(encoding="utf-8"))
+FAQ_ITEMS = json.loads((DATA / "faq-items.json").read_text(encoding="utf-8"))
 FORMS = json.loads((DATA / "forms.json").read_text(encoding="utf-8"))
 APPENDICES = json.loads((DATA / "appendices.json").read_text(encoding="utf-8"))
 RULES = json.loads((DATA / "page-rendering-rules.json").read_text(encoding="utf-8"))
@@ -534,19 +536,141 @@ def index_items(relative: str, items: list[dict], kind: str) -> str:
     return '<ol class="index-rows index-detail">' + "".join(blocks) + "</ol>"
 
 
+def embedded_lookup_data(items: list[dict]) -> str:
+    payload = json.dumps(items, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    return f'<script type="application/json" data-lookup-data>{payload}</script>'
+
+
+def lookup_actions(relative: str, pdf_page: int, evidence_target: str) -> str:
+    pdf = rel(relative, f"downloads/{PDF_NAME}") + f"#page={pdf_page}"
+    evidence = rel(relative, evidence_target)
+    return f'<p class="lookup-actions"><a class="button-link" href="{e(evidence)}">在手冊中開啟</a><a class="button-link secondary" href="{e(pdf)}">開啟PDF原文</a></p>'
+
+
+def faq_answer_html(answer_text: str | None) -> str:
+    if not answer_text:
+        return '<p class="layout-note">本題僅建立來源起始頁索引；答案範圍待人工確認。</p>'
+    return '<div class="lookup-source-text">' + "".join(f"<p>{e(line)}</p>" for line in answer_text.splitlines() if line.strip()) + "</div>"
+
+
+def faq_group_source_list(relative: str) -> str:
+    rows = []
+    for group in FAQ:
+        pdf = rel(relative, f"downloads/{PDF_NAME}") + f"#page={group['pdfPageStart']}"
+        evidence = rel(relative, f"versions/114/pages/page-{group['pdfPageStart']:03d}.html")
+        rows.append(
+            f'<li id="item-{e(group["id"])}"><div><strong>{e(group["title"])}</strong><span>手冊頁 {e(group["printedPageStart"])}–{e(group["printedPageEnd"])}｜PDF頁 {group["pdfPageStart"]}–{group["pdfPageEnd"]}</span></div><a href="{e(evidence)}">開啟來源頁</a><a href="{e(pdf)}">開啟PDF原文</a></li>'
+        )
+    return '<section class="lookup-source-groups"><h2>四組手冊 FAQ 來源</h2><ol class="index-rows index-detail">' + "".join(rows) + '</ol></section>'
+
+
+def faq_result_cards(relative: str) -> str:
+    cards = []
+    group_titles = {group["id"]: group["title"] for group in FAQ}
+    for item in FAQ_ITEMS:
+        lookup_key = item["id"]
+        search_text = " ".join((item["question"], item.get("answerText") or "", group_titles[item["faqGroupId"]]))
+        cards.append(
+            f'<article id="item-{e(lookup_key)}" class="lookup-result faq-lookup-result" data-lookup-result data-lookup-id="{e(item["id"])}" data-lookup-key="{e(lookup_key)}" data-lookup-group="{e(item["faqGroupId"])}" data-lookup-search="{e(search_text)}">'
+            f'<p class="lookup-kicker">{e(group_titles[item["faqGroupId"]])}</p><h3>{e(item["question"])}</h3>'
+            f'<p class="lookup-meta">FAQ第{e(item["questionLabel"])}題｜手冊頁 {e(item["printedPageStart"])}–{e(item["printedPageEnd"])}｜PDF頁 {item["pdfPageStart"]}–{item["pdfPageEnd"]}</p>'
+            f'<details><summary>查看原文回答</summary>{faq_answer_html(item.get("answerText"))}</details>'
+            f'{lookup_actions(relative, item["pdfPageStart"], item["evidenceUrl"])}'
+            '</article>'
+        )
+    return '<div class="lookup-results" data-lookup-results>' + "".join(cards) + '</div>'
+
+
+def faq_lookup_tool(relative: str) -> str:
+    def filter_label(group: dict) -> str:
+        if group["id"] == "faq-young-farmer-114-10":
+            return "青壯年農民"
+        match = re.search(r"\d+年\d+月", group["title"])
+        return match.group(0) if match else group["title"]
+
+    groups = ''.join(
+        f'<button type="button" data-lookup-group-filter="{e(group["id"])}" aria-pressed="false">{e(filter_label(group))}</button>'
+        for group in FAQ
+    )
+    return (
+        '<section class="reference-lookup" data-reference-lookup="faq" aria-labelledby="faq-lookup-title">'
+        '<h2 id="faq-lookup-title">FAQ實務查閱</h2>'
+        '<p class="layout-note">以下結果來自114年度手冊底本；搜尋只在本頁資料中進行，不包含手冊出版後官方更新。</p>'
+        '<form class="lookup-search-form" data-lookup-form role="search" novalidate><label for="faq-lookup-q">搜尋FAQ問題或關鍵字</label><div class="lookup-search-row"><input id="faq-lookup-q" name="q" type="search" maxlength="256" autocomplete="off" placeholder="例如：寬緩期、青壯年農民、補正登記證"><button type="submit">搜尋</button><button type="reset" class="lookup-clear">清除</button></div></form>'
+        f'<fieldset class="lookup-filter-group"><legend>FAQ來源</legend><div class="lookup-filter-options"><button type="button" data-lookup-group-filter="" aria-pressed="true">全部</button>{groups}</div></fieldset>'
+        '<p class="lookup-status" data-lookup-status aria-live="polite"></p>'
+        f'{embedded_lookup_data(FAQ_ITEMS)}'
+        '</section>'
+    )
+
+
+def interpretation_year(item: dict) -> str:
+    match = re.search(r"(\d+)年", item.get("date", ""))
+    return match.group(1) if match else ""
+
+
+def interpretation_result_cards(relative: str) -> str:
+    groups_data = [(program, interpretation_group_slug(program)) for program in interpretation_programs()]
+    by_program = {program: slug for program, slug in groups_data}
+    cards_by_slug: dict[str, list[str]] = {slug: [] for _, slug in groups_data}
+    records = []
+    source_id_occurrences: dict[str, int] = {}
+    for item in INTERPRETATIONS:
+        slug = by_program.get(item["loanProgram"], interpretation_group_slug(item["loanProgram"]))
+        year = interpretation_year(item)
+        source_id_occurrences[item["id"]] = source_id_occurrences.get(item["id"], 0) + 1
+        occurrence = source_id_occurrences[item["id"]]
+        lookup_key = item["id"] if occurrence == 1 else f"{item['id']}-duplicate-{occurrence}"
+        dom_id = f"item-{lookup_key}"
+        record = {**item, "lookupKey": lookup_key, "programSlug": slug, "year": year, "evidenceUrl": f"versions/114/pages/page-{item['pdfPageStart']:03d}.html"}
+        records.append(record)
+        range_note = f'頁碼範圍：{e(item["rangeStatus"])}（結束頁待人工確認）' if item.get("rangeStatus") else ""
+        search_text = " ".join((item["title"], item.get("sourceHeader", ""), item.get("documentNumber", ""), item.get("canonicalDocumentNumber", ""), item.get("loanProgram", "")))
+        cards_by_slug.setdefault(slug, []).append(
+            f'<article id="{e(dom_id)}" class="lookup-result interpretation-lookup-result" data-lookup-result data-lookup-id="{e(item["id"])}" data-lookup-key="{e(lookup_key)}" data-lookup-program="{e(slug)}" data-lookup-year="{e(year)}" data-lookup-search="{e(search_text)}">'
+            f'<p class="lookup-kicker">函釋｜{e(item["date"])}｜{e(item["loanProgram"])}</p><h3>{e(item["title"])}</h3>'
+            f'<p class="lookup-doc-number">文號：{e(item["documentNumber"])}</p><p class="lookup-meta">{e(item["sourceHeader"])}｜手冊頁 {e(item["printedPageStart"])}｜PDF頁 {item["pdfPageStart"]}–{item.get("pdfPageEnd") or item["pdfPageStart"]}｜{range_note}</p>'
+            f'{lookup_actions(relative, item["pdfPageStart"], record["evidenceUrl"])}'
+            '</article>'
+        )
+    sections_html = []
+    for program, slug in groups_data:
+        items = cards_by_slug.get(slug, [])
+        sections_html.append(f'<section id="group-{e(slug)}" class="interpretation-group lookup-group"><h2>{e(program)}</h2><p class="source-meta">{len(items)} 筆函釋</p><div class="lookup-group-results">{"".join(items)}</div><p><a href="#main-content">返回函釋頁頂端</a></p></section>')
+    return ''.join(sections_html), records
+
+
+def interpretation_lookup_tool(relative: str, records: list[dict]) -> str:
+    programs = {}
+    years = set()
+    for item in records:
+        programs[item["programSlug"]] = item["loanProgram"]
+        if item["year"]:
+            years.add(item["year"])
+    program_options = ''.join(f'<option value="{e(slug)}">{e(title)}</option>' for slug, title in sorted(programs.items(), key=lambda pair: pair[1]))
+    year_options = ''.join(f'<option value="{e(year)}">民國{e(year)}年</option>' for year in sorted(years, key=lambda value: int(value), reverse=True))
+    return (
+        '<section class="reference-lookup" data-reference-lookup="interpretations" aria-labelledby="interpretation-lookup-title">'
+        '<h2 id="interpretation-lookup-title">函釋實務查閱</h2>'
+        '<p class="layout-note">以下結果來自114年度手冊底本；結束頁仍依現有資料的 <code>start-only</code> 狀態呈現，不自行推算。</p>'
+        '<form class="lookup-search-form" data-lookup-form role="search" novalidate><label for="interpretation-lookup-q">搜尋函釋主旨、文號或關鍵字</label><div class="lookup-search-row"><input id="interpretation-lookup-q" name="q" type="search" maxlength="256" autocomplete="off" placeholder="例如：0955080181、借新還舊、支付憑證"><button type="submit">搜尋</button><button type="reset" class="lookup-clear">清除</button></div>'
+        '<div class="lookup-select-row"><label>貸款類別<select name="program" data-lookup-program><option value="">全部貸款類別</option>' + program_options + '</select></label><label>年份<select name="year" data-lookup-year><option value="">全部年份</option>' + year_options + '</select></label></div></form>'
+        '<p class="lookup-status" data-lookup-status aria-live="polite"></p>'
+        f'{embedded_lookup_data(records)}'
+        '</section>'
+    )
+
+
 def build_indexes() -> None:
     relative = "interpretations/index.html"
     counts = MANUAL["counts"]
-    groups = []
+    groups, interpretation_records = interpretation_result_cards(relative)
     groups_data = [(program, interpretation_group_slug(program)) for program in interpretation_programs()]
-    for loan_program, slug in groups_data:
-        items = [item for item in INTERPRETATIONS if item["loanProgram"] == loan_program]
-        groups.append(f'<section id="group-{slug}" class="interpretation-group"><h2>{e(loan_program)}</h2><p class="source-meta">{len(items)} 筆函釋</p>{index_items(relative, items, "函釋")}<p><a href="#main-content">返回函釋頁頂端</a></p></section>')
     quick_links = '<nav class="index-rows" aria-label="依類別快速前往"><h2>依類別快速前往</h2><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in groups_data) + '</ul></nav>'
-    content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">本頁為114年度手冊所收錄函釋索引；依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p><p><a href="../updates/index.html?type=interpretation">查看手冊出版後官方函示</a></p>' + quick_links + ''.join(groups) + '<p><a href="../faq/index.html">前往常見問答</a></p>'
+    content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">本頁為114年度手冊所收錄函釋查閱工具；依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p><p><a href="../updates/index.html?type=interpretation">查看手冊出版後官方函示</a></p>' + interpretation_lookup_tool(relative, interpretation_records) + quick_links + groups + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁列示114年度手冊內收錄之FAQ；手冊出版後官方發布之問答，請查看「官方更新」。本頁不提供AI摘要。</p><p><a href="../updates/index.html?type=faq">查看手冊出版後官方問答</a></p>' + index_items(relative, FAQ, "FAQ")
+    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁列示114年度手冊內收錄之FAQ；手冊出版後官方發布之問答，請查看「官方更新」。本頁不提供AI摘要。</p><p><a href="../updates/index.html?type=faq">查看手冊出版後官方問答</a></p>' + faq_lookup_tool(relative) + faq_group_source_list(relative) + faq_result_cards(relative)
     write(relative, "增修規定常見問答｜政策性農業專案貸款業務手冊", wrap("faq", CONTENT=content))
     relative = "forms/index.html"
     content = breadcrumb(relative, [("首頁", "index.html")], "書表與附件來源索引") + f'<h1>書表與附件來源索引</h1><p class="source-meta">本頁列示114手冊收錄書表。書表來源索引 {counts["formsSourceIndexed"]} 筆；候選庫 {counts["formCandidateInventoryTotal"]} 筆，其中已納入 {counts["formCandidatesPromoted"]} 筆、排除 {counts["formCandidatesExcluded"]} 筆、真正待人工覆核 {counts["formCandidatesPending"]} 筆。另列 {len(APPENDICES)} 項原手冊附錄／附件。</p><section class="loan-current-updates"><h2>手冊出版後官方表單／附件</h2><p>後續官方表單不改寫114手冊書表。</p><p><a href="../updates/index.html?type=form">查看官方更新中的表單／附件</a></p></section><h2>附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表來源索引</h2>' + index_items(relative, FORMS, "書表")
@@ -598,6 +722,7 @@ def build_site(output_dir: Path) -> None:
     (SITE / "assets/data").mkdir(parents=True, exist_ok=True)
     for data_file in ("search-concepts.json", "search-intents.json", "navigation-shortcuts.json"):
         shutil.copy2(DATA / data_file, SITE / "assets/data" / data_file)
+    shutil.copy2(DATA / "faq-items.json", SITE / "assets/data" / "faq-items.json")
     shutil.copy2(CURRENT / "official-updates.json", SITE / "assets/data" / "official-updates.json")
     shutil.copy2(CURRENT / "coverage.json", SITE / "assets/data" / "current-coverage.json")
     shutil.copytree(ROOT / "assets/page-previews", SITE / "assets/page-previews", dirs_exist_ok=True)

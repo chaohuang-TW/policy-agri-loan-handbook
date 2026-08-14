@@ -1,0 +1,2799 @@
+{
+  "scope": "data/114/faq.json ranges read from data/114/pages.json rawText",
+  "groups": [
+    {
+      "id": "faq-112-12",
+      "title": "112年12月專案農貸增修規定（自113年1月1日施行）常見問答",
+      "sourcePages": [
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325
+      ],
+      "printedPages": [
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323
+      ],
+      "questionMarkers": [
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 315,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 315,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 316,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 316,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 316,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 316,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 319,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 319,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "五",
+          "number": 5,
+          "pdfPage": 320,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "六",
+          "number": 6,
+          "pdfPage": 321,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "七",
+          "number": 7,
+          "pdfPage": 321,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "八",
+          "number": 8,
+          "pdfPage": 321,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "九",
+          "number": 9,
+          "pdfPage": 322,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十",
+          "number": 10,
+          "pdfPage": 322,
+          "candidate": false,
+          "scopeBreak": true
+        }
+      ],
+      "records": [
+        {
+          "id": "faq-112-12-q01",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "一",
+          "questionNumber": 1,
+          "question": "本次專案農貸增修規定，主要重點有哪些？",
+          "answerText": "(一)修正不予核貸項目：\n1.增訂「輔導漁業經營貸款」、「青壯年農民從農貸款」、「農民經營及產銷班貸款」申請養殖漁業類貸款，得檢附借款人本人經主管機關核准興建水產養殖設施之農業用地作農業設施容許使用同意書申貸，並於撥貸後 2 年內補正養殖漁業登記證；如未於 2 年內補正者，應收回其貸款，貸款經辦機構並應繳回已請領之利息差額補貼。\n2.增訂檢附其他依法令許可之養殖證明文件者，得申請專案農貸，前開養殖證明文件，包括經濟部水利署核發之「河川區域公(私)地使用許可書-圍築魚塭養殖」，及農業科技園區管理機關核發之「農業科技園區漁場註冊編號」等。\n(二)「輔導農糧業經營貸款」：修正明定經農業部及其所屬機關 (單位)相關溫網室設施補助計畫或輔導措施(方案)核定或審查通過之農民或農民團體，申請本貸款用途為興設結構型鋼骨溫網室；並擴大支應範圍，包括其設施(備)。\n(三)「農業科技園區進駐業者優惠貸款」：配合臺南市臺灣蘭花生物科技園區納入農業部農業科技園區管理中心管理，修正文字並規定貸款對象為取得農業科技園區管理機關核發進駐核准函或園區租賃契約之業者。",
+          "printedPageStart": 313,
+          "printedPageEnd": 313,
+          "pdfPageStart": 315,
+          "pdfPageEnd": 315,
+          "sourcePages": [
+            315
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=315",
+          "evidenceUrl": "versions/114/pages/page-315.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q02",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "二",
+          "questionNumber": 2,
+          "question": "目前各種專案農貸之貸款利率及利息差額補貼基準為何？",
+          "answerText": "貸款利率及補貼基準計息方式為「中華郵政2 年期定期儲金機動利率」加「加（減）碼年率標準」，依目前中華郵政2 年期定期儲金機動利率 1.595%，計算之各種專案農貸之貸款利率及利息差額補貼基準：\n政策性農業專案貸款利率一覽表\n一、小地主大專業農貸款，租金貸款類，年利率為0%。\n二、青壯年農民從農貸款：\n（一）第16條第1項第1款及第2款之貸款案，除週轉金採循環動用者外，其貸款利率依下列規定：\n1.自中華民國109年3月1日起之新貸案件：每一借款人累計撥貸金額在新臺幣200萬元以下，貸款期間前5年，年利率為0%。前揭累計撥貸金額指借款人歷次申貸本貸款，貸款經辦機構撥付借款人之金額合計數。\n2.109年3月1日尚有舊貸餘額之案件：每一借款人109年3月1日貸款餘額在新臺幣200萬元以下，自該日起算，最長5年，年利率為0%，嗣後加計前目新貸案件，合計上限為新臺幣200萬元。\n（二）第16條第1項第3款專案輔導青年農民，於專案輔導及追蹤期間內提出申請租金貸款，年利率為0%。\n三、農業保險貸款，自中華民國110年1月1日起至113年12月31日止，年利率為0%。\n四、前3點以外貸款之年利率為「中華郵政2年期定期儲金機動利率」(112年3月29日為\n1.595%)加「政策性農業專案貸款加(減)碼年率標準」機動計息。但計算結果為負數者，貸款年利率為0%。政策性農業專案貸款加(減)碼年率標準如下：貸款種類條件加(減)碼年率（%）目前貸款利率(%)\n1.農機貸款①電動、油電混合動力之農機減0.555 1.04②其他減0.305 1.29\n2.輔導農糧業經營貸款①貸款用途為改善或新建菇類栽培場 (實際從事菇蕈類生產之農民或農民團體)，以設置屋頂型綠能設施之貸款案(註1)減0.055 1.54②溫網室設施補助計畫或輔導措施 (方案)之貸款案減0.305 1.29③其他加0.195 1.79\n3.輔導漁業經營貸款①貸款用途為改善或新建室內養殖設施，以設置屋頂型綠能設施之貸款案(註2)②貸款用途為新建室內養殖設施，其屋頂構造為太陽光電發電設施 (備)材質之貸款案(註2)減0.055 1.54③其他加0.195 1.79\n4.提升畜禽產業經營貸款①畜牧污染防治類②畜牧友善生產系統類③貸款用途為改善或新建畜禽舍(改善草食家畜經營類、提升養豬經營類、提升家禽產業經營類)，以設置屋頂型綠能設施之貸款案(註3)減0.055 1.54④其他加0.195 1.79\n5.農民經營及產銷班貸款加0.195 1.79\n6.農業科技園區進駐業者優惠貸款①週轉金採循環動用之貸款案加0.445 2.04②其他加0.195 1.79\n7.山坡地保育利用貸款加0.195 1.79\n8.農家綜合貸款加0.195 1.79\n9.農漁會事業發展貸款①促進民間參與公共建設貸款案加0.195 1.79②促進民間參與公共建設以外之貸款案減0.055 1.54\n10.造林貸款減0.055 1.54\n11.小地主大專業農貸款：經營貸款類減0.305 1.29\n12. 農業節能減碳貸款①農(漁)民減0.305 1.29②農(漁)民團體及農企業加0.195 1.79\n13. 青壯年農民從農貸款：第2點以外之貸款案①第16條第1項第1款至第3款之貸款案減0.305 1.29②第16條第1項第4款之貸款案減0.055 1.54\n14. 休閒農場貸款①自然人加0.195 1.79②法人加0.585 2.18\n15. 農民組織及農企業產銷經營及研發創新貸款①農民組織及農企業負責人具專案輔導青年農民資格之貸款案(註4)②曾獲中央主管機關補助執行農村社區企業經營輔導計畫之貸款案③經中央主管機關認定配合農產品產銷調節措施之貸款案加0.195 1.79④週轉金採循環動用之貸款案加0.835 2.43⑤其他加0.585 2.18\n16.農民組織及農企業天然災害復耕復建貸款加0.585 2.18\n17.農業保險貸款減0.305 1.29\n18.擴大家庭農場經營規模協助農民購買耕地貸款加0.195 1.79\n19.改善財務貸款(註5) 加1.695 3.29\n20. 農業天然災害低利貸款①莫拉克颱風、凡那比颱風（兼有莫拉克颱風）減0.415 1.18②其他減0.305 1.29\n備註：\n1.申請者須為第5條第1項第8款借款人，且應先取得直轄市、縣(市)政府核發菇類栽培場得附屬設置屋頂型綠能設施容許使用同意書。\n2.申請者須為第6條第1項之養殖業者，且應先取得直轄市、縣(市)政府核發室內養殖設施得附屬設置屋頂型綠能設施容許使用同意書。\n3.申請者須為第7條第1項第1款借款人，且應先取得直轄市、縣(市)政府核發畜禽舍得附屬設置屋頂型綠能設施容許使用同意書。\n4.農民組織負責人依財政部稅務入口網稅籍登記資料公示查詢結果之負責人認定之；農企業負責人依經濟部商業司商工登記公示資料查詢結果之代表人或負責人認定之。\n5.改善財務貸款於 105 年 3 月22 日廢止生效。\n政策性農業專案貸款之利息差額補貼基準自110 年8 月1 日起實施政策性農業專案貸款之補貼基準為「中華郵政 2 年期定期儲金機動利率」加計加碼年率標準機動計息，各種貸款加碼年率，及依中華郵政 2 年期定期儲金機動利率(112 年 3 月29 日為1.595%)計算之補貼基準如下：貸款種類農(漁)會農業金庫備註加碼年率(%)目前補貼基準(%)加碼年率(%)目前補貼基準(%)\n1.農家綜合貸款加 2.375 3.97 加 2.125 3.72\n2.擴大家庭農場經營規模協助農民購買耕地貸款\n3.農業保險貸款\n4.輔導漁業經營貸款\n5.農民經營及產銷班貸款\n6.山坡地保育利用貸款\n7.造林貸款\n8.小地主大專業農貸款\n9.改善財務貸款加 2.625 4.22 加 2.375 3.97\n10.農機貸款加 2.845 4.44 加 2.375 3.97\n11.輔導農糧業經營貸款加3.095 4.69 加2.375 3.97溫網室設施補助計畫或輔導措施(方案)之貸款案加2.625 4.22 加2.375 3.97 其他\n12.提升畜禽產業經營貸款加 3.095 4.69 加 2.375 3.97\n13.青壯年農民從農貸款加 3.095 4.69 加 2.375 3.97辦理政策性農業專案貸款辦法第 16 條第 1項第1 款至第3款之貸款案加 2.625 4.22 加 2.375 3.97辦理政策性農業專案貸款辦法第 16 條第 1項第 4 款之貸款案\n14.農漁會事業發展貸款加 1.625 3.22 加 1.625 3.22\n15.農業科技園區進駐業者優惠貸款加1.375 2.97 加1.375 2.97 週轉金採循環動用之貸款案加1.625 3.22 加1.625 3.22 其他\n16.農業節能減碳貸款加 2.465 4.06 加 2.375 3.97 農(漁)民加 2.125 3.72 加 2.125 3.72 農(漁)民團體及農企業\n17.休閒農場貸款加 2.625 4.22 加 2.375 3.97 自然人\n加 2.125 3.72 加 2.125 3.72 法人\n18.農民組織及農企業產銷經營及研發創新貸款加1.875 3.47 加1.875 3.47 週轉金採循環動用之貸款案加2.125 3.72 加2.125 3.72 其他\n19.農民組織及農企業天然災害復耕復建貸款加 2.125 3.72 加 2.125 3.72\n20.農業天然災害低利貸款加 3.280 4.875 加 2.375 3.97 其他加 3.170 4.765 加 2.265 3.86莫拉克、凡那比颱風（兼有莫拉克颱風）\n備註：\n1.有關依法承受農(漁)會信用部之銀行當地分行承作政策性農業專案貸款，及臺灣銀行設於屏東縣農業科技園區之分行承作「農業科技園區進駐業者優惠貸款」之補貼基準，比照農業金庫辦理。\n2.合作金庫商業銀行、臺灣土地銀行及臺灣銀行早期承作政策性農業專案貸款案件餘額，其補貼基準為「中華郵政 2 年期定期儲金機動利率」加 2.375%。\n3.補貼基準為貸款利率與利息差額補貼之合計數。",
+          "printedPageStart": 313,
+          "printedPageEnd": 317,
+          "pdfPageStart": 315,
+          "pdfPageEnd": 319,
+          "sourcePages": [
+            315,
+            316,
+            317,
+            318,
+            319
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=315",
+          "evidenceUrl": "versions/114/pages/page-315.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q03",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "三",
+          "questionNumber": 3,
+          "question": "甲農民獲得 A 縣府核准興建水產養殖設施，並發給農業用地作農業設施容許使用同意書，甲農民因興建養殖設施資金需求，可否申請專案農貸？倘可以申請，應向何處申請？又有哪幾種專案農貸可以申請？",
+          "answerText": "(一)可以申請。\n(二)可向戶籍或經營場址(興建之養殖池)所在地之農漁會信用部或農業金庫申請，由受理貸款經辦機構依徵授信程序審查。\n(三)甲農民可依資格申請「輔導漁業經營貸款」、「農民經營及產銷班貸款」或「青壯年農民從農貸款」。",
+          "printedPageStart": 317,
+          "printedPageEnd": 317,
+          "pdfPageStart": 319,
+          "pdfPageEnd": 319,
+          "sourcePages": [
+            319
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=319",
+          "evidenceUrl": "versions/114/pages/page-319.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q04",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "四",
+          "questionNumber": 4,
+          "question": "乙農民取得農業部農糧署溫網室設施補助計畫核定通過興設加強型水平棚架網室(或簡易式塑膠布溫網室)，是否為輔導農糧業經營貸款要點第 3 點第 1 項第 9 款規定之貸款對象？",
+          "answerText": "(一)否。\n(二)上開要點規定之貸款對象為取得溫網室設施補助計畫或輔導措施(方案)核定或審查通過興設結構型鋼骨溫網室之農民或農民團體，乙農民為取得核定通過興設加強型水平棚架網室(或簡易式塑膠布溫網室)之農民，非該規定之貸款對象。",
+          "printedPageStart": 317,
+          "printedPageEnd": 318,
+          "pdfPageStart": 319,
+          "pdfPageEnd": 320,
+          "sourcePages": [
+            319,
+            320
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=319",
+          "evidenceUrl": "versions/114/pages/page-319.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q05",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "五",
+          "questionNumber": 5,
+          "question": "經農業部農糧署溫網室設施補助計畫或輔導措施（方案）核定或審查通過興設結構型鋼骨溫網室之農民或農民團體，申貸「輔導農糧業經營貸款」，其最高貸款額度為何？",
+          "answerText": "(一)本次修法擴大貸款支應範圍包括結構型鋼骨溫網室設施補助計畫或輔導措施 (方案)中所列之相關設施(備)，其最高貸款額度為「農業部主管計畫補助基準所定結構型鋼骨溫網室及同一計畫或措施(方案)核定或審查通過設施(備)最高補助金額除以補助比率」。\n(二)上開結構型鋼骨溫網室及相關設施(備)最高補助金額及補助比率可至農業部網站：資訊與服務→計畫研提（https://www.moa.gov.tw/ws.php?id=85），下載「農業部主管計畫補助基準」電子檔，查詢「補助項目」為「塑膠布溫網室」項下之「結構型鋼骨溫網室」補助基準；相關設施(備)補助基準，查詢「附表」-「溫網室設施環境控制及生產設備補助項目及最高補助額度」。\n(三)依現行規定，西部地區補助以不超過 50%為原則，結構型鋼骨溫網室每 0.1 公頃最高補助 75 萬元；東部、離島及原住民地區補助以不超過60%為原則，結構型鋼骨溫網室每 0.1 公頃最高補助 90 萬元，爰經相關溫網室設施補助計畫或輔導措施（方案）核定或審查通過興設結構型鋼骨溫網室者，申貸「輔導農糧業經營貸款」最高貸款額度計算方式如下：\n1.結構型鋼骨溫網室：\n(1)西部地區：每公頃最高補助金額為750 萬元，補助比率為50%，每公頃最高貸款額度為 1,500 萬元（750 萬元/50%）。\n(2)東部、離島及原住民地區：每公頃最高補助金額為 900 萬元，補助比率為60%，每公頃最高貸款額度為 1,500 萬元（900 萬元/60%）。\n2.相關設施(備)：如溫室環控系統、內循環風扇、光控式電動遮蔭或溫室電動天\n窗等設施(備)，最高貸款額度以每組、每台或每公頃最高補助金額除以補助比率（補助比率以不超過 50%為原則）計算。",
+          "printedPageStart": 318,
+          "printedPageEnd": 319,
+          "pdfPageStart": 320,
+          "pdfPageEnd": 321,
+          "sourcePages": [
+            320,
+            321
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=320",
+          "evidenceUrl": "versions/114/pages/page-320.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q06",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "六",
+          "questionNumber": 6,
+          "question": "彰化縣丙農民為興設 0.5 公頃結構型鋼骨溫網室、1 組溫室環控系統、20 台內循環風扇及 0.5 公頃光控式電動內遮蔭等設施(備)，已取得溫網室設施補助計畫核定通過證明文件，現有資金需求 1,100 萬元，丙農民可以申貸「輔導農糧業經營貸款」金額為何？",
+          "answerText": "(一)可申貸918 萬元。\n(二)依現行規定，結構型鋼骨溫網室、溫室環控系統、內循環風扇及光控式電動內遮蔭每公頃/組/台最高貸款額度分別為 1,500 萬元、30 萬元、9,000 元及 240 萬元。\n(三)丙農民興設0.5 公頃結構型溫網室設施(每公頃1,500 萬元×0.5 公頃=750 萬元)、1 組溫室環控系統(每組 30 萬元)、20 台內循環風扇(每台 9,000 元×20 台=18 萬元)及 0.5 公頃光控式電動內遮蔭(每公頃 240 萬元×0.5 公頃=120 萬元)，合計可申貸918 萬元(750+30+18+120)，餘182 萬元資金需求，得以一般貸款支應，惟不得再以其他專案農貸支應，以避免有重複申貸問題。",
+          "printedPageStart": 319,
+          "printedPageEnd": 319,
+          "pdfPageStart": 321,
+          "pdfPageEnd": 321,
+          "sourcePages": [
+            321
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+          "evidenceUrl": "versions/114/pages/page-321.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q07",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "七",
+          "questionNumber": 7,
+          "question": "丁農民為臺南市臺灣蘭花生物科技園區之進駐業者，可否向臺灣銀行設於臺南市之分行申請「農業科技園區進駐業者優惠貸款」？",
+          "answerText": "(一)不可以。\n(二)臺灣銀行僅有設於屏東縣農業科技園區之分行得受理該園區內進駐業者申請農業科技園區進駐業者優惠貸款，丁農民為臺南市臺灣蘭花生物科技園區之進駐業者，應向戶籍或農業經營場址所在地之農漁會信用部或農業金庫申請。",
+          "printedPageStart": 319,
+          "printedPageEnd": 319,
+          "pdfPageStart": 321,
+          "pdfPageEnd": 321,
+          "sourcePages": [
+            321
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+          "evidenceUrl": "versions/114/pages/page-321.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q08",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "八",
+          "questionNumber": 8,
+          "question": "戊農民 109 年3 月1 日獲 B 農會核貸「青壯年農民從農貸款」300 萬元，B 農會於\n貸款存續期間每年辦理查驗，於 113 年 11 月 1 日查驗時，徵提戊農民之 112 年度綜合所得稅各類所得清單所列農業外所得為 400,000 元，是否符合貸款規定？\n倘違反規定，應如何處理？",
+          "answerText": "(一)不符合貸款規定，B 農會應收回戊農民貸款，且 B 農會自 112 年 1 月 1 日起至收回貸款日止已請領之利息差額補貼應繳還農業部。\n(二)依青壯年農民從農貸款要點第 3 點第 2 項規定，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額（下稱基本工資全年總額）1.25 倍。\n(三)查 112 年度基本工資全年總額為 316,800 元，其1.25 倍為 396,000 元，本案戊農民 112 年度農業外所得為 400,000 元，高於 396,000 元，故違反前揭規定。\n(四)B 農會應依上開要點第 3 點第 3 項第 1 款規定，收回戊農民貸款，並繳還已請領之利息差額補貼。",
+          "printedPageStart": 319,
+          "printedPageEnd": 320,
+          "pdfPageStart": 321,
+          "pdfPageEnd": 322,
+          "sourcePages": [
+            321,
+            322
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+          "evidenceUrl": "versions/114/pages/page-321.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-112-12-q09",
+          "faqGroupId": "faq-112-12",
+          "questionLabel": "九",
+          "questionNumber": 9,
+          "question": "承上題，戊農民提供所得清單所列農業外所得之扣繳單位薪資單，佐證相關所得為 112 年 6 月1 日以後工作取得，應繳還已請領之利息差額補貼期間為何？",
+          "answerText": "B 農會應繳還自 112 年6 月 1 日起至收回貸款日止已請領之利息差額補貼。",
+          "printedPageStart": 320,
+          "printedPageEnd": 320,
+          "pdfPageStart": 322,
+          "pdfPageEnd": 322,
+          "sourcePages": [
+            322
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=322",
+          "evidenceUrl": "versions/114/pages/page-322.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        }
+      ],
+      "ambiguousCases": [],
+      "questionCount": 9,
+      "deterministicQuestionCount": 9,
+      "pageLevelFallbackCount": 0,
+      "questionNumbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "missingQuestionNumbers": [],
+      "falsePositiveRisk": "numbered table rows and numbered non-question headings are excluded unless an explicit question or answer marker is present"
+    },
+    {
+      "id": "faq-113-08",
+      "title": "113年8月專案農貸增修規定（自113年8月20日施行）常見問題",
+      "sourcePages": [
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334
+      ],
+      "printedPages": [
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332
+      ],
+      "questionMarkers": [
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 326,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 326,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 326,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 327,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 327,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 327,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 327,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "五",
+          "number": 5,
+          "pdfPage": 327,
+          "candidate": false,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 331,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "五",
+          "number": 5,
+          "pdfPage": 331,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "六",
+          "number": 6,
+          "pdfPage": 331,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "七",
+          "number": 7,
+          "pdfPage": 331,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "八",
+          "number": 8,
+          "pdfPage": 332,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "九",
+          "number": 9,
+          "pdfPage": 332,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十",
+          "number": 10,
+          "pdfPage": 332,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十一",
+          "number": 11,
+          "pdfPage": 332,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十二",
+          "number": 12,
+          "pdfPage": 332,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十三",
+          "number": 13,
+          "pdfPage": 332,
+          "candidate": false,
+          "scopeBreak": true
+        }
+      ],
+      "records": [
+        {
+          "id": "faq-113-08-q01",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "一",
+          "questionNumber": 1,
+          "question": "本次專案農貸增修規定，主要重點有哪些？",
+          "answerText": "(一)新增「農民紓困貸款」：為農漁民遭遇特殊緊急狀況，提供緊急家計生活週轉金，以紓解短期經濟壓力，爰新增本項貸款。\n(二)修正「輔導漁業經營貸款」：借款人於貸款存續期間，違反漁業法非屬重大違規態樣者，修正為於改善後僅收回違規期間之利息差額補貼，毋須收回貸款。\n(三)放寬辦理政策性農業專案貸款辦法之不予核貸項目：考量市售金針違規情形已大幅改善，及於風景區農牧用地種植茶樹仍能兼顧生產、生態及景觀，爰放寬種植金針及於風景區農牧用地種植茶樹者，得依規定申請政策性農業專案貸款。\n(四)調降「青壯年農民從農貸款」壯年農民借款人之貸款利率：為鼓勵壯農營農，調降「青壯年農民從農貸款」年齡逾 45 歲至 55 歲農民之貸款利率。\n(五)延長「農業保險貸款」免息期間：「農業保險貸款」之免息期間再延長 2 年至 115 年底止。\n(六)修正「農業節能減碳貸款」：借款人之售電對象新增其他再生能源售電業。",
+          "printedPageStart": 324,
+          "printedPageEnd": 324,
+          "pdfPageStart": 326,
+          "pdfPageEnd": 326,
+          "sourcePages": [
+            326
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+          "evidenceUrl": "versions/114/pages/page-326.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q02",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "二",
+          "questionNumber": 2,
+          "question": "本次修正規定生效前，貸款經辦機構已「受理」之申貸案，係適用新的規定或舊的規定呢？",
+          "answerText": "貸款經辦機構於本次修正規定生效前已「受理」但尚未完成核貸程序之申貸案，應從優選擇對借款人較有利之規定適用。",
+          "printedPageStart": 324,
+          "printedPageEnd": 324,
+          "pdfPageStart": 326,
+          "pdfPageEnd": 326,
+          "sourcePages": [
+            326
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+          "evidenceUrl": "versions/114/pages/page-326.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q03",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "三",
+          "questionNumber": 3,
+          "question": "本次新增「農民紓困貸款」，其貸款利率及利息差額補貼基準為何？目前各種專案農貸之貸款利率及利息差額補貼基準為何？",
+          "answerText": "(一)為提供農(漁)民緊急家計生活週轉金，紓解短期經濟壓力，使其安心營農，新增「農民紓困貸款」，因貸款性質與「農家綜合貸款」均為家計週轉金，參照「農家綜合貸款」規定，明定其貸款利率及利息差額補貼基準。\n(二)貸款利率及補貼基準計息方式為「中華郵政 2 年期定期儲金機動利率」加「加（減）碼年率標準」，依目前中華郵政2 年期定期儲金機動利率 1.72%，計算之各種專案農貸之貸款利率及利息差額補貼基準：\n政策性農業專案貸款利率一覽表\n一、小地主大專業農貸款，租金貸款類，年利率為0%。\n二、青壯年農民從農貸款：\n（一）第十六條第一項第一款及第二款之貸款案，除週轉金採循環動用者外，其貸款利率依下列規定：\n1.自中華民國一百零九年三月一日起之新貸案件：每一借款人累計撥貸金額在新臺幣二百萬元以下，貸款期間前五年，年利率為0%。前揭累計撥貸金額指借款人歷次申貸本貸款，貸款經辦機構撥付借款人之金額合計數。\n2.一百零九年三月一日尚有舊貸餘額之案件：每一借款人一百零九年三月一日貸款餘額在新臺幣二百萬元以下，自該日起算，最長五年，年利率為0%，嗣後加計前目新貸案件，合計上限為新臺幣二百萬元。\n（二）第十六條第一項第三款專案輔導青年農民，於專案輔導及追蹤期間內提出申請租金貸款，年利率為0%。\n三、農業保險貸款，自中華民國一百十年一月一日起至一百十五年十二月三十一日止，年利率為0%。\n四、前三點以外貸款之年利率為「中華郵政二年期定期儲金機動利率」(113年3月27日為1.72%)加「政策性農業專案貸款加(減)碼年率標準」機動計息。但計算結果為負數者，貸款年利率為0%。\n五、政策性農業專案貸款加(減)碼年率標準如下：貸款種類條件加(減)碼年率（%）目前貸款利率(%)\n1.農機貸款○1 電動、油電混合動力之農機減0.555 1.165○2 其他減0.305 1.415\n2.輔導農糧業經營貸款○1 貸款用途為改善或新建菇類栽培場 (實際從事菇蕈類生產之農民或農民團體)，以設置屋頂型綠能設施之貸款案(註1)減0.055 1.665○2 溫網室設施補助計畫或輔導措施(方案)之貸款案減0.305 1.415○3 其他加0.195 1.915\n3.輔導漁業經營貸款○1 貸款用途為改善或新建室內養殖設施，以設置屋頂型綠能設施之貸款案(註2)○2 貸款用途為新建室內養殖設施，其屋頂構造為太陽光電發電設施(備)材質之貸款案(註2)減0.055 1.665○3 其他加0.195 1.915\n4.提升畜禽產業經營貸款○1 畜牧污染防治類○2 畜牧友善生產系統類○3 貸款用途為改善或新建畜禽舍 (改善草食家畜經營類、提升養豬經營類、提升家禽產業經營類)，以設置屋頂型綠能設施之貸款案(註3)減0.055 1.665○4 其他加0.195 1.915\n5.農民經營及產銷班貸款加0.195 1.915\n6.農業科技園區進駐業者優惠貸款○1 週轉金採循環動用之貸款案加0.445 2.165○2 其他加0.195 1.915\n7.山坡地保育利用貸款加0.195 1.915\n8.農家綜合貸款加0.195 1.915\n9.農漁會事業發展貸款○1 促進民間參與公共建設貸款案加0.195 1.915○2 促進民間參與公共建設以外之貸款案減0.055 1.665\n10.造林貸款減0.055 1.665\n11.小地主大專業農貸款：經營貸款類減0.305 1.415\n12.農業節能減碳貸款○1 農(漁)民減0.305 1.415○2 農(漁)民團體及農企業加0.195 1.915\n13.青壯年農民從農貸款第十六條第一項之貸款案。但第二點另有規定年利率為0%者，依其規定。減0.305 1.415\n14.休閒農場貸款○1 自然人加0.195 1.915○2 法人加0.585 2.305\n15.農民組織及農企業產銷經營及研發創新貸款○1 農民組織及農企業負責人具專案輔導青年農民資格之貸款案(註4)○2 曾獲中央主管機關補助執行農村社區企業經營輔導計畫之貸款案○3 經中央主管機關認定配合農產品產銷調節措施之貸款案加0.195 1.915○4 週轉金採循環動用之貸款案加0.835 2.555○5 其他加0.585 2.305\n16.農民組織及農企業天然災害復耕復建貸款加0.585 2.305\n17.農業保險貸款減0.305 1.415\n18.農民紓困貸款加0.195 1.915\n19.擴大家庭農場經營規模協助農民購買耕地貸款加0.195 1.915\n20.改善財務貸款(註5) 加1.695 3.415\n21.農業天然災害低利貸款①莫拉克颱風、凡那比颱風（兼有莫拉克颱風）減0.415 1.305②其他減0.305 1.415\n備註：\n1.申請者須為第五條第一項第八款借款人，且應先取得直轄市、縣(市)政府核發菇類栽培場得附屬設置屋頂型綠能設施容許使用同意書。\n2.申請者須為第六條第一項之養殖業者，且應先取得直轄市、縣(市)政府核發室內養殖設施得附屬設置屋頂型綠能設施容許使用同意書。\n3.申請者須為第七條第一項第一款借款人，且應先取得直轄市、縣(市)政府核發畜禽舍得附屬設置屋頂型綠能設施容許使用同意書。\n4.農民組織負責人依財政部稅務入口網稅籍登記資料公示查詢結果之負責人認定之；農企業負責人依經濟部商業司商工登記公示資料查詢結果之代表人或負責人認定\n之。\n5.改善財務貸款於 105 年 3 月 22 日廢止生效。\n政策性農業專案貸款之利息差額補貼基準自 113 年 8 月 20 日起實施政策性農業專案貸款之補貼基準為「中華郵政二年期定期儲金機動利率」加計加碼年率標準機動計息，各種貸款加碼年率，及依中華郵政二年期定期儲金機動利率(113 年 3 月27 日為1.72%)計算之補貼基準如下：貸款種類農(漁)會農業金庫備註加碼年率(%)目前補貼基準(%)加碼年率(%)目前補貼基準(%)\n1.農家綜合貸款\n2.農民紓困貸款加 2.375 4.095 加 2.125 3.845\n3.擴大家庭農場經營規模協助農民購買耕地貸款\n4.農業保險貸款\n5.輔導漁業經營貸款\n6.農民經營及產銷班貸款\n7.山坡地保育利用貸款\n8.造林貸款\n9.小地主大專業農貸款\n10.改善財務貸款加 2.625 4.345 加 2.375 4.095\n11.農機貸款加 2.845 4.565 加 2.375 4.095\n12.輔導農糧業經營貸款加3.095 4.815 加2.375 4.095溫網室設施補助計畫或輔導措施(方案)之貸款案加2.625 4.345 加2.375 4.095 其他\n13.提升畜禽產業經營貸款加 3.095 4.815 加 2.375 4.095\n14.青壯年農民從農貸款加 3.095 4.815 加 2.375 4.095辦理政策性農業專案貸款辦法第十六條第一項第一款至第三款之貸款案\n加 2.625 4.345 加 2.375 4.095辦理政策性農業專案貸款辦法第十六條第一項第四款之貸款案\n15.農漁會事業發展貸款加 1.625 3.345 加 1.625 3.345\n16.農業科技園區進駐業者優惠貸款加1.375 3.095 加1.375 3.095週轉金採循環動用之貸款案加1.625 3.345 加1.625 3.345 其他\n17.農業節能減碳貸款加 2.465 4.185 加 2.375 4.095 農(漁)民加 2.125 3.845 加 2.125 3.845 農(漁)民團體及農企業\n18.休閒農場貸款加 2.625 4.345 加 2.375 4.095 自然人加 2.125 3.845 加 2.125 3.845 法人\n19.農民組織及農企業產銷經營及研發創新貸款加1.875 3.595 加1.875 3.595週轉金採循環動用之貸款案加2.125 3.845 加2.125 3.845 其他\n20.農民組織及農企業天然災害復耕復建貸款加 2.125 3.845 加 2.125 3.845\n21.農業天然災害低利貸款加 3.280 5.000 加 2.375 4.095 其他加 3.170 4.890 加 2.265 3.985莫拉克、凡那比颱風（兼有莫拉克颱風）\n備註：\n1.有關依法承受農(漁)會信用部之銀行當地分行承作政策性農業專案貸款，及臺灣銀行設於屏東縣農業科技園區之分行承作「農業科技園區進駐業者優惠貸款」之補貼基準，比照農業金庫辦理。\n2.合作金庫商業銀行、臺灣土地銀行及臺灣銀行早期承作政策性農業專案貸款案件餘額，其補貼基準為「中華郵政二年期定期儲金機動利率」加 2.375%。\n3.補貼基準為貸款利率與利息差額補貼之合計數。",
+          "printedPageStart": 324,
+          "printedPageEnd": 329,
+          "pdfPageStart": 326,
+          "pdfPageEnd": 331,
+          "sourcePages": [
+            326,
+            327,
+            328,
+            329,
+            330,
+            331
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+          "evidenceUrl": "versions/114/pages/page-326.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q04",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "四",
+          "questionNumber": 4,
+          "question": "甲漁民 113 年 3 月 1 日獲 A 漁會核貸「輔導漁業經營貸款」2,000 萬元，貸款期間 15 年，惟甲漁民於 113 年 12 月 1 日違反漁業法，經依同法處分 114 年 1 月 1日至 114 年6 月 30 日停止漁業經營，A 漁會應辦事項為何？",
+          "answerText": "本次修正法規自 113 年 8 月20 日施行，甲漁民於 113 年 12 月 1 日違反漁業法受處分，應依修正後規定辦理；甲漁民於貸款存續期間，違反漁業法並經依該法處分，A 漁會應釐清處分原因，並依下列規定辦理：\n(一)倘因走私、偷渡及電、毒、炸魚而受處分，依辦理政策性農業專案貸款辦法第6 條第 5 項第 1 款規定，應收回甲漁民之貸款，A 漁會已請領之利息差額補貼應繳還農業部。\n(二)倘因走私、偷渡及電、毒、炸魚以外之事由而受處分，依辦理政策性農業專案貸款辦法第 6 條第 5 項第 2 款規定，A 漁會已請領自 114 年 1 月 1 日至 114 年6 月 30 日止之利息差額補貼，應繳還農業部。",
+          "printedPageStart": 329,
+          "printedPageEnd": 329,
+          "pdfPageStart": 331,
+          "pdfPageEnd": 331,
+          "sourcePages": [
+            331
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+          "evidenceUrl": "versions/114/pages/page-331.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q05",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "五",
+          "questionNumber": 5,
+          "question": "農業節能減碳貸款要點第17 點規定，借款人之售電對象新增「其他再生能源售電業」應如何認定？",
+          "answerText": "(一)依經濟部能源署 112 年 12 月 14 日經授能字第 11200342600 號函釋，申請設置及利用再生能源之自用發電設備，其生產之電能得銷售予再生能源售電業，故以農業節能減碳貸款支應所設(購)置與農業經營相結合之綠能設施(備)，其產生之能源得依上開函釋出售予台電公司及合法之再生能源售電業。\n(二)「再生能源售電業」之公司登記營業項目應含有「D101091 再生能源售電業」，可至全國商工行政服務入口網公司登記資料或經濟部能源署公告之名單 (查詢路徑：經濟部能源署網站首頁/認識能源署/政府資訊公開/施政計畫、業務統計、研究報告/電力/業務統計/9.再生能源售電業基本資料)查詢。",
+          "printedPageStart": 329,
+          "printedPageEnd": 329,
+          "pdfPageStart": 331,
+          "pdfPageEnd": 331,
+          "sourcePages": [
+            331
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+          "evidenceUrl": "versions/114/pages/page-331.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q06",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "六",
+          "questionNumber": 6,
+          "question": "農業節能減碳貸款之借款人如出售電力給台電公司，是否可以變更售電對象為其他再生能源售電業？",
+          "answerText": "可以。借款人於貸款期間內如變更售電對象，應儘速通知貸款經辦機構，並補正新簽訂之售電合約書，售電收入應依規定由購電公司直接撥入借款人與貸款經辦機構約定之還款帳戶。",
+          "printedPageStart": 329,
+          "printedPageEnd": 329,
+          "pdfPageStart": 331,
+          "pdfPageEnd": 331,
+          "sourcePages": [
+            331
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+          "evidenceUrl": "versions/114/pages/page-331.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q07",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "七",
+          "questionNumber": 7,
+          "question": "本次調降「青壯年農民從農貸款」壯年農民貸款利率，借款人是否須向貸款經辦機構申請調整利率？",
+          "answerText": "「青壯年農民從農貸款」壯年農民貸款利率之加碼年率調降0.25 個百分點，因貸款契約已明定調整利率時，借貸雙方同意隨同調整，爰無須向貸款經辦機構申辦變更調整利率，自113 年 8 月 20 日起自動以 1.415%(中華郵政 2 年期定期儲金機\n動利率減 0.305%)計息。",
+          "printedPageStart": 329,
+          "printedPageEnd": 330,
+          "pdfPageStart": 331,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            331,
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+          "evidenceUrl": "versions/114/pages/page-331.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q08",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "八",
+          "questionNumber": 8,
+          "question": "乙農民為繳納投保「家禽禽流感保險」之保險費，向農會申貸「農業保險貸款」，其可適用之免息期間為何？",
+          "answerText": "農業部為鼓勵農(漁)業者參加農業保險，以提高農業經營保障，農(漁)業者為繳納相關保險費所申貸之「農業保險貸款」，本次修正為 115 年 12 月 31 日前，貸款利率為 0%。",
+          "printedPageStart": 330,
+          "printedPageEnd": 330,
+          "pdfPageStart": 332,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+          "evidenceUrl": "versions/114/pages/page-332.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q09",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "九",
+          "questionNumber": 9,
+          "question": "本次訂定「農民紓困貸款」於何時辦理？其主要資格條件為何？",
+          "answerText": "(一)農業部將另行公告本貸款辦理日期。\n(二)貸款資格及條件：\n1.貸款對象：農會法第十二條所定農會會員或漁會法第十五條第一項第一款所定甲類會員。\n2.貸款額度：每一借款人最高貸款額度為 10 萬元。\n3.貸款利率：依中華郵政2 年期定期儲金機動利率加0.195%計息(目前為1.915%)。\n4.貸款期限：最長 1 年。\n5.本貸款每次辦理時間、方式、總額度上限及其他相關事項，由農業部公告。",
+          "printedPageStart": 330,
+          "printedPageEnd": 330,
+          "pdfPageStart": 332,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+          "evidenceUrl": "versions/114/pages/page-332.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q10",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "十",
+          "questionNumber": 10,
+          "question": "「農民紓困貸款」是否包含於專案農貸貸款總餘額上限規定？",
+          "answerText": "不包含。為利農(漁)民申貸農民紓困貸款，「農民紓困貸款」排除適用政策性農業專案貸款總餘額上限新臺幣 800 萬元之規定。",
+          "printedPageStart": 330,
+          "printedPageEnd": 330,
+          "pdfPageStart": 332,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+          "evidenceUrl": "versions/114/pages/page-332.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q11",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "十一",
+          "questionNumber": 11,
+          "question": "申貸「農民紓困貸款」時是否須填寫農業經營計畫書﹖是否須辦理貸後查驗工作？",
+          "answerText": "為簡化申貸作業，「農民紓困貸款」比照「農家綜合貸款」，得免填寫農業經營計畫書及辦理查驗工作。",
+          "printedPageStart": 330,
+          "printedPageEnd": 330,
+          "pdfPageStart": 332,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+          "evidenceUrl": "versions/114/pages/page-332.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-113-08-q12",
+          "faqGroupId": "faq-113-08",
+          "questionLabel": "十二",
+          "questionNumber": 12,
+          "question": "農(漁)民為農會會員或漁會甲類會員，可以向何貸款經辦機構申請「農民紓困貸款」？",
+          "answerText": "(一)借款人為農會會員或漁會甲類會員，可分別向所屬農會或漁會申請，或可向戶籍所在直轄市、縣（市）轄區內設有信用部之農（漁）會或全國農業金庫申請。\n(二) 借款人所屬農 (漁)會無信用部者，可向戶籍所在直轄市、縣（市）轄區內設有信用部之農（漁）會或全國農業金庫申請。",
+          "printedPageStart": 330,
+          "printedPageEnd": 330,
+          "pdfPageStart": 332,
+          "pdfPageEnd": 332,
+          "sourcePages": [
+            332
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+          "evidenceUrl": "versions/114/pages/page-332.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        }
+      ],
+      "ambiguousCases": [],
+      "questionCount": 12,
+      "deterministicQuestionCount": 12,
+      "pageLevelFallbackCount": 0,
+      "questionNumbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "missingQuestionNumbers": [],
+      "falsePositiveRisk": "numbered table rows and numbered non-question headings are excluded unless an explicit question or answer marker is present"
+    },
+    {
+      "id": "faq-114-10",
+      "title": "114年10月專案農貸增修規定（自114年10月10日施行）常見問答",
+      "sourcePages": [
+        335,
+        336,
+        337,
+        338,
+        339
+      ],
+      "printedPages": [
+        333,
+        334,
+        335,
+        336,
+        337
+      ],
+      "questionMarkers": [
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 335,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "五",
+          "number": 5,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "六",
+          "number": 6,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "七",
+          "number": 7,
+          "pdfPage": 336,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "八",
+          "number": 8,
+          "pdfPage": 337,
+          "candidate": false,
+          "scopeBreak": true
+        },
+        {
+          "label": "九",
+          "number": 9,
+          "pdfPage": 337,
+          "candidate": false,
+          "scopeBreak": true
+        }
+      ],
+      "records": [
+        {
+          "id": "faq-114-10-q01",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "一",
+          "questionNumber": 1,
+          "question": "本次專案農貸增修規定，主要重點有哪些？",
+          "answerText": "(一) 「輔導漁業經營貸款」、「提升畜禽產業經營貸款」、「青壯年農民從農貸款」及「農民經營及產銷班貸款」：\n1. 申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中者，各該登記證書或許可證補正期限由撥貸後 2 年延長為 3年。\n2. 配合上開修正，資金動用期限最長由核准貸款日起 2 年延長為 3 年。\n(二) 「農業科技園區進駐業者優惠貸款」：配合農業科技園區管理中心新增桃園農業物流加工園區，及轄管「蘭花園區」與「農業部農業試驗所花卉試驗分所」，業經整併為「農業部花卉創新園區研究發展中心」，爰修正園區範圍及名稱。\n(三) 「青壯年農民從農貸款」：青壯年農民農業以外其他職業所得金額，自 112 年起不得超過勞動基準法所定基本工資之全年總額 1.25 倍，增訂但書之規定為因應重大災害或流行疫病，經中央主管機關公告者，不受前開所得上限規定之限制。\n(四) 「農民組織及農企業產銷經營及研發創新貸款」：\n1. 貸款對象「曾獲農委會出具農業及其相關技術服務業從事研究發展活動認定意見書」修正為「曾獲稅捐稽徵機關核定農業及其相關技術服務業從事研究發展支出適用投資抵減稅額者」，以稅捐稽徵機關核定結果為認定是否符合貸款對象之依據。\n2. 配合前開修正，增訂須檢具之相關文件。\n(五) 「農民組織及農企業天然災害復耕復建貸款」：\n1. 為符產業實際需要，修正產業類別名稱及每一借款人最高貸款額度規定：\n(1) 農作物修正為農產業。\n(2) 農產業最高貸款額度由 1,000 萬元提高為 3,000 萬元，漁業最高貸款額度由 5,000 萬元提高為 6,800 萬元。\n2. 因 114 年樺加沙颱風造成農業災害損失嚴重，增訂因樺加沙颱風申貸之「農民組織及農企業天然災害復耕復建貸款」，新貸自撥貸日起 1 年內，年利率為 0%。\n(六) 「農民紓困貸款」：\n1. 因應重大災害或流行疫病情事發生時，為增加本貸款執行彈性，協助遭受農業損失之農漁民，增訂其他經中央主管機關公告者為貸款對象，及得再次申貸之但書規定。\n2. 貸款期限由 1 年修正為2 年。",
+          "printedPageStart": 333,
+          "printedPageEnd": 334,
+          "pdfPageStart": 335,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            335,
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=335",
+          "evidenceUrl": "versions/114/pages/page-335.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q02",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "二",
+          "questionNumber": 2,
+          "question": "甲漁會於 114 年 10 月 1 日撥貸 A 漁民「輔導漁業經營貸款」資本支出 1,000 萬元，請問 A 漁民最遲應於何時補正養殖漁業登記證？",
+          "answerText": "本次修正法規自 114 年10 月 10 日施行，甲漁會於114 年 10 月1 日撥貸，應依修正後規定辦理，A 漁民最遲應於 117 年 10 月 1 日前(撥貸後 3 年內)補正養殖漁業登記證。",
+          "printedPageStart": 334,
+          "printedPageEnd": 334,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q03",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "三",
+          "questionNumber": 3,
+          "question": "屬申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中之借款人，資金動用期限最長為多久？",
+          "answerText": "(一) 借款人申貸屬資本支出貸款，貸款資金應於核准貸款日起 3 個月內第 1 次動撥，並依工程進度於 2 年內動撥完畢。\n(二) 工程未能於前開之期限內完成者，借款人得向貸款經辦機構申請延長資本支出貸款之動用期限，最長1 年，並以1 次為限；另為利額度控管，貸款經辦機構應向全國農業金庫申請變更動用期限。",
+          "printedPageStart": 334,
+          "printedPageEnd": 334,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q04",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "四",
+          "questionNumber": 4,
+          "question": "屬申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中之借款人，倘未於撥貸後 3 年內補正登記證書或許可證，貸款經辦機構應如何處理？",
+          "answerText": "借款人應於撥貸後 3 年內補正登記證書或許可證，倘屆期未補正者，視為未符合貸款資格，應收回其貸款，貸款經辦機構已請領之利息差額補貼應繳還農業部。",
+          "printedPageStart": 334,
+          "printedPageEnd": 334,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q05",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "五",
+          "questionNumber": 5,
+          "question": "乙農民為桃園農業物流加工園區之進駐業者，應至何處申請「農業科技園區進駐業者優惠貸款」？",
+          "answerText": "乙農民為桃園農業物流加工園區之進駐業者，可向戶籍或農業經營場址所在地之農漁會信用部或全國農業金庫申請。",
+          "printedPageStart": 334,
+          "printedPageEnd": 334,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q06",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "六",
+          "questionNumber": 6,
+          "question": "本次「農民紓困貸款」期限由1 年修正為 2 年，是否溯及既往？",
+          "answerText": "本次修正法規自114 年 10 月10 日施行後，新貸案件貸款期限由 1 年修正為 2 年；因原貸款契約已簽訂，借貸雙方仍須依原契約之授信條件履行，惟借款人如有延期還款之必要，得依辦理政策性農業專案貸款辦法第22 條第 1 項規定，向貸款經辦機構申請展延。",
+          "printedPageStart": 334,
+          "printedPageEnd": 334,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 336,
+          "sourcePages": [
+            336
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-114-10-q07",
+          "faqGroupId": "faq-114-10",
+          "questionLabel": "七",
+          "questionNumber": 7,
+          "question": "丙農民曾申貸「農民紓困貸款」，尚未繳清貸款本金及利息，倘有再次申貸需求，於何情形可再次申貸？",
+          "answerText": "丙農民曾申貸「農民紓困貸款」，依規定應繳清貸款本金及利息，始得再次申貸。\n惟倘經中央主管機關公告認定發生重大災害或流行疫病，有再次申貸需求者，不\n在此限。",
+          "printedPageStart": 334,
+          "printedPageEnd": 335,
+          "pdfPageStart": 336,
+          "pdfPageEnd": 337,
+          "sourcePages": [
+            336,
+            337
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+          "evidenceUrl": "versions/114/pages/page-336.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        }
+      ],
+      "ambiguousCases": [],
+      "questionCount": 7,
+      "deterministicQuestionCount": 7,
+      "pageLevelFallbackCount": 0,
+      "questionNumbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "missingQuestionNumbers": [],
+      "falsePositiveRisk": "numbered table rows and numbered non-question headings are excluded unless an explicit question or answer marker is present"
+    },
+    {
+      "id": "faq-young-farmer-114-10",
+      "title": "青壯年農民從農貸款增修規定（114年10月更新）常見問答",
+      "sourcePages": [
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349
+      ],
+      "printedPages": [
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347
+      ],
+      "questionMarkers": [
+        {
+          "label": "一",
+          "number": 1,
+          "pdfPage": 340,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二",
+          "number": 2,
+          "pdfPage": 340,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "三",
+          "number": 3,
+          "pdfPage": 341,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "四",
+          "number": 4,
+          "pdfPage": 341,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "五",
+          "number": 5,
+          "pdfPage": 341,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "六",
+          "number": 6,
+          "pdfPage": 342,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "七",
+          "number": 7,
+          "pdfPage": 342,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "八",
+          "number": 8,
+          "pdfPage": 343,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "九",
+          "number": 9,
+          "pdfPage": 343,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十",
+          "number": 10,
+          "pdfPage": 344,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十一",
+          "number": 11,
+          "pdfPage": 344,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十二",
+          "number": 12,
+          "pdfPage": 345,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十三",
+          "number": 13,
+          "pdfPage": 345,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十四",
+          "number": 14,
+          "pdfPage": 345,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十五",
+          "number": 15,
+          "pdfPage": 345,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十六",
+          "number": 16,
+          "pdfPage": 346,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十七",
+          "number": 17,
+          "pdfPage": 346,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十八",
+          "number": 18,
+          "pdfPage": 346,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "十九",
+          "number": 19,
+          "pdfPage": 346,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二十",
+          "number": 20,
+          "pdfPage": 346,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二十一",
+          "number": 21,
+          "pdfPage": 347,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二十二",
+          "number": 22,
+          "pdfPage": 347,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二十三",
+          "number": 23,
+          "pdfPage": 348,
+          "candidate": true,
+          "scopeBreak": false
+        },
+        {
+          "label": "二十四",
+          "number": 24,
+          "pdfPage": 348,
+          "candidate": true,
+          "scopeBreak": false
+        }
+      ],
+      "records": [
+        {
+          "id": "faq-young-farmer-114-10-q01",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "一",
+          "questionNumber": 1,
+          "question": "114 年 10 月 9 日修正發布（自 114 年 10 月 10 日施行)之「青壯年農民從農貸款」相關規定，修正重點為何？",
+          "answerText": "(一)修正申辦養殖漁業登記證、畜牧場登記證書或屠宰場登記證書中者，各該登記證書或許可證補正期限由撥貸後 2 年延長為 3 年；資金動用期限最長由核准貸款日起 2 年延長為3 年。\n(二)農業以外其他職業所得金額，自 112 年起不得超過勞動基準法所定基本工資之全年總額 1.25 倍，增訂但書之規定為因應重大災害或流行疫病，經中央主管機關公告者，不受前開所得上限規定之限制。",
+          "printedPageStart": 338,
+          "printedPageEnd": 338,
+          "pdfPageStart": 340,
+          "pdfPageEnd": 340,
+          "sourcePages": [
+            340
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=340",
+          "evidenceUrl": "versions/114/pages/page-340.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q02",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二",
+          "questionNumber": 2,
+          "question": "申請「青壯年農民從農貸款」須具備什麼資格？",
+          "answerText": "(一)年齡18 歲以上 45 歲以下，並符合下列條件之一者:\n1.高中職以上學校農業相關科系畢業。\n2.申貸前 5 年內曾參加農業部所屬機關（構）、直轄市、縣（市）政府、農(漁)會、農業學校(院)舉辦之相關農業訓練滿 80 小時。\n3.農會法第 12 條所定農會會員或漁會法第 15 條第 1 項第 1 款所定甲類會員。\n4.農民職業災害保險被保險人。\n5.依農業產銷班設立及輔導辦法規定完成登記且經評鑑合格產銷班之班員。\n6.曾獲農業部、直轄市或縣(市)政府頒發農業相關獎項。\n7.具農場實習或有從事農業生產經驗。\n8.申貸前 5 年內曾獲農業部農村再生青年返鄉相關專案輔導或補助。\n(二)申貸前 5 年內曾參與農業部為改善農業缺工而成立之農業人力團並取得結訓考試及格證書，且實際從事農業生產之農民。\n(三)依農業部所定青年農民專案輔導相關規定遴選之專案輔導青年農民。\n(四)年齡逾 45 歲至 55 歲以下且申貸前 3 年均有農業生產事實，並符合（一）\n1.至 6.及8.所列條件之一者。",
+          "printedPageStart": 338,
+          "printedPageEnd": 339,
+          "pdfPageStart": 340,
+          "pdfPageEnd": 341,
+          "sourcePages": [
+            340,
+            341
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=340",
+          "evidenceUrl": "versions/114/pages/page-340.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q03",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "三",
+          "questionNumber": 3,
+          "question": "「青壯年農民從農貸款」內容為何﹖",
+          "answerText": "一般青年農民專案輔導青年農民(百大青農) 壯年農民貸款利率\n1.200 萬元5 年免息\n2.超過免息金額及期限：\n1.415%\n1.輔導期日開始 10 年內申請：500 萬元5 年免息\n2.專案輔導及追蹤期間內申請租金類：0%\n3.超過申請期間、免息金額及期限：1.415%\n1.415%貸款期限資本支出 15 年(寬緩期3 年)週轉金 5 年(寬緩期2 年)貸款額度500 萬元，其中週轉金最高100 萬元(首次申請或申請未滿 1年最高為300 萬元)1,000 萬元，其中週轉金最高為200 萬元，養殖類週轉金最高為500 萬元500萬元，其中週轉金最高100 萬元得專案申請提高額度",
+          "printedPageStart": 339,
+          "printedPageEnd": 339,
+          "pdfPageStart": 341,
+          "pdfPageEnd": 341,
+          "sourcePages": [
+            341
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+          "evidenceUrl": "versions/114/pages/page-341.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q04",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "四",
+          "questionNumber": 4,
+          "question": "A 漁會於 114 年10 月 1 日撥貸甲漁民「青壯年農民從農貸款」資本支出1,000 萬元，請問甲漁民最遲應於何時補正養殖漁業登記證？倘違反規定，應如何處理﹖",
+          "answerText": "(一)依青壯年農民從農貸款要點第 3 點第 3 項第 2 款規定，屬申辦養殖漁業登記中者，應於撥貸後3 年內補正養殖漁業登記證，A 漁會於 114 年 10 月1日撥貸，甲漁民最遲應於 117 年 10 月 1 日前（撥貸後 3 年內）補正養殖漁業登記證。\n(二)倘未能於撥貸後 3 年內補正養殖漁業登記證，A 漁會應依上開要點第 3 點第3 項規定，收回甲漁民貸款，並繳還已請領之利息差額補貼。",
+          "printedPageStart": 339,
+          "printedPageEnd": 339,
+          "pdfPageStart": 341,
+          "pdfPageEnd": 341,
+          "sourcePages": [
+            341
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+          "evidenceUrl": "versions/114/pages/page-341.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q05",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "五",
+          "questionNumber": 5,
+          "question": "乙農民 109 年3 月 1 日獲 B 農會核貸「青壯年農民從農貸款」300 萬元，B 農會於貸款存續期間每年辦理查驗，於 113 年 11 月1 日查驗時，徵提乙農民之\n112 年度綜合所得稅各類所得清單所列農業外所得為 400,000 元，是否符合貸款規定？倘違反規定，應如何處理﹖",
+          "answerText": "(一)不符合貸款規定，B 農會應收回乙農民貸款，且 B 農會自 112 年1 月 1 日起至收回貸款日止已請領之利息差額補貼應繳還農業部。\n(二)依青壯年農民從農貸款要點第 3 點第 2 項規定，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112 年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額（下稱基本工資全年總額）1.25 倍。\n(三)查 112 年度基本工資全年總額為 316,800 元，其 1.25 倍為 396,000 元，本案乙農民 112 年度農業外所得為 400,000 元，高於 396,000 元，故違反前揭規定。\n(四)B 農會應依上開要點第 3 點第3 項第 1 款規定，收回乙農民貸款，並繳還已請領之利息差額補貼。",
+          "printedPageStart": 339,
+          "printedPageEnd": 340,
+          "pdfPageStart": 341,
+          "pdfPageEnd": 342,
+          "sourcePages": [
+            341,
+            342
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+          "evidenceUrl": "versions/114/pages/page-341.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q06",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "六",
+          "questionNumber": 6,
+          "question": "承上題，乙農民提供所得清單所列農業外所得之扣繳單位薪資單，佐證相關所得為 112 年6 月 1 日以後工作取得，應繳還已請領之利息差額補貼期間為何?",
+          "answerText": "B 農會應繳還自 112 年6 月 1 日起至收回貸款日止已請領之利息差額補貼。",
+          "printedPageStart": 340,
+          "printedPageEnd": 340,
+          "pdfPageStart": 342,
+          "pdfPageEnd": 342,
+          "sourcePages": [
+            342
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=342",
+          "evidenceUrl": "versions/114/pages/page-342.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q07",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "七",
+          "questionNumber": 7,
+          "question": "丙農民種植水果，108 年3 月 1 日以大學農業相關科系畢業資格申貸「青年從農創業貸款」資本支出，並持續經營中，目前貸款餘額為 200 萬元，丙農民現年 46 歲，有週轉金需求 90 萬元，可以再申貸該貸款嗎﹖可申貸金額為何﹖如貸款餘額為 450 萬元，可申貸金額為何﹖",
+          "answerText": "(一)貸款餘額為 200 萬元時，可以再申貸「青壯年農民從農貸款」90 萬元。說明如下：\n1.原「青年從農創業貸款」，於110 年 8 月1 日修正名稱為「青壯年農民從農貸款」，增訂年齡逾45 歲至 55 歲以下且申貸前 3 年均有農業生產事實，並符合特定條件之壯年農民為貸款對象。\n2.丙農民年齡 46 歲且申貸前 3 年均有農業生產事實，並具高中職以上學校農業相關科系畢業之條件，符合「青壯年農民從農貸款」資格。\n3.本次新貸週轉金 90 萬元，未超過週轉金限額 100 萬元；新貸 90 萬元加計原貸款餘額 200 萬元，共計 290 萬元，未超過本貸款每一借款人限額500 萬元，故本次可再申貸週轉金 90 萬元。\n(二)貸款餘額為 450 萬元時，可以再申貸50 萬元，本次新貸週轉金90 萬元，雖未超過週轉金限額 100 萬元；新貸 90 萬元加計原貸款餘額 450 萬元，共計 540 萬元，超過本貸款每一借款人限額 500 萬元，故本次僅可再申貸週轉金 50 萬元（500 萬元-450 萬元）。",
+          "printedPageStart": 340,
+          "printedPageEnd": 341,
+          "pdfPageStart": 342,
+          "pdfPageEnd": 343,
+          "sourcePages": [
+            342,
+            343
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=342",
+          "evidenceUrl": "versions/114/pages/page-342.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q08",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "八",
+          "questionNumber": 8,
+          "question": "46 歲之丁行號負責人想轉換職業，參加農業部之農業技術團、茶葉專業團等，經取得結訓考試及格證書，可以申貸「青壯年農民從農貸款」嗎﹖是否有兼職及年齡限制？",
+          "answerText": "(一)參與農業部為改善農業缺工而成立之農業人力團並取得結訓考試及格證書者，於5 年內創業務農(自己實際從事農業生產，非受僱者)而有營農資金需求者，可申請「青壯年農民從農貸款」。\n(二)考量青年投入農業經營初期收入較不穩定，於 103 年 10 月 28 日業將借款人應無農業以外之專任職業（如行號負責人、代書等）之規定刪除，但仍須注意，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112 年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額 1.25 倍；另110 年 8 月1 日新增之貸款對象（壯年農民）亦適用。\n(三)本貸款對象中，農業部專案輔導青年農民及取得農業人力團結訓考試及格證書並實際從農之農民，無年齡規定；其餘之貸款對象，一般青年農民年齡須為 18 歲以上 45 歲以下，壯年農民年齡須為逾45 歲至 55 歲以下。",
+          "printedPageStart": 341,
+          "printedPageEnd": 341,
+          "pdfPageStart": 343,
+          "pdfPageEnd": 343,
+          "sourcePages": [
+            343
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=343",
+          "evidenceUrl": "versions/114/pages/page-343.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q09",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "九",
+          "questionNumber": 9,
+          "question": "「青壯年農民從農貸款」之借款人為什麼要辦理農業經營現況自主申報?應於何時辦理申報﹖是不是所有本貸款之借款人都必須辦理自主申報？",
+          "answerText": "(一)政府為擴大鼓勵青年農民投入農業生產工作，考量其初期投入生產營運較不穩定，為減輕其營運及還款壓力，規定 200 萬元額度於 5 年貸款期間，\n貸款利率為 0%。為確保該免息資金確實用於農業用途，爰規定適用前開貸款利率者，於適用該貸款利率期間，應於貸款經辦機構通知辦理查驗之日前，填具農業經營現況申報表送貸款經辦機構，俾利貸款經辦機構持借款人之申報表辦理現地查驗。\n(二)依辦理政策性農業專案貸款辦法第 28 條第 1 項第 2 款規定，本貸款每年應至少辦理 1 次查驗，故一般青年農民於適用前開貸款利率期間，每年應於貸款經辦機構通知辦理查驗之日前，辦理農業經營現況自主申報。\n(三)依青壯年農民從農貸款要點第 3 點第 1 項第 3 款、第 4 款規定之專案輔導青年農民(百大青農)、壯年農民，及一般青年農民未適用本免息措施期間，無需辦理自主申報。",
+          "printedPageStart": 341,
+          "printedPageEnd": 342,
+          "pdfPageStart": 343,
+          "pdfPageEnd": 344,
+          "sourcePages": [
+            343,
+            344
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=343",
+          "evidenceUrl": "versions/114/pages/page-343.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q10",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十",
+          "questionNumber": 10,
+          "question": "青年農民之「青壯年農民從農貸款」本息逾期未繳，是否仍得適用 200 萬元額度 5 年期間貸款利率為 0%之規定?",
+          "answerText": "依農業發展基金貸款作業規範第 17 點規定，農發基金貸款逾期6 個月以內者，逾期本金部分改按全國農業金庫基準利率加 1 成計息，逾期利息部分以同標準計收違約金；逾期超過6 個月者，其本息及違約金計收方式由借貸雙方以契約另訂之。故如有逾期情形，依前開規定辦理。",
+          "printedPageStart": 342,
+          "printedPageEnd": 342,
+          "pdfPageStart": 344,
+          "pdfPageEnd": 344,
+          "sourcePages": [
+            344
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=344",
+          "evidenceUrl": "versions/114/pages/page-344.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q11",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十一",
+          "questionNumber": 11,
+          "question": "有關放寬專案輔導青年農民享有「青壯年農民從農貸款」5 年 500 萬元免息優惠之申貸期限，由原輔導追蹤期5 年延長為輔導期日開始 10 年內之計算方式為何？",
+          "answerText": "第1 屆至第 7 屆專案輔導青年農民(百大青農)，免息優惠之申貸期限如下：第 1 屆：自 102 年 7 月1 日起至 112 年 6 月 30 日止。\n第 2 屆：自 104 年 1 月1 日起至 113 年 12 月31 日止。\n第 3 屆：自 105 年 7 月1 日起至 115 年 6 月 30 日止。\n第 4 屆：自 107 年 1 月1 日起至 116 年 12 月31 日止。\n第 5 屆：自 109 年 1 月1 日起至 118 年 12 月31 日止。\n第 6 屆：自 111 年 8 月1 日起至 121 年 7 月 31 日止。\n第 7 屆：自 113 年 6 月1 日起至 123 年 5 月 31 日止。",
+          "printedPageStart": 342,
+          "printedPageEnd": 342,
+          "pdfPageStart": 344,
+          "pdfPageEnd": 344,
+          "sourcePages": [
+            344
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=344",
+          "evidenceUrl": "versions/114/pages/page-344.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q12",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十二",
+          "questionNumber": 12,
+          "question": "「青壯年農民從農貸款」相關規定可在哪裡查詢？另農業部所屬機關(構)舉辦之相關農業訓練課程資訊要如何查詢？",
+          "answerText": "(一)貸款規定可至農業金融署網站 https://www.afna.gov.tw/青年從農專區或專案農貸常用規定查詢。\n( 二 ) 農業訓練課程資訊可至農業部農民學院網站查詢https://academy.coa.gov.tw/。",
+          "printedPageStart": 343,
+          "printedPageEnd": 343,
+          "pdfPageStart": 345,
+          "pdfPageEnd": 345,
+          "sourcePages": [
+            345
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+          "evidenceUrl": "versions/114/pages/page-345.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q13",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十三",
+          "questionNumber": 13,
+          "question": "「青壯年農民從農貸款」第3 點規定所稱「執行業務所得」為何？應如何查詢？",
+          "answerText": "所謂執行業務所得，通常係指律師、會計師、建築師、助產人員、著作人、保險(一般)經紀人、代書(地政士)、藥師、中(西)醫師、獸醫師、醫事檢驗師、精算師、記帳士、公證人、不動產估價師等執行業務者之業務所得，可由借款人提供稅捐稽徵機關最近一年度所得清單（代號為 9A）查詢。",
+          "printedPageStart": 343,
+          "printedPageEnd": 343,
+          "pdfPageStart": 345,
+          "pdfPageEnd": 345,
+          "sourcePages": [
+            345
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+          "evidenceUrl": "versions/114/pages/page-345.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q14",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十四",
+          "questionNumber": 14,
+          "question": "可到哪裡申辦「青壯年農民從農貸款」？應填具何種文件？",
+          "answerText": "(一)可向戶籍或農業經營場址所在直轄市、縣(市)轄區內農(漁)會信用部或全國農業金庫申請。所稱農業經營場址，於海洋漁業係指漁船設籍地、漁業根據地、漁獲物起卸港。\n(二)可至全國農業金庫網站 https://www.agribank.com.tw/線上申貸專區申請。該專區提供青壯年農民線上申貸「青壯年農民從農貸款」。\n(三)應填寫貸款申請書、農業經營計畫及其他貸款所需資料。若有資料填寫相關問題，可洽詢信用部或全國農業金庫承辦人員。",
+          "printedPageStart": 343,
+          "printedPageEnd": 343,
+          "pdfPageStart": 345,
+          "pdfPageEnd": 345,
+          "sourcePages": [
+            345
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+          "evidenceUrl": "versions/114/pages/page-345.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q15",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十五",
+          "questionNumber": 15,
+          "question": "青年農民申請「青壯年農民從農貸款」可檢附何種資料佐證符合「具農場實習或有從事農業生產經驗者」之申貸資格？如欲經營海洋漁撈，應再檢附何種文件?",
+          "answerText": "(一)農場實習：提供政府機關(構)委託、補助辦理或其他農場實務訓練證明資料。\n(二)有從事農業生產經驗者，可參考以下項目：\n1.實際從事農業經營者：提供農產品產銷貨紀錄、與通路商訂定之農產品交\n付契約、購買農業用機器與資材或契作文件等，或其他足資證明從事農業生產資料。\n2.曾受僱從事農業生產者：提供農業僱用契約、雇主出具之在職證明、勞工保險或其他足資證明受僱資料。\n(三)如欲經營海洋漁撈，申貸時應檢附申請人本人、配偶、父母或祖父母之漁業執照，但屬漁船經營權移轉中者，應檢附申請人本人之漁船買賣或租賃證明文件，並應於撥貸後 6 個月內補正漁業執照。",
+          "printedPageStart": 343,
+          "printedPageEnd": 344,
+          "pdfPageStart": 345,
+          "pdfPageEnd": 346,
+          "sourcePages": [
+            345,
+            346
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+          "evidenceUrl": "versions/114/pages/page-345.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q16",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十六",
+          "questionNumber": 16,
+          "question": "農民申請「青壯年農民從農貸款」可檢附何種資料佐證符合「申貸前 3 年均有農業生產事實」之申貸資格？",
+          "answerText": "可提供農產品產銷貨紀錄、與通路商訂定之農產品交付契約、購買農業用機器與資材或契作文件等，或其他足資證明有農業生產事實之資料。",
+          "printedPageStart": 344,
+          "printedPageEnd": 344,
+          "pdfPageStart": 346,
+          "pdfPageEnd": 346,
+          "sourcePages": [
+            346
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+          "evidenceUrl": "versions/114/pages/page-346.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q17",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十七",
+          "questionNumber": 17,
+          "question": "青年農民為建置電子商務平台，銷售自產之農產品，可以申請「青壯年農民從農貸款」嗎？",
+          "answerText": "青年農民透過電子商務(包含建置網站、電子商務平台、網站管理及維護等)銷售所生產的相關農產品，可依規定申貸「青壯年農民從農貸款」。",
+          "printedPageStart": 344,
+          "printedPageEnd": 344,
+          "pdfPageStart": 346,
+          "pdfPageEnd": 346,
+          "sourcePages": [
+            346
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+          "evidenceUrl": "versions/114/pages/page-346.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q18",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十八",
+          "questionNumber": 18,
+          "question": "「青壯年農民從農貸款」之貸款用途可用於直接從事農產運銷及電子商務嗎﹖",
+          "answerText": "本貸款對象中，農業部專案輔導青年農民及獲農村再生青年返鄉相關專案輔導或補助者，貸款用途可直接用於從事農產運銷及電子商務；其餘之貸款對象，須用於從事農業生產，與自產之農產品相關之農產運銷、電子商務。",
+          "printedPageStart": 344,
+          "printedPageEnd": 344,
+          "pdfPageStart": 346,
+          "pdfPageEnd": 346,
+          "sourcePages": [
+            346
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+          "evidenceUrl": "versions/114/pages/page-346.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q19",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "十九",
+          "questionNumber": 19,
+          "question": "專案農貸可否用於償還其他貸款？",
+          "answerText": "專案農貸應確實用於經營計畫相關經營用途，不得用於償還其他舊貸。如有資金流用之違約情形，貸款經辦機構除應收回貸款，其所請領之利息差額補貼亦應繳還。",
+          "printedPageStart": 344,
+          "printedPageEnd": 344,
+          "pdfPageStart": 346,
+          "pdfPageEnd": 346,
+          "sourcePages": [
+            346
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+          "evidenceUrl": "versions/114/pages/page-346.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q20",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二十",
+          "questionNumber": 20,
+          "question": "「青壯年農民從農貸款」之還款期限能再延長，或提供寬緩期，以減輕青年農\n民負擔?",
+          "answerText": "(一)專案農貸之貸款期限，係考量貸款用途、金額、產業特性、農業生產週期及購置設備耐用年限等多重因素，覈實貸放及訂定年限。\n(二)依本貸款規定，貸款期限資本支出最長為 15 年，週轉金最長為5 年，符合多數青年農民需要。\n(三)本貸款資本支出或週轉金之還款方式(循環動用週轉金除外)，本金以每半年為一期平均攤還為原則，利息隨同繳付;其中資本支出之寬緩期限最長為 3 年(只繳利息不用還本金)，週轉金之寬緩期限最長為 2 年，應已紓解青年農民創業初期之還款壓力。\n(四)另借款人依青壯年農民從農貸款要點規定期限申貸，屆期如有展延需求，得依辦理政策性農業專案貸款辦法第 22 條第 1 項規定申請展延。",
+          "printedPageStart": 344,
+          "printedPageEnd": 345,
+          "pdfPageStart": 346,
+          "pdfPageEnd": 347,
+          "sourcePages": [
+            346,
+            347
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+          "evidenceUrl": "versions/114/pages/page-346.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q21",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二十一",
+          "questionNumber": 21,
+          "question": "青年農民符合「青壯年農民從農貸款」申請資格，但是沒有土地可以申貸嗎？沒有擔保品及保證人，有何協助措施？",
+          "answerText": "(一)可以。青年農民經營之農地如非自有，係家人或他人所有或承租，只須申貸時檢附農地所有權人之農地同意使用書或租賃契約及土地登記簿謄本即可。如屬從事農業工作農民申請參加農民健康保險認定標準及資格審查辦法第2 條第 1 項第 4 款第 4 目之實際耕作者，可檢具農業用地所在地之農業改良場核發之實際從事農業生產工作證明文件，取代農地同意使用書及租約等文件。\n(二)本貸款擔保方式由貸款經辦機構依其授信有關規定，審酌個別授信案件核定，並未規定一定要有擔保品或保證人；若借款人擔保能力不足，貸款經辦機構會協助送請農業信用保證基金保證，青年農民之最高保證成數可達 9.5 成，且手續費亦較優惠。洽詢專線：(02)2311-6216，網址：http://www.acgf.org.tw/。",
+          "printedPageStart": 345,
+          "printedPageEnd": 345,
+          "pdfPageStart": 347,
+          "pdfPageEnd": 347,
+          "sourcePages": [
+            347
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=347",
+          "evidenceUrl": "versions/114/pages/page-347.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q22",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二十二",
+          "questionNumber": 22,
+          "question": "申貸後多久貸款經辦機構可撥款？",
+          "answerText": "借款人檢具貸款相關文件送貸款經辦機構申貸後，貸款經辦機構依相關規定辦理徵信及放款審查、擔保品鑑價或送農業信用保證基金保證，核定後並須辦理\n簽約、對保、擔保品抵押權設定，個案辦理時間不一，惟貸款經辦機構均會儘速協助辦理。",
+          "printedPageStart": 345,
+          "printedPageEnd": 346,
+          "pdfPageStart": 347,
+          "pdfPageEnd": 348,
+          "sourcePages": [
+            347,
+            348
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=347",
+          "evidenceUrl": "versions/114/pages/page-347.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q23",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二十三",
+          "questionNumber": 23,
+          "question": "為何農(漁)會不核貸？有何協助方式?",
+          "answerText": "貸款經辦機構審核專案農貸，除應符合各種貸款規定外，尚須綜合評估借款人信用、貸款用途、還款來源、債權擔保等，以確保債權，以下為不予核貸常見原因，對於擔保能力不足個案，農業金融署已與全國農業金庫建立輔導機制，轉介由該金庫專案輔導並提供協助：\n(一)貸款資格不符規定。\n(二)申請人所經營項目為辦理政策性農業專案貸款辦法所定之不予核貸項目(如檳榔…)。\n(三)違反超逾貸款餘額上限有關規定。\n(四)借款人以同一用途資金向同一或不同貸款經辦機構重複申貸。\n(五)經貸款經辦機構依授信有關規定評估其信用或擔保能力等因素欠佳。",
+          "printedPageStart": 346,
+          "printedPageEnd": 346,
+          "pdfPageStart": 348,
+          "pdfPageEnd": 348,
+          "sourcePages": [
+            348
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=348",
+          "evidenceUrl": "versions/114/pages/page-348.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        },
+        {
+          "id": "faq-young-farmer-114-10-q24",
+          "faqGroupId": "faq-young-farmer-114-10",
+          "questionLabel": "二十四",
+          "questionNumber": 24,
+          "question": "如有「青壯年農民從農貸款」相關申貸問題可以問誰？",
+          "answerText": "(一)農(漁)民可先向戶籍所在直轄市、縣(市)轄區內農(漁)會信用部洽詢。\n(二)如尚有個案申貸疑義，可向全國農業金庫設於各區之分行，就近尋求農(漁)民融資問題協助處理。諮詢專線如下：機關（公司）電話農業金融署 0800-388-599全國農業金庫營業據點電話總公司/營業部 02-2380-5180/02-2380-5228桃園分行 03-316-8007新竹分行 03-657-3976臺中分行 04-2223-8835嘉義分行 05-283-6129臺南分行 06-300-1162\n高雄分行 07-262-1002屏東分行 08-732-2782\n(三)或可直接撥打下列專線：機關（公司）電話全國農業金庫 0972-590951農業信用保證基金 0963-619301農業金融署 0933-239983",
+          "printedPageStart": 346,
+          "printedPageEnd": 347,
+          "pdfPageStart": 348,
+          "pdfPageEnd": 349,
+          "sourcePages": [
+            348,
+            349
+          ],
+          "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=348",
+          "evidenceUrl": "versions/114/pages/page-348.html",
+          "verificationStatus": "source-indexed",
+          "rangeStatus": "exact",
+          "indexBasis": "strict-numbered-question-and-answer-marker"
+        }
+      ],
+      "ambiguousCases": [],
+      "questionCount": 24,
+      "deterministicQuestionCount": 24,
+      "pageLevelFallbackCount": 0,
+      "questionNumbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "missingQuestionNumbers": [],
+      "falsePositiveRisk": "numbered table rows and numbered non-question headings are excluded unless an explicit question or answer marker is present"
+    }
+  ],
+  "records": [
+    {
+      "id": "faq-112-12-q01",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "一",
+      "questionNumber": 1,
+      "question": "本次專案農貸增修規定，主要重點有哪些？",
+      "answerText": "(一)修正不予核貸項目：\n1.增訂「輔導漁業經營貸款」、「青壯年農民從農貸款」、「農民經營及產銷班貸款」申請養殖漁業類貸款，得檢附借款人本人經主管機關核准興建水產養殖設施之農業用地作農業設施容許使用同意書申貸，並於撥貸後 2 年內補正養殖漁業登記證；如未於 2 年內補正者，應收回其貸款，貸款經辦機構並應繳回已請領之利息差額補貼。\n2.增訂檢附其他依法令許可之養殖證明文件者，得申請專案農貸，前開養殖證明文件，包括經濟部水利署核發之「河川區域公(私)地使用許可書-圍築魚塭養殖」，及農業科技園區管理機關核發之「農業科技園區漁場註冊編號」等。\n(二)「輔導農糧業經營貸款」：修正明定經農業部及其所屬機關 (單位)相關溫網室設施補助計畫或輔導措施(方案)核定或審查通過之農民或農民團體，申請本貸款用途為興設結構型鋼骨溫網室；並擴大支應範圍，包括其設施(備)。\n(三)「農業科技園區進駐業者優惠貸款」：配合臺南市臺灣蘭花生物科技園區納入農業部農業科技園區管理中心管理，修正文字並規定貸款對象為取得農業科技園區管理機關核發進駐核准函或園區租賃契約之業者。",
+      "printedPageStart": 313,
+      "printedPageEnd": 313,
+      "pdfPageStart": 315,
+      "pdfPageEnd": 315,
+      "sourcePages": [
+        315
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=315",
+      "evidenceUrl": "versions/114/pages/page-315.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q02",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "二",
+      "questionNumber": 2,
+      "question": "目前各種專案農貸之貸款利率及利息差額補貼基準為何？",
+      "answerText": "貸款利率及補貼基準計息方式為「中華郵政2 年期定期儲金機動利率」加「加（減）碼年率標準」，依目前中華郵政2 年期定期儲金機動利率 1.595%，計算之各種專案農貸之貸款利率及利息差額補貼基準：\n政策性農業專案貸款利率一覽表\n一、小地主大專業農貸款，租金貸款類，年利率為0%。\n二、青壯年農民從農貸款：\n（一）第16條第1項第1款及第2款之貸款案，除週轉金採循環動用者外，其貸款利率依下列規定：\n1.自中華民國109年3月1日起之新貸案件：每一借款人累計撥貸金額在新臺幣200萬元以下，貸款期間前5年，年利率為0%。前揭累計撥貸金額指借款人歷次申貸本貸款，貸款經辦機構撥付借款人之金額合計數。\n2.109年3月1日尚有舊貸餘額之案件：每一借款人109年3月1日貸款餘額在新臺幣200萬元以下，自該日起算，最長5年，年利率為0%，嗣後加計前目新貸案件，合計上限為新臺幣200萬元。\n（二）第16條第1項第3款專案輔導青年農民，於專案輔導及追蹤期間內提出申請租金貸款，年利率為0%。\n三、農業保險貸款，自中華民國110年1月1日起至113年12月31日止，年利率為0%。\n四、前3點以外貸款之年利率為「中華郵政2年期定期儲金機動利率」(112年3月29日為\n1.595%)加「政策性農業專案貸款加(減)碼年率標準」機動計息。但計算結果為負數者，貸款年利率為0%。政策性農業專案貸款加(減)碼年率標準如下：貸款種類條件加(減)碼年率（%）目前貸款利率(%)\n1.農機貸款①電動、油電混合動力之農機減0.555 1.04②其他減0.305 1.29\n2.輔導農糧業經營貸款①貸款用途為改善或新建菇類栽培場 (實際從事菇蕈類生產之農民或農民團體)，以設置屋頂型綠能設施之貸款案(註1)減0.055 1.54②溫網室設施補助計畫或輔導措施 (方案)之貸款案減0.305 1.29③其他加0.195 1.79\n3.輔導漁業經營貸款①貸款用途為改善或新建室內養殖設施，以設置屋頂型綠能設施之貸款案(註2)②貸款用途為新建室內養殖設施，其屋頂構造為太陽光電發電設施 (備)材質之貸款案(註2)減0.055 1.54③其他加0.195 1.79\n4.提升畜禽產業經營貸款①畜牧污染防治類②畜牧友善生產系統類③貸款用途為改善或新建畜禽舍(改善草食家畜經營類、提升養豬經營類、提升家禽產業經營類)，以設置屋頂型綠能設施之貸款案(註3)減0.055 1.54④其他加0.195 1.79\n5.農民經營及產銷班貸款加0.195 1.79\n6.農業科技園區進駐業者優惠貸款①週轉金採循環動用之貸款案加0.445 2.04②其他加0.195 1.79\n7.山坡地保育利用貸款加0.195 1.79\n8.農家綜合貸款加0.195 1.79\n9.農漁會事業發展貸款①促進民間參與公共建設貸款案加0.195 1.79②促進民間參與公共建設以外之貸款案減0.055 1.54\n10.造林貸款減0.055 1.54\n11.小地主大專業農貸款：經營貸款類減0.305 1.29\n12. 農業節能減碳貸款①農(漁)民減0.305 1.29②農(漁)民團體及農企業加0.195 1.79\n13. 青壯年農民從農貸款：第2點以外之貸款案①第16條第1項第1款至第3款之貸款案減0.305 1.29②第16條第1項第4款之貸款案減0.055 1.54\n14. 休閒農場貸款①自然人加0.195 1.79②法人加0.585 2.18\n15. 農民組織及農企業產銷經營及研發創新貸款①農民組織及農企業負責人具專案輔導青年農民資格之貸款案(註4)②曾獲中央主管機關補助執行農村社區企業經營輔導計畫之貸款案③經中央主管機關認定配合農產品產銷調節措施之貸款案加0.195 1.79④週轉金採循環動用之貸款案加0.835 2.43⑤其他加0.585 2.18\n16.農民組織及農企業天然災害復耕復建貸款加0.585 2.18\n17.農業保險貸款減0.305 1.29\n18.擴大家庭農場經營規模協助農民購買耕地貸款加0.195 1.79\n19.改善財務貸款(註5) 加1.695 3.29\n20. 農業天然災害低利貸款①莫拉克颱風、凡那比颱風（兼有莫拉克颱風）減0.415 1.18②其他減0.305 1.29\n備註：\n1.申請者須為第5條第1項第8款借款人，且應先取得直轄市、縣(市)政府核發菇類栽培場得附屬設置屋頂型綠能設施容許使用同意書。\n2.申請者須為第6條第1項之養殖業者，且應先取得直轄市、縣(市)政府核發室內養殖設施得附屬設置屋頂型綠能設施容許使用同意書。\n3.申請者須為第7條第1項第1款借款人，且應先取得直轄市、縣(市)政府核發畜禽舍得附屬設置屋頂型綠能設施容許使用同意書。\n4.農民組織負責人依財政部稅務入口網稅籍登記資料公示查詢結果之負責人認定之；農企業負責人依經濟部商業司商工登記公示資料查詢結果之代表人或負責人認定之。\n5.改善財務貸款於 105 年 3 月22 日廢止生效。\n政策性農業專案貸款之利息差額補貼基準自110 年8 月1 日起實施政策性農業專案貸款之補貼基準為「中華郵政 2 年期定期儲金機動利率」加計加碼年率標準機動計息，各種貸款加碼年率，及依中華郵政 2 年期定期儲金機動利率(112 年 3 月29 日為1.595%)計算之補貼基準如下：貸款種類農(漁)會農業金庫備註加碼年率(%)目前補貼基準(%)加碼年率(%)目前補貼基準(%)\n1.農家綜合貸款加 2.375 3.97 加 2.125 3.72\n2.擴大家庭農場經營規模協助農民購買耕地貸款\n3.農業保險貸款\n4.輔導漁業經營貸款\n5.農民經營及產銷班貸款\n6.山坡地保育利用貸款\n7.造林貸款\n8.小地主大專業農貸款\n9.改善財務貸款加 2.625 4.22 加 2.375 3.97\n10.農機貸款加 2.845 4.44 加 2.375 3.97\n11.輔導農糧業經營貸款加3.095 4.69 加2.375 3.97溫網室設施補助計畫或輔導措施(方案)之貸款案加2.625 4.22 加2.375 3.97 其他\n12.提升畜禽產業經營貸款加 3.095 4.69 加 2.375 3.97\n13.青壯年農民從農貸款加 3.095 4.69 加 2.375 3.97辦理政策性農業專案貸款辦法第 16 條第 1項第1 款至第3款之貸款案加 2.625 4.22 加 2.375 3.97辦理政策性農業專案貸款辦法第 16 條第 1項第 4 款之貸款案\n14.農漁會事業發展貸款加 1.625 3.22 加 1.625 3.22\n15.農業科技園區進駐業者優惠貸款加1.375 2.97 加1.375 2.97 週轉金採循環動用之貸款案加1.625 3.22 加1.625 3.22 其他\n16.農業節能減碳貸款加 2.465 4.06 加 2.375 3.97 農(漁)民加 2.125 3.72 加 2.125 3.72 農(漁)民團體及農企業\n17.休閒農場貸款加 2.625 4.22 加 2.375 3.97 自然人\n加 2.125 3.72 加 2.125 3.72 法人\n18.農民組織及農企業產銷經營及研發創新貸款加1.875 3.47 加1.875 3.47 週轉金採循環動用之貸款案加2.125 3.72 加2.125 3.72 其他\n19.農民組織及農企業天然災害復耕復建貸款加 2.125 3.72 加 2.125 3.72\n20.農業天然災害低利貸款加 3.280 4.875 加 2.375 3.97 其他加 3.170 4.765 加 2.265 3.86莫拉克、凡那比颱風（兼有莫拉克颱風）\n備註：\n1.有關依法承受農(漁)會信用部之銀行當地分行承作政策性農業專案貸款，及臺灣銀行設於屏東縣農業科技園區之分行承作「農業科技園區進駐業者優惠貸款」之補貼基準，比照農業金庫辦理。\n2.合作金庫商業銀行、臺灣土地銀行及臺灣銀行早期承作政策性農業專案貸款案件餘額，其補貼基準為「中華郵政 2 年期定期儲金機動利率」加 2.375%。\n3.補貼基準為貸款利率與利息差額補貼之合計數。",
+      "printedPageStart": 313,
+      "printedPageEnd": 317,
+      "pdfPageStart": 315,
+      "pdfPageEnd": 319,
+      "sourcePages": [
+        315,
+        316,
+        317,
+        318,
+        319
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=315",
+      "evidenceUrl": "versions/114/pages/page-315.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q03",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "三",
+      "questionNumber": 3,
+      "question": "甲農民獲得 A 縣府核准興建水產養殖設施，並發給農業用地作農業設施容許使用同意書，甲農民因興建養殖設施資金需求，可否申請專案農貸？倘可以申請，應向何處申請？又有哪幾種專案農貸可以申請？",
+      "answerText": "(一)可以申請。\n(二)可向戶籍或經營場址(興建之養殖池)所在地之農漁會信用部或農業金庫申請，由受理貸款經辦機構依徵授信程序審查。\n(三)甲農民可依資格申請「輔導漁業經營貸款」、「農民經營及產銷班貸款」或「青壯年農民從農貸款」。",
+      "printedPageStart": 317,
+      "printedPageEnd": 317,
+      "pdfPageStart": 319,
+      "pdfPageEnd": 319,
+      "sourcePages": [
+        319
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=319",
+      "evidenceUrl": "versions/114/pages/page-319.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q04",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "四",
+      "questionNumber": 4,
+      "question": "乙農民取得農業部農糧署溫網室設施補助計畫核定通過興設加強型水平棚架網室(或簡易式塑膠布溫網室)，是否為輔導農糧業經營貸款要點第 3 點第 1 項第 9 款規定之貸款對象？",
+      "answerText": "(一)否。\n(二)上開要點規定之貸款對象為取得溫網室設施補助計畫或輔導措施(方案)核定或審查通過興設結構型鋼骨溫網室之農民或農民團體，乙農民為取得核定通過興設加強型水平棚架網室(或簡易式塑膠布溫網室)之農民，非該規定之貸款對象。",
+      "printedPageStart": 317,
+      "printedPageEnd": 318,
+      "pdfPageStart": 319,
+      "pdfPageEnd": 320,
+      "sourcePages": [
+        319,
+        320
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=319",
+      "evidenceUrl": "versions/114/pages/page-319.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q05",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "五",
+      "questionNumber": 5,
+      "question": "經農業部農糧署溫網室設施補助計畫或輔導措施（方案）核定或審查通過興設結構型鋼骨溫網室之農民或農民團體，申貸「輔導農糧業經營貸款」，其最高貸款額度為何？",
+      "answerText": "(一)本次修法擴大貸款支應範圍包括結構型鋼骨溫網室設施補助計畫或輔導措施 (方案)中所列之相關設施(備)，其最高貸款額度為「農業部主管計畫補助基準所定結構型鋼骨溫網室及同一計畫或措施(方案)核定或審查通過設施(備)最高補助金額除以補助比率」。\n(二)上開結構型鋼骨溫網室及相關設施(備)最高補助金額及補助比率可至農業部網站：資訊與服務→計畫研提（https://www.moa.gov.tw/ws.php?id=85），下載「農業部主管計畫補助基準」電子檔，查詢「補助項目」為「塑膠布溫網室」項下之「結構型鋼骨溫網室」補助基準；相關設施(備)補助基準，查詢「附表」-「溫網室設施環境控制及生產設備補助項目及最高補助額度」。\n(三)依現行規定，西部地區補助以不超過 50%為原則，結構型鋼骨溫網室每 0.1 公頃最高補助 75 萬元；東部、離島及原住民地區補助以不超過60%為原則，結構型鋼骨溫網室每 0.1 公頃最高補助 90 萬元，爰經相關溫網室設施補助計畫或輔導措施（方案）核定或審查通過興設結構型鋼骨溫網室者，申貸「輔導農糧業經營貸款」最高貸款額度計算方式如下：\n1.結構型鋼骨溫網室：\n(1)西部地區：每公頃最高補助金額為750 萬元，補助比率為50%，每公頃最高貸款額度為 1,500 萬元（750 萬元/50%）。\n(2)東部、離島及原住民地區：每公頃最高補助金額為 900 萬元，補助比率為60%，每公頃最高貸款額度為 1,500 萬元（900 萬元/60%）。\n2.相關設施(備)：如溫室環控系統、內循環風扇、光控式電動遮蔭或溫室電動天\n窗等設施(備)，最高貸款額度以每組、每台或每公頃最高補助金額除以補助比率（補助比率以不超過 50%為原則）計算。",
+      "printedPageStart": 318,
+      "printedPageEnd": 319,
+      "pdfPageStart": 320,
+      "pdfPageEnd": 321,
+      "sourcePages": [
+        320,
+        321
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=320",
+      "evidenceUrl": "versions/114/pages/page-320.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q06",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "六",
+      "questionNumber": 6,
+      "question": "彰化縣丙農民為興設 0.5 公頃結構型鋼骨溫網室、1 組溫室環控系統、20 台內循環風扇及 0.5 公頃光控式電動內遮蔭等設施(備)，已取得溫網室設施補助計畫核定通過證明文件，現有資金需求 1,100 萬元，丙農民可以申貸「輔導農糧業經營貸款」金額為何？",
+      "answerText": "(一)可申貸918 萬元。\n(二)依現行規定，結構型鋼骨溫網室、溫室環控系統、內循環風扇及光控式電動內遮蔭每公頃/組/台最高貸款額度分別為 1,500 萬元、30 萬元、9,000 元及 240 萬元。\n(三)丙農民興設0.5 公頃結構型溫網室設施(每公頃1,500 萬元×0.5 公頃=750 萬元)、1 組溫室環控系統(每組 30 萬元)、20 台內循環風扇(每台 9,000 元×20 台=18 萬元)及 0.5 公頃光控式電動內遮蔭(每公頃 240 萬元×0.5 公頃=120 萬元)，合計可申貸918 萬元(750+30+18+120)，餘182 萬元資金需求，得以一般貸款支應，惟不得再以其他專案農貸支應，以避免有重複申貸問題。",
+      "printedPageStart": 319,
+      "printedPageEnd": 319,
+      "pdfPageStart": 321,
+      "pdfPageEnd": 321,
+      "sourcePages": [
+        321
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+      "evidenceUrl": "versions/114/pages/page-321.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q07",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "七",
+      "questionNumber": 7,
+      "question": "丁農民為臺南市臺灣蘭花生物科技園區之進駐業者，可否向臺灣銀行設於臺南市之分行申請「農業科技園區進駐業者優惠貸款」？",
+      "answerText": "(一)不可以。\n(二)臺灣銀行僅有設於屏東縣農業科技園區之分行得受理該園區內進駐業者申請農業科技園區進駐業者優惠貸款，丁農民為臺南市臺灣蘭花生物科技園區之進駐業者，應向戶籍或農業經營場址所在地之農漁會信用部或農業金庫申請。",
+      "printedPageStart": 319,
+      "printedPageEnd": 319,
+      "pdfPageStart": 321,
+      "pdfPageEnd": 321,
+      "sourcePages": [
+        321
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+      "evidenceUrl": "versions/114/pages/page-321.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q08",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "八",
+      "questionNumber": 8,
+      "question": "戊農民 109 年3 月1 日獲 B 農會核貸「青壯年農民從農貸款」300 萬元，B 農會於\n貸款存續期間每年辦理查驗，於 113 年 11 月 1 日查驗時，徵提戊農民之 112 年度綜合所得稅各類所得清單所列農業外所得為 400,000 元，是否符合貸款規定？\n倘違反規定，應如何處理？",
+      "answerText": "(一)不符合貸款規定，B 農會應收回戊農民貸款，且 B 農會自 112 年 1 月 1 日起至收回貸款日止已請領之利息差額補貼應繳還農業部。\n(二)依青壯年農民從農貸款要點第 3 點第 2 項規定，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額（下稱基本工資全年總額）1.25 倍。\n(三)查 112 年度基本工資全年總額為 316,800 元，其1.25 倍為 396,000 元，本案戊農民 112 年度農業外所得為 400,000 元，高於 396,000 元，故違反前揭規定。\n(四)B 農會應依上開要點第 3 點第 3 項第 1 款規定，收回戊農民貸款，並繳還已請領之利息差額補貼。",
+      "printedPageStart": 319,
+      "printedPageEnd": 320,
+      "pdfPageStart": 321,
+      "pdfPageEnd": 322,
+      "sourcePages": [
+        321,
+        322
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=321",
+      "evidenceUrl": "versions/114/pages/page-321.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-112-12-q09",
+      "faqGroupId": "faq-112-12",
+      "questionLabel": "九",
+      "questionNumber": 9,
+      "question": "承上題，戊農民提供所得清單所列農業外所得之扣繳單位薪資單，佐證相關所得為 112 年 6 月1 日以後工作取得，應繳還已請領之利息差額補貼期間為何？",
+      "answerText": "B 農會應繳還自 112 年6 月 1 日起至收回貸款日止已請領之利息差額補貼。",
+      "printedPageStart": 320,
+      "printedPageEnd": 320,
+      "pdfPageStart": 322,
+      "pdfPageEnd": 322,
+      "sourcePages": [
+        322
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=322",
+      "evidenceUrl": "versions/114/pages/page-322.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q01",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "一",
+      "questionNumber": 1,
+      "question": "本次專案農貸增修規定，主要重點有哪些？",
+      "answerText": "(一)新增「農民紓困貸款」：為農漁民遭遇特殊緊急狀況，提供緊急家計生活週轉金，以紓解短期經濟壓力，爰新增本項貸款。\n(二)修正「輔導漁業經營貸款」：借款人於貸款存續期間，違反漁業法非屬重大違規態樣者，修正為於改善後僅收回違規期間之利息差額補貼，毋須收回貸款。\n(三)放寬辦理政策性農業專案貸款辦法之不予核貸項目：考量市售金針違規情形已大幅改善，及於風景區農牧用地種植茶樹仍能兼顧生產、生態及景觀，爰放寬種植金針及於風景區農牧用地種植茶樹者，得依規定申請政策性農業專案貸款。\n(四)調降「青壯年農民從農貸款」壯年農民借款人之貸款利率：為鼓勵壯農營農，調降「青壯年農民從農貸款」年齡逾 45 歲至 55 歲農民之貸款利率。\n(五)延長「農業保險貸款」免息期間：「農業保險貸款」之免息期間再延長 2 年至 115 年底止。\n(六)修正「農業節能減碳貸款」：借款人之售電對象新增其他再生能源售電業。",
+      "printedPageStart": 324,
+      "printedPageEnd": 324,
+      "pdfPageStart": 326,
+      "pdfPageEnd": 326,
+      "sourcePages": [
+        326
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+      "evidenceUrl": "versions/114/pages/page-326.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q02",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "二",
+      "questionNumber": 2,
+      "question": "本次修正規定生效前，貸款經辦機構已「受理」之申貸案，係適用新的規定或舊的規定呢？",
+      "answerText": "貸款經辦機構於本次修正規定生效前已「受理」但尚未完成核貸程序之申貸案，應從優選擇對借款人較有利之規定適用。",
+      "printedPageStart": 324,
+      "printedPageEnd": 324,
+      "pdfPageStart": 326,
+      "pdfPageEnd": 326,
+      "sourcePages": [
+        326
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+      "evidenceUrl": "versions/114/pages/page-326.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q03",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "三",
+      "questionNumber": 3,
+      "question": "本次新增「農民紓困貸款」，其貸款利率及利息差額補貼基準為何？目前各種專案農貸之貸款利率及利息差額補貼基準為何？",
+      "answerText": "(一)為提供農(漁)民緊急家計生活週轉金，紓解短期經濟壓力，使其安心營農，新增「農民紓困貸款」，因貸款性質與「農家綜合貸款」均為家計週轉金，參照「農家綜合貸款」規定，明定其貸款利率及利息差額補貼基準。\n(二)貸款利率及補貼基準計息方式為「中華郵政 2 年期定期儲金機動利率」加「加（減）碼年率標準」，依目前中華郵政2 年期定期儲金機動利率 1.72%，計算之各種專案農貸之貸款利率及利息差額補貼基準：\n政策性農業專案貸款利率一覽表\n一、小地主大專業農貸款，租金貸款類，年利率為0%。\n二、青壯年農民從農貸款：\n（一）第十六條第一項第一款及第二款之貸款案，除週轉金採循環動用者外，其貸款利率依下列規定：\n1.自中華民國一百零九年三月一日起之新貸案件：每一借款人累計撥貸金額在新臺幣二百萬元以下，貸款期間前五年，年利率為0%。前揭累計撥貸金額指借款人歷次申貸本貸款，貸款經辦機構撥付借款人之金額合計數。\n2.一百零九年三月一日尚有舊貸餘額之案件：每一借款人一百零九年三月一日貸款餘額在新臺幣二百萬元以下，自該日起算，最長五年，年利率為0%，嗣後加計前目新貸案件，合計上限為新臺幣二百萬元。\n（二）第十六條第一項第三款專案輔導青年農民，於專案輔導及追蹤期間內提出申請租金貸款，年利率為0%。\n三、農業保險貸款，自中華民國一百十年一月一日起至一百十五年十二月三十一日止，年利率為0%。\n四、前三點以外貸款之年利率為「中華郵政二年期定期儲金機動利率」(113年3月27日為1.72%)加「政策性農業專案貸款加(減)碼年率標準」機動計息。但計算結果為負數者，貸款年利率為0%。\n五、政策性農業專案貸款加(減)碼年率標準如下：貸款種類條件加(減)碼年率（%）目前貸款利率(%)\n1.農機貸款○1 電動、油電混合動力之農機減0.555 1.165○2 其他減0.305 1.415\n2.輔導農糧業經營貸款○1 貸款用途為改善或新建菇類栽培場 (實際從事菇蕈類生產之農民或農民團體)，以設置屋頂型綠能設施之貸款案(註1)減0.055 1.665○2 溫網室設施補助計畫或輔導措施(方案)之貸款案減0.305 1.415○3 其他加0.195 1.915\n3.輔導漁業經營貸款○1 貸款用途為改善或新建室內養殖設施，以設置屋頂型綠能設施之貸款案(註2)○2 貸款用途為新建室內養殖設施，其屋頂構造為太陽光電發電設施(備)材質之貸款案(註2)減0.055 1.665○3 其他加0.195 1.915\n4.提升畜禽產業經營貸款○1 畜牧污染防治類○2 畜牧友善生產系統類○3 貸款用途為改善或新建畜禽舍 (改善草食家畜經營類、提升養豬經營類、提升家禽產業經營類)，以設置屋頂型綠能設施之貸款案(註3)減0.055 1.665○4 其他加0.195 1.915\n5.農民經營及產銷班貸款加0.195 1.915\n6.農業科技園區進駐業者優惠貸款○1 週轉金採循環動用之貸款案加0.445 2.165○2 其他加0.195 1.915\n7.山坡地保育利用貸款加0.195 1.915\n8.農家綜合貸款加0.195 1.915\n9.農漁會事業發展貸款○1 促進民間參與公共建設貸款案加0.195 1.915○2 促進民間參與公共建設以外之貸款案減0.055 1.665\n10.造林貸款減0.055 1.665\n11.小地主大專業農貸款：經營貸款類減0.305 1.415\n12.農業節能減碳貸款○1 農(漁)民減0.305 1.415○2 農(漁)民團體及農企業加0.195 1.915\n13.青壯年農民從農貸款第十六條第一項之貸款案。但第二點另有規定年利率為0%者，依其規定。減0.305 1.415\n14.休閒農場貸款○1 自然人加0.195 1.915○2 法人加0.585 2.305\n15.農民組織及農企業產銷經營及研發創新貸款○1 農民組織及農企業負責人具專案輔導青年農民資格之貸款案(註4)○2 曾獲中央主管機關補助執行農村社區企業經營輔導計畫之貸款案○3 經中央主管機關認定配合農產品產銷調節措施之貸款案加0.195 1.915○4 週轉金採循環動用之貸款案加0.835 2.555○5 其他加0.585 2.305\n16.農民組織及農企業天然災害復耕復建貸款加0.585 2.305\n17.農業保險貸款減0.305 1.415\n18.農民紓困貸款加0.195 1.915\n19.擴大家庭農場經營規模協助農民購買耕地貸款加0.195 1.915\n20.改善財務貸款(註5) 加1.695 3.415\n21.農業天然災害低利貸款①莫拉克颱風、凡那比颱風（兼有莫拉克颱風）減0.415 1.305②其他減0.305 1.415\n備註：\n1.申請者須為第五條第一項第八款借款人，且應先取得直轄市、縣(市)政府核發菇類栽培場得附屬設置屋頂型綠能設施容許使用同意書。\n2.申請者須為第六條第一項之養殖業者，且應先取得直轄市、縣(市)政府核發室內養殖設施得附屬設置屋頂型綠能設施容許使用同意書。\n3.申請者須為第七條第一項第一款借款人，且應先取得直轄市、縣(市)政府核發畜禽舍得附屬設置屋頂型綠能設施容許使用同意書。\n4.農民組織負責人依財政部稅務入口網稅籍登記資料公示查詢結果之負責人認定之；農企業負責人依經濟部商業司商工登記公示資料查詢結果之代表人或負責人認定\n之。\n5.改善財務貸款於 105 年 3 月 22 日廢止生效。\n政策性農業專案貸款之利息差額補貼基準自 113 年 8 月 20 日起實施政策性農業專案貸款之補貼基準為「中華郵政二年期定期儲金機動利率」加計加碼年率標準機動計息，各種貸款加碼年率，及依中華郵政二年期定期儲金機動利率(113 年 3 月27 日為1.72%)計算之補貼基準如下：貸款種類農(漁)會農業金庫備註加碼年率(%)目前補貼基準(%)加碼年率(%)目前補貼基準(%)\n1.農家綜合貸款\n2.農民紓困貸款加 2.375 4.095 加 2.125 3.845\n3.擴大家庭農場經營規模協助農民購買耕地貸款\n4.農業保險貸款\n5.輔導漁業經營貸款\n6.農民經營及產銷班貸款\n7.山坡地保育利用貸款\n8.造林貸款\n9.小地主大專業農貸款\n10.改善財務貸款加 2.625 4.345 加 2.375 4.095\n11.農機貸款加 2.845 4.565 加 2.375 4.095\n12.輔導農糧業經營貸款加3.095 4.815 加2.375 4.095溫網室設施補助計畫或輔導措施(方案)之貸款案加2.625 4.345 加2.375 4.095 其他\n13.提升畜禽產業經營貸款加 3.095 4.815 加 2.375 4.095\n14.青壯年農民從農貸款加 3.095 4.815 加 2.375 4.095辦理政策性農業專案貸款辦法第十六條第一項第一款至第三款之貸款案\n加 2.625 4.345 加 2.375 4.095辦理政策性農業專案貸款辦法第十六條第一項第四款之貸款案\n15.農漁會事業發展貸款加 1.625 3.345 加 1.625 3.345\n16.農業科技園區進駐業者優惠貸款加1.375 3.095 加1.375 3.095週轉金採循環動用之貸款案加1.625 3.345 加1.625 3.345 其他\n17.農業節能減碳貸款加 2.465 4.185 加 2.375 4.095 農(漁)民加 2.125 3.845 加 2.125 3.845 農(漁)民團體及農企業\n18.休閒農場貸款加 2.625 4.345 加 2.375 4.095 自然人加 2.125 3.845 加 2.125 3.845 法人\n19.農民組織及農企業產銷經營及研發創新貸款加1.875 3.595 加1.875 3.595週轉金採循環動用之貸款案加2.125 3.845 加2.125 3.845 其他\n20.農民組織及農企業天然災害復耕復建貸款加 2.125 3.845 加 2.125 3.845\n21.農業天然災害低利貸款加 3.280 5.000 加 2.375 4.095 其他加 3.170 4.890 加 2.265 3.985莫拉克、凡那比颱風（兼有莫拉克颱風）\n備註：\n1.有關依法承受農(漁)會信用部之銀行當地分行承作政策性農業專案貸款，及臺灣銀行設於屏東縣農業科技園區之分行承作「農業科技園區進駐業者優惠貸款」之補貼基準，比照農業金庫辦理。\n2.合作金庫商業銀行、臺灣土地銀行及臺灣銀行早期承作政策性農業專案貸款案件餘額，其補貼基準為「中華郵政二年期定期儲金機動利率」加 2.375%。\n3.補貼基準為貸款利率與利息差額補貼之合計數。",
+      "printedPageStart": 324,
+      "printedPageEnd": 329,
+      "pdfPageStart": 326,
+      "pdfPageEnd": 331,
+      "sourcePages": [
+        326,
+        327,
+        328,
+        329,
+        330,
+        331
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=326",
+      "evidenceUrl": "versions/114/pages/page-326.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q04",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "四",
+      "questionNumber": 4,
+      "question": "甲漁民 113 年 3 月 1 日獲 A 漁會核貸「輔導漁業經營貸款」2,000 萬元，貸款期間 15 年，惟甲漁民於 113 年 12 月 1 日違反漁業法，經依同法處分 114 年 1 月 1日至 114 年6 月 30 日停止漁業經營，A 漁會應辦事項為何？",
+      "answerText": "本次修正法規自 113 年 8 月20 日施行，甲漁民於 113 年 12 月 1 日違反漁業法受處分，應依修正後規定辦理；甲漁民於貸款存續期間，違反漁業法並經依該法處分，A 漁會應釐清處分原因，並依下列規定辦理：\n(一)倘因走私、偷渡及電、毒、炸魚而受處分，依辦理政策性農業專案貸款辦法第6 條第 5 項第 1 款規定，應收回甲漁民之貸款，A 漁會已請領之利息差額補貼應繳還農業部。\n(二)倘因走私、偷渡及電、毒、炸魚以外之事由而受處分，依辦理政策性農業專案貸款辦法第 6 條第 5 項第 2 款規定，A 漁會已請領自 114 年 1 月 1 日至 114 年6 月 30 日止之利息差額補貼，應繳還農業部。",
+      "printedPageStart": 329,
+      "printedPageEnd": 329,
+      "pdfPageStart": 331,
+      "pdfPageEnd": 331,
+      "sourcePages": [
+        331
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+      "evidenceUrl": "versions/114/pages/page-331.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q05",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "五",
+      "questionNumber": 5,
+      "question": "農業節能減碳貸款要點第17 點規定，借款人之售電對象新增「其他再生能源售電業」應如何認定？",
+      "answerText": "(一)依經濟部能源署 112 年 12 月 14 日經授能字第 11200342600 號函釋，申請設置及利用再生能源之自用發電設備，其生產之電能得銷售予再生能源售電業，故以農業節能減碳貸款支應所設(購)置與農業經營相結合之綠能設施(備)，其產生之能源得依上開函釋出售予台電公司及合法之再生能源售電業。\n(二)「再生能源售電業」之公司登記營業項目應含有「D101091 再生能源售電業」，可至全國商工行政服務入口網公司登記資料或經濟部能源署公告之名單 (查詢路徑：經濟部能源署網站首頁/認識能源署/政府資訊公開/施政計畫、業務統計、研究報告/電力/業務統計/9.再生能源售電業基本資料)查詢。",
+      "printedPageStart": 329,
+      "printedPageEnd": 329,
+      "pdfPageStart": 331,
+      "pdfPageEnd": 331,
+      "sourcePages": [
+        331
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+      "evidenceUrl": "versions/114/pages/page-331.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q06",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "六",
+      "questionNumber": 6,
+      "question": "農業節能減碳貸款之借款人如出售電力給台電公司，是否可以變更售電對象為其他再生能源售電業？",
+      "answerText": "可以。借款人於貸款期間內如變更售電對象，應儘速通知貸款經辦機構，並補正新簽訂之售電合約書，售電收入應依規定由購電公司直接撥入借款人與貸款經辦機構約定之還款帳戶。",
+      "printedPageStart": 329,
+      "printedPageEnd": 329,
+      "pdfPageStart": 331,
+      "pdfPageEnd": 331,
+      "sourcePages": [
+        331
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+      "evidenceUrl": "versions/114/pages/page-331.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q07",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "七",
+      "questionNumber": 7,
+      "question": "本次調降「青壯年農民從農貸款」壯年農民貸款利率，借款人是否須向貸款經辦機構申請調整利率？",
+      "answerText": "「青壯年農民從農貸款」壯年農民貸款利率之加碼年率調降0.25 個百分點，因貸款契約已明定調整利率時，借貸雙方同意隨同調整，爰無須向貸款經辦機構申辦變更調整利率，自113 年 8 月 20 日起自動以 1.415%(中華郵政 2 年期定期儲金機\n動利率減 0.305%)計息。",
+      "printedPageStart": 329,
+      "printedPageEnd": 330,
+      "pdfPageStart": 331,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        331,
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=331",
+      "evidenceUrl": "versions/114/pages/page-331.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q08",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "八",
+      "questionNumber": 8,
+      "question": "乙農民為繳納投保「家禽禽流感保險」之保險費，向農會申貸「農業保險貸款」，其可適用之免息期間為何？",
+      "answerText": "農業部為鼓勵農(漁)業者參加農業保險，以提高農業經營保障，農(漁)業者為繳納相關保險費所申貸之「農業保險貸款」，本次修正為 115 年 12 月 31 日前，貸款利率為 0%。",
+      "printedPageStart": 330,
+      "printedPageEnd": 330,
+      "pdfPageStart": 332,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+      "evidenceUrl": "versions/114/pages/page-332.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q09",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "九",
+      "questionNumber": 9,
+      "question": "本次訂定「農民紓困貸款」於何時辦理？其主要資格條件為何？",
+      "answerText": "(一)農業部將另行公告本貸款辦理日期。\n(二)貸款資格及條件：\n1.貸款對象：農會法第十二條所定農會會員或漁會法第十五條第一項第一款所定甲類會員。\n2.貸款額度：每一借款人最高貸款額度為 10 萬元。\n3.貸款利率：依中華郵政2 年期定期儲金機動利率加0.195%計息(目前為1.915%)。\n4.貸款期限：最長 1 年。\n5.本貸款每次辦理時間、方式、總額度上限及其他相關事項，由農業部公告。",
+      "printedPageStart": 330,
+      "printedPageEnd": 330,
+      "pdfPageStart": 332,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+      "evidenceUrl": "versions/114/pages/page-332.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q10",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "十",
+      "questionNumber": 10,
+      "question": "「農民紓困貸款」是否包含於專案農貸貸款總餘額上限規定？",
+      "answerText": "不包含。為利農(漁)民申貸農民紓困貸款，「農民紓困貸款」排除適用政策性農業專案貸款總餘額上限新臺幣 800 萬元之規定。",
+      "printedPageStart": 330,
+      "printedPageEnd": 330,
+      "pdfPageStart": 332,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+      "evidenceUrl": "versions/114/pages/page-332.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q11",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "十一",
+      "questionNumber": 11,
+      "question": "申貸「農民紓困貸款」時是否須填寫農業經營計畫書﹖是否須辦理貸後查驗工作？",
+      "answerText": "為簡化申貸作業，「農民紓困貸款」比照「農家綜合貸款」，得免填寫農業經營計畫書及辦理查驗工作。",
+      "printedPageStart": 330,
+      "printedPageEnd": 330,
+      "pdfPageStart": 332,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+      "evidenceUrl": "versions/114/pages/page-332.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-113-08-q12",
+      "faqGroupId": "faq-113-08",
+      "questionLabel": "十二",
+      "questionNumber": 12,
+      "question": "農(漁)民為農會會員或漁會甲類會員，可以向何貸款經辦機構申請「農民紓困貸款」？",
+      "answerText": "(一)借款人為農會會員或漁會甲類會員，可分別向所屬農會或漁會申請，或可向戶籍所在直轄市、縣（市）轄區內設有信用部之農（漁）會或全國農業金庫申請。\n(二) 借款人所屬農 (漁)會無信用部者，可向戶籍所在直轄市、縣（市）轄區內設有信用部之農（漁）會或全國農業金庫申請。",
+      "printedPageStart": 330,
+      "printedPageEnd": 330,
+      "pdfPageStart": 332,
+      "pdfPageEnd": 332,
+      "sourcePages": [
+        332
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=332",
+      "evidenceUrl": "versions/114/pages/page-332.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q01",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "一",
+      "questionNumber": 1,
+      "question": "本次專案農貸增修規定，主要重點有哪些？",
+      "answerText": "(一) 「輔導漁業經營貸款」、「提升畜禽產業經營貸款」、「青壯年農民從農貸款」及「農民經營及產銷班貸款」：\n1. 申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中者，各該登記證書或許可證補正期限由撥貸後 2 年延長為 3年。\n2. 配合上開修正，資金動用期限最長由核准貸款日起 2 年延長為 3 年。\n(二) 「農業科技園區進駐業者優惠貸款」：配合農業科技園區管理中心新增桃園農業物流加工園區，及轄管「蘭花園區」與「農業部農業試驗所花卉試驗分所」，業經整併為「農業部花卉創新園區研究發展中心」，爰修正園區範圍及名稱。\n(三) 「青壯年農民從農貸款」：青壯年農民農業以外其他職業所得金額，自 112 年起不得超過勞動基準法所定基本工資之全年總額 1.25 倍，增訂但書之規定為因應重大災害或流行疫病，經中央主管機關公告者，不受前開所得上限規定之限制。\n(四) 「農民組織及農企業產銷經營及研發創新貸款」：\n1. 貸款對象「曾獲農委會出具農業及其相關技術服務業從事研究發展活動認定意見書」修正為「曾獲稅捐稽徵機關核定農業及其相關技術服務業從事研究發展支出適用投資抵減稅額者」，以稅捐稽徵機關核定結果為認定是否符合貸款對象之依據。\n2. 配合前開修正，增訂須檢具之相關文件。\n(五) 「農民組織及農企業天然災害復耕復建貸款」：\n1. 為符產業實際需要，修正產業類別名稱及每一借款人最高貸款額度規定：\n(1) 農作物修正為農產業。\n(2) 農產業最高貸款額度由 1,000 萬元提高為 3,000 萬元，漁業最高貸款額度由 5,000 萬元提高為 6,800 萬元。\n2. 因 114 年樺加沙颱風造成農業災害損失嚴重，增訂因樺加沙颱風申貸之「農民組織及農企業天然災害復耕復建貸款」，新貸自撥貸日起 1 年內，年利率為 0%。\n(六) 「農民紓困貸款」：\n1. 因應重大災害或流行疫病情事發生時，為增加本貸款執行彈性，協助遭受農業損失之農漁民，增訂其他經中央主管機關公告者為貸款對象，及得再次申貸之但書規定。\n2. 貸款期限由 1 年修正為2 年。",
+      "printedPageStart": 333,
+      "printedPageEnd": 334,
+      "pdfPageStart": 335,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        335,
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=335",
+      "evidenceUrl": "versions/114/pages/page-335.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q02",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "二",
+      "questionNumber": 2,
+      "question": "甲漁會於 114 年 10 月 1 日撥貸 A 漁民「輔導漁業經營貸款」資本支出 1,000 萬元，請問 A 漁民最遲應於何時補正養殖漁業登記證？",
+      "answerText": "本次修正法規自 114 年10 月 10 日施行，甲漁會於114 年 10 月1 日撥貸，應依修正後規定辦理，A 漁民最遲應於 117 年 10 月 1 日前(撥貸後 3 年內)補正養殖漁業登記證。",
+      "printedPageStart": 334,
+      "printedPageEnd": 334,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q03",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "三",
+      "questionNumber": 3,
+      "question": "屬申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中之借款人，資金動用期限最長為多久？",
+      "answerText": "(一) 借款人申貸屬資本支出貸款，貸款資金應於核准貸款日起 3 個月內第 1 次動撥，並依工程進度於 2 年內動撥完畢。\n(二) 工程未能於前開之期限內完成者，借款人得向貸款經辦機構申請延長資本支出貸款之動用期限，最長1 年，並以1 次為限；另為利額度控管，貸款經辦機構應向全國農業金庫申請變更動用期限。",
+      "printedPageStart": 334,
+      "printedPageEnd": 334,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q04",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "四",
+      "questionNumber": 4,
+      "question": "屬申辦養殖漁業登記證、畜牧場登記證書、屠宰場登記證書或禽畜糞堆肥場營運許可證中之借款人，倘未於撥貸後 3 年內補正登記證書或許可證，貸款經辦機構應如何處理？",
+      "answerText": "借款人應於撥貸後 3 年內補正登記證書或許可證，倘屆期未補正者，視為未符合貸款資格，應收回其貸款，貸款經辦機構已請領之利息差額補貼應繳還農業部。",
+      "printedPageStart": 334,
+      "printedPageEnd": 334,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q05",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "五",
+      "questionNumber": 5,
+      "question": "乙農民為桃園農業物流加工園區之進駐業者，應至何處申請「農業科技園區進駐業者優惠貸款」？",
+      "answerText": "乙農民為桃園農業物流加工園區之進駐業者，可向戶籍或農業經營場址所在地之農漁會信用部或全國農業金庫申請。",
+      "printedPageStart": 334,
+      "printedPageEnd": 334,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q06",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "六",
+      "questionNumber": 6,
+      "question": "本次「農民紓困貸款」期限由1 年修正為 2 年，是否溯及既往？",
+      "answerText": "本次修正法規自114 年 10 月10 日施行後，新貸案件貸款期限由 1 年修正為 2 年；因原貸款契約已簽訂，借貸雙方仍須依原契約之授信條件履行，惟借款人如有延期還款之必要，得依辦理政策性農業專案貸款辦法第22 條第 1 項規定，向貸款經辦機構申請展延。",
+      "printedPageStart": 334,
+      "printedPageEnd": 334,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 336,
+      "sourcePages": [
+        336
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-114-10-q07",
+      "faqGroupId": "faq-114-10",
+      "questionLabel": "七",
+      "questionNumber": 7,
+      "question": "丙農民曾申貸「農民紓困貸款」，尚未繳清貸款本金及利息，倘有再次申貸需求，於何情形可再次申貸？",
+      "answerText": "丙農民曾申貸「農民紓困貸款」，依規定應繳清貸款本金及利息，始得再次申貸。\n惟倘經中央主管機關公告認定發生重大災害或流行疫病，有再次申貸需求者，不\n在此限。",
+      "printedPageStart": 334,
+      "printedPageEnd": 335,
+      "pdfPageStart": 336,
+      "pdfPageEnd": 337,
+      "sourcePages": [
+        336,
+        337
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=336",
+      "evidenceUrl": "versions/114/pages/page-336.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q01",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "一",
+      "questionNumber": 1,
+      "question": "114 年 10 月 9 日修正發布（自 114 年 10 月 10 日施行)之「青壯年農民從農貸款」相關規定，修正重點為何？",
+      "answerText": "(一)修正申辦養殖漁業登記證、畜牧場登記證書或屠宰場登記證書中者，各該登記證書或許可證補正期限由撥貸後 2 年延長為 3 年；資金動用期限最長由核准貸款日起 2 年延長為3 年。\n(二)農業以外其他職業所得金額，自 112 年起不得超過勞動基準法所定基本工資之全年總額 1.25 倍，增訂但書之規定為因應重大災害或流行疫病，經中央主管機關公告者，不受前開所得上限規定之限制。",
+      "printedPageStart": 338,
+      "printedPageEnd": 338,
+      "pdfPageStart": 340,
+      "pdfPageEnd": 340,
+      "sourcePages": [
+        340
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=340",
+      "evidenceUrl": "versions/114/pages/page-340.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q02",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二",
+      "questionNumber": 2,
+      "question": "申請「青壯年農民從農貸款」須具備什麼資格？",
+      "answerText": "(一)年齡18 歲以上 45 歲以下，並符合下列條件之一者:\n1.高中職以上學校農業相關科系畢業。\n2.申貸前 5 年內曾參加農業部所屬機關（構）、直轄市、縣（市）政府、農(漁)會、農業學校(院)舉辦之相關農業訓練滿 80 小時。\n3.農會法第 12 條所定農會會員或漁會法第 15 條第 1 項第 1 款所定甲類會員。\n4.農民職業災害保險被保險人。\n5.依農業產銷班設立及輔導辦法規定完成登記且經評鑑合格產銷班之班員。\n6.曾獲農業部、直轄市或縣(市)政府頒發農業相關獎項。\n7.具農場實習或有從事農業生產經驗。\n8.申貸前 5 年內曾獲農業部農村再生青年返鄉相關專案輔導或補助。\n(二)申貸前 5 年內曾參與農業部為改善農業缺工而成立之農業人力團並取得結訓考試及格證書，且實際從事農業生產之農民。\n(三)依農業部所定青年農民專案輔導相關規定遴選之專案輔導青年農民。\n(四)年齡逾 45 歲至 55 歲以下且申貸前 3 年均有農業生產事實，並符合（一）\n1.至 6.及8.所列條件之一者。",
+      "printedPageStart": 338,
+      "printedPageEnd": 339,
+      "pdfPageStart": 340,
+      "pdfPageEnd": 341,
+      "sourcePages": [
+        340,
+        341
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=340",
+      "evidenceUrl": "versions/114/pages/page-340.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q03",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "三",
+      "questionNumber": 3,
+      "question": "「青壯年農民從農貸款」內容為何﹖",
+      "answerText": "一般青年農民專案輔導青年農民(百大青農) 壯年農民貸款利率\n1.200 萬元5 年免息\n2.超過免息金額及期限：\n1.415%\n1.輔導期日開始 10 年內申請：500 萬元5 年免息\n2.專案輔導及追蹤期間內申請租金類：0%\n3.超過申請期間、免息金額及期限：1.415%\n1.415%貸款期限資本支出 15 年(寬緩期3 年)週轉金 5 年(寬緩期2 年)貸款額度500 萬元，其中週轉金最高100 萬元(首次申請或申請未滿 1年最高為300 萬元)1,000 萬元，其中週轉金最高為200 萬元，養殖類週轉金最高為500 萬元500萬元，其中週轉金最高100 萬元得專案申請提高額度",
+      "printedPageStart": 339,
+      "printedPageEnd": 339,
+      "pdfPageStart": 341,
+      "pdfPageEnd": 341,
+      "sourcePages": [
+        341
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+      "evidenceUrl": "versions/114/pages/page-341.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q04",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "四",
+      "questionNumber": 4,
+      "question": "A 漁會於 114 年10 月 1 日撥貸甲漁民「青壯年農民從農貸款」資本支出1,000 萬元，請問甲漁民最遲應於何時補正養殖漁業登記證？倘違反規定，應如何處理﹖",
+      "answerText": "(一)依青壯年農民從農貸款要點第 3 點第 3 項第 2 款規定，屬申辦養殖漁業登記中者，應於撥貸後3 年內補正養殖漁業登記證，A 漁會於 114 年 10 月1日撥貸，甲漁民最遲應於 117 年 10 月 1 日前（撥貸後 3 年內）補正養殖漁業登記證。\n(二)倘未能於撥貸後 3 年內補正養殖漁業登記證，A 漁會應依上開要點第 3 點第3 項規定，收回甲漁民貸款，並繳還已請領之利息差額補貼。",
+      "printedPageStart": 339,
+      "printedPageEnd": 339,
+      "pdfPageStart": 341,
+      "pdfPageEnd": 341,
+      "sourcePages": [
+        341
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+      "evidenceUrl": "versions/114/pages/page-341.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q05",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "五",
+      "questionNumber": 5,
+      "question": "乙農民 109 年3 月 1 日獲 B 農會核貸「青壯年農民從農貸款」300 萬元，B 農會於貸款存續期間每年辦理查驗，於 113 年 11 月1 日查驗時，徵提乙農民之\n112 年度綜合所得稅各類所得清單所列農業外所得為 400,000 元，是否符合貸款規定？倘違反規定，應如何處理﹖",
+      "answerText": "(一)不符合貸款規定，B 農會應收回乙農民貸款，且 B 農會自 112 年1 月 1 日起至收回貸款日止已請領之利息差額補貼應繳還農業部。\n(二)依青壯年農民從農貸款要點第 3 點第 2 項規定，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112 年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額（下稱基本工資全年總額）1.25 倍。\n(三)查 112 年度基本工資全年總額為 316,800 元，其 1.25 倍為 396,000 元，本案乙農民 112 年度農業外所得為 400,000 元，高於 396,000 元，故違反前揭規定。\n(四)B 農會應依上開要點第 3 點第3 項第 1 款規定，收回乙農民貸款，並繳還已請領之利息差額補貼。",
+      "printedPageStart": 339,
+      "printedPageEnd": 340,
+      "pdfPageStart": 341,
+      "pdfPageEnd": 342,
+      "sourcePages": [
+        341,
+        342
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=341",
+      "evidenceUrl": "versions/114/pages/page-341.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q06",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "六",
+      "questionNumber": 6,
+      "question": "承上題，乙農民提供所得清單所列農業外所得之扣繳單位薪資單，佐證相關所得為 112 年6 月 1 日以後工作取得，應繳還已請領之利息差額補貼期間為何?",
+      "answerText": "B 農會應繳還自 112 年6 月 1 日起至收回貸款日止已請領之利息差額補貼。",
+      "printedPageStart": 340,
+      "printedPageEnd": 340,
+      "pdfPageStart": 342,
+      "pdfPageEnd": 342,
+      "sourcePages": [
+        342
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=342",
+      "evidenceUrl": "versions/114/pages/page-342.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q07",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "七",
+      "questionNumber": 7,
+      "question": "丙農民種植水果，108 年3 月 1 日以大學農業相關科系畢業資格申貸「青年從農創業貸款」資本支出，並持續經營中，目前貸款餘額為 200 萬元，丙農民現年 46 歲，有週轉金需求 90 萬元，可以再申貸該貸款嗎﹖可申貸金額為何﹖如貸款餘額為 450 萬元，可申貸金額為何﹖",
+      "answerText": "(一)貸款餘額為 200 萬元時，可以再申貸「青壯年農民從農貸款」90 萬元。說明如下：\n1.原「青年從農創業貸款」，於110 年 8 月1 日修正名稱為「青壯年農民從農貸款」，增訂年齡逾45 歲至 55 歲以下且申貸前 3 年均有農業生產事實，並符合特定條件之壯年農民為貸款對象。\n2.丙農民年齡 46 歲且申貸前 3 年均有農業生產事實，並具高中職以上學校農業相關科系畢業之條件，符合「青壯年農民從農貸款」資格。\n3.本次新貸週轉金 90 萬元，未超過週轉金限額 100 萬元；新貸 90 萬元加計原貸款餘額 200 萬元，共計 290 萬元，未超過本貸款每一借款人限額500 萬元，故本次可再申貸週轉金 90 萬元。\n(二)貸款餘額為 450 萬元時，可以再申貸50 萬元，本次新貸週轉金90 萬元，雖未超過週轉金限額 100 萬元；新貸 90 萬元加計原貸款餘額 450 萬元，共計 540 萬元，超過本貸款每一借款人限額 500 萬元，故本次僅可再申貸週轉金 50 萬元（500 萬元-450 萬元）。",
+      "printedPageStart": 340,
+      "printedPageEnd": 341,
+      "pdfPageStart": 342,
+      "pdfPageEnd": 343,
+      "sourcePages": [
+        342,
+        343
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=342",
+      "evidenceUrl": "versions/114/pages/page-342.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q08",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "八",
+      "questionNumber": 8,
+      "question": "46 歲之丁行號負責人想轉換職業，參加農業部之農業技術團、茶葉專業團等，經取得結訓考試及格證書，可以申貸「青壯年農民從農貸款」嗎﹖是否有兼職及年齡限制？",
+      "answerText": "(一)參與農業部為改善農業缺工而成立之農業人力團並取得結訓考試及格證書者，於5 年內創業務農(自己實際從事農業生產，非受僱者)而有營農資金需求者，可申請「青壯年農民從農貸款」。\n(二)考量青年投入農業經營初期收入較不穩定，於 103 年 10 月 28 日業將借款人應無農業以外之專任職業（如行號負責人、代書等）之規定刪除，但仍須注意，借款人於貸款存續期間，如有農業以外其他職業者，其所支領之年薪資所得加計執行業務所得之合計數，自 112 年 1 月 1 日起，應不高於勞動基準法所定基本工資之全年總額 1.25 倍；另110 年 8 月1 日新增之貸款對象（壯年農民）亦適用。\n(三)本貸款對象中，農業部專案輔導青年農民及取得農業人力團結訓考試及格證書並實際從農之農民，無年齡規定；其餘之貸款對象，一般青年農民年齡須為 18 歲以上 45 歲以下，壯年農民年齡須為逾45 歲至 55 歲以下。",
+      "printedPageStart": 341,
+      "printedPageEnd": 341,
+      "pdfPageStart": 343,
+      "pdfPageEnd": 343,
+      "sourcePages": [
+        343
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=343",
+      "evidenceUrl": "versions/114/pages/page-343.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q09",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "九",
+      "questionNumber": 9,
+      "question": "「青壯年農民從農貸款」之借款人為什麼要辦理農業經營現況自主申報?應於何時辦理申報﹖是不是所有本貸款之借款人都必須辦理自主申報？",
+      "answerText": "(一)政府為擴大鼓勵青年農民投入農業生產工作，考量其初期投入生產營運較不穩定，為減輕其營運及還款壓力，規定 200 萬元額度於 5 年貸款期間，\n貸款利率為 0%。為確保該免息資金確實用於農業用途，爰規定適用前開貸款利率者，於適用該貸款利率期間，應於貸款經辦機構通知辦理查驗之日前，填具農業經營現況申報表送貸款經辦機構，俾利貸款經辦機構持借款人之申報表辦理現地查驗。\n(二)依辦理政策性農業專案貸款辦法第 28 條第 1 項第 2 款規定，本貸款每年應至少辦理 1 次查驗，故一般青年農民於適用前開貸款利率期間，每年應於貸款經辦機構通知辦理查驗之日前，辦理農業經營現況自主申報。\n(三)依青壯年農民從農貸款要點第 3 點第 1 項第 3 款、第 4 款規定之專案輔導青年農民(百大青農)、壯年農民，及一般青年農民未適用本免息措施期間，無需辦理自主申報。",
+      "printedPageStart": 341,
+      "printedPageEnd": 342,
+      "pdfPageStart": 343,
+      "pdfPageEnd": 344,
+      "sourcePages": [
+        343,
+        344
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=343",
+      "evidenceUrl": "versions/114/pages/page-343.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q10",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十",
+      "questionNumber": 10,
+      "question": "青年農民之「青壯年農民從農貸款」本息逾期未繳，是否仍得適用 200 萬元額度 5 年期間貸款利率為 0%之規定?",
+      "answerText": "依農業發展基金貸款作業規範第 17 點規定，農發基金貸款逾期6 個月以內者，逾期本金部分改按全國農業金庫基準利率加 1 成計息，逾期利息部分以同標準計收違約金；逾期超過6 個月者，其本息及違約金計收方式由借貸雙方以契約另訂之。故如有逾期情形，依前開規定辦理。",
+      "printedPageStart": 342,
+      "printedPageEnd": 342,
+      "pdfPageStart": 344,
+      "pdfPageEnd": 344,
+      "sourcePages": [
+        344
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=344",
+      "evidenceUrl": "versions/114/pages/page-344.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q11",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十一",
+      "questionNumber": 11,
+      "question": "有關放寬專案輔導青年農民享有「青壯年農民從農貸款」5 年 500 萬元免息優惠之申貸期限，由原輔導追蹤期5 年延長為輔導期日開始 10 年內之計算方式為何？",
+      "answerText": "第1 屆至第 7 屆專案輔導青年農民(百大青農)，免息優惠之申貸期限如下：第 1 屆：自 102 年 7 月1 日起至 112 年 6 月 30 日止。\n第 2 屆：自 104 年 1 月1 日起至 113 年 12 月31 日止。\n第 3 屆：自 105 年 7 月1 日起至 115 年 6 月 30 日止。\n第 4 屆：自 107 年 1 月1 日起至 116 年 12 月31 日止。\n第 5 屆：自 109 年 1 月1 日起至 118 年 12 月31 日止。\n第 6 屆：自 111 年 8 月1 日起至 121 年 7 月 31 日止。\n第 7 屆：自 113 年 6 月1 日起至 123 年 5 月 31 日止。",
+      "printedPageStart": 342,
+      "printedPageEnd": 342,
+      "pdfPageStart": 344,
+      "pdfPageEnd": 344,
+      "sourcePages": [
+        344
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=344",
+      "evidenceUrl": "versions/114/pages/page-344.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q12",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十二",
+      "questionNumber": 12,
+      "question": "「青壯年農民從農貸款」相關規定可在哪裡查詢？另農業部所屬機關(構)舉辦之相關農業訓練課程資訊要如何查詢？",
+      "answerText": "(一)貸款規定可至農業金融署網站 https://www.afna.gov.tw/青年從農專區或專案農貸常用規定查詢。\n( 二 ) 農業訓練課程資訊可至農業部農民學院網站查詢https://academy.coa.gov.tw/。",
+      "printedPageStart": 343,
+      "printedPageEnd": 343,
+      "pdfPageStart": 345,
+      "pdfPageEnd": 345,
+      "sourcePages": [
+        345
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+      "evidenceUrl": "versions/114/pages/page-345.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q13",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十三",
+      "questionNumber": 13,
+      "question": "「青壯年農民從農貸款」第3 點規定所稱「執行業務所得」為何？應如何查詢？",
+      "answerText": "所謂執行業務所得，通常係指律師、會計師、建築師、助產人員、著作人、保險(一般)經紀人、代書(地政士)、藥師、中(西)醫師、獸醫師、醫事檢驗師、精算師、記帳士、公證人、不動產估價師等執行業務者之業務所得，可由借款人提供稅捐稽徵機關最近一年度所得清單（代號為 9A）查詢。",
+      "printedPageStart": 343,
+      "printedPageEnd": 343,
+      "pdfPageStart": 345,
+      "pdfPageEnd": 345,
+      "sourcePages": [
+        345
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+      "evidenceUrl": "versions/114/pages/page-345.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q14",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十四",
+      "questionNumber": 14,
+      "question": "可到哪裡申辦「青壯年農民從農貸款」？應填具何種文件？",
+      "answerText": "(一)可向戶籍或農業經營場址所在直轄市、縣(市)轄區內農(漁)會信用部或全國農業金庫申請。所稱農業經營場址，於海洋漁業係指漁船設籍地、漁業根據地、漁獲物起卸港。\n(二)可至全國農業金庫網站 https://www.agribank.com.tw/線上申貸專區申請。該專區提供青壯年農民線上申貸「青壯年農民從農貸款」。\n(三)應填寫貸款申請書、農業經營計畫及其他貸款所需資料。若有資料填寫相關問題，可洽詢信用部或全國農業金庫承辦人員。",
+      "printedPageStart": 343,
+      "printedPageEnd": 343,
+      "pdfPageStart": 345,
+      "pdfPageEnd": 345,
+      "sourcePages": [
+        345
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+      "evidenceUrl": "versions/114/pages/page-345.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q15",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十五",
+      "questionNumber": 15,
+      "question": "青年農民申請「青壯年農民從農貸款」可檢附何種資料佐證符合「具農場實習或有從事農業生產經驗者」之申貸資格？如欲經營海洋漁撈，應再檢附何種文件?",
+      "answerText": "(一)農場實習：提供政府機關(構)委託、補助辦理或其他農場實務訓練證明資料。\n(二)有從事農業生產經驗者，可參考以下項目：\n1.實際從事農業經營者：提供農產品產銷貨紀錄、與通路商訂定之農產品交\n付契約、購買農業用機器與資材或契作文件等，或其他足資證明從事農業生產資料。\n2.曾受僱從事農業生產者：提供農業僱用契約、雇主出具之在職證明、勞工保險或其他足資證明受僱資料。\n(三)如欲經營海洋漁撈，申貸時應檢附申請人本人、配偶、父母或祖父母之漁業執照，但屬漁船經營權移轉中者，應檢附申請人本人之漁船買賣或租賃證明文件，並應於撥貸後 6 個月內補正漁業執照。",
+      "printedPageStart": 343,
+      "printedPageEnd": 344,
+      "pdfPageStart": 345,
+      "pdfPageEnd": 346,
+      "sourcePages": [
+        345,
+        346
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=345",
+      "evidenceUrl": "versions/114/pages/page-345.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q16",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十六",
+      "questionNumber": 16,
+      "question": "農民申請「青壯年農民從農貸款」可檢附何種資料佐證符合「申貸前 3 年均有農業生產事實」之申貸資格？",
+      "answerText": "可提供農產品產銷貨紀錄、與通路商訂定之農產品交付契約、購買農業用機器與資材或契作文件等，或其他足資證明有農業生產事實之資料。",
+      "printedPageStart": 344,
+      "printedPageEnd": 344,
+      "pdfPageStart": 346,
+      "pdfPageEnd": 346,
+      "sourcePages": [
+        346
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+      "evidenceUrl": "versions/114/pages/page-346.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q17",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十七",
+      "questionNumber": 17,
+      "question": "青年農民為建置電子商務平台，銷售自產之農產品，可以申請「青壯年農民從農貸款」嗎？",
+      "answerText": "青年農民透過電子商務(包含建置網站、電子商務平台、網站管理及維護等)銷售所生產的相關農產品，可依規定申貸「青壯年農民從農貸款」。",
+      "printedPageStart": 344,
+      "printedPageEnd": 344,
+      "pdfPageStart": 346,
+      "pdfPageEnd": 346,
+      "sourcePages": [
+        346
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+      "evidenceUrl": "versions/114/pages/page-346.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q18",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十八",
+      "questionNumber": 18,
+      "question": "「青壯年農民從農貸款」之貸款用途可用於直接從事農產運銷及電子商務嗎﹖",
+      "answerText": "本貸款對象中，農業部專案輔導青年農民及獲農村再生青年返鄉相關專案輔導或補助者，貸款用途可直接用於從事農產運銷及電子商務；其餘之貸款對象，須用於從事農業生產，與自產之農產品相關之農產運銷、電子商務。",
+      "printedPageStart": 344,
+      "printedPageEnd": 344,
+      "pdfPageStart": 346,
+      "pdfPageEnd": 346,
+      "sourcePages": [
+        346
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+      "evidenceUrl": "versions/114/pages/page-346.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q19",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "十九",
+      "questionNumber": 19,
+      "question": "專案農貸可否用於償還其他貸款？",
+      "answerText": "專案農貸應確實用於經營計畫相關經營用途，不得用於償還其他舊貸。如有資金流用之違約情形，貸款經辦機構除應收回貸款，其所請領之利息差額補貼亦應繳還。",
+      "printedPageStart": 344,
+      "printedPageEnd": 344,
+      "pdfPageStart": 346,
+      "pdfPageEnd": 346,
+      "sourcePages": [
+        346
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+      "evidenceUrl": "versions/114/pages/page-346.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q20",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二十",
+      "questionNumber": 20,
+      "question": "「青壯年農民從農貸款」之還款期限能再延長，或提供寬緩期，以減輕青年農\n民負擔?",
+      "answerText": "(一)專案農貸之貸款期限，係考量貸款用途、金額、產業特性、農業生產週期及購置設備耐用年限等多重因素，覈實貸放及訂定年限。\n(二)依本貸款規定，貸款期限資本支出最長為 15 年，週轉金最長為5 年，符合多數青年農民需要。\n(三)本貸款資本支出或週轉金之還款方式(循環動用週轉金除外)，本金以每半年為一期平均攤還為原則，利息隨同繳付;其中資本支出之寬緩期限最長為 3 年(只繳利息不用還本金)，週轉金之寬緩期限最長為 2 年，應已紓解青年農民創業初期之還款壓力。\n(四)另借款人依青壯年農民從農貸款要點規定期限申貸，屆期如有展延需求，得依辦理政策性農業專案貸款辦法第 22 條第 1 項規定申請展延。",
+      "printedPageStart": 344,
+      "printedPageEnd": 345,
+      "pdfPageStart": 346,
+      "pdfPageEnd": 347,
+      "sourcePages": [
+        346,
+        347
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=346",
+      "evidenceUrl": "versions/114/pages/page-346.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q21",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二十一",
+      "questionNumber": 21,
+      "question": "青年農民符合「青壯年農民從農貸款」申請資格，但是沒有土地可以申貸嗎？沒有擔保品及保證人，有何協助措施？",
+      "answerText": "(一)可以。青年農民經營之農地如非自有，係家人或他人所有或承租，只須申貸時檢附農地所有權人之農地同意使用書或租賃契約及土地登記簿謄本即可。如屬從事農業工作農民申請參加農民健康保險認定標準及資格審查辦法第2 條第 1 項第 4 款第 4 目之實際耕作者，可檢具農業用地所在地之農業改良場核發之實際從事農業生產工作證明文件，取代農地同意使用書及租約等文件。\n(二)本貸款擔保方式由貸款經辦機構依其授信有關規定，審酌個別授信案件核定，並未規定一定要有擔保品或保證人；若借款人擔保能力不足，貸款經辦機構會協助送請農業信用保證基金保證，青年農民之最高保證成數可達 9.5 成，且手續費亦較優惠。洽詢專線：(02)2311-6216，網址：http://www.acgf.org.tw/。",
+      "printedPageStart": 345,
+      "printedPageEnd": 345,
+      "pdfPageStart": 347,
+      "pdfPageEnd": 347,
+      "sourcePages": [
+        347
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=347",
+      "evidenceUrl": "versions/114/pages/page-347.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q22",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二十二",
+      "questionNumber": 22,
+      "question": "申貸後多久貸款經辦機構可撥款？",
+      "answerText": "借款人檢具貸款相關文件送貸款經辦機構申貸後，貸款經辦機構依相關規定辦理徵信及放款審查、擔保品鑑價或送農業信用保證基金保證，核定後並須辦理\n簽約、對保、擔保品抵押權設定，個案辦理時間不一，惟貸款經辦機構均會儘速協助辦理。",
+      "printedPageStart": 345,
+      "printedPageEnd": 346,
+      "pdfPageStart": 347,
+      "pdfPageEnd": 348,
+      "sourcePages": [
+        347,
+        348
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=347",
+      "evidenceUrl": "versions/114/pages/page-347.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q23",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二十三",
+      "questionNumber": 23,
+      "question": "為何農(漁)會不核貸？有何協助方式?",
+      "answerText": "貸款經辦機構審核專案農貸，除應符合各種貸款規定外，尚須綜合評估借款人信用、貸款用途、還款來源、債權擔保等，以確保債權，以下為不予核貸常見原因，對於擔保能力不足個案，農業金融署已與全國農業金庫建立輔導機制，轉介由該金庫專案輔導並提供協助：\n(一)貸款資格不符規定。\n(二)申請人所經營項目為辦理政策性農業專案貸款辦法所定之不予核貸項目(如檳榔…)。\n(三)違反超逾貸款餘額上限有關規定。\n(四)借款人以同一用途資金向同一或不同貸款經辦機構重複申貸。\n(五)經貸款經辦機構依授信有關規定評估其信用或擔保能力等因素欠佳。",
+      "printedPageStart": 346,
+      "printedPageEnd": 346,
+      "pdfPageStart": 348,
+      "pdfPageEnd": 348,
+      "sourcePages": [
+        348
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=348",
+      "evidenceUrl": "versions/114/pages/page-348.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    },
+    {
+      "id": "faq-young-farmer-114-10-q24",
+      "faqGroupId": "faq-young-farmer-114-10",
+      "questionLabel": "二十四",
+      "questionNumber": 24,
+      "question": "如有「青壯年農民從農貸款」相關申貸問題可以問誰？",
+      "answerText": "(一)農(漁)民可先向戶籍所在直轄市、縣(市)轄區內農(漁)會信用部洽詢。\n(二)如尚有個案申貸疑義，可向全國農業金庫設於各區之分行，就近尋求農(漁)民融資問題協助處理。諮詢專線如下：機關（公司）電話農業金融署 0800-388-599全國農業金庫營業據點電話總公司/營業部 02-2380-5180/02-2380-5228桃園分行 03-316-8007新竹分行 03-657-3976臺中分行 04-2223-8835嘉義分行 05-283-6129臺南分行 06-300-1162\n高雄分行 07-262-1002屏東分行 08-732-2782\n(三)或可直接撥打下列專線：機關（公司）電話全國農業金庫 0972-590951農業信用保證基金 0963-619301農業金融署 0933-239983",
+      "printedPageStart": 346,
+      "printedPageEnd": 347,
+      "pdfPageStart": 348,
+      "pdfPageEnd": 349,
+      "sourcePages": [
+        348,
+        349
+      ],
+      "originalUrl": "../downloads/policy-agri-loan-handbook-114.pdf#page=348",
+      "evidenceUrl": "versions/114/pages/page-348.html",
+      "verificationStatus": "source-indexed",
+      "rangeStatus": "exact",
+      "indexBasis": "strict-numbered-question-and-answer-marker"
+    }
+  ],
+  "summary": {
+    "groupCount": 4,
+    "sourcePageCount": 35,
+    "questionLevelRecords": 52,
+    "pageLevelFallbackRecords": 0,
+    "ambiguousCases": 0,
+    "duplicateIds": 0,
+    "sourceBoundaryErrors": 0
+  }
+}

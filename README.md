@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.9
+- 數位版本：114.0.0-beta.3.0
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -28,7 +28,7 @@
 - `site/`：GitHub Pages部署成品
 - `docs/`：資料模型、更新、呈現與人工覆核文件
 
-本版本新增貸款頁「本頁快速導覽」、Section頁「本頁內容」、穩定頁內Anchor、頁內上一項／下一項連續閱讀，以及既有Evidence頁碼入口。導覽只在既有來源文字可由固定標記明確定位時顯示；無可靠對應的任務會隱藏，不補寫業務內容。搜尋核心、搜尋索引與搜尋結果數量維持 beta.2.8。
+本版本新增FAQ實務查閱與函釋文號／主旨查閱工具，支援來源群組、貸款類別、年份篩選及可分享的查詢URL；結果均回到既有Evidence頁與PDF起始頁，不加入手冊出版後官方更新。FAQ逐題資料只在固定問題／答案標記可追溯時建立，無法安全切分的來源維持頁面級查閱。搜尋核心、搜尋索引與貸款閱讀導覽維持既有驗證結果。
 
 ## 本機建置
 
@@ -51,6 +51,8 @@ python scripts/validate_visual_theme.py
 python scripts/validate_search_experience.py
 python scripts/validate_ux_structure.py
 python scripts/validate_reading_navigation.py
+python scripts/audit_faq_source.py
+python scripts/validate_reference_lookup.py
 python scripts/validate_official_updates.py
 python scripts/report_official_update_inventory.py
 python scripts/validate_site.py
@@ -105,6 +107,7 @@ node scripts/test_search_core.cjs
 node scripts/benchmark_search_core.cjs
 python scripts/test_build_reproducibility.py
 python scripts/test_validator_mutations.py
+python scripts/test_reference_lookup_mutations.py
 npm ci
 npx playwright install chromium
 npx playwright test
@@ -123,7 +126,7 @@ git diff --check
 
 ## GitHub Pages部署
 
-`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，使用唯一建置入口，執行Python驗證器、閱讀導覽完整性、Node搜尋核心與效能測試、可重現建置、70項突變及Playwright Chromium整合測試；全部成功後才上傳 `site/` 並部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
+`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，使用唯一建置入口，執行Python驗證器、FAQ來源稽核、查閱工具完整性、閱讀導覽完整性、Node搜尋核心與效能測試、可重現建置、70項既有突變加12項查閱工具突變及Playwright Chromium整合測試；全部成功後才上傳 `site/` 並部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
 
 正式網址：<https://chaohuang-tw.github.io/policy-agri-loan-handbook/>
 
