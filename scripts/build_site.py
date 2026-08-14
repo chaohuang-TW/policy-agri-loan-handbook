@@ -22,6 +22,13 @@ from content_model import (
     toc_interpretation_group_slug,
 )
 from display_text import normalize_display_text
+from reading_navigation import (
+    deep_link_for_page,
+    mappings_by_page,
+    section_anchor_ids,
+    task_anchor_id,
+    task_mappings,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "114"
@@ -237,13 +244,51 @@ def source_page_details(relative: str, pages: list[dict]) -> str:
     return f'<details id="source-pages" class="source-page-list"><summary>來源與原始頁面（{len(pages)}頁）</summary><ol>{"".join(links)}</ol></details>'
 
 
-def continuous_source(pages: list[dict]) -> str:
+def loan_task_navigation(mappings: list[dict]) -> str:
+    if not mappings:
+        return '<section id="loan-task-navigation" class="loan-task-navigation"><h2>本頁快速導覽</h2><p class="layout-note">本頁沒有可由既有來源結構明確定位的任務區塊。</p></section>'
+    items = "".join(
+        f'<li><a data-reading-task="{e(mapping["taskKey"])}" href="#{e(mapping["anchor"])}">{e(mapping["label"])}</a></li>'
+        for mapping in mappings
+    )
+    return f'<nav id="loan-task-navigation" class="loan-task-navigation" aria-labelledby="loan-task-navigation-title"><h2 id="loan-task-navigation-title">本頁快速導覽</h2><ul>{items}</ul></nav>'
+
+
+def continuous_source(relative: str, pages: list[dict], task_page_mappings: dict[int, list[dict]]) -> str:
     blocks = []
-    for page in pages:
+    for page_index, page in enumerate(pages):
+        page_mappings = task_page_mappings.get(page["pdfPage"], [])
+        anchors_by_paragraph: dict[int, list[dict]] = {}
+        for mapping in page_mappings:
+            anchors_by_paragraph.setdefault(mapping["paragraphIndex"], []).append(mapping)
+        paragraphs = normalize_display_text(page.get("rawText", ""))
+        body_blocks = []
+        for paragraph_index, paragraph in enumerate(paragraphs):
+            headings = "".join(
+                f'<h3 id="{e(mapping["anchor"])}" class="reading-anchor-heading" data-reading-anchor="{e(mapping["taskKey"])}" tabindex="-1">{e(mapping["label"])}</h3>'
+                for mapping in anchors_by_paragraph.get(paragraph_index, [])
+            )
+            body_blocks.append(headings + f"<p>{e(paragraph)}</p>")
+        evidence_target = f'versions/114/pages/page-{page["pdfPage"]:03d}.html'
+        sequence_links = []
+        if page_index > 0:
+            previous = pages[page_index - 1]
+            previous_anchor = f"source-page-{previous['pdfPage']}"
+            sequence_links.append(f'<a data-reading-prev href="#{e(previous_anchor)}">上一項：手冊頁 {e(previous["printedPage"])}</a>')
+        if page_index + 1 < len(pages):
+            following = pages[page_index + 1]
+            following_anchor = f"source-page-{following['pdfPage']}"
+            sequence_links.append(f'<a data-reading-next href="#{e(following_anchor)}">下一項：手冊頁 {e(following["printedPage"])}</a>')
+        sequence = f'<nav class="reading-sequence" aria-label="貸款原文連續閱讀">{"".join(sequence_links)}</nav>' if sequence_links else ""
         blocks.append(
-            f'<div class="loan-source-page" id="source-page-{page["pdfPage"]}"><p class="source-boundary">手冊頁 {e(page["printedPage"])}｜PDF頁 {page["pdfPage"]}</p>{paragraphize(page["rawText"])}</div>'
+            f'<div class="loan-source-page" id="source-page-{page["pdfPage"]}"><p class="source-boundary">手冊頁 {e(page["printedPage"])}｜PDF頁 {page["pdfPage"]}｜<a class="evidence-link" href="{e(rel(relative, evidence_target))}">查看原始頁面</a></p>{"".join(body_blocks)}{sequence}</div>'
         )
     return '<section class="loan-source-text" aria-labelledby="loan-source-title"><h2 id="loan-source-title">貸款原文</h2>' + "".join(blocks) + "</section>"
+
+
+def section_toc(items: list[tuple[str, str]]) -> str:
+    links = "".join(f'<li><a href="{e(target)}">{e(label)}</a></li>' for label, target in items)
+    return f'<details class="page-toc" open><summary>本頁內容</summary><nav aria-label="本頁內容"><ol>{links}</ol></nav></details>'
 
 
 def loan_cards(relative: str, items: list[dict]) -> str:
@@ -356,9 +401,10 @@ def build_sections() -> None:
         start, end = section["printedPageStart"], section["printedPageEnd"]
         relative = f"versions/114/sections/{slug}/index.html"
         pages = page_range(start, end)
-        search_id = f"section-search-{slug}"
+        search_id = f"section-search-input-{slug}"
+        anchors = section_anchor_ids(slug)
         context = "common" if slug == "agricultural-development-fund-rules" else "disaster" if slug == "natural-disaster-rules" else ""
-        search = f'<section class="hub-search"><h2>在本章查規定</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons(context, search_id) if context else ""}</section>'
+        search = f'<section id="{e(anchors["search"])}" class="hub-search"><h2>在本章查規定</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons(context, search_id) if context else ""}</section>'
         section_updates = [item for item in OFFICIAL_UPDATES if slug in item["relatedSectionIds"]]
         if slug in {"policy-loan-regulations", "agricultural-development-fund-rules", "natural-disaster-rules"}:
             current = current_update_block(relative, section_updates, "本章")
@@ -377,26 +423,32 @@ def build_sections() -> None:
         primary = ""
         if slug == "loan-programs":
             items = [loan for loan in LOANS if 94 <= loan["sourceStartPage"] <= 269]
-            primary = '<section class="hub-primary"><h2>19項貸款</h2>' + loan_cards(relative, items) + "</section>"
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary"><h2>19項貸款</h2>' + loan_cards(relative, items) + "</section>"
         elif slug == "amendment-faq":
-            primary = '<section class="hub-primary faq-hub"><h2>4組 FAQ</h2>' + index_items(relative, FAQ, "FAQ") + "</section>"
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary faq-hub"><h2>4組 FAQ</h2>' + index_items(relative, FAQ, "FAQ") + "</section>"
         elif slug == "attachments":
             items = [item for item in APPENDICES if item["id"].startswith("attachment-")]
-            primary = '<section class="hub-primary attachment-hub"><h2>附件資料</h2>' + index_items(relative, items, "附件") + "</section>"
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary attachment-hub"><h2>附件資料</h2>' + index_items(relative, items, "附件") + "</section>"
         elif slug == "bank-operating-rules-appendices":
             items = [item for item in APPENDICES if item["id"].startswith("appendix-")][:2]
-            primary = '<section class="hub-primary appendix-hub"><h2>作業規範附錄</h2>' + index_items(relative, items, "附錄") + "</section>"
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary appendix-hub"><h2>作業規範附錄</h2>' + index_items(relative, items, "附錄") + "</section>"
         elif slug == "natural-disaster-rules":
             disaster = next(loan for loan in LOANS if loan["id"] == "natural-disaster-low-interest-loan")
             forms = [item for item in FORMS if loan_for_form(item) and loan_for_form(item)["id"] == disaster["id"]]
-            primary = f'<section class="hub-primary"><h2>相關資料</h2><div class="hub-links"><a href="{e(rel(relative, disaster["detailUrl"]))}">農業天然災害低利貸款</a><a href="{e(rel(relative, interpretation_target(disaster["title"])))}">相關函釋</a><a href="{e(rel(relative, "forms/index.html"))}">相關書表（{len(forms)}）</a></div></section>'
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary"><h2>相關資料</h2><div class="hub-links"><a href="{e(rel(relative, disaster["detailUrl"]))}">農業天然災害低利貸款</a><a href="{e(rel(relative, interpretation_target(disaster["title"])))}">相關函釋</a><a href="{e(rel(relative, "forms/index.html"))}">相關書表（{len(forms)}）</a></div></section>'
         elif slug == "agricultural-development-fund-rules":
             common_target = interpretation_target(interpretation_programs()[0])
-            primary = f'<section class="hub-primary"><h2>相關函釋與書表</h2><div class="hub-links"><a href="{e(rel(relative, common_target))}">共同規定函釋</a><a href="{e(rel(relative, "forms/index.html"))}">共通書表</a></div></section>'
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary"><h2>相關函釋與書表</h2><div class="hub-links"><a href="{e(rel(relative, common_target))}">共同規定函釋</a><a href="{e(rel(relative, "forms/index.html"))}">共通書表</a></div></section>'
         else:
-            primary = f'<section class="hub-primary"><h2>下一步</h2><div class="hub-links"><a href="{e(rel(relative, "loans/index.html"))}">找貸款</a><a href="{e(rel(relative, "interpretations/index.html"))}">查函釋</a><a href="{e(rel(relative, "forms/index.html"))}">找書表</a></div></section>'
-        content = f'<h1>{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}-{end}｜資料版本：114年度</p>{current}{search}{primary}{original}{source_page_details(relative, pages)}'
-        nav = '<nav class="hub-nav" aria-label="本章使用方式"><a href="#main-content">本章概覽</a><a href="#section-search-' + e(slug) + '">搜尋</a><a href="#source-pages">來源頁面</a></nav>'
+            primary = f'<section id="{e(anchors["content"])}" class="hub-primary"><h2>下一步</h2><div class="hub-links"><a href="{e(rel(relative, "loans/index.html"))}">找貸款</a><a href="{e(rel(relative, "interpretations/index.html"))}">查函釋</a><a href="{e(rel(relative, "forms/index.html"))}">找書表</a></div></section>'
+        original = original.replace('<section class="hub-original">', f'<section id="{e(anchors["original"])}" class="hub-original">', 1)
+        content = f'<h1 id="{e(anchors["overview"])}">{e(title)}</h1><p class="source-meta">手冊印刷頁 {start}-{end}｜資料版本：114年度</p>{current}{search}{primary}{original}{source_page_details(relative, pages)}'
+        nav = section_toc([
+            ("本章概覽", f"#{anchors['overview']}"),
+            ("本章搜尋", f"#{anchors['search']}"),
+            ("章節內容", f"#{anchors['content']}"),
+            ("原文頁面", f"#{anchors['source']}"),
+        ])
         main = wrap("reading-page", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("原書完整目錄", "versions/114/index.html")], title), NAV=nav, CONTENT=content)
         scopes = ",".join(section_scopes(slug))
         write(relative, f"{title}｜114年度", main, body_attrs=f'data-search-scopes="{e(scopes)}"')
@@ -434,6 +486,9 @@ def build_loans() -> None:
         relative = f'loans/{loan["id"]}/index.html'
         pages = page_range(loan["sourceStartPage"], loan["sourceEndPage"])
         search_id = f'loan-search-{loan["id"]}'
+        search_section_id = f'loan-search-section-{loan["id"]}'
+        mappings = task_mappings(loan, PAGES)
+        page_mappings = mappings_by_page(loan, PAGES)
         related_interpretations = [item for item in INTERPRETATIONS if item["loanProgram"] == loan["title"]]
         related_forms = [item for item in FORMS if (owner := loan_for_form(item)) and owner["id"] == loan["id"]]
         related_updates = [item for item in OFFICIAL_UPDATES if loan["id"] in item["relatedLoanIds"]]
@@ -449,13 +504,15 @@ def build_loans() -> None:
             f'<h1>{e(loan["title"])}</h1><p class="source-meta">{e(loan["category"])}｜手冊印刷頁 {loan["sourceStartPage"]}-{loan["sourceEndPage"]}</p>'
             f'<p class="layout-note">本頁忠實呈現原文，不提供資格摘要、額度摘要、利率摘要或核貸判斷。</p>'
             f'{current_update_block(relative, related_updates, "本貸款")}{disaster_block}'
-            f'<section class="loan-context-search"><h2>在本貸款中搜尋</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons("loan", search_id)}</section>'
-            f'{continuous_source(pages)}'
+            f'{loan_task_navigation(mappings)}'
+            f'<section id="{e(search_section_id)}" class="loan-context-search"><h2>在本貸款中搜尋</h2>{search_box(search_id, default_scope="context")}{shortcut_buttons("loan", search_id)}</section>'
+            f'{continuous_source(relative, pages, page_mappings)}'
             f'<section class="loan-related"><h2>相關函釋</h2>{interpretation_block}</section>'
             f'<section class="loan-related"><h2>相關書表</h2>{forms_block}</section>'
             f'{source_page_details(relative, pages)}'
         )
-        nav = '<nav class="hub-nav" aria-label="貸款頁導覽"><a href="#loan-source-title">貸款原文</a><a href="#' + e(search_id) + '">本貸款搜尋</a><a href="' + e(rel(relative, "loans/index.html")) + '">回找貸款</a></nav>'
+        task_link = '<a href="#loan-task-navigation">本頁快速導覽</a>'
+        nav = f'<nav class="hub-nav" aria-label="貸款頁導覽">{task_link}<a href="#{e(search_section_id)}">本貸款搜尋</a><a href="#loan-source-title">貸款原文</a><a href="{e(rel(relative, "loans/index.html"))}">回找貸款</a></nav>'
         main = wrap("loan-detail", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("找貸款", "loans/index.html")], loan["title"]), NAV=nav, CONTENT=content)
         write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-search-scope="section:{loan["id"]}" data-search-scope-group="loan:{loan["id"]}"')
 

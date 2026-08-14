@@ -582,9 +582,152 @@ test("390px search results have no overflow or runtime errors", async ({page}) =
   expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
 });
 
-test("all published pages use beta 2.8", async ({page}) => {
+test("loan task navigation is complete and targets existing headings", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.goto(paths.loan);
+  const links = page.locator("#loan-task-navigation a[data-reading-task]");
+  expect(await links.count()).toBeGreaterThan(0);
+  const checks = await links.evaluateAll((items) => items.map((link) => {
+    const target = document.querySelector(link.getAttribute("href"));
+    return {href: link.getAttribute("href"), target: Boolean(target), heading: target?.tagName};
+  }));
+  expect(checks.every((item) => item.target && item.heading === "H3")).toBe(true);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("loan task navigation updates hash and clears sticky-header overlap", async ({page}) => {
+  await page.goto(paths.loan);
+  const link = page.locator("#loan-task-navigation a[data-reading-task]").first();
+  await link.click();
+  await expect(page).toHaveURL(/#task-/);
+  await page.waitForTimeout(500);
+  const position = await page.evaluate(() => {
+    const target = document.querySelector(location.hash);
+    const header = document.querySelector("header");
+    return {targetTop: target?.getBoundingClientRect().top ?? -1, headerBottom: header?.getBoundingClientRect().bottom ?? 0, viewportHeight: window.innerHeight};
+  });
+  expect(position.targetTop).toBeGreaterThanOrEqual(position.headerBottom - 4);
+  expect(position.targetTop).toBeLessThan(position.viewportHeight);
+});
+
+test("loan task hash survives reload and browser back", async ({page}) => {
+  await page.goto(paths.loan);
+  const href = await page.locator("#loan-task-navigation a[data-reading-task]").first().getAttribute("href");
+  await page.goto(`${paths.loan}${href}`);
+  await expect(page.locator(href)).toBeVisible();
+  await page.reload();
+  await expect.poll(() => page.url().endsWith(href)).toBe(true);
+  await page.goBack();
+  await expect.poll(() => page.url().endsWith(paths.loan)).toBe(true);
+});
+
+test("section 本頁內容 TOC navigates in DOM order", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.goto(paths.section);
+  const toc = page.locator("details.page-toc");
+  await expect(toc).toBeVisible();
+  const links = toc.locator("a");
+  expect(await links.count()).toBeGreaterThanOrEqual(1);
+  const hrefs = await links.evaluateAll((items) => items.map((item) => item.getAttribute("href")));
+  expect(await links.evaluateAll((items) => items.every((item) => Boolean(document.querySelector(item.getAttribute("href")))))).toBe(true);
+  const positions = await page.evaluate((values) => values.map((value) => document.querySelector(value).getBoundingClientRect().top), hrefs);
+  expect(positions).toEqual([...positions].sort((a, b) => a - b));
+  await links.nth(2).click();
+  await expect(page).toHaveURL(/#section-content-/);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("loan previous and next links move through source pages", async ({page}) => {
+  await page.goto(paths.loan);
+  const first = page.locator(".loan-source-page").first();
+  const next = first.locator("[data-reading-next]");
+  await expect(next).toHaveCount(1);
+  const target = await next.getAttribute("href");
+  await next.click();
+  await expect(page).toHaveURL(new RegExp(`${target}$`));
+  await expect(page.locator(target)).toBeVisible();
+  await expect(page.locator(target).locator("[data-reading-prev]")).toHaveCount(1);
+});
+
+test("loan evidence links retain valid handbook page targets", async ({page}) => {
+  await page.goto(paths.loan);
+  const evidence = page.locator(".loan-source-page .evidence-link").first();
+  await expect(evidence).toContainText("查看原始頁面");
+  const href = await evidence.getAttribute("href");
+  expect(href).toMatch(/page-\d{3}\.html$/);
+  expect(await page.request.get(new URL(href, await page.url()).toString()).then((response) => response.ok())).toBe(true);
+});
+
+test("390px loan navigation wraps without horizontal overflow", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto(paths.loan);
+  const layout = await page.evaluate(() => ({
+    width: document.documentElement.scrollWidth,
+    viewport: document.documentElement.clientWidth,
+    navBottom: document.querySelector("#loan-task-navigation")?.getBoundingClientRect().bottom ?? 0
+  }));
+  expect(layout.width).toBeLessThanOrEqual(layout.viewport);
+  expect(layout.navBottom).toBeGreaterThan(0);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("390px section TOC disclosure opens without nested scrolling", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto(paths.section);
+  const toc = page.locator("details.page-toc");
+  await expect(toc).toHaveAttribute("open", "");
+  await toc.locator("summary").click();
+  await expect(toc).not.toHaveAttribute("open", "");
+  await toc.locator("summary").click();
+  await expect(toc).toHaveAttribute("open", "");
+  const layout = await page.evaluate(() => ({
+    width: document.documentElement.scrollWidth,
+    viewport: document.documentElement.clientWidth,
+    fixedOverflow: [...document.querySelectorAll("*")].some((item) => item.scrollHeight > item.clientHeight + 2 && getComputedStyle(item).position === "fixed")
+  }));
+  expect(layout.width).toBeLessThanOrEqual(layout.viewport);
+  expect(layout.fixedOverflow).toBe(false);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
+test("keyboard activates task links and section disclosure with visible focus", async ({page}) => {
+  await page.goto(paths.loan);
+  const task = page.locator("#loan-task-navigation a[data-reading-task]").first();
+  await task.focus();
+  await expect(task).toBeFocused();
+  const focusStyle = await task.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return style.outlineStyle !== "none" || style.boxShadow !== "none";
+  });
+  expect(focusStyle).toBe(true);
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/#task-/);
+  await page.goto(paths.section);
+  const summary = page.locator("details.page-toc > summary");
+  await summary.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("details.page-toc")).not.toHaveAttribute("open", "");
+  await page.keyboard.press("Enter");
+  await expect(page.locator("details.page-toc")).toHaveAttribute("open", "");
+});
+
+test("search result uses a deterministic deep link when mapping is unique", async ({page}) => {
+  await page.goto(paths.home);
+  await openDialog(page);
+  await searchDialog(page, "農業天然災害低利貸款");
+  const deepLinks = page.locator("#manual-search-dialog .search-result a[href*='#task-']");
+  expect(await deepLinks.count()).toBeGreaterThan(0);
+  const href = await deepLinks.first().getAttribute("href");
+  await deepLinks.first().click();
+  await expect.poll(() => page.url().endsWith(href)).toBe(true);
+  await expect(page.locator(new URL(href, "http://127.0.0.1").hash)).toBeVisible();
+});
+
+test("all published pages use beta 2.9", async ({page}) => {
   await page.goto("/");
-  await expect(page.locator("body")).toContainText("114.0.0-beta.2.8");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.2.9");
 });
 
 for (const width of [390, 768, 1024, 1440]) {

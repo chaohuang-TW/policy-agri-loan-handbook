@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -48,6 +49,17 @@ def html_with(root: Path, needle: str) -> Path:
         if needle in path.read_text(encoding="utf-8"):
             return path
     raise AssertionError(f"HTML fixture missing {needle}")
+
+
+def insert_in_element(path: Path, opening: str, value: str) -> None:
+    text = path.read_text(encoding="utf-8")
+    start = text.find(opening)
+    if start < 0:
+        raise AssertionError(f"element missing: {opening}")
+    end = text.find("</nav>", start)
+    if end < 0:
+        raise AssertionError("navigation closing tag missing")
+    safe_write(path, text[:end] + value + text[end:])
 
 
 def main() -> None:
@@ -214,10 +226,10 @@ def main() -> None:
         replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
 
     def readme_revision_wrong(root: Path):
-        replace(root / "README.md", "114.0.0-beta.2.8", "114.0.0-beta.2.7.1.1.1")
+        replace(root / "README.md", "114.0.0-beta.2.9", "114.0.0-beta.2.7.1.1.1")
 
     def package_revision_wrong(root: Path):
-        replace(root / "package.json", "114.0.0-beta.2.8", "114.0.0-beta.0.0.0")
+        replace(root / "package.json", "114.0.0-beta.2.9", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))
@@ -275,6 +287,55 @@ def main() -> None:
     def blank_related_label_terms(root: Path):
         for path in (root / "assets/js/search.js", root / "site/assets/js/search.js"):
             replace(path, "sample(item.matchedRelatedTerms || [])", "sample([])")
+
+    # beta.2.9 reading-navigation mutations.  Each one changes a real
+    # navigation contract and is caught by the generated-HTML validator.
+    def loan_task_missing_anchor(root: Path):
+        path = root / "site/loans/young-farmer-loan/index.html"
+        replace(path, 'href="#task-eligibility"', 'href="#task-does-not-exist"')
+
+    def duplicate_task_anchor(root: Path):
+        path = root / "site/loans/young-farmer-loan/index.html"
+        replace(path, 'id="task-eligibility"', 'id="task-purpose"')
+
+    def section_toc_missing_target(root: Path):
+        path = root / "site/versions/114/sections/loan-programs/index.html"
+        replace(path, 'href="#section-overview"', 'href="#missing-section-target"')
+
+    def evidence_page_out_of_range(root: Path):
+        path = html_with(root, 'class="evidence-link"')
+        text = path.read_text(encoding="utf-8")
+        changed, count = re.subn(r'(class="evidence-link" href="[^"#]*page-)\d{3}(\.html")', r'\g<1>360\2', text, count=1)
+        if count != 1:
+            raise AssertionError("evidence link missing")
+        safe_write(path, changed)
+
+    def prev_next_missing_target(root: Path):
+        path = root / "site/loans/young-farmer-loan/index.html"
+        replace(path, 'data-reading-next href="#source-page-212"', 'data-reading-next href="#source-page-999"')
+
+    def prev_next_self_link(root: Path):
+        path = root / "site/loans/young-farmer-loan/index.html"
+        replace(path, 'data-reading-next href="#source-page-212"', 'data-reading-next href="#source-page-211"')
+
+    def fake_task_mapping(root: Path):
+        path = root / "site/loans/young-farmer-loan/index.html"
+        insert_in_element(path, '<nav id="loan-task-navigation"', '<a data-reading-task="fake-task" href="#task-fake">假任務</a>')
+
+    def search_deep_link_regression(root: Path):
+        mutate_json(search_index(root), lambda records: next(record for record in records if record.get("id") == "page-105").update(url="versions/114/pages/page-105.html#pdf-page-105"))
+
+    def remove_section_mobile_toc(root: Path):
+        path = root / "site/versions/114/sections/loan-programs/index.html"
+        text = path.read_text(encoding="utf-8")
+        start = text.find('<details class="page-toc"')
+        end = text.find("</details>", start)
+        if start < 0 or end < 0:
+            raise AssertionError("section details TOC missing")
+        safe_write(path, text[:start] + text[end + len("</details>"):])
+
+    def remove_published_loan_route(root: Path):
+        (root / "site/loans/young-farmer-loan/index.html").unlink()
 
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
@@ -337,6 +398,16 @@ def main() -> None:
         ("false retrieval evidence allowed", allow_false_evidence, "node"),
         ("direct label has no matched terms", blank_direct_label_terms, "python"),
         ("related label has no matched terms", blank_related_label_terms, "python"),
+        ("loan task nav points to missing anchor", loan_task_missing_anchor, "reading"),
+        ("duplicate task anchor id", duplicate_task_anchor, "reading"),
+        ("section TOC points to missing target", section_toc_missing_target, "reading"),
+        ("Evidence page number becomes P.360", evidence_page_out_of_range, "reading"),
+        ("prev/next points to missing target", prev_next_missing_target, "reading"),
+        ("prev/next points to itself", prev_next_self_link, "reading"),
+        ("fake task mapping is force-inserted", fake_task_mapping, "reading"),
+        ("search deep link loses deterministic task anchor", search_deep_link_regression, "reading"),
+        ("Section mobile TOC is removed", remove_section_mobile_toc, "reading"),
+        ("published loan route is removed", remove_published_loan_route, "reading"),
     ]
 
     results = []
@@ -358,6 +429,8 @@ def main() -> None:
                 command = [sys.executable, "scripts/validate_official_coverage.py", "--root", str(fixture)]
             elif validator == "ux":
                 command = [sys.executable, "scripts/validate_ux_structure.py"]
+            elif validator == "reading":
+                command = [sys.executable, "scripts/validate_reading_navigation.py"]
             else:
                 command = [node, "scripts/test_search_core.cjs"]
             completed = subprocess.run(
@@ -376,6 +449,7 @@ def main() -> None:
                     else "validate_revision_consistency.py" if validator == "revision"
                     else "validate_official_coverage.py" if validator == "coverage"
                     else "validate_ux_structure.py" if validator == "ux"
+                    else "validate_reading_navigation.py" if validator == "reading"
                     else "test_search_core.cjs"
                 ),
                 "caught": True,

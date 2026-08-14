@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.2.8
+- 數位版本：114.0.0-beta.2.9
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -27,6 +27,8 @@
 - `templates/`、`assets/`：靜態網站模板、CSS、JavaScript與預覽圖
 - `site/`：GitHub Pages部署成品
 - `docs/`：資料模型、更新、呈現與人工覆核文件
+
+本版本新增貸款頁「本頁快速導覽」、Section頁「本頁內容」、穩定頁內Anchor、頁內上一項／下一項連續閱讀，以及既有Evidence頁碼入口。導覽只在既有來源文字可由固定標記明確定位時顯示；無可靠對應的任務會隱藏，不補寫業務內容。搜尋核心、搜尋索引與搜尋結果數量維持 beta.2.8。
 
 ## 本機建置
 
@@ -48,6 +50,7 @@ python scripts/validate_page_rendering.py
 python scripts/validate_visual_theme.py
 python scripts/validate_search_experience.py
 python scripts/validate_ux_structure.py
+python scripts/validate_reading_navigation.py
 python scripts/validate_official_updates.py
 python scripts/report_official_update_inventory.py
 python scripts/validate_site.py
@@ -120,7 +123,7 @@ git diff --check
 
 ## GitHub Pages部署
 
-`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，使用唯一建置入口，執行Python驗證器、Node搜尋核心與效能測試、可重現建置、28項以上突變及Playwright Chromium整合測試；全部成功後才上傳 `site/` 並部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
+`.github/workflows/pages.yml` 在push至 `main` 或手動執行時，使用唯一建置入口，執行Python驗證器、閱讀導覽完整性、Node搜尋核心與效能測試、可重現建置、70項突變及Playwright Chromium整合測試；全部成功後才上傳 `site/` 並部署。Pages來源必須設定為GitHub Actions，不使用 `gh-pages` branch。
 
 正式網址：<https://chaohuang-tw.github.io/policy-agri-loan-handbook/>
 

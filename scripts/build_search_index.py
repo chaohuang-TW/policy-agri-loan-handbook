@@ -16,6 +16,7 @@ from content_model import (
     scope_group_for_interpretation,
     scope_group_for_page,
 )
+from reading_navigation import deep_link_for_page
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "114"
@@ -29,9 +30,19 @@ def build_search_index(output_dir: Path) -> list[dict]:
     output = Path(output_dir) / "assets" / "data" / "search-index.json"
     records: list[dict] = []
     loans = load("loan-programs.json")
-    for page in load("pages.json"):
+    pages = load("pages.json")
+    for page in pages:
         search_text = page["searchText"].replace("日農授金字第", "日 農授金字第")
         printed_label = page["printedPage"] if page["printedPage"] is not None else "目錄"
+        owner = loan_for_printed_page(page.get("printedPage"))
+        url = f"versions/114/pages/page-{page['pdfPage']:03d}.html#pdf-page-{page['pdfPage']}"
+        if owner:
+            anchor = deep_link_for_page(owner, page, pages)
+            if anchor:
+                # A deterministic task mapping upgrades the result to the
+                # corresponding loan page.  The evidence page remains the
+                # source link for the safe page-level fallback.
+                url = f"{owner['detailUrl']}#{anchor}"
         records.append({
             "id": f"page-{page['pdfPage']:03d}", "type": "原文頁面", "title": page["title"],
             "category": page["chapterId"], "version": "114年度", "printedPage": page["printedPage"],
@@ -39,7 +50,7 @@ def build_search_index(output_dir: Path) -> list[dict]:
             "text": f"{page['title']} {search_text} 手冊頁 {printed_label} PDF頁 {page['pdfPage']}",
             "headings": [page["title"]], "scope": scope_for_page(page),
             "scopeGroup": scope_group_for_page(page),
-            "url": f"versions/114/pages/page-{page['pdfPage']:03d}.html#pdf-page-{page['pdfPage']}",
+            "url": url,
             "breadcrumb": ["114年度", page["title"]],
             "contextTitle": (
                 (loan_for_printed_page(page.get("printedPage")) or {}).get("title")
