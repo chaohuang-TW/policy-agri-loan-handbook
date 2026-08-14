@@ -1,5 +1,23 @@
 # Changelog
 
+## 114.0.0-beta.3.1
+
+### Added
+
+- 新增 browser-side Official Updates 查閱工具，支援關鍵字、文號、貸款類別、更新類型及年份篩選。
+- 新增完整文號與去除格式後核心文號查詢，以及可分享、可重新載入的 URL state。
+- 新增官方來源入口、114年手冊原貸款入口、lookup Validator、fixtures、Mutation與瀏覽器測試。
+
+### Preserved
+
+- 保留114年度手冊507筆搜尋索引，Official Updates 不混入 handbook evidence layer。
+- 保留20筆正式官方更新、partial Coverage、`verifiedThrough = null` 與天然災害官方Gateway政策。
+
+### Limitations
+
+- 本頁僅查詢已完成來源核對的20筆制度／業務更新，不宣稱完整現行法規Coverage。
+- 天然災害個別地區／品項公告不建立本站資料集，仍請直接查閱農業金融署官方專區。
+
 ## 114.0.0-beta.3.0
 
 ### Added

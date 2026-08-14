@@ -80,7 +80,7 @@
     });
   }
 
-  const updateFilters = document.querySelector("[data-update-filters]");
+  const updateFilters = document.querySelector("[data-update-filters]:not([data-official-updates-lookup])");
   if (updateFilters) {
     const items = [...document.querySelectorAll(".updates-index .official-update-item")];
     const status = updateFilters.querySelector(".update-filter-status");

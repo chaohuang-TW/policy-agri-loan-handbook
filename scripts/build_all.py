@@ -23,6 +23,7 @@ def verify_staging(path: Path) -> None:
         "assets/js/search-core.js",
         "assets/js/search.js",
         "assets/js/site-tools.js",
+        "assets/js/official-updates-lookup.js",
         "assets/data/search-index.json",
         "assets/data/search-concepts.json",
         "assets/data/search-intents.json",

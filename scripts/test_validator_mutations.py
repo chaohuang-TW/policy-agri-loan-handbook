@@ -225,10 +225,10 @@ def main() -> None:
         replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
 
     def readme_revision_wrong(root: Path):
-        replace(root / "README.md", "114.0.0-beta.3.0", "114.0.0-beta.2.7.1.1.1")
+        replace(root / "README.md", "114.0.0-beta.3.1", "114.0.0-beta.2.7.1.1.1")
 
     def package_revision_wrong(root: Path):
-        replace(root / "package.json", "114.0.0-beta.3.0", "114.0.0-beta.0.0.0")
+        replace(root / "package.json", "114.0.0-beta.3.1", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))

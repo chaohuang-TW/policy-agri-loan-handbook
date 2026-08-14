@@ -1,0 +1,23 @@
+{
+  "queries": [
+    {"name": "full-document-number", "query": "農輔字第1150022928C號", "expectedTopId": "afna-disaster-relief-regulations-20260629"},
+    {"name": "core-document-number", "query": "1150022928C", "expectedTopId": "afna-disaster-relief-regulations-20260629"},
+    {"name": "title-keyword", "query": "農業發展基金貸款作業規範", "expectedTopId": "afna-agri-development-fund-rules-20251231"},
+    {"name": "loan-name", "query": "青壯年農民從農貸款", "expectedTopId": "afna-young-farmer-mataian-20260130"},
+    {"name": "institutional-disaster-measure", "query": "復耕復建", "expectedTopId": "afna-mataian-disaster-loan-relief-20260130"},
+    {"name": "year-keyword", "query": "廚餘養豬場轉型", "expectedTopId": "afna-pig-farm-transition-faq-20251224"},
+    {"name": "missing-document-number", "query": "不存在的官方文號", "expectedIds": []},
+    {"name": "short-ordinary-number", "query": "2928", "expectedIds": []}
+  ],
+  "filters": [
+    {"name": "program", "program": "farmer-relief-loan", "expectedIds": ["afna-agri-development-fund-rules-20251231", "afna-policy-loan-regulations-20251231", "afna-farmer-relief-object-announcement-20251219", "afna-farmer-relief-object-letter-20251219", "afna-farmer-relief-announcement-20251216", "afna-farmer-relief-faq-20251216"]},
+    {"name": "type", "type": "faq", "expectedIds": ["afna-mataian-household-working-capital-faq-20260130", "afna-pig-farm-transition-faq-20251224", "afna-farmer-relief-faq-20251216"]},
+    {"name": "year", "year": "2025", "expectedIds": ["afna-agri-development-fund-rules-20251231", "afna-policy-loan-regulations-20251231", "afna-pig-farm-transition-faq-20251224", "afna-pig-farm-transition-application-review-form-20251223", "afna-pig-farm-transition-rules-20251223", "afna-farmer-relief-object-announcement-20251219", "afna-farmer-relief-object-letter-20251219", "afna-farmer-relief-announcement-20251216", "afna-farmer-relief-faq-20251216", "afna-hagibis-existing-policy-loans-20251209", "afna-disaster-loan-interest-exemption-20251009"]},
+    {"name": "combined", "program": "farmer-relief-loan", "type": "faq", "year": "2025", "expectedIds": ["afna-farmer-relief-faq-20251216"]}
+  ],
+  "disasterGateway": {
+    "query": "2928",
+    "mustNotCreateLocalAnnouncementRecords": true,
+    "gatewayUrl": "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme="
+  }
+}

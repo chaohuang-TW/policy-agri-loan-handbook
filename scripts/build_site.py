@@ -184,6 +184,65 @@ def update_rows(relative: str, items: list[dict], compact: bool = False) -> str:
     return '<ol class="official-update-list">' + "".join(rows) + "</ol>"
 
 
+def official_update_lookup_records(items: list[dict]) -> list[dict]:
+    section_titles = {section["id"]: section["title"] for section in sections()}
+    return [
+        {
+            "id": item["id"],
+            "officialTitle": item["officialTitle"],
+            "sourceType": item["sourceType"],
+            "sourceTypeLabel": TYPE_LABELS[item["sourceType"]],
+            "officialAgency": item["officialAgency"],
+            "documentNumber": item.get("documentNumber") or "",
+            "publishedDate": item.get("publishedDate"),
+            "effectiveDate": item.get("effectiveDate"),
+            "versionDate": item.get("versionDate"),
+            "lookupYear": event_sort_date(item)[:4],
+            "sourceUrl": item["sourceUrl"],
+            "relatedLoanIds": list(item["relatedLoanIds"]),
+            "relatedLoanTitles": [LOAN_TITLES[loan_id] for loan_id in item["relatedLoanIds"]],
+            "relatedSectionIds": list(item["relatedSectionIds"]),
+            "relatedSectionTitles": [section_titles[section_id] for section_id in item["relatedSectionIds"] if section_id in section_titles],
+            "relationEvidence": item.get("relationEvidence", ""),
+        }
+        for item in items
+    ]
+
+
+def official_update_lookup_cards(relative: str, items: list[dict]) -> str:
+    rows = []
+    section_titles = {section["id"]: section["title"] for section in sections()}
+    for item in items:
+        metadata = []
+        for field, label in (("publishedDate", "發布"), ("effectiveDate", "生效"), ("versionDate", "版本")):
+            if item.get(field):
+                metadata.append(f"{label} {roc_date(item[field])}")
+        metadata.extend([TYPE_LABELS[item["sourceType"]], item["officialAgency"]])
+        if item.get("documentNumber"):
+            metadata.append(item["documentNumber"])
+        relation_values = " ".join(item["relatedLoanIds"] + item["relatedSectionIds"])
+        loans = [
+            f'<a href="{e(rel(relative, f"loans/{loan_id}/index.html"))}">查看114年手冊原貸款：{e(LOAN_TITLES[loan_id])}</a>'
+            for loan_id in item["relatedLoanIds"]
+        ]
+        relation_text = "、".join(LOAN_TITLES[loan_id] for loan_id in item["relatedLoanIds"])
+        if not relation_text:
+            relation_text = "、".join(section_titles.get(section_id, "") for section_id in item["relatedSectionIds"] if section_titles.get(section_id))
+        relation_html = f'<p class="update-relations">涉及貸款／章節：{e(relation_text or "未指定")}</p>'
+        handbook_links = f'<p class="update-handbook-links">{"｜".join(loans)}</p>' if loans else ""
+        rows.append(
+            f'<li class="official-update-item official-update-result" data-official-update-result data-official-update-id="{e(item["id"])}" '
+            f'data-update-type="{e(item["sourceType"])}" data-update-year="{e(event_sort_date(item)[:4])}" '
+            f'data-update-relations="{e(relation_values)}">'
+            '<span class="official-update-badge">官方更新</span>'
+            f'<p class="update-meta">{"｜".join(e(value) for value in metadata)}</p>'
+            f'<h3>{e(item["officialTitle"])}</h3>{relation_html}{application_period(item)}{handbook_links}'
+            f'<p class="official-update-actions"><a class="button-link" href="{e(item["sourceUrl"])}" target="_blank" rel="noopener noreferrer">查看官方來源<span class="visually-hidden">（另開新視窗）</span></a></p>'
+            '</li>'
+        )
+    return '<ol class="official-update-list">' + "".join(rows) + "</ol>"
+
+
 def event_sort_date(item: dict) -> str:
     return item.get("publishedDate") or item.get("effectiveDate") or item.get("versionDate")
 
@@ -680,20 +739,41 @@ def build_indexes() -> None:
 def build_updates() -> None:
     relative = "updates/index.html"
     review = COVERAGE["officialUpdateReview"]
-    years = sorted({event_sort_date(item)[:4] for item in OFFICIAL_UPDATES}, reverse=True)
-    loan_options = "".join(f'<option value="{e(item["id"])}">{e(item["title"])}</option>' for item in LOANS)
+    lookup_records = official_update_lookup_records(OFFICIAL_UPDATES)
+    years = sorted({item["lookupYear"] for item in lookup_records}, reverse=True)
+    source_types = sorted({item["sourceType"] for item in lookup_records}, key=lambda value: TYPE_LABELS[value])
+    program_ids = {
+        loan_id
+        for item in lookup_records
+        for loan_id in item["relatedLoanIds"]
+    }
+    loan_options = "".join(
+        f'<option value="{e(item["id"])}">{e(item["title"])}</option>'
+        for item in LOANS if item["id"] in program_ids
+    )
+    type_options = "".join(f'<option value="{e(value)}">{e(TYPE_LABELS[value])}</option>' for value in source_types)
+    section_ids = sorted({section_id for item in lookup_records for section_id in item["relatedSectionIds"]})
+    section_options = "".join(
+        f'<option value="{e(section_id)}">{e(next((section["title"] for section in sections() if section["id"] == section_id), section_id))}</option>'
+        for section_id in section_ids
+    )
+    lookup_payload = json.dumps(lookup_records, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     filters = (
-        '<form class="update-filters" data-update-filters>'
-        '<label>類型<select name="type"><option value="">全部</option><option value="regulation">法規</option><option value="administrative-rule">行政規則</option><option value="interpretation">函示</option><option value="announcement">公告</option><option value="faq">FAQ</option><option value="form">表單／附件</option><option value="disaster-measure">災害措施</option></select></label>'
-        '<label>年份<select name="year"><option value="">全部</option>' + "".join(f'<option value="{year}">{int(year)-1911}</option>' for year in years) + '</select></label>'
-        '<label>關聯<select name="relation"><option value="">全部</option><option value="policy-loan-regulations">共同規定</option><option value="natural-disaster-rules">天然災害</option>' + loan_options + '</select></label>'
-        '<button type="reset">清除篩選</button><p class="update-filter-status" aria-live="polite"></p></form>'
+        '<form class="update-filters" data-update-filters data-official-updates-lookup data-official-updates-form role="search" novalidate>'
+        '<label for="official-updates-q">搜尋文號、標題、內容關鍵詞或貸款名稱</label>'
+        '<div class="official-updates-search-row"><input id="official-updates-q" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋文號、標題、內容關鍵詞或貸款名稱"><button type="submit">搜尋</button><button type="reset">清除篩選</button></div>'
+        '<div class="official-updates-filter-row">'
+        '<label>貸款類別<select name="program"><option value="">全部貸款類別</option>' + loan_options + '</select></label>'
+        '<label>更新類型<select name="type"><option value="">全部更新類型</option>' + type_options + '</select></label>'
+        '<label>年份<select name="year"><option value="">全部年份</option>' + "".join(f'<option value="{year}">{int(year)-1911}</option>' for year in years) + '</select></label>'
+        '<label>關聯（相容篩選）<select name="relation"><option value="">全部關聯</option>' + section_options + loan_options + '</select></label>'
+        '</div><p class="update-filter-status"></p><p class="official-update-status" data-official-update-status aria-live="polite"></p></form>'
     )
     content = (
         breadcrumb(relative, [("首頁", "index.html")], "官方更新")
-        + '<h1>手冊出版後官方更新</h1><p class="subtitle">114年度手冊原文保持不變；本站整理制度與業務更新。</p>'
-        + f'<section id="coverage" class="coverage-panel"><h2>資料基準與檢核範圍</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>Coverage</dt><dd>{"指定官方來源已檢核至" + roc_date(review["verifiedThrough"]) if review["coverageStatus"] == "complete" else "官方來源盤點進行中"}</dd></div><div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div></dl><p>{e(review["statement"])}</p></section><section class="loan-current-updates"><h2>最新天然災害低利貸款公告</h2><p>本站不另行同步個別地區及品項公告，請直接查閱農業金融署官方專區。</p><p><a href="disasters/index.html">查詢農業金融署最新公告</a></p></section>'
-        + '<section class="updates-index"><h2>制度與業務更新</h2>' + filters + update_rows(relative, OFFICIAL_UPDATES) + '</section>'
+        + '<h1>手冊出版後官方更新</h1><p class="subtitle">官方更新查閱版：114年度手冊原文保持不變；以下僅列手冊出版後已完成來源核對的官方制度／業務更新。</p>'
+        + f'<section id="coverage" class="coverage-panel"><h2>資料基準與檢核範圍</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>Coverage</dt><dd>{"指定官方來源已檢核至" + roc_date(review["verifiedThrough"]) if review["coverageStatus"] == "complete" else "官方來源盤點進行中"}</dd></div><div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div></dl><p>{e(review["statement"])}</p><p>本站僅列已完成來源核對之官方制度／業務更新；收錄範圍仍在持續盤點。天然災害個別地區／品項公告另依農業金融署官方專區為準。</p></section><section class="loan-current-updates"><h2>最新天然災害低利貸款公告</h2><p>本站不另行同步個別地區及品項公告，請直接查閱農業金融署官方專區。</p><p><a href="disasters/index.html">查詢農業金融署最新公告</a></p></section>'
+        + '<section class="updates-index" data-official-updates-lookup><h2>官方更新查閱</h2><p class="layout-note">查閱結果來自20筆已收錄官方更新，不會混入114年度手冊507筆全文搜尋。</p>' + filters + official_update_lookup_cards(relative, OFFICIAL_UPDATES) + f'<script type="application/json" data-official-updates-data>{lookup_payload}</script></section>'
     )
     write(relative, "手冊出版後官方更新｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-update-index="true"')
 

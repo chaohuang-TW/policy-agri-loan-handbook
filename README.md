@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.3.0
+- 數位版本：114.0.0-beta.3.1
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -29,6 +29,8 @@
 - `docs/`：資料模型、更新、呈現與人工覆核文件
 
 本版本新增FAQ實務查閱與函釋文號／主旨查閱工具，支援來源群組、貸款類別、年份篩選及可分享的查詢URL；結果均回到既有Evidence頁與PDF起始頁，不加入手冊出版後官方更新。FAQ逐題資料只在固定問題／答案標記可追溯時建立，無法安全切分的來源維持頁面級查閱。搜尋核心、搜尋索引與貸款閱讀導覽維持既有驗證結果。
+
+114.0.0-beta.3.1 新增 `/updates/` 官方更新查閱工具：以 `data/current/official-updates.json` 的20筆正式資料提供瀏覽器端關鍵字、文號、貸款類別、更新類型及年份查詢。官方更新與114年度手冊507筆搜尋索引維持分層；Coverage仍為partial，天然災害個別地區／品項公告仍直接導向農業金融署官方Gateway。
 
 ## 本機建置
 
@@ -53,6 +55,8 @@ python scripts/validate_ux_structure.py
 python scripts/validate_reading_navigation.py
 python scripts/audit_faq_source.py
 python scripts/validate_reference_lookup.py
+python scripts/validate_official_updates_lookup.py
+node scripts/benchmark_official_updates_lookup.cjs
 python scripts/validate_official_updates.py
 python scripts/report_official_update_inventory.py
 python scripts/validate_site.py
@@ -108,6 +112,7 @@ node scripts/benchmark_search_core.cjs
 python scripts/test_build_reproducibility.py
 python scripts/test_validator_mutations.py
 python scripts/test_reference_lookup_mutations.py
+python scripts/test_official_updates_lookup_mutations.py
 npm ci
 npx playwright install chromium
 npx playwright test

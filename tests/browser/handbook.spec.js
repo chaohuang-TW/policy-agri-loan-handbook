@@ -727,7 +727,7 @@ test("search result uses a deterministic deep link when mapping is unique", asyn
 
 test("all published pages use beta 3.0", async ({page}) => {
   await page.goto("/");
-  await expect(page.locator("body")).toContainText("114.0.0-beta.3.0");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.3.1");
 });
 
 for (const width of [390, 768, 1024, 1440]) {
