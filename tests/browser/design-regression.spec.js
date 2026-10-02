@@ -125,6 +125,37 @@ test('mobile native chapter disclosure and anchor clearance',async({page})=>{
   await page.reload(); await expect(page.locator(href)).toBeVisible();
 });
 
+for(const width of [390,1440]){
+  test(`all seven chapter fragments survive reload with stable TOC layout at ${width}px`,async({page})=>{
+    test.setTimeout(120000);
+    await page.setViewportSize({width,height:width===390?844:1000});
+    await page.emulateMedia({reducedMotion:'reduce'});
+    const sections=require('../../data/114/content-relationships.json').sections;
+    for(const section of sections){
+      const route='/versions/114/sections/'+section.id+'/';
+      await page.goto(route);
+      const hrefs=await page.locator('.page-toc a').evaluateAll(a=>a.map(e=>e.getAttribute('href')));
+      expect(hrefs).toHaveLength(4);
+      for(const href of hrefs){
+        await page.goto(route);
+        const toc=page.locator('.page-toc');
+        if(!(await toc.evaluate(e=>e.open)))await toc.locator('summary').click();
+        await toc.locator('a[href="'+href+'"]').click();
+        await expect(toc).toHaveJSProperty('open',width===1440);
+        const clear=()=>page.evaluate(hash=>{
+          const top=document.querySelector(hash).getBoundingClientRect().top;
+          return top>=document.querySelector('.site-header').getBoundingClientRect().bottom-1&&top<innerHeight;
+        },href);
+        await expect.poll(clear).toBe(true);
+        await page.reload();
+        expect(new URL(page.url()).hash).toBe(href);
+        await expect(toc).toHaveJSProperty('open',width===1440);
+        await expect.poll(clear).toBe(true);
+      }
+    }
+  });
+}
+
 test('FAQ native answer Enter key and source evidence survive layout',async({page})=>{
   await page.goto('/faq/?q=屠宰場登記證書'); const card=page.locator('[data-lookup-result]:visible').first();
   await card.locator('summary').focus(); await page.keyboard.press('Enter');

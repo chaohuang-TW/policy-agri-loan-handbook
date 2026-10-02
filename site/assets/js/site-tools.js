@@ -87,6 +87,17 @@
     document.querySelectorAll(".section-nav > details, .task-disclosure").forEach((details) => {
       details.open = false;
     });
+    // Keep the layout above a fragment identical when navigating and reloading.
+    // Otherwise a reload can restore the expanded TOC's scroll position after
+    // the mobile TOC has collapsed, leaving its target behind the sticky header.
+    document.querySelector(".reading-layout")?.addEventListener("click", (event) => {
+      const link = event.target.closest?.('a[href^="#"]');
+      if (!link || event.defaultPrevented || event.button !== 0
+        || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+      document.querySelectorAll(".section-nav > details").forEach((details) => {
+        details.open = false;
+      });
+    });
   }
   // Printing must not silently omit collapsed source text or original answers.
   let printDetails = [];

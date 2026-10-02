@@ -44,7 +44,7 @@ before與最終after `queries.json`位元相同：SHA-256 `5543f76754755339434ce
 ## 實際測試與預期差異
 
 - baseline原132項：HTTP/1.0低backlog導致連線reset，改原生HTTP/1.1／64backlog測試伺服器後132/132通過，不改產品資料或刪assert。
-- 新版完整Chromium158/158＝132項保留＋26項設計回歸。三組Mutation70/70、12/12、16/16，uncaught=0。25個Python validators／audits／inventory reports、三個Node suite、兩個benchmark、來源完整性、revision consistency、reproducibility與diff check通過。
+- 首次完整Chromium158/158＝132項保留＋26項設計回歸。部署後修復再追加2項七章全部anchor的click／reload回歸，最終160/160。三組Mutation70/70、12/12、16/16，uncaught=0。修復後再次完整執行25個Python validators／audits／inventory reports、三個Node suite、兩個benchmark、來源完整性、revision consistency、reproducibility與diff check，全部通過。
 - 新設計已接入既有Playwright CI；source integrity與官方lookup純函式測試已明列CI。正式站的部署後驗收另行執行，本文件不是尚未發生的部署證明。
 - 唯一既有可見狀態調整：手機Section TOC由open起始改為closed，測試由「已展開→收合→再開」改為「已收合→展開→收合」，同樣驗原生state、keyboard與overflow；沒有弱化目標存在、hash或內容assert。
 - loan smooth scroll不再假設固定500ms完成，保留「target在header下且在viewport內」的完整條件並poll。399頁批次timeout由30到120秒，仍逐頁檢查全部399頁H1、ID、圖像和runtime。
@@ -56,18 +56,28 @@ before與最終after `queries.json`位元相同：SHA-256 `5543f76754755339434ce
 
 WebKit26.5代表八頁型×390／1440smoke通過，最終build再測16/16（含可視原生title-link焦點），資料與runtime錯誤均0。Firefox1532在此macOS27環境即使sandbox外亦無法啟動（plugin-container權限／SWGL framebuffer），因此標示blocked而非PASS。200%測試是computed-font doubled文字放大模擬，不冒稱原生瀏覽器zoom。真機、讀屏、OS原生列印預覽、實際使用者Core Web Vitals未測；實驗室量測不能替代它們。原文人工校訂、函釋結束頁及書表覆核仍未完成。
 
+## 部署後的真實finding與修復
+
+首次提交 `d948529` 的CI與Pages均success，但獨立正式站覆核指出390px的TOC點選後reload可能還原展開TOC時的scroll位置；reload將TOC收合後，章節搜尋H2或來源summary被65px sticky header遮住。實際案例包括bank-operating-rules-appendices的搜尋heading top3.27px、source summary top37.17px。load／fonts.ready後再等3秒仍存在，不能當成DCL暫態。首版正式站結論因此保留FIX REQUIRED，不宣稱已完成。
+
+修復只在手機reading-layout正常同頁hash導航前先原生收合section-nav details，使點選與reload之前的layout一致；不preventDefault、不計算offset、不window.scrollTo，modifier／新分頁仍保持原行為，桌機仍展開。資料、core與href皆未改。独立本機覆核56組click／reload、7組四步sequence、2組鍵盤Enter、Meta新分頁與後續Tab均PASS；28 target存在／DOM順序正確、duplicate0。最後的WebKit16/16同樣加强四個Section anchor逐一reload，runtime／external／badresponse0。
+
+獨立正式站首輪另驗七章348個來源HTML皆HTTP200、來源排序及前後頁正確，保存完整FIX REQUIRED／focused replay／load replay證據；不以修後PASS覆蓋舊失敗紀錄。最後修復仍須重新部署，並在正式站完成獨立覆核，才算產品完成。
+
 ## 效能實測
 
-CSS 37,153→33,567 bytes，gzip7,323→7,180；site-tools.js gzip1,607→2,037，search.js gzip3,961→4,128。新增presentation成本約597 gzip bytes；三個查詢核心大小／hash不變。代表入口首次載入7個requests，沒有新增外部runtime。原本before未節流FCP20–64ms，after20–40ms，這些是單次本機navigation樣本，不推論真實使用者改善。
+CSS 37,153→33,567 bytes，gzip7,323→7,180；site-tools.js gzip1,607→2,257（最終6,775 bytes），search.js gzip3,961→4,128（最終14,561 bytes）。presentation JS增加817 gzip bytes、CSS減少143 gzip bytes，合計增加674 gzip bytes；三個查詢核心大小／hash不變。代表入口首次載入7個requests，沒有新增外部runtime。原本before未節流FCP20–64ms，首次after20–40ms，這些是單次本機navigation樣本，不推論真實使用者改善。
 
-最終Lighthouse13.5.0／Chrome149／Node24.19.0，在2026-10-02 04:09:21–04:11:50 UTC依序完成15/15。每次fresh Chrome/profile、預設storage reset、固定預設simulated throttling（mobile RTT150ms／CPU4×；desktop RTT40ms／CPU1×），不是手機真機。獨立QA代理保留完整設定、15份原始JSON及summary於repository外的私有暫存artifact，未提交含本機路徑的raw報告。十項HTML/CSS/JS SHA在量測前後一致。
+最後hash修復資產的Lighthouse13.5.0／Chrome149／Node24.19.0，在2026-10-02 04:58:21–05:00:49 UTC依序完成15/15。每次fresh Chrome/profile、預設storage reset、固定預設simulated throttling（mobile RTT150ms／CPU4×；desktop RTT40ms／CPU1×），不是手機真機。獨立QA代理保留完整設定、15份原始JSON及summary於repository外的私有暫存artifact，未提交含本機路徑的raw報告。十項HTML/CSS/JS SHA在量測前後一致；對前輪只有允許修改的site-tools.js改變，其source／generated SHA相同。首提交d948529的04:09:21–04:11:50量測原始報告另行保留，不冒稱其屬最終修復資產。
 
 |頁型／三次中位數|Performance|Accessibility|Best Practices|SEO|FCP ms|LCP ms|TBT ms|CLS|
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-|首頁mobile|100|100|100|100|940.37|1092.05|0|0|
-|FAQ mobile|100|100|100|100|1097.75|1249.63|0|0|
-|函釋mobile|100|100|100|100|1109.68|1261.52|0|0|
-|更新mobile|100|100|100|100|944.56|1096.34|0|0|
-|首頁desktop|100|100|100|100|203.94|285.91|0|0.001417|
+|首頁mobile|100|100|100|100|937.08|1088.63|0|0|
+|FAQ mobile|100|100|100|100|1097.04|1249.07|0|0|
+|函釋mobile|100|100|100|100|1107.12|1259.17|0|0|
+|更新mobile|100|100|100|100|941.63|1093.45|0|0|
+|首頁desktop|100|100|100|100|251.95|293.42|0|0|
+
+desktop單輪CLS最大0.001386，中位數仍0；不隱去單輪變異。十五份完整configSettings逐輪與前輪一致，compression audit皆true。
 
 QA採HTTP/1.1 gzip傳輸（`serve_test_site.py --gzip`），因正式Pages已實際確認gzip；不改部署資產、資料或benchmark門檻。早先未壓縮HTTP/1.0環境的FAQ P94、桌機A96及一次updates timeout仍保留原始紀錄，沒有刪除；aria-label缺group role的真實問題已修。舊／新build及傳輸環境不同，**不把它們當作gzip單一因素A/B改善證據**。以上不代表field Core Web Vitals、INP或WCAG認證。

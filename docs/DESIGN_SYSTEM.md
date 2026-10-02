@@ -46,3 +46,5 @@ DESIGN_VARIANCE=4：有編輯式非對稱Hero，但實務工具保持可預期�
 主要button/input至少44px；input16px；focus-visible3px；link是link，button是button。390及375手機可即刻操作主查詢。320–1920用bounding box／scrollWidth驗證；不以全頁overflow:hidden掩蓋問題。
 
 所有原文預設可見，不依賴進場動畫。reduced-motion取消transition/smooth-scroll，核心功能不变。Beforeprint展開FAQ回答與文字層、afterprint還原。Print來源正文不裁切，導航與工具不印；圖像width100%、heightauto完整保留。原生作業系統預覽與真機／讀屏驗收不冒稱完成。
+
+手機閱讀導覽在選擇同頁hash時先原生收合TOC，再由瀏覽器依CSS定位；點擊與重新載入的前方版面一致，避免舊scroll restoration與收合布局衝突。桌機TOC維持展開；不使用手動offset或window.scrollTo。
