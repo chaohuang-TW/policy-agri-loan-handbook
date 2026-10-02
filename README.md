@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.3.1.1
+- 數位版本：114.0.0-beta.3.2
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -30,7 +30,9 @@
 
 本版本新增FAQ實務查閱與函釋文號／主旨查閱工具，支援來源群組、貸款類別、年份篩選及可分享的查詢URL；結果均回到既有Evidence頁與PDF起始頁，不加入手冊出版後官方更新。FAQ逐題資料只在固定問題／答案標記可追溯時建立，無法安全切分的來源維持頁面級查閱。搜尋核心、搜尋索引與貸款閱讀導覽維持既有驗證結果。
 
-114.0.0-beta.3.1.1 修正 `/updates/` 官方更新查閱工具的多關鍵詞 AND 查詢：保留 query 邊界後逐詞正規化，並維持完整片語、文號、篩選及官方資料分層。官方更新與114年度手冊507筆搜尋索引維持分層；Coverage仍為partial，天然災害個別地區／品項公告仍直接導向農業金融署官方Gateway。
+114.0.0-beta.3.2「全站視覺與使用體驗重構」建立編輯式亮色設計系統：首頁任務優先、共用查閱表單與結果、可收合行動導覽、長文閱讀欄與清楚來源入口。保留 beta.3.1.1 多關鍵詞 AND matching、全部查詢排序與URL state；507筆手冊索引與20筆官方更新維持分層，Coverage仍為partial／verifiedThrough=null，天然災害仍使用農業金融署官方Gateway。
+
+設計規格見 [DESIGN_SYSTEM](docs/DESIGN_SYSTEM.md)、參考來源見 [DESIGN_REFERENCES](docs/DESIGN_REFERENCES.md)，三輪視覺與回歸證據見 [visual-review](reports/design/visual-review.md)。未進行全文人工校訂或擴充官方Coverage。
 
 ## 本機建置
 
@@ -56,6 +58,8 @@ python scripts/validate_reading_navigation.py
 python scripts/audit_faq_source.py
 python scripts/validate_reference_lookup.py
 python scripts/validate_official_updates_lookup.py
+python scripts/design_integrity.py verify reports/design/frozen-baseline.json
+node scripts/test_official_updates_lookup.cjs
 node scripts/benchmark_official_updates_lookup.cjs
 python scripts/validate_official_updates.py
 python scripts/report_official_update_inventory.py

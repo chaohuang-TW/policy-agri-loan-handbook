@@ -1,4 +1,5 @@
 const {defineConfig, devices} = require("@playwright/test");
+const port = Number(process.env.PLAYWRIGHT_PORT || 8765);
 
 module.exports = defineConfig({
   testDir: "./tests/browser",
@@ -10,15 +11,15 @@ module.exports = defineConfig({
   workers: 1,
   reporter: "line",
   use: {
-    baseURL: "http://127.0.0.1:8765",
+    baseURL: `http://127.0.0.1:${port}`,
     browserName: "chromium",
     headless: true,
     locale: "zh-TW",
     trace: "retain-on-failure"
   },
   webServer: {
-    command: "python3 -m http.server 8765 --directory site --bind 127.0.0.1",
-    url: "http://127.0.0.1:8765/",
+    command: `python3 scripts/serve_test_site.py --port ${port} --directory site`,
+    url: `http://127.0.0.1:${port}/`,
     reuseExistingServer: false,
     timeout: 30_000
   },

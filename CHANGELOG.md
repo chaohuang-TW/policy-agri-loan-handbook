@@ -1,5 +1,33 @@
 # Changelog
 
+## 114.0.0-beta.3.2
+
+### Changed
+
+- 建立編輯式亮色視覺系統，統一字體階層、閱讀格線、留白、色彩、表單與來源操作。
+- 首頁採任務優先架構：第一屏可搜尋，常用查詢、任務導覽與四個主要入口清楚分層。
+- FAQ、函釋及官方更新共用輕量查閱元件；完整資料說明保留於原生可收合區域。
+- 長文標題與來源先行，桌機保留閱讀側欄，行動版採可收合導覽與自然換行。
+- 搜尋對話視窗改為單一捲動表面，結果定位保留標題與命中來源上下文。
+- 新增輕微操作回饋、清楚focus及reduced-motion支援；列印時展開原始答案與文字層。
+
+### Added
+
+- 新增設計系統、官方設計參考與三輪視覺檢視文件。
+- 新增來源／URL／anchor checksum保護，以及對比、響應式、200%文字、無JS、列印與微互動回歸。
+- CI補列官方更新lookup純函式測試。
+
+### Preserved
+
+- 399個既有HTML routes、359頁原始Evidence及bit-identical PDF。
+- 507筆手冊搜尋、52題FAQ／4組、87筆函釋、23貸款、28書表、7Section、20筆官方更新。
+- 搜尋與各lookup的ranking、文號、AND matching、篩選、URL state及來源分層。
+- Coverage partial、verifiedThrough=null及農業金融署天然災害官方Gateway。
+
+### Limitations
+
+- 本輪為視覺與操作提升，未完成原文人工校訂、函釋結束頁及書表人工覆核。
+
 ## 114.0.0-beta.3.1.1
 
 ### Fixed

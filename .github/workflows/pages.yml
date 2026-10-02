@@ -62,6 +62,7 @@ jobs:
           python scripts/validate_reading_navigation.py
           python scripts/validate_reference_lookup.py
           python scripts/validate_official_updates_lookup.py
+          python scripts/design_integrity.py verify reports/design/frozen-baseline.json
           python scripts/audit_search_precision.py
           python scripts/report_source_review_plan.py
           python scripts/report_official_update_inventory.py
@@ -72,6 +73,7 @@ jobs:
         run: |
           node scripts/test_search_core.cjs
           node scripts/test_task_search_semantics.cjs
+          node scripts/test_official_updates_lookup.cjs
       - name: Benchmark browser search core
         run: |
           node scripts/benchmark_search_core.cjs

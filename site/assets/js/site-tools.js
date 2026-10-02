@@ -6,6 +6,15 @@
   const mobileMenu = document.getElementById("mobile-menu");
   let lastTrigger = null;
 
+  // Text enlargement can wrap the header. Native hash scrolling needs its actual
+  // clearance, while CSS remains the no-JS fallback. No query state is touched.
+  const header = document.querySelector(".site-header");
+  if (header && "ResizeObserver" in window) {
+    new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--header-clearance", `${header.offsetHeight + 32}px`);
+    }).observe(header);
+  }
+
   function openSearch(trigger) {
     if (!dialog) return;
     lastTrigger = trigger || document.activeElement;
@@ -74,6 +83,23 @@
   document.querySelectorAll("[data-print-page]").forEach((button) =>
     button.addEventListener("click", () => window.print())
   );
+  if (window.matchMedia("(max-width: 1023px)").matches) {
+    document.querySelectorAll(".section-nav > details, .task-disclosure").forEach((details) => {
+      details.open = false;
+    });
+  }
+  // Printing must not silently omit collapsed source text or original answers.
+  let printDetails = [];
+  window.addEventListener("beforeprint", () => {
+    document.querySelectorAll(".source-preview-image").forEach((image) => { image.loading = "eager"; });
+    printDetails = [...document.querySelectorAll(".faq-lookup-result details, .raw-text-details, .extracted-text-details")]
+      .map((details) => ({details, open: details.open}));
+    printDetails.forEach(({details}) => { details.open = true; });
+  });
+  window.addEventListener("afterprint", () => {
+    printDetails.forEach(({details, open}) => { details.open = open; });
+    printDetails = [];
+  });
   if (window.matchMedia("(min-width: 601px)").matches) {
     document.querySelectorAll(".search-filter-disclosure").forEach((details) => {
       details.open = true;

@@ -600,14 +600,12 @@ test("loan task navigation updates hash and clears sticky-header overlap", async
   const link = page.locator("#loan-task-navigation a[data-reading-task]").first();
   await link.click();
   await expect(page).toHaveURL(/#task-/);
-  await page.waitForTimeout(500);
-  const position = await page.evaluate(() => {
+  await expect.poll(async () => page.evaluate(() => {
     const target = document.querySelector(location.hash);
     const header = document.querySelector("header");
-    return {targetTop: target?.getBoundingClientRect().top ?? -1, headerBottom: header?.getBoundingClientRect().bottom ?? 0, viewportHeight: window.innerHeight};
-  });
-  expect(position.targetTop).toBeGreaterThanOrEqual(position.headerBottom - 4);
-  expect(position.targetTop).toBeLessThan(position.viewportHeight);
+    const targetTop = target?.getBoundingClientRect().top ?? -1;
+    return targetTop >= (header?.getBoundingClientRect().bottom ?? 0) - 4 && targetTop < window.innerHeight;
+  })).toBe(true);
 });
 
 test("loan task hash survives reload and browser back", async ({page}) => {
@@ -677,11 +675,11 @@ test("390px section TOC disclosure opens without nested scrolling", async ({page
   await page.setViewportSize({width: 390, height: 844});
   await page.goto(paths.section);
   const toc = page.locator("details.page-toc");
-  await expect(toc).toHaveAttribute("open", "");
-  await toc.locator("summary").click();
   await expect(toc).not.toHaveAttribute("open", "");
   await toc.locator("summary").click();
   await expect(toc).toHaveAttribute("open", "");
+  await toc.locator("summary").click();
+  await expect(toc).not.toHaveAttribute("open", "");
   const layout = await page.evaluate(() => ({
     width: document.documentElement.scrollWidth,
     viewport: document.documentElement.clientWidth,
@@ -725,9 +723,9 @@ test("search result uses a deterministic deep link when mapping is unique", asyn
   await expect(page.locator(new URL(href, "http://127.0.0.1").hash)).toBeVisible();
 });
 
-test("all published pages use beta 3.0", async ({page}) => {
+test("all published pages use beta 3.2", async ({page}) => {
   await page.goto("/");
-  await expect(page.locator("body")).toContainText("114.0.0-beta.3.1.1");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.3.2");
 });
 
 for (const width of [390, 768, 1024, 1440]) {
@@ -760,6 +758,8 @@ for (const width of [390, 768, 1024, 1440]) {
 }
 
 test("all HTML has one H1, unique IDs and no external runtime request", async ({page}) => {
+  // 399 sequential full browser navigations are a batch audit, not one UI action.
+  test.setTimeout(120_000);
   const runtime = observeRuntime(page);
   const sitemap = await (await page.request.get("/sitemap.xml")).text();
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>

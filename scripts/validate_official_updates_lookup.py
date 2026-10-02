@@ -293,8 +293,8 @@ def main() -> int:
         errors.append("lookup JS introduces network search")
     manual = load(ROOT / "data/114/manual.json")
     package = load(ROOT / "package.json")
-    if manual.get("digitalRevision") != "114.0.0-beta.3.1.1" or package.get("version") != "114.0.0-beta.3.1.1":
-        errors.append("version metadata is not beta.3.1.1")
+    if manual.get("digitalRevision") != "114.0.0-beta.3.2" or package.get("version") != "114.0.0-beta.3.2":
+        errors.append("version metadata is not beta.3.2")
     disaster = SITE / "updates/disasters/index.html"
     if disaster.is_file():
         disaster_text = disaster.read_text(encoding="utf-8")

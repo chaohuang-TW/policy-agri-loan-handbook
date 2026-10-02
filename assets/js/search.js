@@ -52,7 +52,10 @@
     badge.textContent = TYPE_LABELS[record.type] || record.type;
     article.append(badge);
     const h3 = document.createElement("h3");
-    h3.textContent = record.title;
+    const titleLink = document.createElement("a");
+    titleLink.href = new URL(record.url, siteRoot).href;
+    titleLink.textContent = record.title;
+    h3.append(titleLink);
     article.append(h3);
 
     const meta = document.createElement("p");
@@ -154,7 +157,11 @@
     setScope(defaultScope);
 
     function focusResults() {
-      (results.querySelector("a") || status).focus();
+      const firstLink = results.querySelector("a");
+      (firstLink || status).focus({preventScroll: true});
+      // Keep the result's title and evidence context visible, not only its action
+      // at the bottom. This affects presentation only, never ranking or state.
+      (firstLink?.closest(".search-result") || status).scrollIntoView({block: "start", behavior: "instant"});
     }
 
     function countForType(type) {

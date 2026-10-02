@@ -96,6 +96,11 @@ def write(relative: str, title: str, main: str, description: str = DESCRIPTION, 
 
 
 def wrap(template: str, **values: str) -> str:
+    if template in {"reading-page", "loan-detail"}:
+        # Both page models explicitly begin with H1 + source metadata paragraph.
+        intro_end = values["CONTENT"].index("</p>") + len("</p>")
+        values["INTRO"] = values["CONTENT"][:intro_end]
+        values["CONTENT"] = values["CONTENT"][intro_end:]
     return fill(TEMPLATES[template], **values)
 
 
@@ -112,7 +117,7 @@ def search_box(
     label: str = "你想查什麼？",
     default_scope: str = "all",
 ) -> str:
-    return f'''<div class="search-panel" data-search data-search-default-scope="{e(default_scope)}"><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><p class="search-scope-note">目前全文搜尋範圍：114年度手冊底本。手冊出版後資料請查看「官方更新」。</p><div class="search-scope-options" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
+    return f'''<div class="search-panel" data-search data-search-default-scope="{e(default_scope)}"><form role="search" novalidate><label for="{e(input_id)}">{e(label)}</label><div class="search-row"><input id="{e(input_id)}" name="q" type="search" maxlength="256" autocomplete="off" placeholder="搜尋貸款名稱、資格、用途、額度、期限、函釋或常見問題……"><button type="submit">搜尋</button></div></form><p class="search-scope-note">目前全文搜尋範圍：114年度手冊底本。手冊出版後資料請查看「官方更新」。</p><div class="search-scope-options" role="group" hidden aria-label="搜尋範圍"><span>搜尋範圍</span><button type="button" data-scope="all" aria-pressed="true">全手冊</button><button type="button" data-scope="chapter" aria-pressed="false">本章</button></div><details class="search-filter-disclosure"><summary>篩選結果</summary><div class="search-filters" role="group" aria-label="搜尋類型"></div></details><p class="search-status" aria-live="polite" tabindex="-1" hidden></p><div class="search-results"></div><button class="search-more" type="button" hidden>顯示更多結果</button></div>'''
 
 
 TYPE_LABELS = {
@@ -252,7 +257,7 @@ def current_update_block(relative: str, items: list[dict], empty_context: str = 
         body = f'<p>{len(items)} 筆明確對應紀錄。</p>{update_rows(relative, items)}'
     else:
         body = f'<p>在目前已檢核的官方更新索引中，尚未建立與{e(empty_context)}明確對應的手冊出版後更新。</p>'
-    return f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2>{body}<p><a href="{e(rel(relative, "updates/index.html"))}">查看全部官方更新</a></p></section>'
+    return f'<section class="loan-current-updates"><h2>手冊出版後官方更新</h2><details><summary>查看已收錄更新與來源</summary>{body}<p><a href="{e(rel(relative, "updates/index.html"))}">查看全部官方更新</a></p></details></section>'
 
 
 def paragraphize(text: str) -> str:
@@ -377,7 +382,7 @@ def build_home() -> None:
     popular = "".join(f'<button type="button" data-keyword="{e(item["query"])}" data-search-target="#home-search" data-search-scope="all">{e(item["label"])}</button>' for item in popular_items)
     counts = MANUAL["counts"]
     revision = MANUAL["digitalRevision"]
-    hero = f'<h1>政策性農業專案貸款業務手冊</h1><p class="subtitle">快速找到貸款規定、函釋與書表，並可回到原始手冊核對。</p><p class="version-inline">114年度 Beta</p>{search_box("home-search")}<div class="popular" aria-label="常用查詢"><span>常用查詢</span>{popular}</div>'
+    hero = f'<div class="hero-main"><p class="version-inline">114年度手冊底本 <span>Beta</span></p><h1><span>政策性農業專案貸款</span><span>業務手冊</span></h1><p class="subtitle">快速查找貸款規定、函釋與書表，並回到原始資料核對。</p>{search_box("home-search")}<div class="popular" role="group" aria-label="常用查詢"><span>常用關鍵字</span>{popular}</div></div><aside class="hero-source" aria-label="手冊來源"><div class="field-mark" aria-hidden="true"></div><p>原始手冊，隨時回查。</p><dl><div><dt>資料底本</dt><dd>114年度</dd></div><div><dt>原始PDF</dt><dd>359頁</dd></div></dl><a href="downloads/{PDF_NAME}">開啟原始PDF</a></aside>'
     review_info = COVERAGE["officialUpdateReview"]
     recent = sorted(
         OFFICIAL_UPDATES,
@@ -392,7 +397,7 @@ def build_home() -> None:
         f'<p class="scope-caveat">114年度手冊原文保持不變；後續官方規定另列於更新索引。實際適用仍以主管機關及貸款經辦機構最新正式資料為準。</p>'
         f'<div class="recent-updates"><h3>最近官方更新</h3>{update_rows(relative, recent, compact=True)}<p><a href="updates/index.html">查看全部制度與業務更新</a></p><p>天然災害低利貸款的地區、品項及申請期間，請查閱農業金融署最新公告。</p><p><a href="updates/disasters/index.html">前往官方公告入口</a></p></div>'
     )
-    tasks = '<h2 id="task-title">我想查……</h2><p>選擇常見任務後直接搜尋原始資料。</p>' + shortcut_buttons("home", "home-search")
+    tasks = '<details class="task-disclosure" open><summary><h2 id="task-title">按需求查詢</h2></summary><p>選擇常見任務後直接搜尋原始資料。</p>' + shortcut_buttons("home", "home-search") + '</details>'
     links = [
         ("找貸款", "依名稱與類別瀏覽23項貸款", "loans/index.html", "依需求找資料", "quick-index/index.html"),
         ("函釋與 FAQ", "查文號、函釋與常見問題", "interpretations/index.html", "前往 FAQ", "faq/index.html"),
@@ -400,7 +405,7 @@ def build_home() -> None:
         ("原書完整目錄", "依原始手冊順序瀏覽", "versions/114/index.html", "開啟完整PDF", f"downloads/{PDF_NAME}"),
     ]
     quick = '<div class="entry-grid primary-entries">' + "".join(
-        f'<article class="entry"><h3><a href="{e(url)}">{e(label)}</a></h3><p>{e(description)}</p><a class="entry-secondary" href="{e(secondary_url)}">{e(secondary_label)}</a></article>'
+        f'<article class="entry"><a class="entry-main" href="{e(url)}"><h3>{e(label)}</h3><p>{e(description)}</p><span class="entry-go">前往查閱 <span aria-hidden="true">↗</span></span></a><a class="entry-secondary" href="{e(secondary_url)}">{e(secondary_label)}</a></article>'
         for label, description, url, secondary_label, secondary_url in links
     ) + "</div>"
     review = f'''<h2 id="review-title">內容覆核狀態</h2><p>原始閱讀頁：{MANUAL["pdfPages"]}頁；原書完整目錄：{counts["tocEntries"]}項；函釋來源索引：{counts["interpretationsSourceIndexed"]}筆；函釋候選庫：{counts["interpretationCandidateInventoryTotal"]}筆；函釋未決候選：{counts["interpretationCandidatesPending"]}筆；書表來源索引：{counts["formsSourceIndexed"]}筆；書表未分類候選：{counts["formCandidatesPending"]}筆。</p><p>書表逐頁人工覆核：尚未完成；函釋結束頁確認：尚未完成；全文逐頁人工校讀：尚未完成。</p><p class="layout-note">來源索引依嚴格頁面與欄位規則建立；候選庫總量僅為偵測庫存，不等同待覆核數。全文逐頁校讀、函釋涵蓋範圍及書表內容仍需人工確認。</p>'''
@@ -573,7 +578,7 @@ def build_loans() -> None:
             f'{source_page_details(relative, pages)}'
         )
         task_link = '<a href="#loan-task-navigation">本頁快速導覽</a>'
-        nav = f'<nav class="hub-nav" aria-label="貸款頁導覽">{task_link}<a href="#{e(search_section_id)}">本貸款搜尋</a><a href="#loan-source-title">貸款原文</a><a href="{e(rel(relative, "loans/index.html"))}">回找貸款</a></nav>'
+        nav = f'<details class="reading-menu" open><summary>本頁內容</summary><nav class="hub-nav" aria-label="貸款頁導覽">{task_link}<a href="#{e(search_section_id)}">本貸款搜尋</a><a href="#loan-source-title">貸款原文</a><a href="{e(rel(relative, "loans/index.html"))}">回找貸款</a></nav></details>'
         main = wrap("loan-detail", BREADCRUMB=breadcrumb(relative, [("首頁", "index.html"), ("找貸款", "loans/index.html")], loan["title"]), NAV=nav, CONTENT=content)
         write(relative, f"{loan['title']}｜貸款索引", main, body_attrs=f'data-search-scope="section:{loan["id"]}" data-search-scope-group="loan:{loan["id"]}"')
 
@@ -725,11 +730,11 @@ def build_indexes() -> None:
     counts = MANUAL["counts"]
     groups, interpretation_records = interpretation_result_cards(relative)
     groups_data = [(program, interpretation_group_slug(program)) for program in interpretation_programs()]
-    quick_links = '<nav class="index-rows" aria-label="依類別快速前往"><h2>依類別快速前往</h2><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in groups_data) + '</ul></nav>'
+    quick_links = '<details class="category-navigation"><summary>依類別快速前往</summary><nav class="index-rows" aria-label="依類別快速前往"><ul>' + ''.join(f'<li><a href="#group-{slug}">{e(program)}</a></li>' for program, slug in groups_data) + '</ul></nav></details>'
     content = breadcrumb(relative, [("首頁", "index.html")], "函釋來源索引") + f'<h1>函釋來源索引</h1><p class="source-meta">本頁為114年度手冊所收錄函釋查閱工具；依同頁完整標頭、日期、完整文號與主旨起始建立，共 {counts["interpretationsSourceIndexed"]} 筆。候選庫共 {counts["interpretationCandidateInventoryTotal"]} 筆，其中未決候選 {counts["interpretationCandidatesPending"]} 筆；候選庫總量不等於待覆核數。結束頁尚待人工確認。</p><p><a href="../updates/index.html?type=interpretation">查看手冊出版後官方函示</a></p>' + interpretation_lookup_tool(relative, interpretation_records) + quick_links + groups + '<p><a href="../faq/index.html">前往常見問答</a></p>'
     write(relative, "相關函釋索引｜政策性農業專案貸款業務手冊", wrap("interpretations", CONTENT=content))
     relative = "faq/index.html"
-    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁列示114年度手冊內收錄之FAQ；手冊出版後官方發布之問答，請查看「官方更新」。本頁不提供AI摘要。</p><p><a href="../updates/index.html?type=faq">查看手冊出版後官方問答</a></p>' + faq_lookup_tool(relative) + faq_group_source_list(relative) + faq_result_cards(relative)
+    content = breadcrumb(relative, [("首頁", "index.html")], "常見問答") + '<h1>增修規定常見問答</h1><p class="layout-note">本頁列示114年度手冊內收錄之FAQ；手冊出版後官方發布之問答，請查看「官方更新」。本頁不提供AI摘要。</p><p><a href="../updates/index.html?type=faq">查看手冊出版後官方問答</a></p>' + faq_lookup_tool(relative) + faq_result_cards(relative) + faq_group_source_list(relative)
     write(relative, "增修規定常見問答｜政策性農業專案貸款業務手冊", wrap("faq", CONTENT=content))
     relative = "forms/index.html"
     content = breadcrumb(relative, [("首頁", "index.html")], "書表與附件來源索引") + f'<h1>書表與附件來源索引</h1><p class="source-meta">本頁列示114手冊收錄書表。書表來源索引 {counts["formsSourceIndexed"]} 筆；候選庫 {counts["formCandidateInventoryTotal"]} 筆，其中已納入 {counts["formCandidatesPromoted"]} 筆、排除 {counts["formCandidatesExcluded"]} 筆、真正待人工覆核 {counts["formCandidatesPending"]} 筆。另列 {len(APPENDICES)} 項原手冊附錄／附件。</p><section class="loan-current-updates"><h2>手冊出版後官方表單／附件</h2><p>後續官方表單不改寫114手冊書表。</p><p><a href="../updates/index.html?type=form">查看官方更新中的表單／附件</a></p></section><h2>附錄與附件</h2>' + index_items(relative, APPENDICES, "附錄／附件") + '<h2>書表來源索引</h2>' + index_items(relative, FORMS, "書表")
@@ -775,6 +780,9 @@ def build_updates() -> None:
         + f'<section id="coverage" class="coverage-panel"><h2>資料基準與檢核範圍</h2><dl><div><dt>底本</dt><dd>{e(COVERAGE["baseline"]["title"])}</dd></div><div><dt>PDF頁數</dt><dd>359頁</dd></div><div><dt>Coverage</dt><dd>{"指定官方來源已檢核至" + roc_date(review["verifiedThrough"]) if review["coverageStatus"] == "complete" else "官方來源盤點進行中"}</dd></div><div><dt>制度與業務更新</dt><dd>{len(OFFICIAL_UPDATES)}筆</dd></div></dl><p>{e(review["statement"])}</p><p>本站僅列已完成來源核對之官方制度／業務更新；收錄範圍仍在持續盤點。天然災害個別地區／品項公告另依農業金融署官方專區為準。</p></section><section class="loan-current-updates"><h2>最新天然災害低利貸款公告</h2><p>本站不另行同步個別地區及品項公告，請直接查閱農業金融署官方專區。</p><p><a href="disasters/index.html">查詢農業金融署最新公告</a></p></section>'
         + '<section class="updates-index" data-official-updates-lookup><h2>官方更新查閱</h2><p class="layout-note">查閱結果來自20筆已收錄官方更新，不會混入114年度手冊507筆全文搜尋。</p>' + filters + official_update_lookup_cards(relative, OFFICIAL_UPDATES) + f'<script type="application/json" data-official-updates-data>{lookup_payload}</script></section>'
     )
+    prefix, scope_and_lookup = content.split('<section id="coverage"', 1)
+    scope, lookup = scope_and_lookup.split('<section class="updates-index"', 1)
+    content = prefix + '<section class="updates-index"' + lookup + '<details class="updates-scope"><summary>資料基準與檢核範圍、天然災害官方入口</summary><section id="coverage"' + scope + '</details>'
     write(relative, "手冊出版後官方更新｜政策性農業專案貸款業務手冊", wrap("manual-index", CONTENT=content), body_attrs='data-update-index="true"')
 
 
