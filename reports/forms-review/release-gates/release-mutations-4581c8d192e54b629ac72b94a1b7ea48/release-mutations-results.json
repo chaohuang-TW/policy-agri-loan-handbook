@@ -1,0 +1,8 @@
+[
+  {
+    "command": "python -B scripts/test_validator_mutations.py --retain-workspace",
+    "status": "FAIL",
+    "exitCode": 1,
+    "log": "reports/forms-review/release-gates/release-mutations-4581c8d192e54b629ac72b94a1b7ea48/logs/release-mutations-01.txt"
+  }
+]

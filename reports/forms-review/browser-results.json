@@ -1,0 +1,20 @@
+[
+  {
+    "command": "npm ci",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/browser-01.txt"
+  },
+  {
+    "command": "npm exec -- playwright install chromium",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/browser-02.txt"
+  },
+  {
+    "command": "npm exec -- playwright test",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/browser-03.txt"
+  }
+]

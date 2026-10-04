@@ -1,0 +1,24 @@
+{
+  "systemBusinessUpdates": {
+    "included": 20,
+    "decisions": {
+      "include": 20,
+      "needs-human-review": 1,
+      "already-covered": 2,
+      "exclude-irrelevant": 2
+    },
+    "sourceTypes": {
+      "regulation": 3,
+      "faq": 3,
+      "interpretation": 4,
+      "disaster-measure": 3,
+      "administrative-rule": 3,
+      "announcement": 2,
+      "form": 2
+    }
+  },
+  "routineDisasterNoticesMirrored": 0,
+  "officialGatewayUrl": "https://www.afna.gov.tw/list.php?theme=natural_disaster&subtheme=",
+  "orphanDecisionCandidates": 0,
+  "unknownCandidateRefs": 0
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "command": "python -B scripts/test_validator_mutations.py --retain-workspace",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/release-gates/release-mutations-9bc24197e29f49ee856eaf87de8d6448/logs/release-mutations-01.txt"
+  },
+  {
+    "command": "python -B scripts/test_reference_lookup_mutations.py --retain-workspace",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/release-gates/release-mutations-9bc24197e29f49ee856eaf87de8d6448/logs/release-mutations-02.txt"
+  },
+  {
+    "command": "python -B scripts/test_official_updates_lookup_mutations.py --retain-workspace",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/release-gates/release-mutations-9bc24197e29f49ee856eaf87de8d6448/logs/release-mutations-03.txt"
+  }
+]

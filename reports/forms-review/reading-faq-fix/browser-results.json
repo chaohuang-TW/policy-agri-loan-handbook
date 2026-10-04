@@ -1,0 +1,8 @@
+[
+  {
+    "command": "node node_modules/@playwright/test/cli.js test --trace off --output tmp/reading-faq-browser-ae7d67f672c147b9a2fd11953abc3d86",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/reading-faq-fix/logs/browser-01.txt"
+  }
+]

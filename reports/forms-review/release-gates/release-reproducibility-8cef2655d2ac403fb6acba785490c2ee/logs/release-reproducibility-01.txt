@@ -1,0 +1,32 @@
+Retained workspace: tmp/release-gates/reproducibility-79c0314ad8544a91a3b015c165919988
+Retained workspace: tmp/release-gates/atomic-build-57907a14af66489eb8bfede5ae2c074b
+Built 399 HTML pages
+Built 507 search records
+Retained workspace: tmp/release-gates/atomic-build-38110fb5644243f393d48af627773853
+Built 399 HTML pages
+Built 507 search records
+Built 399 HTML pages
+Built 507 search records
+Built 507 search records
+Retained workspace: tmp/release-gates/atomic-build-198c876129c14841a360476ea5d06025
+Built 399 HTML pages
+Built 507 search records
+Retained workspace: tmp/release-gates/atomic-build-e0c42384388a43f5b45aca8fd4f591d9
+Built 399 HTML pages
+Retained workspace: tmp/release-gates/atomic-build-e2c530d2b65745a6a524b6dac2de2697
+Built 399 HTML pages
+Built 507 search records
+Retained workspace: tmp/release-gates/atomic-build-e0404ef685c943529cfc963ffea7d803
+Built 399 HTML pages
+Built 507 search records
+{
+  "status": "BUILD REPRODUCIBILITY PASSED",
+  "committedSite": "identical",
+  "consecutiveBuilds": "identical",
+  "forwardOrder": "identical",
+  "reverseOrder": "identical",
+  "failureProtection": "passed",
+  "publicationFailureRestoration": "passed",
+  "controlledRetention": "passed; no deletion",
+  "workspace": "tmp/release-gates/reproducibility-79c0314ad8544a91a3b015c165919988"
+}

@@ -1,0 +1,49 @@
+{
+  "positiveControl": "PASS",
+  "total": 7,
+  "caught": 7,
+  "results": [
+    {
+      "name": "eligibility at documents",
+      "gate": "young-source-point:",
+      "caught": true,
+      "evidence": "young-source-point: eligibility"
+    },
+    {
+      "name": "amount at term",
+      "gate": "young-source-point:",
+      "caught": true,
+      "evidence": "young-source-point: amount"
+    },
+    {
+      "name": "term at amount",
+      "gate": "young-source-point:",
+      "caught": true,
+      "evidence": "young-source-point: term"
+    },
+    {
+      "name": "missing FAQ source image",
+      "gate": "faq-table-preview:",
+      "caught": true,
+      "evidence": "faq-table-preview: missing or incorrect source pages"
+    },
+    {
+      "name": "broken FAQ PDF target",
+      "gate": "faq-table-source-link:",
+      "caught": true,
+      "evidence": "faq-table-source-link: 316 ../downloads/policy-agri-loan-handbook-114.pdf#page=316"
+    },
+    {
+      "name": "source-page 211 text changes",
+      "gate": "reading-url-only:",
+      "caught": true,
+      "evidence": "reading-url-only: page-211"
+    },
+    {
+      "name": "phase-one report changed",
+      "gate": "phase-one-report-retained:",
+      "caught": true,
+      "evidence": "phase-one-report-retained: "
+    }
+  ]
+}

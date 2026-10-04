@@ -1,0 +1,103 @@
+{
+  "status": "OFFICIAL UPDATES LOOKUP MUTATIONS PASSED",
+  "caught": "16/16",
+  "uncaught": 0,
+  "results": [
+    {
+      "mutation": 1,
+      "name": "delete official update",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 2,
+      "name": "duplicate official update ID",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 3,
+      "name": "fixture expected ID missing",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 4,
+      "name": "document number normalization broken",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 5,
+      "name": "program relation omitted from card",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 6,
+      "name": "year filter option is wrong",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 7,
+      "name": "official update leaks into 507 search",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 8,
+      "name": "disaster announcement becomes lookup data",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 9,
+      "name": "official source link removed",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 10,
+      "name": "URL state handler removed",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 11,
+      "name": "coverage changed to complete",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 12,
+      "name": "version mismatch",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 13,
+      "name": "tokenization uses normalized query",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 14,
+      "name": "multi-keyword AND changed to OR",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 15,
+      "name": "only first multi-keyword token checked",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 16,
+      "name": "full-width whitespace tokenization removed",
+      "caught": true,
+      "evidence": "{"
+    }
+  ]
+}

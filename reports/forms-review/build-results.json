@@ -1,0 +1,8 @@
+[
+  {
+    "command": "python scripts/build_all.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/build-01.txt"
+  }
+]

@@ -1,0 +1,5 @@
+PAGE RENDERING VALIDATION PASSED
+- Text pages: 211
+- Preview pages: 0
+- Hybrid pages: 148
+- Pages without text layer: 0

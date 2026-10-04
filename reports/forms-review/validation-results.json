@@ -1,0 +1,206 @@
+[
+  {
+    "command": "python scripts/test_interpretation_parser.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-01.txt"
+  },
+  {
+    "command": "python scripts/audit_content.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-02.txt"
+  },
+  {
+    "command": "python scripts/validate_display_text.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-03.txt"
+  },
+  {
+    "command": "python scripts/validate_interpretation_metadata.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-04.txt"
+  },
+  {
+    "command": "python scripts/validate_interpretation_decisions.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-05.txt"
+  },
+  {
+    "command": "python scripts/validate_index_quality.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-06.txt"
+  },
+  {
+    "command": "python scripts/validate_navigation_targets.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-07.txt"
+  },
+  {
+    "command": "python scripts/validate_page_rendering.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-08.txt"
+  },
+  {
+    "command": "python scripts/validate_visual_theme.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-09.txt"
+  },
+  {
+    "command": "python scripts/validate_search_experience.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-10.txt"
+  },
+  {
+    "command": "python scripts/validate_ux_structure.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-11.txt"
+  },
+  {
+    "command": "python scripts/validate_official_updates.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-12.txt"
+  },
+  {
+    "command": "python scripts/validate_official_coverage.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-13.txt"
+  },
+  {
+    "command": "python scripts/validate_revision_consistency.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-14.txt"
+  },
+  {
+    "command": "python scripts/validate_disaster_official_gateway.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-15.txt"
+  },
+  {
+    "command": "python scripts/validate_reading_navigation.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-16.txt"
+  },
+  {
+    "command": "python scripts/validate_reference_lookup.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-17.txt"
+  },
+  {
+    "command": "python scripts/validate_official_updates_lookup.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-18.txt"
+  },
+  {
+    "command": "python scripts/validate_forms_source_review.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-19.txt"
+  },
+  {
+    "command": "python scripts/audit_search_precision.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-20.txt"
+  },
+  {
+    "command": "python scripts/audit_task_search_quality.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-21.txt"
+  },
+  {
+    "command": "python scripts/report_source_review_plan.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-22.txt"
+  },
+  {
+    "command": "python scripts/report_official_update_inventory.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-23.txt"
+  },
+  {
+    "command": "python scripts/report_official_coverage.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-24.txt"
+  },
+  {
+    "command": "python scripts/validate_site.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-25.txt"
+  },
+  {
+    "command": "python scripts/validate_forms_source_review.py --write-design-manifest",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-26.txt"
+  },
+  {
+    "command": "python scripts/design_integrity.py verify reports/forms-review/allowed-forms-design-manifest.json",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-27.txt"
+  },
+  {
+    "command": "python scripts/audit_forms_source.py report",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-28.txt"
+  },
+  {
+    "command": "node scripts/test_search_core.cjs",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-29.txt"
+  },
+  {
+    "command": "node scripts/test_task_search_semantics.cjs",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-30.txt"
+  },
+  {
+    "command": "node scripts/test_official_updates_lookup.cjs",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-31.txt"
+  },
+  {
+    "command": "node scripts/benchmark_search_core.cjs",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-32.txt"
+  },
+  {
+    "command": "node scripts/benchmark_official_updates_lookup.cjs",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-33.txt"
+  },
+  {
+    "command": "git diff --check",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/validation-34.txt"
+  }
+]

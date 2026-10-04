@@ -1,0 +1,2708 @@
+{
+  "baseCommit": "3bd8ba14f7e309e565fcb3d3be16bd294025cfbd",
+  "reviewVersion": "114.0.0-beta.3.3",
+  "stage": "pre-commit-pending-independent-Luna-review",
+  "summary": {
+    "forms": 28,
+    "reviews": 28,
+    "sourcePages": 46,
+    "multiPageForms": 16,
+    "corrected": 20,
+    "verified": 8,
+    "humanReviewItems": 0,
+    "routes": 399,
+    "searchCount": 507,
+    "changedSearchRecords": [
+      "forms-form-003",
+      "forms-form-004",
+      "forms-form-009",
+      "forms-form-023",
+      "forms-form-027",
+      "forms-form-028"
+    ],
+    "startOnly": 0,
+    "ambiguous": 0,
+    "needsHumanReview": 0,
+    "visuallyCheckedReferencePages": 78
+  },
+  "sourceIntegrity": {
+    "pdfPages": 359,
+    "pdfSha256": "0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54",
+    "sourceDownloadBitIdentical": true,
+    "frozenOriginalSourceChanged": 0,
+    "presentationChanged": 0,
+    "existingRoutesChanged": 0
+  },
+  "corrections": [
+    {
+      "formId": "form-003",
+      "field": "title",
+      "before": "專案農貸延期還款案件申請書（甲式）",
+      "after": "專案農貸延期還款案件申請書(甲式)",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 53,
+      "evidenceUrl": "versions/114/pages/page-053.html#pdf-page-53",
+      "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+    },
+    {
+      "formId": "form-004",
+      "field": "title",
+      "before": "專案農貸延期還款案件申請書（乙式）",
+      "after": "專案農貸延期還款案件申請書(乙式)",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 54,
+      "evidenceUrl": "versions/114/pages/page-054.html#pdf-page-54",
+      "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+    },
+    {
+      "formId": "form-005",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 55,
+        "printedPageEnd": 53,
+        "sourcePages": [
+          55
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 56,
+        "printedPageEnd": 54,
+        "sourcePages": [
+          55,
+          56
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 56,
+      "evidenceUrl": "versions/114/pages/page-056.html#pdf-page-56",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-007",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 106,
+        "printedPageEnd": 104,
+        "sourcePages": [
+          106
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 107,
+        "printedPageEnd": 105,
+        "sourcePages": [
+          106,
+          107
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 107,
+      "evidenceUrl": "versions/114/pages/page-107.html#pdf-page-107",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-008",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 117,
+        "printedPageEnd": 115,
+        "sourcePages": [
+          117
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 118,
+        "printedPageEnd": 116,
+        "sourcePages": [
+          117,
+          118
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 118,
+      "evidenceUrl": "versions/114/pages/page-118.html#pdf-page-118",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-009",
+      "field": "title",
+      "before": "提升畜禽產業經營貸款（除污染防治類外）申請書",
+      "after": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 128,
+      "evidenceUrl": "versions/114/pages/page-128.html#pdf-page-128",
+      "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+    },
+    {
+      "formId": "form-009",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 128,
+        "printedPageEnd": 126,
+        "sourcePages": [
+          128
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 129,
+        "printedPageEnd": 127,
+        "sourcePages": [
+          128,
+          129
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 129,
+      "evidenceUrl": "versions/114/pages/page-129.html#pdf-page-129",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-010",
+      "field": "sourceSubtitle",
+      "before": null,
+      "after": "（畜牧污染防治類專用）",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 131,
+      "evidenceUrl": "versions/114/pages/page-131.html#pdf-page-131",
+      "reason": "補上來源可見副題（不改寫主題名）。"
+    },
+    {
+      "formId": "form-011",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 152,
+        "printedPageEnd": 150,
+        "sourcePages": [
+          152
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 153,
+        "printedPageEnd": 151,
+        "sourcePages": [
+          152,
+          153
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 153,
+      "evidenceUrl": "versions/114/pages/page-153.html#pdf-page-153",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-012",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 163,
+        "printedPageEnd": 161,
+        "sourcePages": [
+          163
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 164,
+        "printedPageEnd": 162,
+        "sourcePages": [
+          163,
+          164
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 164,
+      "evidenceUrl": "versions/114/pages/page-164.html#pdf-page-164",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-015",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 190,
+        "printedPageEnd": 188,
+        "sourcePages": [
+          190
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 191,
+        "printedPageEnd": 189,
+        "sourcePages": [
+          190,
+          191
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 191,
+      "evidenceUrl": "versions/114/pages/page-191.html#pdf-page-191",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-017",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 202,
+        "printedPageEnd": 200,
+        "sourcePages": [
+          202
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 203,
+        "printedPageEnd": 201,
+        "sourcePages": [
+          202,
+          203
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 203,
+      "evidenceUrl": "versions/114/pages/page-203.html#pdf-page-203",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-018",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 207,
+        "printedPageEnd": 205,
+        "sourcePages": [
+          207
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 208,
+        "printedPageEnd": 206,
+        "sourcePages": [
+          207,
+          208
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 208,
+      "evidenceUrl": "versions/114/pages/page-208.html#pdf-page-208",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-019",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 215,
+        "printedPageEnd": 213,
+        "sourcePages": [
+          215
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 217,
+        "printedPageEnd": 215,
+        "sourcePages": [
+          215,
+          216,
+          217
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 217,
+      "evidenceUrl": "versions/114/pages/page-217.html#pdf-page-217",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-020",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 227,
+        "printedPageEnd": 225,
+        "sourcePages": [
+          227
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 228,
+        "printedPageEnd": 226,
+        "sourcePages": [
+          227,
+          228
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 228,
+      "evidenceUrl": "versions/114/pages/page-228.html#pdf-page-228",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-021",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 234,
+        "printedPageEnd": 232,
+        "sourcePages": [
+          234
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 235,
+        "printedPageEnd": 233,
+        "sourcePages": [
+          234,
+          235
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 235,
+      "evidenceUrl": "versions/114/pages/page-235.html#pdf-page-235",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-022",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 247,
+        "printedPageEnd": 245,
+        "sourcePages": [
+          247
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 248,
+        "printedPageEnd": 246,
+        "sourcePages": [
+          247,
+          248
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 248,
+      "evidenceUrl": "versions/114/pages/page-248.html#pdf-page-248",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-023",
+      "field": "title",
+      "before": "農業天然災害受災證明書（復耕復建貸款用）",
+      "after": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕復建貸款」專用)",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 251,
+      "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+      "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+    },
+    {
+      "formId": "form-023",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 251,
+        "printedPageEnd": 249,
+        "sourcePages": [
+          251
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 252,
+        "printedPageEnd": 250,
+        "sourcePages": [
+          251,
+          252
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 252,
+      "evidenceUrl": "versions/114/pages/page-252.html#pdf-page-252",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-023",
+      "field": "scopeGroup",
+      "before": null,
+      "after": "loan:agri-organization-disaster-recovery-loan",
+      "severity": "P1 RELATION ERROR",
+      "pdfPage": 251,
+      "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+      "reason": "本表題名直接寫出貸款專用名稱；末頁備註另有同名申貸交叉引用。"
+    },
+    {
+      "formId": "form-026",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 265,
+        "printedPageEnd": 263,
+        "sourcePages": [
+          265
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 267,
+        "printedPageEnd": 265,
+        "sourcePages": [
+          265,
+          266,
+          267
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 267,
+      "evidenceUrl": "versions/114/pages/page-267.html#pdf-page-267",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-027",
+      "field": "pdfPageEnd / printedPageEnd / sourcePages",
+      "before": {
+        "pdfPageEnd": 292,
+        "printedPageEnd": 290,
+        "sourcePages": [
+          292
+        ]
+      },
+      "after": {
+        "pdfPageEnd": 293,
+        "printedPageEnd": 291,
+        "sourcePages": [
+          292,
+          293
+        ]
+      },
+      "severity": "P1 RANGE ERROR",
+      "pdfPage": 293,
+      "evidenceUrl": "versions/114/pages/page-293.html#pdf-page-293",
+      "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+    },
+    {
+      "formId": "form-027",
+      "field": "scopeGroup",
+      "before": null,
+      "after": "loan:natural-disaster-low-interest-loan",
+      "severity": "P1 RELATION ERROR",
+      "pdfPage": 292,
+      "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+      "reason": "本表題名直接寫出貸款專用名稱；末頁備註另有同名申貸交叉引用。"
+    },
+    {
+      "formId": "form-027",
+      "field": "sourceSubtitle",
+      "before": null,
+      "after": "(申貸「農業天然災害低利貸款」專用)",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 292,
+      "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+      "reason": "補上來源可見副題（不改寫主題名）。"
+    },
+    {
+      "formId": "form-028",
+      "field": "title",
+      "before": "農業紮根貸款額度動用申請書",
+      "after": "額度動用申請書",
+      "severity": "P2 METADATA ERROR",
+      "pdfPage": 305,
+      "evidenceUrl": "versions/114/pages/page-305.html#pdf-page-305",
+      "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+    }
+  ],
+  "records": [
+    {
+      "formId": "form-001",
+      "sourceTitle": "農業發展基金貸款利息差額補貼申請書",
+      "displayTitle": "農業發展基金貸款利息差額補貼申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "common-no-unique-loan",
+      "pdfPageStart": 40,
+      "pdfPageEnd": 40,
+      "printedPageStart": 38,
+      "printedPageEnd": 38,
+      "sourcePages": [
+        40
+      ],
+      "scopeGroup": null,
+      "evidence": [
+        {
+          "pdfPage": 40,
+          "printedPage": 38,
+          "evidenceUrl": "versions/114/pages/page-040.html#pdf-page-40",
+          "role": "title-and-start",
+          "headQuote": "附件二\n農業發展基金貸款利息差額補貼申請書\n行\n本庫辦理農業發展基金項下各項貸款，茲依據「農業發展基金貸款作業規範」\n會\n申請本期（自  年  月  日至  年  月  日止）利息差額補貼金額",
+          "tailQuote": "全國農業金庫\n行\n庫\n農（漁）會\n中華民國               年          月            日"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 41,
+        "nextEvidenceUrl": "versions/114/pages/page-041.html#pdf-page-41",
+        "nextHeadingQuote": "附件三\n超過六個月逾期農業發展基金貸款餘額積數推算表\n貸款類別：\n     期間：   年  月  日至   年  月  日                 填報機構：\n月   份   別 日   數 月底餘額 當月積數(月底餘額×當月日數)\n一或七",
+        "closingQuote": "全國農業金庫\n行\n庫\n農（漁）會\n中華民國               年          月            日",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 40,
+          "quote": "農業發展基金貸款利息差額補貼申請書",
+          "criterion": "common-form-no-unique-loan",
+          "scopeGroup": null,
+          "evidenceUrl": "versions/114/pages/page-040.html#pdf-page-40"
+        }
+      ],
+      "notes": "共通作業書表，不指定單一貸款。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-002",
+      "sourceTitle": "專案農貸額度控管期限延長申請書",
+      "displayTitle": "專案農貸額度控管期限延長申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "common-no-unique-loan",
+      "pdfPageStart": 43,
+      "pdfPageEnd": 43,
+      "printedPageStart": 41,
+      "printedPageEnd": 41,
+      "sourcePages": [
+        43
+      ],
+      "scopeGroup": null,
+      "evidence": [
+        {
+          "pdfPage": 43,
+          "printedPage": 41,
+          "evidenceUrl": "versions/114/pages/page-043.html#pdf-page-43",
+          "role": "title-and-start",
+          "headQuote": "113.8.20起適用\n專案農貸額度控管期限延長申請書\n經辦機構：\n申請項目： □審查期限      原期限    年   月   日延長至   年    月   日\n               （每次申請延長期限不得超過原規定審查期限：二十天）\n           □動用期限      原期限    年   月   日延長至   年    月  日",
+          "tailQuote": "□其他：(請敍明)\n經辦：                   覆核：                信用部主任：\n聯絡電話：\n請傳真至(02)2380-5280   全國農業金庫專業金融部收\n編號:20"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 44,
+        "nextEvidenceUrl": "versions/114/pages/page-044.html#pdf-page-44",
+        "nextHeadingQuote": "農業發展基金貸款案件依消費者債務清理條例處理報送單\n（本表於知悉日起一個月內報送全國農業金庫）\n經辦機構  ：\n借 款 人  ：\n貸款項目  ：\n貸放日期  ：",
+        "closingQuote": "□其他：(請敍明)\n經辦：                   覆核：                信用部主任：\n聯絡電話：\n請傳真至(02)2380-5280   全國農業金庫專業金融部收\n編號:20",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 43,
+          "quote": "專案農貸額度控管期限延長申請書",
+          "criterion": "common-form-no-unique-loan",
+          "scopeGroup": null,
+          "evidenceUrl": "versions/114/pages/page-043.html#pdf-page-43"
+        }
+      ],
+      "notes": "共通作業書表，不指定單一貸款。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-003",
+      "sourceTitle": "專案農貸延期還款案件申請書(甲式)",
+      "displayTitle": "專案農貸延期還款案件申請書(甲式)",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "corrected",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "common-no-unique-loan",
+      "pdfPageStart": 53,
+      "pdfPageEnd": 53,
+      "printedPageStart": 51,
+      "printedPageEnd": 51,
+      "sourcePages": [
+        53
+      ],
+      "scopeGroup": null,
+      "evidence": [
+        {
+          "pdfPage": 53,
+          "printedPage": 51,
+          "evidenceUrl": "versions/114/pages/page-053.html#pdf-page-53",
+          "role": "title-and-start",
+          "headQuote": "專案農貸延期還款案件申請書(甲式)\n (除「農漁會事業發展貸款」 、 「農業科技園區進駐業者優惠貸款」及「農民組織及農企業產銷經營\n及研發創新貸款」外之專案農貸適用)\n一、申請人資料：\n姓名(名稱)\n 身分證",
+          "tailQuote": "此致\n(貸款經辦機構)                         申請人(簽章)：\n中   華   民   國           年               月              日\n編號:19.0\n112.8.1起適用"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 54,
+        "nextEvidenceUrl": "versions/114/pages/page-054.html#pdf-page-54",
+        "nextHeadingQuote": "專案農貸延期還款案件申請書(乙式)\n (「農漁會事業發展貸款」 、 「農業科技園區進駐業者優惠貸款」及「農民組織及農企業產銷經\n營及研發創新貸款」專用)\n一、申請人資料：\n姓名(名稱)  身分證字號\n或統一編號",
+        "closingQuote": "此致\n(貸款經辦機構)                         申請人(簽章)：\n中   華   民   國           年               月              日\n編號:19.0\n112.8.1起適用",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 53,
+          "quote": "專案農貸延期還款案件申請書(甲式)",
+          "criterion": "common-form-no-unique-loan",
+          "scopeGroup": null,
+          "evidenceUrl": "versions/114/pages/page-053.html#pdf-page-53"
+        }
+      ],
+      "notes": "共通作業書表，不指定單一貸款。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "title",
+          "before": "專案農貸延期還款案件申請書（甲式）",
+          "after": "專案農貸延期還款案件申請書(甲式)",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 53,
+          "evidenceUrl": "versions/114/pages/page-053.html#pdf-page-53",
+          "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+        }
+      ]
+    },
+    {
+      "formId": "form-004",
+      "sourceTitle": "專案農貸延期還款案件申請書(乙式)",
+      "displayTitle": "專案農貸延期還款案件申請書(乙式)",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "corrected",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "common-no-unique-loan",
+      "pdfPageStart": 54,
+      "pdfPageEnd": 54,
+      "printedPageStart": 52,
+      "printedPageEnd": 52,
+      "sourcePages": [
+        54
+      ],
+      "scopeGroup": null,
+      "evidence": [
+        {
+          "pdfPage": 54,
+          "printedPage": 52,
+          "evidenceUrl": "versions/114/pages/page-054.html#pdf-page-54",
+          "role": "title-and-start",
+          "headQuote": "專案農貸延期還款案件申請書(乙式)\n (「農漁會事業發展貸款」 、 「農業科技園區進駐業者優惠貸款」及「農民組織及農企業產銷經\n營及研發創新貸款」專用)\n一、申請人資料：\n姓名(名稱)  身分證字號\n或統一編號",
+          "tailQuote": "此致\n (貸款經辦機構)                            申請人(簽章)：\n中   華   民   國           年               月              日\n編號:19.1\n112.8.1起適用"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 55,
+        "nextEvidenceUrl": "versions/114/pages/page-055.html#pdf-page-55",
+        "nextHeadingQuote": "專案農貸延期還款案件審核表\n經辦機構：                                          填表日期：   年   月   日\n一、申請延期還款案件基本資料\n原\n授\n信",
+        "closingQuote": "此致\n (貸款經辦機構)                            申請人(簽章)：\n中   華   民   國           年               月              日\n編號:19.1\n112.8.1起適用",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 54,
+          "quote": "專案農貸延期還款案件申請書(乙式)",
+          "criterion": "common-form-no-unique-loan",
+          "scopeGroup": null,
+          "evidenceUrl": "versions/114/pages/page-054.html#pdf-page-54"
+        }
+      ],
+      "notes": "共通作業書表，不指定單一貸款。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "title",
+          "before": "專案農貸延期還款案件申請書（乙式）",
+          "after": "專案農貸延期還款案件申請書(乙式)",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 54,
+          "evidenceUrl": "versions/114/pages/page-054.html#pdf-page-54",
+          "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+        }
+      ]
+    },
+    {
+      "formId": "form-005",
+      "sourceTitle": "專案農貸延期還款案件審核表",
+      "displayTitle": "專案農貸延期還款案件審核表",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "common-no-unique-loan",
+      "pdfPageStart": 55,
+      "pdfPageEnd": 56,
+      "printedPageStart": 53,
+      "printedPageEnd": 54,
+      "sourcePages": [
+        55,
+        56
+      ],
+      "scopeGroup": null,
+      "evidence": [
+        {
+          "pdfPage": 55,
+          "printedPage": 53,
+          "evidenceUrl": "versions/114/pages/page-055.html#pdf-page-55",
+          "role": "title-and-start",
+          "headQuote": "專案農貸延期還款案件審核表\n經辦機構：                                          填表日期：   年   月   日\n一、申請延期還款案件基本資料\n原\n授\n信",
+          "tailQuote": "餘期限非以平均攤還方式辦理者，方須報農業部核准。\n2.借款人申請「農漁會事業發展貸款」延期還款，應由貸款經辦機構報請直轄市、縣（市）政府提供審核意見，再轉\n請農業部核准。\n編號:19.2\n112.8.1起適用"
+        },
+        {
+          "pdfPage": 56,
+          "printedPage": 54,
+          "evidenceUrl": "versions/114/pages/page-056.html#pdf-page-56",
+          "role": "continuation-and-ending",
+          "headQuote": "二、經辦機構審查意見\n審查事項 審查意見\n借款人\n還款能力\n（請說明本案借款人經濟狀況、未來還款能力調查及評估結果）\n延期還款",
+          "tailQuote": "同意展延條件依規定\n是否須報農業部同意\n□是，將本審核表及相關佐證文件函報農業部同意。\n□否，依內部程序辦理後續延期還款事宜。\n經辦人員     覈核       主任(襄理)     秘書(副理)        總幹事(經理)"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 57,
+        "nextEvidenceUrl": "versions/114/pages/page-057.html#pdf-page-57",
+        "nextHeadingQuote": "函令摘要：釋示農業貸款送請農業信用保證機構保證事宜（一）\n【行政院農業委員會98年2月24日 農授金字第0985080088號函】\n主旨：有關農業貸款送請農業信用保證機構保證事宜，請督導所轄農 (漁)會信用部確實依\n相關規定辦理，不得有說明二所揭違反法令意旨之情形，請查照。\n說明：\n一、 依農業金融法第9條規定，農業金融機構對農業用途之放款，應優先承作，對擔保能力",
+        "closingQuote": "同意展延條件依規定\n是否須報農業部同意\n□是，將本審核表及相關佐證文件函報農業部同意。\n□否，依內部程序辦理後續延期還款事宜。\n經辦人員     覈核       主任(襄理)     秘書(副理)        總幹事(經理)",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 55,
+          "quote": "專案農貸延期還款案件審核表",
+          "criterion": "common-form-no-unique-loan",
+          "scopeGroup": null,
+          "evidenceUrl": "versions/114/pages/page-055.html#pdf-page-55"
+        }
+      ],
+      "notes": "共通作業書表，不指定單一貸款。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 55,
+            "printedPageEnd": 53,
+            "sourcePages": [
+              55
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 56,
+            "printedPageEnd": 54,
+            "sourcePages": [
+              55,
+              56
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 56,
+          "evidenceUrl": "versions/114/pages/page-056.html#pdf-page-56",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-006",
+      "sourceTitle": "農機貸款申請書",
+      "displayTitle": "農機貸款申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 99,
+      "pdfPageEnd": 99,
+      "printedPageStart": 97,
+      "printedPageEnd": 97,
+      "sourcePages": [
+        99
+      ],
+      "scopeGroup": "loan:farm-machinery-loan",
+      "evidence": [
+        {
+          "pdfPage": 99,
+          "printedPage": 97,
+          "evidenceUrl": "versions/114/pages/page-099.html#pdf-page-99",
+          "role": "title-and-start",
+          "headQuote": "農機貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n 出生日期\n(設立日期)",
+          "tailQuote": "申請人(簽章)：\n中   華   民   國              年               月              日\n 備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n編號1:\n112.8.1起適用"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 100,
+        "nextEvidenceUrl": "versions/114/pages/page-100.html#pdf-page-100",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.所購置機械之機種、機型、牌型或自動化設備或投資計畫，經農業部",
+        "closingQuote": "申請人(簽章)：\n中   華   民   國              年               月              日\n 備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n編號1:\n112.8.1起適用",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 99,
+          "quote": "農機貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:farm-machinery-loan",
+          "evidenceUrl": "versions/114/pages/page-099.html#pdf-page-99"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-007",
+      "sourceTitle": "輔導農糧業經營貸款申請書",
+      "displayTitle": "輔導農糧業經營貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 106,
+      "pdfPageEnd": 107,
+      "printedPageStart": 104,
+      "printedPageEnd": 105,
+      "sourcePages": [
+        106,
+        107
+      ],
+      "scopeGroup": "loan:agri-food-business-loan",
+      "evidence": [
+        {
+          "pdfPage": 106,
+          "printedPage": 104,
+          "evidenceUrl": "versions/114/pages/page-106.html#pdf-page-106",
+          "role": "title-and-start",
+          "headQuote": "編號：2\n113.1.1起適用 輔導農糧業經營貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n 出生日期",
+          "tailQuote": "□ 週 轉 金： 金額_____________________\n＊本貸款用途不包括購買耕地。\n＊本人知悉貸後資本支出應檢附足具證據力之相關憑證 (如統一發票、收據 ..\n等)，以佐證貸款用途。\n申請人(簽章)：_____________________"
+        },
+        {
+          "pdfPage": 107,
+          "printedPage": 105,
+          "evidenceUrl": "versions/114/pages/page-107.html#pdf-page-107",
+          "role": "continuation-and-ending",
+          "headQuote": "敬請\n惠予核貸為荷\n此致\n 貸款經辦機構\n                           申請人(簽章)：________________________________\n中   華   民   國              年               月              日",
+          "tailQuote": "此致\n 貸款經辦機構\n                           申請人(簽章)：________________________________\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 108,
+        "nextEvidenceUrl": "versions/114/pages/page-108.html#pdf-page-108",
+        "nextHeadingQuote": "經辦人員          覆核           主任、襄(副)理         總幹事、經理\n註：以上簽章人員請註明日期。\n審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？",
+        "closingQuote": "此致\n 貸款經辦機構\n                           申請人(簽章)：________________________________\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 106,
+          "quote": "輔導農糧業經營貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-food-business-loan",
+          "evidenceUrl": "versions/114/pages/page-106.html#pdf-page-106"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 106,
+            "printedPageEnd": 104,
+            "sourcePages": [
+              106
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 107,
+            "printedPageEnd": 105,
+            "sourcePages": [
+              106,
+              107
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 107,
+          "evidenceUrl": "versions/114/pages/page-107.html#pdf-page-107",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-008",
+      "sourceTitle": "輔導漁業經營貸款申請書",
+      "displayTitle": "輔導漁業經營貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 117,
+      "pdfPageEnd": 118,
+      "printedPageStart": 115,
+      "printedPageEnd": 116,
+      "sourcePages": [
+        117,
+        118
+      ],
+      "scopeGroup": "loan:fishery-business-loan",
+      "evidence": [
+        {
+          "pdfPage": 117,
+          "printedPage": 115,
+          "evidenceUrl": "versions/114/pages/page-117.html#pdf-page-117",
+          "role": "title-and-start",
+          "headQuote": "編號：3\n114.10.10起適用\n輔導漁業經營貸款申請書\n一、申請人資料：\n姓名\n(名稱)",
+          "tailQuote": "□有               貸款\n                   貸款\n                   貸款，總計現欠餘額：                元。\n□無\n有無重複申貸 □有                □無"
+        },
+        {
+          "pdfPage": 118,
+          "printedPage": 116,
+          "evidenceUrl": "versions/114/pages/page-118.html#pdf-page-118",
+          "role": "continuation-and-ending",
+          "headQuote": "二、貸款金額及用途：  單位：新臺幣元\n貸款金額\n(大寫)\n新臺幣  元整 貸款期間 資本支出 年\n週 轉 金 年\n貸款用途",
+          "tailQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 119,
+        "nextEvidenceUrl": "versions/114/pages/page-119.html#pdf-page-119",
+        "nextHeadingQuote": "審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.申請人於申貸時（透過農業部漁業署漁船及船員管理資訊系統查詢） ：",
+        "closingQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 117,
+          "quote": "輔導漁業經營貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:fishery-business-loan",
+          "evidenceUrl": "versions/114/pages/page-117.html#pdf-page-117"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 117,
+            "printedPageEnd": 115,
+            "sourcePages": [
+              117
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 118,
+            "printedPageEnd": 116,
+            "sourcePages": [
+              117,
+              118
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 118,
+          "evidenceUrl": "versions/114/pages/page-118.html#pdf-page-118",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-009",
+      "sourceTitle": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+      "displayTitle": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "corrected",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 128,
+      "pdfPageEnd": 129,
+      "printedPageStart": 126,
+      "printedPageEnd": 127,
+      "sourcePages": [
+        128,
+        129
+      ],
+      "scopeGroup": "loan:livestock-poultry-loan",
+      "evidence": [
+        {
+          "pdfPage": 128,
+          "printedPage": 126,
+          "evidenceUrl": "versions/114/pages/page-128.html#pdf-page-128",
+          "role": "title-and-start",
+          "headQuote": "提升畜禽產業經營貸款(除污染防治類外)申請書\n一、申請人資料：\n姓名\n(名稱)  出生日期\n(設立日期)  身分證字號\n(統一編號)",
+          "tailQuote": "者，應於撥貸後3年內補正各該登記證書或許可證，屆期未補正者，視為未符合貸\n款資格。但屠宰場同意設立文件經農業部核准展延之期限逾撥貸後3年者，應於核\n准展延期限屆滿後6個月內補正屠宰場登記證書。\n編號:4.0\n114.10.10起適用"
+        },
+        {
+          "pdfPage": 129,
+          "printedPage": 127,
+          "evidenceUrl": "versions/114/pages/page-129.html#pdf-page-129",
+          "role": "continuation-and-ending",
+          "headQuote": "2.提升家禽產業經營類及畜牧友善生產系統類-符合雞蛋友善生產系統定義及指南之\n蛋雞飼養方式之借款人，已取得畜牧場登記證書或申辦畜牧場登記中者，應參加家\n禽禽流感保險，並於核貸日起或取得畜牧場登記證書之日起3個月內，補正保險單\n副本及保險費收據，並應連續投保至貸款清償日止 （前期保單保險期間屆滿次日起\n3個月內補正文件） 。屆期未補正者，視為違約。\n申貸專案農貸紀",
+          "tailQuote": "此致\n 貸款經辦機構\n申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 130,
+        "nextEvidenceUrl": "versions/114/pages/page-130.html#pdf-page-130",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n二、以下審查內容如有任一勾選「有」者，不符申貸資格。",
+        "closingQuote": "此致\n 貸款經辦機構\n申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 128,
+          "quote": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:livestock-poultry-loan",
+          "evidenceUrl": "versions/114/pages/page-128.html#pdf-page-128"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "title",
+          "before": "提升畜禽產業經營貸款（除污染防治類外）申請書",
+          "after": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 128,
+          "evidenceUrl": "versions/114/pages/page-128.html#pdf-page-128",
+          "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+        },
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 128,
+            "printedPageEnd": 126,
+            "sourcePages": [
+              128
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 129,
+            "printedPageEnd": 127,
+            "sourcePages": [
+              128,
+              129
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 129,
+          "evidenceUrl": "versions/114/pages/page-129.html#pdf-page-129",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-010",
+      "sourceTitle": "提升畜禽產業經營貸款申請書",
+      "sourceSubtitle": "（畜牧污染防治類專用）",
+      "displayTitle": "提升畜禽產業經營貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 131,
+      "pdfPageEnd": 131,
+      "printedPageStart": 129,
+      "printedPageEnd": 129,
+      "sourcePages": [
+        131
+      ],
+      "scopeGroup": "loan:livestock-poultry-loan",
+      "evidence": [
+        {
+          "pdfPage": 131,
+          "printedPage": 129,
+          "evidenceUrl": "versions/114/pages/page-131.html#pdf-page-131",
+          "role": "title-and-start",
+          "headQuote": "提升畜禽產業經營貸款申請書\n（畜牧污染防治類專用）\n（提升畜禽產業經營貸款要點第13點第2款第1目（1）、第2目（1））   112.8.1起適用\n申\n請\n人",
+          "tailQuote": "全國農業金庫\n         申請人           (簽名蓋章)\n中  華  民  國                  年                月               日\n註：本案尚須依徵授信程序審查，並經授信審議委員會審議。\n編號:4.1"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 132,
+        "nextEvidenceUrl": "versions/114/pages/page-132.html#pdf-page-132",
+        "nextHeadingQuote": "提升畜禽產業經營貸款\n畜牧場污染防治設備計畫書\n（提升畜禽產業經營貸款要點第13點第2款第1目（1））\n一、基本資料 (有待選處 “□”，請勾選)\n畜牧場名稱：                     負責人姓名：   聯絡電話：\n場址(申貸設備安裝地)：",
+        "closingQuote": "全國農業金庫\n         申請人           (簽名蓋章)\n中  華  民  國                  年                月               日\n註：本案尚須依徵授信程序審查，並經授信審議委員會審議。\n編號:4.1",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 131,
+          "quote": "提升畜禽產業經營貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:livestock-poultry-loan",
+          "evidenceUrl": "versions/114/pages/page-131.html#pdf-page-131"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "sourceSubtitle",
+          "before": null,
+          "after": "（畜牧污染防治類專用）",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 131,
+          "evidenceUrl": "versions/114/pages/page-131.html#pdf-page-131",
+          "reason": "補上來源可見副題（不改寫主題名）。"
+        }
+      ]
+    },
+    {
+      "formId": "form-011",
+      "sourceTitle": "農民經營及產銷班貸款申請書",
+      "displayTitle": "農民經營及產銷班貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 152,
+      "pdfPageEnd": 153,
+      "printedPageStart": 150,
+      "printedPageEnd": 151,
+      "sourcePages": [
+        152,
+        153
+      ],
+      "scopeGroup": "loan:farmer-production-group-loan",
+      "evidence": [
+        {
+          "pdfPage": 152,
+          "printedPage": 150,
+          "evidenceUrl": "versions/114/pages/page-152.html#pdf-page-152",
+          "role": "title-and-start",
+          "headQuote": "編號：5\n114.10.10起適用\n農民經營及產銷班貸款申請書\n一、申請人資料：\n姓名  出生\n日期",
+          "tailQuote": "□如有興建固定設施者，應另檢附土地作農業設施容許使用證明。\n□林業類貸款(應檢附下列證明文件之一)：\n□1.申請人本人依森林登記規則取得森林登記證；森林位於非林業用地無法取得森林登記\n證者，應出具地方林業主管機關核發受政府獎勵造林證明。\n□2.申請人與政府所簽訂之國、公有林租地造林契約書。"
+        },
+        {
+          "pdfPage": 153,
+          "printedPage": 151,
+          "evidenceUrl": "versions/114/pages/page-153.html#pdf-page-153",
+          "role": "continuation-and-ending",
+          "headQuote": "□3.申請人出具之林產物國產來源證明文件。\n□如為興建林業設施者，應另檢附土地作林業設施容許使用證明(由直轄市、縣（市）政府出\n具公函證明)。\n□養殖類貸款:申請人之□養殖漁業登記證(□申辦養殖漁業登記中者，應檢附申請人本人之主\n管機關核准興建水產養殖設施之農業用地作農業設施容許使用同意書)、□區劃\n漁業權執照、□專用漁業權入漁證明文件或□其他依法令許可之養殖證明文件。",
+          "tailQuote": "此致\n 貸款經辦機構\n                                 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 154,
+        "nextEvidenceUrl": "versions/114/pages/page-154.html#pdf-page-154",
+        "nextHeadingQuote": "審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.申請人如從事農業外另有兼職，其所支領之年薪資所得加計執行業",
+        "closingQuote": "此致\n 貸款經辦機構\n                                 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 152,
+          "quote": "農民經營及產銷班貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:farmer-production-group-loan",
+          "evidenceUrl": "versions/114/pages/page-152.html#pdf-page-152"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 152,
+            "printedPageEnd": 150,
+            "sourcePages": [
+              152
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 153,
+            "printedPageEnd": 151,
+            "sourcePages": [
+              152,
+              153
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 153,
+          "evidenceUrl": "versions/114/pages/page-153.html#pdf-page-153",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-012",
+      "sourceTitle": "農業科技園區進駐業者優惠貸款申請書",
+      "displayTitle": "農業科技園區進駐業者優惠貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 163,
+      "pdfPageEnd": 164,
+      "printedPageStart": 161,
+      "printedPageEnd": 162,
+      "sourcePages": [
+        163,
+        164
+      ],
+      "scopeGroup": "loan:agri-tech-park-loan",
+      "evidence": [
+        {
+          "pdfPage": 163,
+          "printedPage": 161,
+          "evidenceUrl": "versions/114/pages/page-163.html#pdf-page-163",
+          "role": "title-and-start",
+          "headQuote": "編號：6\n113.1.1起適用 農業科技園區進駐業者優惠貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n身分證字號",
+          "tailQuote": "(一)資本支出  金額________________________\n(二)週 轉 金  金額________________________ 動用方式：□循環  □非循環\n*資本支出貸款額度以實際所需金額百分之七十為限。\n*資本支出貸款應以支應園區內建設為主 ;用於園區外相關資本支出貸款\n部分，其支出比率以資本支出貸款百分之三十為限。"
+        },
+        {
+          "pdfPage": 164,
+          "printedPage": 162,
+          "evidenceUrl": "versions/114/pages/page-164.html#pdf-page-164",
+          "role": "continuation-and-ending",
+          "headQuote": "*本人知悉貸後資本支出應檢附相關支付憑證 （統一發票 、 營利事業收據或\n進口完稅證明） ，以佐證貸款用途。\n*經農業部專案提高貸款部分，限於支應農業科技園區內興建廠房之資本\n支出。\n申請人(簽章)：_____________________\n敬請",
+          "tailQuote": "此致\n貸款經辦機構\n 申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 165,
+        "nextEvidenceUrl": "versions/114/pages/page-165.html#pdf-page-165",
+        "nextHeadingQuote": "經辦人員  覆核  主任、襄(副)理  總幹事、經理\n註：以上簽章人員請註明日期。\n審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？",
+        "closingQuote": "此致\n貸款經辦機構\n 申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 163,
+          "quote": "農業科技園區進駐業者優惠貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-tech-park-loan",
+          "evidenceUrl": "versions/114/pages/page-163.html#pdf-page-163"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 163,
+            "printedPageEnd": 161,
+            "sourcePages": [
+              163
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 164,
+            "printedPageEnd": 162,
+            "sourcePages": [
+              163,
+              164
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 164,
+          "evidenceUrl": "versions/114/pages/page-164.html#pdf-page-164",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-013",
+      "sourceTitle": "農家綜合貸款申請書",
+      "displayTitle": "農家綜合貸款申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 174,
+      "pdfPageEnd": 174,
+      "printedPageStart": 172,
+      "printedPageEnd": 172,
+      "sourcePages": [
+        174
+      ],
+      "scopeGroup": "loan:farm-household-loan",
+      "evidence": [
+        {
+          "pdfPage": 174,
+          "printedPage": 172,
+          "evidenceUrl": "versions/114/pages/page-174.html#pdf-page-174",
+          "role": "title-and-start",
+          "headQuote": "112.8.1起適用\n編號:8.0 農家綜合貸款申請書\n一、申請人資料：\n姓名  出生\n日期\n 身分證",
+          "tailQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 175,
+        "nextEvidenceUrl": "versions/114/pages/page-175.html#pdf-page-175",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n符合該項專案農貸之貸款對象規定？\n二、以下審查內容如有任一勾選「有」者，不符申貸資格。\n審查內容 有 無",
+        "closingQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 174,
+          "quote": "農家綜合貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:farm-household-loan",
+          "evidenceUrl": "versions/114/pages/page-174.html#pdf-page-174"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-014",
+      "sourceTitle": "農漁會事業發展貸款申請書",
+      "displayTitle": "農漁會事業發展貸款申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 183,
+      "pdfPageEnd": 183,
+      "printedPageStart": 181,
+      "printedPageEnd": 181,
+      "sourcePages": [
+        183
+      ],
+      "scopeGroup": "loan:association-development-loan",
+      "evidence": [
+        {
+          "pdfPage": 183,
+          "printedPage": 181,
+          "evidenceUrl": "versions/114/pages/page-183.html#pdf-page-183",
+          "role": "title-and-start",
+          "headQuote": "農漁會事業發展貸款申請書\n一、申請人資料：\n農(漁)\n會名稱\n統一\n編號",
+          "tailQuote": "                申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n112.8.1起適用\n編號:9"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 184,
+        "nextEvidenceUrl": "versions/114/pages/page-184.html#pdf-page-184",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.無以內部融資方式或交互授信方式辦理？",
+        "closingQuote": "                申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n112.8.1起適用\n編號:9",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 183,
+          "quote": "農漁會事業發展貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:association-development-loan",
+          "evidenceUrl": "versions/114/pages/page-183.html#pdf-page-183"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-015",
+      "sourceTitle": "造林貸款申請書",
+      "displayTitle": "造林貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 190,
+      "pdfPageEnd": 191,
+      "printedPageStart": 188,
+      "printedPageEnd": 189,
+      "sourcePages": [
+        190,
+        191
+      ],
+      "scopeGroup": "loan:afforestation-loan",
+      "evidence": [
+        {
+          "pdfPage": 190,
+          "printedPage": 188,
+          "evidenceUrl": "versions/114/pages/page-190.html#pdf-page-190",
+          "role": "title-and-start",
+          "headQuote": "造林貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n 出生日期\n(設立日期)",
+          "tailQuote": "＊本人知悉貸後資本支出應檢附足具證據力之相關憑證 (如統一發票、收據..\n等)，以佐證貸款用途。\n                               申請人(簽章)：_____________________\n編號 10.0\n107.4.16 起適用"
+        },
+        {
+          "pdfPage": 191,
+          "printedPage": 189,
+          "evidenceUrl": "versions/114/pages/page-191.html#pdf-page-191",
+          "role": "continuation-and-ending",
+          "headQuote": "敬請\n惠予核貸為荷\n此致\n 貸款經辦機構\n  申請人(簽章)： _____________________\n中   華  民   國  年               月    日",
+          "tailQuote": "此致\n 貸款經辦機構\n  申請人(簽章)： _____________________\n中   華  民   國  年               月    日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 192,
+        "nextEvidenceUrl": "versions/114/pages/page-192.html#pdf-page-192",
+        "nextHeadingQuote": "審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n二、以下審查內容如有任一勾選「有」者，不符申貸資格。",
+        "closingQuote": "此致\n 貸款經辦機構\n  申請人(簽章)： _____________________\n中   華  民   國  年               月    日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 190,
+          "quote": "造林貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:afforestation-loan",
+          "evidenceUrl": "versions/114/pages/page-190.html#pdf-page-190"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 190,
+            "printedPageEnd": 188,
+            "sourcePages": [
+              190
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 191,
+            "printedPageEnd": 189,
+            "sourcePages": [
+              190,
+              191
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 191,
+          "evidenceUrl": "versions/114/pages/page-191.html#pdf-page-191",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-016",
+      "sourceTitle": "造林貸款土地勘查申請書",
+      "displayTitle": "造林貸款土地勘查申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 193,
+      "pdfPageEnd": 193,
+      "printedPageStart": 191,
+      "printedPageEnd": 191,
+      "sourcePages": [
+        193
+      ],
+      "scopeGroup": "loan:afforestation-loan",
+      "evidence": [
+        {
+          "pdfPage": 193,
+          "printedPage": 191,
+          "evidenceUrl": "versions/114/pages/page-193.html#pdf-page-193",
+          "role": "title-and-start",
+          "headQuote": "造林貸款土地勘查申請書\n（造林貸款要點第12 點第 1 項）\n申請人\n□農民團體 名稱：法定代理人：\n地址：\n聯絡電話：",
+          "tailQuote": "統 一 編 號  ：\n中 華 民 國 年 月 日\n編號：10.1\n核對土地有關證件\n受理機關核章"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 194,
+        "nextEvidenceUrl": "versions/114/pages/page-194.html#pdf-page-194",
+        "nextHeadingQuote": "造林貸款土地勘查報告表\n（造林貸款要點第12 點第 2 項）\n申\n請\n人\n□農民團體",
+        "closingQuote": "統 一 編 號  ：\n中 華 民 國 年 月 日\n編號：10.1\n核對土地有關證件\n受理機關核章",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 193,
+          "quote": "造林貸款土地勘查申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:afforestation-loan",
+          "evidenceUrl": "versions/114/pages/page-193.html#pdf-page-193"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-017",
+      "sourceTitle": "小地主大專業農貸款申請書",
+      "displayTitle": "小地主大專業農貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 202,
+      "pdfPageEnd": 203,
+      "printedPageStart": 200,
+      "printedPageEnd": 201,
+      "sourcePages": [
+        202,
+        203
+      ],
+      "scopeGroup": "loan:small-landlord-professional-farmer-loan",
+      "evidence": [
+        {
+          "pdfPage": 202,
+          "printedPage": 200,
+          "evidenceUrl": "versions/114/pages/page-202.html#pdf-page-202",
+          "role": "title-and-start",
+          "headQuote": "編號:11.0\n112.8.1起適用\n小地主大專業農貸款申請書\n一、申請人資料：\n姓名\n(名稱)",
+          "tailQuote": "□週轉金    金額__________________________\n*經營貸款類資本支出之核貸額度不得超過實際投資金額90%。\n*本人知悉貸後資本支出應檢附足具證據力之相關憑證(如統一發票、收\n據..等)，以佐證貸款用途。\n申請人(簽章)：__________________"
+        },
+        {
+          "pdfPage": 203,
+          "printedPage": 201,
+          "evidenceUrl": "versions/114/pages/page-203.html#pdf-page-203",
+          "role": "continuation-and-ending",
+          "headQuote": "敬請\n惠予核貸為荷\n此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日",
+          "tailQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 204,
+        "nextEvidenceUrl": "versions/114/pages/page-204.html#pdf-page-204",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.本貸款對象為農業產銷班者：(貸款對象非農業產銷班者免填)",
+        "closingQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 202,
+          "quote": "小地主大專業農貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:small-landlord-professional-farmer-loan",
+          "evidenceUrl": "versions/114/pages/page-202.html#pdf-page-202"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 202,
+            "printedPageEnd": 200,
+            "sourcePages": [
+              202
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 203,
+            "printedPageEnd": 201,
+            "sourcePages": [
+              202,
+              203
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 203,
+          "evidenceUrl": "versions/114/pages/page-203.html#pdf-page-203",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-018",
+      "sourceTitle": "農業節能減碳貸款申請書",
+      "displayTitle": "農業節能減碳貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 207,
+      "pdfPageEnd": 208,
+      "printedPageStart": 205,
+      "printedPageEnd": 206,
+      "sourcePages": [
+        207,
+        208
+      ],
+      "scopeGroup": "loan:agri-energy-saving-loan",
+      "evidence": [
+        {
+          "pdfPage": 207,
+          "printedPage": 205,
+          "evidenceUrl": "versions/114/pages/page-207.html#pdf-page-207",
+          "role": "title-and-start",
+          "headQuote": "農業節能減碳貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n 出生日期\n(設立日期)",
+          "tailQuote": "*本人知悉貸後應檢附足具證據力之相關憑證(如統一發票、收據..等)，以佐證\n貸款用途。\n                               申請人(簽章)：_____________________\n113.8.20 起適用\n編號 12:"
+        },
+        {
+          "pdfPage": 208,
+          "printedPage": 206,
+          "evidenceUrl": "versions/114/pages/page-208.html#pdf-page-208",
+          "role": "continuation-and-ending",
+          "headQuote": "敬請\n惠予核貸為荷\n此致\n 貸款經辦機構\n 申請人(簽章)：__________________________\n中  華   民  國  年  月  日",
+          "tailQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：__________________________\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 209,
+        "nextEvidenceUrl": "versions/114/pages/page-209.html#pdf-page-209",
+        "nextHeadingQuote": "審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n二、以下審查內容如有任一勾選「有」者，不符申貸資格。",
+        "closingQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：__________________________\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 207,
+          "quote": "農業節能減碳貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-energy-saving-loan",
+          "evidenceUrl": "versions/114/pages/page-207.html#pdf-page-207"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 207,
+            "printedPageEnd": 205,
+            "sourcePages": [
+              207
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 208,
+            "printedPageEnd": 206,
+            "sourcePages": [
+              207,
+              208
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 208,
+          "evidenceUrl": "versions/114/pages/page-208.html#pdf-page-208",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-019",
+      "sourceTitle": "青壯年農民從農貸款申請書",
+      "displayTitle": "青壯年農民從農貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 215,
+      "pdfPageEnd": 217,
+      "printedPageStart": 213,
+      "printedPageEnd": 215,
+      "sourcePages": [
+        215,
+        216,
+        217
+      ],
+      "scopeGroup": "loan:young-farmer-loan",
+      "evidence": [
+        {
+          "pdfPage": 215,
+          "printedPage": 213,
+          "evidenceUrl": "versions/114/pages/page-215.html#pdf-page-215",
+          "role": "title-and-start",
+          "headQuote": "編號：13\n114.10.10起適用\n青壯年農民從農貸款申請書\n一、申請人資料：\n姓名  出生\n日期  身分證",
+          "tailQuote": "                     貸款\n                     貸款，總計現欠餘額：                  元。\n□無\n有無重複申貸 □有       □無\n二、申貸文件："
+        },
+        {
+          "pdfPage": 216,
+          "printedPage": 214,
+          "evidenceUrl": "versions/114/pages/page-216.html#pdf-page-216",
+          "role": "continuation-and-ending",
+          "headQuote": "□作物類貸款(應檢附下列證明文件之一)：\n□1.申請人本人或配偶之土地登記簿謄本。\n□2.農地所有權人之農地同意使用書、土地登記簿謄本。\n□3.申請人與農地所有權人所訂之租約。\n□4.申請人屬從事農業工作農民申請參加農民健康保險認定標準及資格審查辦法第2條第1\n項第4款第4目之實際耕作者，其農業用地所在地之農業部各區農業改良場核發之實際",
+          "tailQuote": "□農產運銷貸款：(如蜂農，屬申請此類貸款)\n□興建固定設施者：\n□1.興建於農業用地者，應檢附農業設施容許使用同意書及建築執照(□依法免申請建築執\n照者免附)。\n□2.興建於非農業用地者，應檢附建築執照。"
+        },
+        {
+          "pdfPage": 217,
+          "printedPage": 215,
+          "evidenceUrl": "versions/114/pages/page-217.html#pdf-page-217",
+          "role": "continuation-and-ending",
+          "headQuote": "三、貸款金額及用途：                                     單位：新臺幣元\n貸款金額\n(大寫) 新臺幣                      元整 貸款期間 資本支出        年\n週 轉 金        年\n貸款用途\n□資本支出：金額_____________________",
+          "tailQuote": "中   華   民   國              年               月              日\n備註：1.其他徵授信資料請依貸款經辦機構相關規定辦理。\n2.申請人之貸款利率適用辦理政策性農業專案貸款辦法第23條附表1第2點\n第1款者，於適用該貸款利率期間，應於貸款經辦機構通知辦理查驗之日\n前，填具農業經營現況申報表送貸款經辦機構。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 218,
+        "nextEvidenceUrl": "versions/114/pages/page-218.html#pdf-page-218",
+        "nextHeadingQuote": "審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.申貸漁業經營相關貸款者於貸款時（透過農業部漁業署漁船及船員",
+        "closingQuote": "中   華   民   國              年               月              日\n備註：1.其他徵授信資料請依貸款經辦機構相關規定辦理。\n2.申請人之貸款利率適用辦理政策性農業專案貸款辦法第23條附表1第2點\n第1款者，於適用該貸款利率期間，應於貸款經辦機構通知辦理查驗之日\n前，填具農業經營現況申報表送貸款經辦機構。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 215,
+          "quote": "青壯年農民從農貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:young-farmer-loan",
+          "evidenceUrl": "versions/114/pages/page-215.html#pdf-page-215"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 215,
+            "printedPageEnd": 213,
+            "sourcePages": [
+              215
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 217,
+            "printedPageEnd": 215,
+            "sourcePages": [
+              215,
+              216,
+              217
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 217,
+          "evidenceUrl": "versions/114/pages/page-217.html#pdf-page-217",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-020",
+      "sourceTitle": "休閒農場貸款申請書",
+      "displayTitle": "休閒農場貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 227,
+      "pdfPageEnd": 228,
+      "printedPageStart": 225,
+      "printedPageEnd": 226,
+      "sourcePages": [
+        227,
+        228
+      ],
+      "scopeGroup": "loan:leisure-farm-loan",
+      "evidence": [
+        {
+          "pdfPage": 227,
+          "printedPage": 225,
+          "evidenceUrl": "versions/114/pages/page-227.html#pdf-page-227",
+          "role": "title-and-start",
+          "headQuote": "編號:14\n112.8.1起適用\n休閒農場貸款申請書\n一、申請人資料：\n姓名\n(名稱)",
+          "tailQuote": "第23款者。\n＊本貸款用途不包括購地。\n＊本人知悉貸後資本支出應檢附足具證據力之相關憑證 (如統一發票、收據..\n等)，以佐證貸款用途。\n                               申請人(簽章)："
+        },
+        {
+          "pdfPage": 228,
+          "printedPage": 226,
+          "evidenceUrl": "versions/114/pages/page-228.html#pdf-page-228",
+          "role": "continuation-and-ending",
+          "headQuote": "敬請\n惠予核貸為荷\n此致\n貸款經辦機構\n申請人(簽章)：\n中  華   民  國  年  月  日",
+          "tailQuote": "此致\n貸款經辦機構\n申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 229,
+        "nextEvidenceUrl": "versions/114/pages/page-229.html#pdf-page-229",
+        "nextHeadingQuote": "經辦人員          覆核           主任、襄(副)理         總幹事、經理\n註：以上簽章人員請註明日期。\n審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？",
+        "closingQuote": "此致\n貸款經辦機構\n申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 227,
+          "quote": "休閒農場貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:leisure-farm-loan",
+          "evidenceUrl": "versions/114/pages/page-227.html#pdf-page-227"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 227,
+            "printedPageEnd": 225,
+            "sourcePages": [
+              227
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 228,
+            "printedPageEnd": 226,
+            "sourcePages": [
+              227,
+              228
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 228,
+          "evidenceUrl": "versions/114/pages/page-228.html#pdf-page-228",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-021",
+      "sourceTitle": "農民組織及農企業產銷經營及研發創新貸款申請書",
+      "displayTitle": "農民組織及農企業產銷經營及研發創新貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 234,
+      "pdfPageEnd": 235,
+      "printedPageStart": 232,
+      "printedPageEnd": 233,
+      "sourcePages": [
+        234,
+        235
+      ],
+      "scopeGroup": "loan:agri-organization-enterprise-innovation-loan",
+      "evidence": [
+        {
+          "pdfPage": 234,
+          "printedPage": 232,
+          "evidenceUrl": "versions/114/pages/page-234.html#pdf-page-234",
+          "role": "title-and-start",
+          "headQuote": "編號：15.0\n114.10.10起適用\n農民組織及農企業產銷經營及研發創新貸款申請書\n一、申請人資料：\n名稱  統一編號\n負責人",
+          "tailQuote": "□有               貸款 ，                貸款\n                   貸款，總計現欠餘額：                元。\n□無\n有無重複\n申貸 □有       □無"
+        },
+        {
+          "pdfPage": 235,
+          "printedPage": 233,
+          "evidenceUrl": "versions/114/pages/page-235.html#pdf-page-235",
+          "role": "continuation-and-ending",
+          "headQuote": "二、申貸文件：\n□1.檢具農業部核定之經營計畫書。\n□2.獲農業部補助執行業界科技專案計畫、智慧農業業界參與補助計畫或雲世代農業數位轉型\n業界參與計畫證明文件。\n□3.獲農業部科技農企業菁創獎得獎，或其他部會創新研發等競賽獎項證明文件。\n□4.進駐或曾進駐農業部創新育成中心或財團法人農業科技研究院創新育成中心證明文件。",
+          "tailQuote": "此致\n 貸款經辦機構\n申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 236,
+        "nextEvidenceUrl": "versions/114/pages/page-236.html#pdf-page-236",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人申請之資金用途符合該貸款項目貸款用途規定？\n3.申貸漁業經營相關貸款者於貸款時（透過農業部漁業署漁船及船員",
+        "closingQuote": "此致\n 貸款經辦機構\n申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 234,
+          "quote": "農民組織及農企業產銷經營及研發創新貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-organization-enterprise-innovation-loan",
+          "evidenceUrl": "versions/114/pages/page-234.html#pdf-page-234"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 234,
+            "printedPageEnd": 232,
+            "sourcePages": [
+              234
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 235,
+            "printedPageEnd": 233,
+            "sourcePages": [
+              234,
+              235
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 235,
+          "evidenceUrl": "versions/114/pages/page-235.html#pdf-page-235",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-022",
+      "sourceTitle": "農民組織及農企業天然災害復耕復建貸款申請書",
+      "displayTitle": "農民組織及農企業天然災害復耕復建貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 247,
+      "pdfPageEnd": 248,
+      "printedPageStart": 245,
+      "printedPageEnd": 246,
+      "sourcePages": [
+        247,
+        248
+      ],
+      "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+      "evidence": [
+        {
+          "pdfPage": 247,
+          "printedPage": 245,
+          "evidenceUrl": "versions/114/pages/page-247.html#pdf-page-247",
+          "role": "title-and-start",
+          "headQuote": "農民組織及農企業天然災害復耕復建貸款申請書\n一、申請人資料：\n名稱  統一編號\n負責人\n(代表人)\n 負責人身分",
+          "tailQuote": "□ 資本支出： 金額_____________________\n□ 週轉金：金額_____________________\n*本人知悉貸後資本支出應檢附相關支付憑證 （統一發票 、 營利事業收據\n114.10.10修正版\n編號:16.0"
+        },
+        {
+          "pdfPage": 248,
+          "printedPage": 246,
+          "evidenceUrl": "versions/114/pages/page-248.html#pdf-page-248",
+          "role": "continuation-and-ending",
+          "headQuote": "或進口完稅證明） ，以佐證貸款用途。\n申請人(簽章)：_____________________\n敬請\n惠予核貸為荷\n此致\n貸款經辦機構",
+          "tailQuote": "此致\n貸款經辦機構\n申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 249,
+        "nextEvidenceUrl": "versions/114/pages/page-249.html#pdf-page-249",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.申請人(企業)是否符合中小企業認定標準所稱之中小企業?\n3.申請人申請之資金用途符合該貸款項目貸款用途規定？",
+        "closingQuote": "此致\n貸款經辦機構\n申請人(簽章)：\n中  華   民  國  年  月  日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 247,
+          "quote": "農民組織及農企業天然災害復耕復建貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+          "evidenceUrl": "versions/114/pages/page-247.html#pdf-page-247"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 247,
+            "printedPageEnd": 245,
+            "sourcePages": [
+              247
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 248,
+            "printedPageEnd": 246,
+            "sourcePages": [
+              247,
+              248
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 248,
+          "evidenceUrl": "versions/114/pages/page-248.html#pdf-page-248",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-023",
+      "sourceTitle": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)",
+      "displayTitle": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕復建貸款」專用)",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "corrected",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "corrected",
+      "pdfPageStart": 251,
+      "pdfPageEnd": 252,
+      "printedPageStart": 249,
+      "printedPageEnd": 250,
+      "sourcePages": [
+        251,
+        252
+      ],
+      "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+      "evidence": [
+        {
+          "pdfPage": 251,
+          "printedPage": 249,
+          "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+          "role": "title-and-start",
+          "headQuote": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)\n一、基本資料(請申請人填寫)\n災 害 名 稱  申 請 日 期     年   月   日\n名      稱  統一編號\n住      址  電      話",
+          "tailQuote": "□大型定置網類(□全毀整組換新/重佈□半毀部分修復/\n重佈)□其他定置網類\n114.9.5 修正版\n(適用於 114.7.7 以後\n發生之天然災害"
+        },
+        {
+          "pdfPage": 252,
+          "printedPage": 250,
+          "evidenceUrl": "versions/114/pages/page-252.html#pdf-page-252",
+          "role": "continuation-and-ending",
+          "headQuote": "【在漁港區域漁船】\n□全毀(新建漁船，含舢舨)□半毀(修復漁船，含舢舨)\n【在漁港區域漁筏】\n□全毀(新建漁筏)□半毀(修復漁筏)\n畜\n牧",
+          "tailQuote": "或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農民組織及農企業天然災害復耕復建貸款」 ，應於本證明書核發\n之翌日起30個工作日內 ， 檢具本證明書、農業天然災害復耕復建計畫書 、 農民\n組織或農企業登記證明文件、其代表人或負責人之身分證明文件及其他貸款\n應具備文件，向貸款經辦機構提出申請。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 253,
+        "nextEvidenceUrl": "versions/114/pages/page-253.html#pdf-page-253",
+        "nextHeadingQuote": "農業保險貸款要點\n中華民國 106 年 6 月 5 日行政院農業委員會農金字第 1065084127A 號令訂定發布全文\n16 點；並自 106 年 6 月9 日生效\n中華民國 110 年 1 月 11 日行政院農業委員會農授金字第 1105084018B 號令修正第 11\n點；並自 110 年 1 月 11 日生效\n一、 行政院農業委員會(以下簡稱農委會)為提高農(漁)業者參加農業保險意願，以穩定",
+        "closingQuote": "或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農民組織及農企業天然災害復耕復建貸款」 ，應於本證明書核發\n之翌日起30個工作日內 ， 檢具本證明書、農業天然災害復耕復建計畫書 、 農民\n組織或農企業登記證明文件、其代表人或負責人之身分證明文件及其他貸款\n應具備文件，向貸款經辦機構提出申請。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 251,
+          "quote": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+          "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "title",
+          "before": "農業天然災害受災證明書（復耕復建貸款用）",
+          "after": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕復建貸款」專用)",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 251,
+          "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+          "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+        },
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 251,
+            "printedPageEnd": 249,
+            "sourcePages": [
+              251
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 252,
+            "printedPageEnd": 250,
+            "sourcePages": [
+              251,
+              252
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 252,
+          "evidenceUrl": "versions/114/pages/page-252.html#pdf-page-252",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        },
+        {
+          "field": "scopeGroup",
+          "before": null,
+          "after": "loan:agri-organization-disaster-recovery-loan",
+          "severity": "P1 RELATION ERROR",
+          "pdfPage": 251,
+          "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+          "reason": "本表題名直接寫出貸款專用名稱；末頁備註另有同名申貸交叉引用。"
+        }
+      ],
+      "dossier": {
+        "formId": "form-023",
+        "formalTitle": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)",
+        "pdfPage": 251,
+        "printedPage": 249,
+        "previousPage": {
+          "pdfPage": 250,
+          "evidenceUrl": "versions/114/pages/page-250.html#pdf-page-250",
+          "headQuote": "農業天然災害復耕復建計畫書\n（農民組織及農企業天然災害復耕復建貸款專用）\n                                                                        105.3.22 修正版\n一、申請人基本資料\n名稱  統一編號\n負責人",
+          "tailQuote": "    年  月/  年  月/  年  月\n年  月/  年  月/  年  月\n合          計\n申請人簽章：                                 申請日期：      年    月    日\n編號:16.1",
+          "belongsToSameForm": false
+        },
+        "currentPage": {
+          "pdfPage": 251,
+          "printedPage": 249,
+          "evidenceUrl": "versions/114/pages/page-251.html#pdf-page-251",
+          "role": "title-and-start",
+          "headQuote": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)\n一、基本資料(請申請人填寫)\n災 害 名 稱  申 請 日 期     年   月   日\n名      稱  統一編號\n住      址  電      話",
+          "tailQuote": "□大型定置網類(□全毀整組換新/重佈□半毀部分修復/\n重佈)□其他定置網類\n114.9.5 修正版\n(適用於 114.7.7 以後\n發生之天然災害"
+        },
+        "nextPage": {
+          "pdfPage": 252,
+          "printedPage": 250,
+          "evidenceUrl": "versions/114/pages/page-252.html#pdf-page-252",
+          "role": "continuation-and-ending",
+          "headQuote": "【在漁港區域漁船】\n□全毀(新建漁船，含舢舨)□半毀(修復漁船，含舢舨)\n【在漁港區域漁筏】\n□全毀(新建漁筏)□半毀(修復漁筏)\n畜\n牧",
+          "tailQuote": "或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農民組織及農企業天然災害復耕復建貸款」 ，應於本證明書核發\n之翌日起30個工作日內 ， 檢具本證明書、農業天然災害復耕復建計畫書 、 農民\n組織或農企業登記證明文件、其代表人或負責人之身分證明文件及其他貸款\n應具備文件，向貸款經辦機構提出申請。",
+          "continuesSameForm": true
+        },
+        "nextBoundary": {
+          "nextPdfPage": 253,
+          "nextEvidenceUrl": "versions/114/pages/page-253.html#pdf-page-253",
+          "nextHeadingQuote": "農業保險貸款要點\n中華民國 106 年 6 月 5 日行政院農業委員會農金字第 1065084127A 號令訂定發布全文\n16 點；並自 106 年 6 月9 日生效\n中華民國 110 年 1 月 11 日行政院農業委員會農授金字第 1105084018B 號令修正第 11\n點；並自 110 年 1 月 11 日生效\n一、 行政院農業委員會(以下簡稱農委會)為提高農(漁)業者參加農業保險意願，以穩定",
+          "closingQuote": "或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農民組織及農企業天然災害復耕復建貸款」 ，應於本證明書核發\n之翌日起30個工作日內 ， 檢具本證明書、農業天然災害復耕復建計畫書 、 農民\n組織或農企業登記證明文件、其代表人或負責人之身分證明文件及其他貸款\n應具備文件，向貸款經辦機構提出申請。",
+          "method": "visual-field-continuity-and-explicit-next-heading",
+          "includedNextForm": false
+        },
+        "tocNode": {
+          "id": "agri-organization-disaster-recovery-loan",
+          "order": 34,
+          "level": 4,
+          "title": "16. 農民組織及農企業天然災害復耕復建貸款要點",
+          "kind": "loan",
+          "printedPage": 242,
+          "pdfPage": 244,
+          "sourceTocPdfPage": 1
+        },
+        "explicitLoanName": "農民組織及農企業天然災害復耕復建貸款",
+        "explicitSectionName": "農民組織及農企業天然災害復耕復建貸款要點",
+        "directCrossReference": {
+          "pdfPage": 252,
+          "quote": "或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農民組織及農企業天然災害復耕復建貸款」 ，應於本證明書核發\n之翌日起30個工作日內 ， 檢具本證明書、農業天然災害復耕復建計畫書 、 農民\n組織或農企業登記證明文件、其代表人或負責人之身分證明文件及其他貸款\n應具備文件，向貸款經辦機構提出申請。"
+        },
+        "candidateScopeGroup": "loan:agri-organization-disaster-recovery-loan",
+        "supportingEvidence": [
+          "P.251題名直接寫出申貸「農民組織及農企業天然災害復耕復建貸款」專用。",
+          "P.252備註再次指名申請同一貸款，並引用本證明書及計畫書。"
+        ],
+        "opposingEvidence": [
+          "主題名「農業天然災害受災證明書」與form-027相同，不能僅靠短名或相鄰頁歸屬。"
+        ],
+        "finalStatus": "verified-with-correction",
+        "decisionCriterion": "A-form-explicit-loan-name",
+        "requiresHumanReview": false
+      }
+    },
+    {
+      "formId": "form-024",
+      "sourceTitle": "農業保險貸款申請書",
+      "displayTitle": "農業保險貸款申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 254,
+      "pdfPageEnd": 254,
+      "printedPageStart": 252,
+      "printedPageEnd": 252,
+      "sourcePages": [
+        254
+      ],
+      "scopeGroup": "loan:agricultural-insurance-loan",
+      "evidence": [
+        {
+          "pdfPage": 254,
+          "printedPage": 252,
+          "evidenceUrl": "versions/114/pages/page-254.html#pdf-page-254",
+          "role": "title-and-start",
+          "headQuote": "農業保險貸款申請書\n一、申請人資料：\n姓名\n(名稱)\n 出生日期\n(設立日期)",
+          "tailQuote": "備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n 編號:17-1\n110.1.1 起適用\n107.4.16 起適用\n定"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 255,
+        "nextEvidenceUrl": "versions/114/pages/page-255.html#pdf-page-255",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n符合該項專案農貸之貸款對象規定？\n二、以下審查內容如有任一勾選「有」者，不符申貸資格。\n審查內容 有 無",
+        "closingQuote": "備註：其他徵授信資料請依貸款經辦機構相關規定辦理\n 編號:17-1\n110.1.1 起適用\n107.4.16 起適用\n定",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 254,
+          "quote": "農業保險貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agricultural-insurance-loan",
+          "evidenceUrl": "versions/114/pages/page-254.html#pdf-page-254"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-025",
+      "sourceTitle": "農民紓困貸款申請書",
+      "displayTitle": "農民紓困貸款申請書",
+      "reviewStatus": "verified",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 258,
+      "pdfPageEnd": 258,
+      "printedPageStart": 256,
+      "printedPageEnd": 256,
+      "sourcePages": [
+        258
+      ],
+      "scopeGroup": "loan:farmer-relief-loan",
+      "evidence": [
+        {
+          "pdfPage": 258,
+          "printedPage": 256,
+          "evidenceUrl": "versions/114/pages/page-258.html#pdf-page-258",
+          "role": "title-and-start",
+          "headQuote": "114.10.10起適用\n編號:17-2 農民紓困貸款申請書\n一、申請人資料：\n姓名  出生\n日期\n 身分證",
+          "tailQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 259,
+        "nextEvidenceUrl": "versions/114/pages/page-259.html#pdf-page-259",
+        "nextHeadingQuote": "審查表（以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格。\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？\n2.曾申貸本貸款之申請人，是否已繳清貸款本金及利息，但經農業部\n公告認定發生重大災害或流行疫病，有再次申貸需求者，不在此",
+        "closingQuote": "此致\n 貸款經辦機構\n 申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 258,
+          "quote": "農民紓困貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:farmer-relief-loan",
+          "evidenceUrl": "versions/114/pages/page-258.html#pdf-page-258"
+        }
+      ],
+      "notes": "核對本表簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": []
+    },
+    {
+      "formId": "form-026",
+      "sourceTitle": "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
+      "displayTitle": "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 265,
+      "pdfPageEnd": 267,
+      "printedPageStart": 263,
+      "printedPageEnd": 265,
+      "sourcePages": [
+        265,
+        266,
+        267
+      ],
+      "scopeGroup": "loan:farmland-purchase-loan",
+      "evidence": [
+        {
+          "pdfPage": 265,
+          "printedPage": 263,
+          "evidenceUrl": "versions/114/pages/page-265.html#pdf-page-265",
+          "role": "title-and-start",
+          "headQuote": "編號:17\n108.11.24起適用\n擴大家庭農場經營規模協助農民購買耕地貸款申請書\n 一、申請人資料：\n姓名  出生\n日期",
+          "tailQuote": "□無\n有無重複申貸 □有       □無\n二、申貸文件\n□購置耕地(應檢附下列證明文件)：\n□1.借款人戶籍謄本、電子戶籍謄本或戶口名簿影本。"
+        },
+        {
+          "pdfPage": 266,
+          "printedPage": 264,
+          "evidenceUrl": "versions/114/pages/page-266.html#pdf-page-266",
+          "role": "continuation-and-ending",
+          "headQuote": "□2.買賣契約書或其他足資證明其買賣事實及對價之文件。\n□3.全戶原有耕地土地清冊、地籍圖及土地登記謄本。\n□4.購置耕地之地籍圖、土地登記謄本及地價證明資料。\n□5.購置離農轉業之全部耕地者，另須檢附賣方財產歸戶資料或其他足資證明離農轉業農戶\n釋\n出全部耕地文件。",
+          "tailQuote": "(平方公尺)\n使用\n分區\n使用地\n類別 所有權人 是否合法經營"
+        },
+        {
+          "pdfPage": 267,
+          "printedPage": 265,
+          "evidenceUrl": "versions/114/pages/page-267.html#pdf-page-267",
+          "role": "continuation-and-ending",
+          "headQuote": "五、申請人最近三年間出售、贈與或委託經營耕地資料：\n敬請\n惠予核貸為荷\n此致\n     貸款經辦機構\n                                申請人(簽章)：",
+          "tailQuote": "此致\n     貸款經辦機構\n                                申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 268,
+        "nextEvidenceUrl": "versions/114/pages/page-268.html#pdf-page-268",
+        "nextHeadingQuote": "經辦人員          覆核           主任、襄(副)理         總幹事、經理\n註：以上簽章人員請註明日期。\n審查表 （以下由貸款經辦機構填寫）\n一、以下審查內容如有任一勾選「否」者，不符申貸資格\n審查內容 是 否\n1.符合該項專案農貸之貸款對象規定？",
+        "closingQuote": "此致\n     貸款經辦機構\n                                申請人(簽章)：\n中   華   民   國              年               月              日\n備註：其他徵授信資料請依貸款經辦機構相關規定辦理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 265,
+          "quote": "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:farmland-purchase-loan",
+          "evidenceUrl": "versions/114/pages/page-265.html#pdf-page-265"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 265,
+            "printedPageEnd": 263,
+            "sourcePages": [
+              265
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 267,
+            "printedPageEnd": 265,
+            "sourcePages": [
+              265,
+              266,
+              267
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 267,
+          "evidenceUrl": "versions/114/pages/page-267.html#pdf-page-267",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        }
+      ]
+    },
+    {
+      "formId": "form-027",
+      "sourceTitle": "農業天然災害受災證明書",
+      "sourceSubtitle": "(申貸「農業天然災害低利貸款」專用)",
+      "displayTitle": "農業天然災害受災證明書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "verified",
+      "startPageStatus": "verified",
+      "endPageStatus": "corrected",
+      "scopeGroupStatus": "corrected",
+      "pdfPageStart": 292,
+      "pdfPageEnd": 293,
+      "printedPageStart": 290,
+      "printedPageEnd": 291,
+      "sourcePages": [
+        292,
+        293
+      ],
+      "scopeGroup": "loan:natural-disaster-low-interest-loan",
+      "evidence": [
+        {
+          "pdfPage": 292,
+          "printedPage": 290,
+          "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+          "role": "title-and-start",
+          "headQuote": "114.9.2修正版\n(適用於114.7.7以後\n發生之天然災害)\n農業天然災害受災證明書\n(申貸「農業天然災害低利貸款」專用)\n一、基本資料(請申請人填寫)",
+          "tailQuote": "【定置網漁網】\n□大型定置網類(□全毀整組換新/重佈□半毀部分\n修復/重佈)□其他定置網類\n【在漁港區域漁船】\n附件"
+        },
+        {
+          "pdfPage": 293,
+          "printedPage": 291,
+          "evidenceUrl": "versions/114/pages/page-293.html#pdf-page-293",
+          "role": "continuation-and-ending",
+          "headQuote": "□全毀(新建漁船，含舢舨)□半毀(修復漁船，含舢\n舨)\n【在漁港區域漁筏】\n□全毀(新建漁筏)□半毀(修復漁筏)\n畜\n牧",
+          "tailQuote": "__________________________鄉(鎮、市、區)公所(請蓋關防)\n或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農業天然災害低利貸款」 ，應於本證明書核發之翌日起30個工作\n日內 ， 檢具本證明書 、 農業天然災害低利貸款申請暨計畫書 ， 向貸款經辦機構\n提出申請。"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 294,
+        "nextEvidenceUrl": "versions/114/pages/page-294.html#pdf-page-294",
+        "nextHeadingQuote": "編號:\n農業天然災害低利貸款申請暨計畫書\n  縣(市)   鄉(鎮、市、區)  災害名稱 (   年   月   日 )\n一、申請人基本資料：\n姓名 出生\n日期",
+        "closingQuote": "__________________________鄉(鎮、市、區)公所(請蓋關防)\n或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農業天然災害低利貸款」 ，應於本證明書核發之翌日起30個工作\n日內 ， 檢具本證明書 、 農業天然災害低利貸款申請暨計畫書 ， 向貸款經辦機構\n提出申請。",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 292,
+          "quote": "農業天然災害受災證明書\n(申貸「農業天然災害低利貸款」專用)",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:natural-disaster-low-interest-loan",
+          "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292"
+        }
+      ],
+      "notes": "核對本表續頁欄位、簽章／日期／備註與下一份獨立書表題名；下一份表不併入。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "pdfPageEnd / printedPageEnd / sourcePages",
+          "before": {
+            "pdfPageEnd": 292,
+            "printedPageEnd": 290,
+            "sourcePages": [
+              292
+            ]
+          },
+          "after": {
+            "pdfPageEnd": 293,
+            "printedPageEnd": 291,
+            "sourcePages": [
+              292,
+              293
+            ]
+          },
+          "severity": "P1 RANGE ERROR",
+          "pdfPage": 293,
+          "evidenceUrl": "versions/114/pages/page-293.html#pdf-page-293",
+          "reason": "逐頁看來源表格／欄位續接與結尾；下一頁為明確新題名，不依下一筆索引推算。"
+        },
+        {
+          "field": "scopeGroup",
+          "before": null,
+          "after": "loan:natural-disaster-low-interest-loan",
+          "severity": "P1 RELATION ERROR",
+          "pdfPage": 292,
+          "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+          "reason": "本表題名直接寫出貸款專用名稱；末頁備註另有同名申貸交叉引用。"
+        },
+        {
+          "field": "sourceSubtitle",
+          "before": null,
+          "after": "(申貸「農業天然災害低利貸款」專用)",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 292,
+          "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+          "reason": "補上來源可見副題（不改寫主題名）。"
+        }
+      ],
+      "dossier": {
+        "formId": "form-027",
+        "formalTitle": "農業天然災害受災證明書",
+        "subtitle": "(申貸「農業天然災害低利貸款」專用)",
+        "pdfPage": 292,
+        "printedPage": 290,
+        "previousPage": {
+          "pdfPage": 291,
+          "evidenceUrl": "versions/114/pages/page-291.html#pdf-page-291",
+          "headQuote": "經營使用)\n(一)段木香菇與木耳 最高一百二十萬元/公頃 最長七年，本金寬緩期限最長二\n年。\n(二)臺灣金線連 最高三十七萬五千元/公頃 最長五年，本金寬緩期限最長二\n年。\n(三)森林蜂產品(涉及養蜂",
+          "tailQuote": "筍之部分)\n最高三十七萬元/公頃 最長五年，本金寬緩期限最長二\n年。\n註：本表所列林業低利貸款項目、貸款額度及期限，適用於中華民國一百十四年一月一日以後\n發生之天然災害。",
+          "belongsToSameForm": false
+        },
+        "currentPage": {
+          "pdfPage": 292,
+          "printedPage": 290,
+          "evidenceUrl": "versions/114/pages/page-292.html#pdf-page-292",
+          "role": "title-and-start",
+          "headQuote": "114.9.2修正版\n(適用於114.7.7以後\n發生之天然災害)\n農業天然災害受災證明書\n(申貸「農業天然災害低利貸款」專用)\n一、基本資料(請申請人填寫)",
+          "tailQuote": "【定置網漁網】\n□大型定置網類(□全毀整組換新/重佈□半毀部分\n修復/重佈)□其他定置網類\n【在漁港區域漁船】\n附件"
+        },
+        "nextPage": {
+          "pdfPage": 293,
+          "printedPage": 291,
+          "evidenceUrl": "versions/114/pages/page-293.html#pdf-page-293",
+          "role": "continuation-and-ending",
+          "headQuote": "□全毀(新建漁船，含舢舨)□半毀(修復漁船，含舢\n舨)\n【在漁港區域漁筏】\n□全毀(新建漁筏)□半毀(修復漁筏)\n畜\n牧",
+          "tailQuote": "__________________________鄉(鎮、市、區)公所(請蓋關防)\n或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農業天然災害低利貸款」 ，應於本證明書核發之翌日起30個工作\n日內 ， 檢具本證明書 、 農業天然災害低利貸款申請暨計畫書 ， 向貸款經辦機構\n提出申請。",
+          "continuesSameForm": true
+        },
+        "nextBoundary": {
+          "nextPdfPage": 294,
+          "nextEvidenceUrl": "versions/114/pages/page-294.html#pdf-page-294",
+          "nextHeadingQuote": "編號:\n農業天然災害低利貸款申請暨計畫書\n  縣(市)   鄉(鎮、市、區)  災害名稱 (   年   月   日 )\n一、申請人基本資料：\n姓名 出生\n日期",
+          "closingQuote": "__________________________鄉(鎮、市、區)公所(請蓋關防)\n或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農業天然災害低利貸款」 ，應於本證明書核發之翌日起30個工作\n日內 ， 檢具本證明書 、 農業天然災害低利貸款申請暨計畫書 ， 向貸款經辦機構\n提出申請。",
+          "method": "visual-field-continuity-and-explicit-next-heading",
+          "includedNextForm": false
+        },
+        "tocNode": {
+          "id": "natural-disaster-rules",
+          "title": "（三）農業天然災害救助辦法",
+          "printedPage": 270,
+          "pdfPage": 272,
+          "sourceTocPdfPage": 2
+        },
+        "explicitLoanName": "農業天然災害低利貸款",
+        "explicitSectionName": "農業天然災害救助辦法",
+        "directCrossReference": {
+          "pdfPage": 293,
+          "quote": "__________________________鄉(鎮、市、區)公所(請蓋關防)\n或林業及自然保育署__________分署___________工作站(請蓋關防)\n備註：申請人申請「農業天然災害低利貸款」 ，應於本證明書核發之翌日起30個工作\n日內 ， 檢具本證明書 、 農業天然災害低利貸款申請暨計畫書 ， 向貸款經辦機構\n提出申請。"
+        },
+        "candidateScopeGroup": "loan:natural-disaster-low-interest-loan",
+        "supportingEvidence": [
+          "P.292副題直接寫「申貸『農業天然災害低利貸款』專用」。",
+          "P.293備註直接申貸同名貸款，並列所需申請暨計畫書。"
+        ],
+        "opposingEvidence": [
+          "主題名與form-023相同，單憑主題名無法判定；本次採專用副題與末頁備註，未採鄰近位置。"
+        ],
+        "finalStatus": "verified-with-correction",
+        "decisionCriterion": "A-form-explicit-loan-name",
+        "requiresHumanReview": false
+      }
+    },
+    {
+      "formId": "form-028",
+      "sourceTitle": "額度動用申請書",
+      "displayTitle": "額度動用申請書",
+      "reviewStatus": "verified-with-correction",
+      "titleStatus": "corrected",
+      "startPageStatus": "verified",
+      "endPageStatus": "verified",
+      "scopeGroupStatus": "verified",
+      "pdfPageStart": 305,
+      "pdfPageEnd": 305,
+      "printedPageStart": 303,
+      "printedPageEnd": 303,
+      "sourcePages": [
+        305
+      ],
+      "scopeGroup": "loan:agricultural-rooting-loan",
+      "evidence": [
+        {
+          "pdfPage": 305,
+          "printedPage": 303,
+          "evidenceUrl": "versions/114/pages/page-305.html#pdf-page-305",
+          "role": "title-and-start",
+          "headQuote": "附件一\n額度動用申請書\n借款人○○農(漁)會於民國○○年○○月○○日已依約簽具農業紮根貸款轉\n放契約乙紙，金額為新臺幣○○,○○○元，提交  貴公司○○部(分行)。\n    茲請  貴公司依借款人編製轉放名冊內容(詳如后)及在核貸金額內撥貸新臺\n幣○○ , ○○○元整，逕轉入借款人在   貴 公 司 開 設 之 ○ ○ 存 款 第",
+          "tailQuote": "理\n 會\n計\n 副\n理"
+        }
+      ],
+      "boundary": {
+        "nextPdfPage": 306,
+        "nextEvidenceUrl": "versions/114/pages/page-306.html#pdf-page-306",
+        "nextHeadingQuote": "附件二\n全國農業金庫農業紮根貸款轉放契約書\n借款人          農(漁)會(以下稱甲方)茲為辦理全國農業金庫股份有\n限公司(以下稱乙方)「農業紮根貸款」轉放作業需要，雙方約定遵守下列條款：\n一、 甲方辦理轉放額度為                   元，期限為            年。\n二、 動用方式為循環動用；本息攤還方式為                          。",
+        "closingQuote": "理\n 會\n計\n 副\n理",
+        "method": "visual-field-continuity-and-explicit-next-heading",
+        "includedNextForm": false
+      },
+      "relationEvidence": [
+        {
+          "pdfPage": 305,
+          "quote": "附件一\n額度動用申請書\n借款人○○農(漁)會於民國○○年○○月○○日已依約簽具農業紮根貸款轉\n放契約乙紙，金額為新臺幣○○,○○○元，提交  貴公司○○部(分行)。\n    茲請  貴公司依借款人編製轉放名冊內容(詳如后)及在核貸金額內撥貸新臺\n幣○○ , ○○○元整，逕轉入借款人在   貴 公 司 開 設 之 ○ ○ 存 款 第",
+          "criterion": "A-form-explicit-loan-name",
+          "scopeGroup": "loan:agricultural-rooting-loan",
+          "evidenceUrl": "versions/114/pages/page-305.html#pdf-page-305"
+        }
+      ],
+      "notes": "主題名不加貸款前綴；貸款關聯另由正文「農業紮根貸款轉放契約」直接佐證。",
+      "reviewMethod": "source-PDF-visual-cross-check-with-frozen-pages-json-no-OCR",
+      "reviewedByModel": true,
+      "humanReviewed": false,
+      "requiresHumanReview": false,
+      "sourceVerified": true,
+      "corrections": [
+        {
+          "field": "title",
+          "before": "農業紮根貸款額度動用申請書",
+          "after": "額度動用申請書",
+          "severity": "P2 METADATA ERROR",
+          "pdfPage": 305,
+          "evidenceUrl": "versions/114/pages/page-305.html#pdf-page-305",
+          "reason": "改為來源可見題名；只移除抽取換行／空白，不變更標點或補貸款前綴。"
+        }
+      ]
+    }
+  ],
+  "knownLimitations": [
+    "模型來源交叉核對不是人工覆核；Luna獨立覆核仍待執行，未commit或部署。",
+    "本輪只核對既有28筆書表；不把獨立審查表／計畫書／切結書新增為索引筆數或併入申請書。",
+    "表格以既有Evidence／原始PDF查閱，不重建表格；未進行359頁全文人工校讀。"
+  ]
+}

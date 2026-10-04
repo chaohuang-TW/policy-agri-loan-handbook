@@ -3,16 +3,15 @@
 from __future__ import annotations
 
 import os
-import shutil
+import json
 from pathlib import Path
 
 from build_search_index import build_search_index
 from build_site import build_site
+from audit_forms_regression import retained_workspace
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-STAGING = ROOT / "site.__building__"
-PREVIOUS = ROOT / "site.__previous__"
 
 
 def verify_staging(path: Path) -> None:
@@ -38,12 +37,16 @@ def verify_staging(path: Path) -> None:
         raise RuntimeError(f"incomplete staged site: missing={missing}, html={html_count}")
 
 
-def build_all(target: Path = SITE) -> None:
-    target = Path(target)
-    staging = target.with_name(target.name + ".__building__")
-    previous = target.with_name(target.name + ".__previous__")
-    shutil.rmtree(staging, ignore_errors=True)
-    shutil.rmtree(previous, ignore_errors=True)
+def build_all(target: Path = SITE) -> Path:
+    target = Path(target).absolute()
+    if target.resolve() != target or (target != SITE and ROOT / 'tmp/release-gates' not in target.parents):
+        raise ValueError('Build target must be site or a non-symlink retained workspace')
+    target.parent.mkdir(parents=True, exist_ok=True)
+    workspace = retained_workspace('atomic-build', required_bytes=100 * 1024 * 1024)
+    staging = workspace / 'staging'
+    previous = workspace / 'previous'
+    record = {'target': str(target.relative_to(ROOT)), 'status': 'building',
+              'retention': 'no deletion; previous and failed outputs retained'}
     try:
         build_site(staging)
         build_search_index(staging)
@@ -55,12 +58,17 @@ def build_all(target: Path = SITE) -> None:
         except BaseException:
             if previous.exists() and not target.exists():
                 os.replace(previous, target)
+                record['restoredPreviousSite'] = True
             raise
-        shutil.rmtree(previous, ignore_errors=True)
+        record['status'] = 'published'
+    except BaseException:
+        record['status'] = 'failed'
+        raise
     finally:
-        shutil.rmtree(staging, ignore_errors=True)
-        if previous.exists() and target.exists():
-            shutil.rmtree(previous, ignore_errors=True)
+        record['stagingRetained'] = staging.exists()
+        record['previousRetained'] = previous.exists()
+        (workspace / 'build-record.json').write_text(json.dumps(record, indent=2) + '\n')
+    return workspace
 
 
 def main() -> None:

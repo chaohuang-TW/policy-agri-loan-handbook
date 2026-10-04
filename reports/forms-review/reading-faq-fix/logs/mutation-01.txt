@@ -1,0 +1,177 @@
+{
+  "status": "FORMS MUTATIONS PASS",
+  "positiveControl": "PASS",
+  "total": 24,
+  "caught": 24,
+  "uncaught": 0,
+  "results": [
+    {
+      "number": 1,
+      "name": "review missing one record",
+      "caught": true,
+      "gate": "review-count",
+      "evidence": "review-count: "
+    },
+    {
+      "number": 2,
+      "name": "duplicate form review",
+      "caught": true,
+      "gate": "duplicate-review",
+      "evidence": "duplicate-review: "
+    },
+    {
+      "number": 3,
+      "name": "unknown form ID",
+      "caught": true,
+      "gate": "review-id-inventory",
+      "evidence": "review-id-inventory: "
+    },
+    {
+      "number": 4,
+      "name": "source page zero",
+      "caught": true,
+      "gate": "source-pages",
+      "evidence": "source-pages: form-001"
+    },
+    {
+      "number": 5,
+      "name": "source page 360",
+      "caught": true,
+      "gate": "source-pages",
+      "evidence": "source-pages: form-001"
+    },
+    {
+      "number": 6,
+      "name": "missing Evidence target",
+      "caught": true,
+      "gate": "evidence-target",
+      "evidence": "evidence-target: versions/114/pages/page-999.html#pdf-page-999"
+    },
+    {
+      "number": 7,
+      "name": "start greater than end",
+      "caught": true,
+      "gate": "range-order",
+      "evidence": "range-order: form-001"
+    },
+    {
+      "number": 8,
+      "name": "source page outside range",
+      "caught": true,
+      "gate": "source-range",
+      "evidence": "source-range: form-001"
+    },
+    {
+      "number": 9,
+      "name": "start-only with invented end",
+      "caught": true,
+      "gate": "start-only-end",
+      "evidence": "start-only-end: form-001"
+    },
+    {
+      "number": 10,
+      "name": "verified without evidence",
+      "caught": true,
+      "gate": "missing-evidence",
+      "evidence": "missing-evidence: form-001"
+    },
+    {
+      "number": 11,
+      "name": "human-needed but verified",
+      "caught": true,
+      "gate": "contradictory-human-status",
+      "evidence": "contradictory-human-status: form-001"
+    },
+    {
+      "number": 12,
+      "name": "invalid scope",
+      "caught": true,
+      "gate": "scope-target",
+      "evidence": "scope-target: form-023"
+    },
+    {
+      "number": 13,
+      "name": "scope without relation evidence",
+      "caught": true,
+      "gate": "relation-evidence",
+      "evidence": "relation-evidence: form-023"
+    },
+    {
+      "number": 14,
+      "name": "form-023 dossier missing previous page",
+      "caught": true,
+      "gate": "dossier-previousPage",
+      "evidence": "dossier-previousPage: form-023"
+    },
+    {
+      "number": 15,
+      "name": "form-027 dossier missing next page",
+      "caught": true,
+      "gate": "dossier-nextPage",
+      "evidence": "dossier-nextPage: form-027"
+    },
+    {
+      "number": 16,
+      "name": "forms count 29",
+      "caught": true,
+      "gate": "forms-count",
+      "evidence": "forms-count: "
+    },
+    {
+      "number": 17,
+      "name": "changed source PDF SHA",
+      "caught": true,
+      "gate": "pdf-sha",
+      "evidence": "pdf-sha: "
+    },
+    {
+      "number": 18,
+      "name": "changed official layer",
+      "caught": true,
+      "gate": "frozen-source-official",
+      "evidence": "frozen-source-official: "
+    },
+    {
+      "number": 19,
+      "name": "search index count 506",
+      "caught": true,
+      "gate": "search-count",
+      "evidence": "search-count: "
+    },
+    {
+      "number": 20,
+      "name": "version mismatch",
+      "caught": true,
+      "gate": "revision",
+      "evidence": "revision: "
+    },
+    {
+      "number": 21,
+      "name": "fake source quotation",
+      "caught": true,
+      "gate": "source-quotation",
+      "evidence": "source-quotation: form-001:headQuote"
+    },
+    {
+      "number": 22,
+      "name": "rewritten form title",
+      "caught": true,
+      "gate": "source-title",
+      "evidence": "source-title: form-001"
+    },
+    {
+      "number": 23,
+      "name": "broken rendered PDF target",
+      "caught": true,
+      "gate": "html-pdf-target",
+      "evidence": "html-pdf-target: form-001"
+    },
+    {
+      "number": 24,
+      "name": "CSS changed",
+      "caught": true,
+      "gate": "presentation-frozen",
+      "evidence": "presentation-frozen: "
+    }
+  ]
+}

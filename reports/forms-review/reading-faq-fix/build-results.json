@@ -1,0 +1,8 @@
+[
+  {
+    "command": "python -B -c import sys;sys.path.insert(0,\"scripts\");from build_site import build_site,SITE;from build_search_index import build_search_index;build_site(SITE);build_search_index(SITE)",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/reading-faq-fix/logs/build-01.txt"
+  }
+]

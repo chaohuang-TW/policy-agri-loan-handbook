@@ -8,7 +8,7 @@
 
 - 資料版本：114年度
 - 發布狀態：Beta
-- 數位版本：114.0.0-beta.3.2
+- 數位版本：114.0.0-beta.3.3
 - 來源文件：114年度政策性農業專案貸款業務手冊
 - PDF實體頁數：359頁
 - 來源保存：`source/policy-agri-loan-handbook-114.pdf`
@@ -35,6 +35,14 @@
 設計規格見 [DESIGN_SYSTEM](docs/DESIGN_SYSTEM.md)、參考來源見 [DESIGN_REFERENCES](docs/DESIGN_REFERENCES.md)，三輪視覺與回歸證據見 [visual-review](reports/design/visual-review.md)。未進行全文人工校訂或擴充官方Coverage。
 
 ## 本機建置
+
+114.0.0-beta.3.3「書表來源逐項覆核版」回到同一底本逐頁核對28份書表，合計46個來源頁，其中16份為多頁書表；題名、續頁及直接貸款關聯的核對證據見 [書表來源核對報告](reports/forms-review/forms-review.md)。[獨立Luna唯讀覆核](reports/forms-review/luna-review.md)已通過；這是模型來源交叉核對，不代表人工覆核完成，`humanReviewed`仍為`false`。未改PDF、原始文字、官方資料層或beta.3.2視覺系統。
+
+另經批准進行兩項小範圍閱讀修正：青壯年農民貸款快速導覽依PDF原文定位至第三點貸款對象、第十二點額度及第十一點期限；112年12月FAQ第2題優先顯示PDF316–319既有原頁表格圖片，附放大、Evidence及PDF入口，原回答文字保留於次級展開區。P.319明示下半部另含第3、4題，不將整頁當作第2題回答；未重建或補寫表格數值。前後差異與本機驗證見 [小範圍修正報告](reports/forms-review/reading-faq-fix/report.md)。該報告保留當時尚未commit／push／部署的歷史狀態；後續本機發布Gate見 [發布Gate閉合紀錄](reports/forms-review/release-gates/precommit-gate-closure.md)，CI與正式站仍須另行確認。
+
+來源核對後請使用下列build入口重建；不要重新執行 `extract_manual.py` 覆蓋已核對的forms metadata。底本抽取與書表核對紀錄是不同階段。
+
+發布Gate改採經批准的「受控留存、不刪檔」契約：`build_all.py`在`tmp/release-gates/`唯一目錄建置，成功保留舊站副本，失敗保留staging；發布失敗時還原舊站。Reproducibility與98項檔案Mutation使用獨立位元副本、容量閘門、未修改positive control及指定因果診斷，不以任意非零exit冒充caught。輸出不包含在Pages artifact，亦不自動清理；不再宣稱舊stagingCleanup刪除契約通過。新增程式須另經Luna唯讀覆核，不沿用書表来源覆核結論。
 
 ```bash
 python3 -m venv .venv

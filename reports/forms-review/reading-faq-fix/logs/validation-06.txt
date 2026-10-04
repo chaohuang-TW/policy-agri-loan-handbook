@@ -1,0 +1,4 @@
+INDEX QUALITY VALIDATION PASSED
+- Source interpretations: 87; inventory: 121
+- Source forms: 28; inventory: 42
+- Page-map records: 359; checked anchors: 42; search records: 507

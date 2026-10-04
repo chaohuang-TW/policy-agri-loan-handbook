@@ -26,6 +26,84 @@ async function interpretations(page) {
   return page.locator('[data-reference-lookup="interpretations"]');
 }
 
+async function faqInterestTable(page) {
+  await page.goto("/faq/?q=補貼基準&group=faq-112-12");
+  const card = page.locator('[data-lookup-id="faq-112-12-q02"]');
+  await expect(card).toBeVisible();
+  await card.locator(":scope > details > summary").click();
+  return card;
+}
+
+for (const width of [390, 1440]) {
+  test(`FAQ interest and subsidy preserve source table layout at ${width}px`, async ({page}) => {
+    await page.setViewportSize({width, height: 844});
+    const card = await faqInterestTable(page);
+    await expect(card.locator("[data-faq-table-page]")).toHaveCount(4);
+    for (const sourcePage of [316, 317, 318, 319]) {
+      const figure = card.locator(`[data-faq-table-page="${sourcePage}"]`);
+      const image = figure.locator("img");
+      await image.scrollIntoViewIfNeeded();
+      await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth === 1400)).toBe(true);
+      await expect(figure.locator("a")).toHaveAttribute("href", new RegExp(`pdf-page-${sourcePage}\\.webp$`));
+      const actions = card.locator(`nav[aria-label="PDF第${sourcePage}頁表格操作"] a`);
+      expect(await actions.count()).toBe(3);
+      for (const action of await actions.all()) {
+        const box = await action.boundingBox();
+        expect(box.height).toBeGreaterThanOrEqual(44);
+      }
+    }
+    await expect(card).toContainText("本頁下半部另含第3、4題，不併入本題回答");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await expect(card.locator(".raw-text-details")).not.toHaveAttribute("open");
+  });
+}
+
+test("FAQ table retains the unedited answer in keyboard-accessible native details", async ({page}) => {
+  const card = await faqInterestTable(page);
+  const original = require("../../data/114/faq-items.json").find((item) => item.id === "faq-112-12-q02");
+  const raw = card.locator(".raw-text-details");
+  const summary = raw.locator("summary");
+  await summary.focus();
+  await expect(summary).toBeFocused();
+  await summary.press("Enter");
+  await expect(raw).toHaveAttribute("open", "");
+  const rendered = await raw.locator(".lookup-source-text p").allTextContents();
+  expect(rendered).toEqual(original.answerText.split(/\r?\n/).filter((line) => line.trim()));
+  await summary.press("Enter");
+  await expect(raw).not.toHaveAttribute("open");
+});
+
+test("FAQ table links each original image, Evidence page and PDF page without guessing", async ({page}) => {
+  const card = await faqInterestTable(page);
+  for (const sourcePage of [316, 317, 318, 319]) {
+    const actions = card.locator(`nav[aria-label="PDF第${sourcePage}頁表格操作"]`);
+    const evidence = actions.getByRole("link", {name: `在手冊中開啟（P.${sourcePage}）`});
+    const href = await evidence.getAttribute("href");
+    const response = await page.request.get(new URL(href, page.url()).href);
+    expect(response.status()).toBe(200);
+    expect(await response.text()).toContain(`id="pdf-page-${sourcePage}"`);
+    await expect(actions.getByRole("link", {name: `開啟PDF原文（P.${sourcePage}）`})).toHaveAttribute("href", `../downloads/policy-agri-loan-handbook-114.pdf#page=${sourcePage}`);
+    const imageHref = await actions.getByRole("link", {name: `放大查看原頁表格（P.${sourcePage}）`}).getAttribute("href");
+    expect((await page.request.get(new URL(imageHref, page.url()).href)).status()).toBe(200);
+  }
+  expect((await page.request.get("/downloads/policy-agri-loan-handbook-114.pdf")).status()).toBe(200);
+});
+
+test("FAQ table expansion has no runtime errors or unexpected external requests", async ({page}) => {
+  const runtime = observeRuntime(page);
+  await page.addInitScript(() => {
+    window.__unhandled = [];
+    addEventListener("unhandledrejection", (event) => window.__unhandled.push(String(event.reason)));
+  });
+  const card = await faqInterestTable(page);
+  for (const image of await card.locator("[data-faq-table-page] img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+  }
+  expect(await page.evaluate(() => window.__unhandled)).toEqual([]);
+  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+});
+
 test("FAQ opens with all deterministic question-level records", async ({page}) => {
   const tool = await faq(page);
   await expect(tool.locator("[data-lookup-status]")).toHaveText("找到 52 筆FAQ。");

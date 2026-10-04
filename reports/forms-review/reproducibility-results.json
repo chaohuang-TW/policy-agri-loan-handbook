@@ -1,0 +1,8 @@
+[
+  {
+    "command": "python scripts/test_build_reproducibility.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/reproducibility-01.txt"
+  }
+]

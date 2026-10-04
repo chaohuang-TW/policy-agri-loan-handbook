@@ -7,8 +7,10 @@ import json
 import shutil
 import subprocess
 import sys
-import tempfile
+import argparse
 from pathlib import Path
+from audit_forms_regression import (retained_workspace, copy_retained_tree,
+    mutation_command, positive_control, causal_failure)
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY_DIRS = ("assets", "curation", "data", "scripts", "site", "templates")
@@ -18,12 +20,14 @@ COPY_FILES = ("README.md", "CHANGELOG.md", "package.json", "package-lock.json")
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
-        shutil.copytree(ROOT / name, destination / name, copy_function=shutil.copy2)
+        copy_retained_tree(ROOT / name, destination / name)
     for name in COPY_FILES:
-        shutil.copy2(ROOT / name, destination / name)
+        shutil.copyfile(ROOT / name, destination / name)
 
 
 def write(path: Path, value: str) -> None:
+    if ROOT / 'tmp/release-gates' not in path.absolute().parents or path.is_symlink():
+        raise ValueError('Mutation writes must stay in retained fixtures')
     path.write_text(value, encoding="utf-8")
 
 
@@ -41,6 +45,7 @@ def replace(path: Path, old: str, new: str) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(); parser.add_argument('--retain-workspace', action='store_true'); parser.parse_args()
     cases = [
         ("duplicate FAQ ID", lambda root: mutate_json(root / "data/114/faq-items.json", lambda items: items[1].update(id=items[0]["id"]))),
         ("FAQ page out of range", lambda root: mutate_json(root / "data/114/faq-items.json", lambda items: items[0].update(pdfPageEnd=360))),
@@ -55,20 +60,26 @@ def main() -> None:
         ("lookup data script removed", lambda root: replace(root / "site/faq/index.html", '<script type="application/json" data-lookup-data>', '<script type="application/json">')),
         ("interpretation Evidence target is missing", lambda root: replace(root / "site/interpretations/index.html", "../versions/114/pages/page-047.html", "../versions/114/pages/page-999.html")),
     ]
-    results = []
-    with tempfile.TemporaryDirectory(prefix="handbook-lookup-mutations-") as raw:
-        base = Path(raw)
-        for index, (name, mutation) in enumerate(cases, 1):
-            fixture = base / f"case-{index:02d}"
-            copy_fixture(fixture)
-            mutation(fixture)
-            command = [sys.executable, "scripts/validate_reference_lookup.py"]
-            completed = subprocess.run(command, cwd=fixture, text=True, capture_output=True, timeout=120)
-            if completed.returncode == 0:
-                raise AssertionError(f"mutation not caught: {index}. {name}")
-            results.append({"mutation": index, "name": name, "caught": True, "evidence": (completed.stdout + completed.stderr).strip().splitlines()[0][:160]})
-            shutil.rmtree(fixture)
-    print(json.dumps({"status": "REFERENCE LOOKUP MUTATIONS PASSED", "caught": f"{len(results)}/{len(cases)}", "uncaught": 0, "results": results}, ensure_ascii=False, indent=2))
+    expected = ['duplicate FAQ question ID', 'invalid FAQ source pages:', 'unknown FAQ group:',
+                'blank FAQ question:', 'invalid FAQ sourcePages:',
+                'rendered interpretation lookup keys differ from source order',
+                'document number missing from rendered card:', 'broken FAQ Evidence/PDF target:',
+                'broken FAQ Evidence/PDF target:', 'FAQ filter options do not match four source groups',
+                'FAQ embedded lookup data missing', 'broken interpretation Evidence/PDF target:']
+    size = sum(p.stat().st_size for folder in COPY_DIRS for p in (ROOT / folder).rglob('*') if p.is_file())
+    results = []; base = retained_workspace('reference-mutations', required_bytes=size * (len(cases) + 1))
+    control = base / 'positive-control'; copy_fixture(control)
+    command = [sys.executable, 'scripts/validate_reference_lookup.py']
+    baseline = positive_control(command, control)
+    for index, (name, mutation) in enumerate(cases, 1):
+        fixture = base / f"case-{index:02d}"
+        copy_fixture(fixture)
+        mutation(fixture)
+        command = [sys.executable, "scripts/validate_reference_lookup.py"]
+        completed = mutation_command(command, fixture)
+        evidence = causal_failure(completed, expected[index - 1], name)
+        results.append({"mutation": index, "name": name, "caught": True, "evidence": evidence})
+    print(json.dumps({"status": "REFERENCE LOOKUP MUTATIONS PASSED", "caught": f"{len(results)}/{len(cases)}", "uncaught": 0, "positiveControl": baseline, "retainedWorkspace": str(base.relative_to(ROOT)), "results": results}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

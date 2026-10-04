@@ -79,6 +79,18 @@ def loan_for_interpretation(item: dict) -> dict | None:
 
 
 def loan_for_form(item: dict) -> dict | None:
+    # Source-reviewed form metadata takes precedence over legacy unresolved
+    # exceptions. The forms validator requires direct source relation evidence.
+    if item.get("sourceVerified") is True and "scopeGroup" in item:
+        scope = item["scopeGroup"]
+        if scope is None:
+            return None
+        if not isinstance(scope, str) or not scope.startswith("loan:"):
+            raise ValueError("Invalid source-reviewed form scope")
+        owner = loan_by_id(scope.removeprefix("loan:"))
+        if owner is None:
+            raise ValueError("Unknown source-reviewed form loan")
+        return owner
     exceptions = relationships().get("formScopeGroupExceptions", {})
     if item.get("id") in exceptions:
         value = exceptions[item["id"]]

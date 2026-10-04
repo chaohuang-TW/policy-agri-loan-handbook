@@ -1,0 +1,14 @@
+[
+  {
+    "command": "python -B -c import sys;from pathlib import Path;sys.path.insert(0,\"scripts\");import test_forms_source_review_mutations as m;m.REPORT=Path(\"reports/forms-review/reading-faq-fix\");m.main()",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/reading-faq-fix/logs/mutation-01.txt"
+  },
+  {
+    "command": "python scripts/audit_forms_source.py test-followup-mutations",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/reading-faq-fix/logs/mutation-02.txt"
+  }
+]

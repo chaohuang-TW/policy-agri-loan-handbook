@@ -1,0 +1,180 @@
+
+Running 172 tests using 1 worker
+
+
+
+[1/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 320px
+[2/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 375px
+[3/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 390px
+[4/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 393px
+[5/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 430px
+[6/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 768px
+[7/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 1024px
+[8/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 1280px
+[9/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 1440px
+[10/172] [chromium] › tests/browser/design-regression.spec.js:5:3 › editorial reflow and complete content at 1920px
+[11/172] [chromium] › tests/browser/design-regression.spec.js:28:3 › home query immediately operable in 375x667 first screen
+[12/172] [chromium] › tests/browser/design-regression.spec.js:28:3 › home query immediately operable in 390x844 first screen
+[13/172] [chromium] › tests/browser/design-regression.spec.js:40:1 › four primary entries have nonoverlapping native link targets
+[14/172] [chromium] › tests/browser/design-regression.spec.js:51:1 › actual text, hover, selected, input and focus contrast
+[15/172] [chromium] › tests/browser/design-regression.spec.js:71:1 › dialog one scroll surface, Escape and keyboard focus restoration
+[16/172] [chromium] › tests/browser/design-regression.spec.js:80:1 › focused controls and active state have real nontext contrast
+[17/172] [chromium] › tests/browser/design-regression.spec.js:104:1 › dialog submission exposes first result title and evidence context
+[18/172] [chromium] › tests/browser/design-regression.spec.js:119:1 › mobile native chapter disclosure and anchor clearance
+[19/172] [chromium] › tests/browser/design-regression.spec.js:129:3 › all seven chapter fragments survive reload with stable TOC layout at 390px
+[20/172] [chromium] › tests/browser/design-regression.spec.js:129:3 › all seven chapter fragments survive reload with stable TOC layout at 1440px
+[21/172] [chromium] › tests/browser/design-regression.spec.js:159:1 › FAQ native answer Enter key and source evidence survive layout
+[22/172] [chromium] › tests/browser/design-regression.spec.js:168:1 › official AND query, compatible combined filters and history remain exact
+[23/172] [chromium] › tests/browser/design-regression.spec.js:179:1 › reduced motion keeps all content immediately readable and queries functional
+[24/172] [chromium] › tests/browser/design-regression.spec.js:188:1 › without JS native sources, answers and footer navigation stay available
+[25/172] [chromium] › tests/browser/design-regression.spec.js:202:1 › 200 percent text-size enlargement reflows controls and long headings
+[26/172] [chromium] › tests/browser/design-regression.spec.js:216:1 › source image keeps intrinsic ratio without cropping
+[27/172] [chromium] › tests/browser/design-regression.spec.js:224:1 › print exposes original answers and source layers without clipping
+[28/172] [chromium] › tests/browser/design-regression.spec.js:241:1 › presentation has no console/page/unhandled/external/404 failures
+[29/172] [chromium] › tests/browser/forms-source-review.spec.js:6:1 › forms index retains all 28 stable IDs
+[30/172] [chromium] › tests/browser/forms-source-review.spec.js:10:1 › every form title and visible subtitle match source-reviewed data
+[31/172] [chromium] › tests/browser/forms-source-review.spec.js:13:1 › every Evidence link resolves to its actual source anchor
+[32/172] [chromium] › tests/browser/forms-source-review.spec.js:17:1 › every PDF link points to untouched download and legal starting page
+[33/172] [chromium] › tests/browser/forms-source-review.spec.js:22:1 › all multi-page forms visibly expose first and last Evidence pages
+[34/172] [chromium] › tests/browser/forms-source-review.spec.js:28:1 › form-023 presents directly evidenced scope, full title and two-page range
+[35/172] [chromium] › tests/browser/forms-source-review.spec.js:31:1 › form-027 presents source subtitle, evidenced scope and two-page range
+[36/172] [chromium] › tests/browser/forms-source-review.spec.js:34:1 › forms 390px preserves long titles, links and no overflow
+[37/172] [chromium] › tests/browser/forms-source-review.spec.js:39:1 › forms has no console errors during source navigation
+[38/172] [chromium] › tests/browser/forms-source-review.spec.js:42:1 › forms has no pageerror or unhandled rejection
+[39/172] [chromium] › tests/browser/forms-source-review.spec.js:45:1 › source evidence link is keyboard operable with visible focus
+[40/172] [chromium] › tests/browser/forms-source-review.spec.js:48:1 › model source review never claims human review
+[41/172] [chromium] › tests/browser/handbook.spec.js:49:1 › dialog keyboard, backdrop, Escape and focus restoration
+[42/172] [chromium] › tests/browser/handbook.spec.js:71:1 › search type filter, more results, overlong input and injection safety
+[43/172] [chromium] › tests/browser/handbook.spec.js:102:3 › loan-programs chapter scope returns only declared source scopes
+[44/172] [chromium] › tests/browser/handbook.spec.js:102:3 › natural-disaster-rules chapter scope returns only declared source scopes
+[45/172] [chromium] › tests/browser/handbook.spec.js:124:1 › loan scope, empty chapter fallback and post-search focus
+[46/172] [chromium] › tests/browser/handbook.spec.js:148:1 › page action print and 900px back-to-top threshold
+[47/172] [chromium] › tests/browser/handbook.spec.js:168:1 › homepage common queries and task shortcuts run immediately
+[48/172] [chromium] › tests/browser/handbook.spec.js:185:1 › 390px mobile menu is closed, accessible and restores focus
+[49/172] [chromium] › tests/browser/handbook.spec.js:202:1 › semantic section hubs keep page lists secondary
+[50/172] [chromium] › tests/browser/handbook.spec.js:222:3 › young-farmer-loan is a scoped loan work page
+[51/172] [chromium] › tests/browser/handbook.spec.js:222:3 › farm-machinery-loan is a scoped loan work page
+[52/172] [chromium] › tests/browser/handbook.spec.js:222:3 › natural-disaster-low-interest-loan is a scoped loan work page
+[53/172] [chromium] › tests/browser/handbook.spec.js:240:1 › search result prioritizes context and fallback uses the real catalog
+[54/172] [chromium] › tests/browser/handbook.spec.js:264:3 › young-farmer-loan inline search defaults to the current loan and task restores context
+[55/172] [chromium] › tests/browser/handbook.spec.js:264:3 › farm-machinery-loan inline search defaults to the current loan and task restores context
+[56/172] [chromium] › tests/browser/handbook.spec.js:264:3 › natural-disaster-low-interest-loan inline search defaults to the current loan and task restores context
+[57/172] [chromium] › tests/browser/handbook.spec.js:296:3 › agricultural-development-fund-rules inline search defaults to the section and shortcut stays scoped
+[58/172] [chromium] › tests/browser/handbook.spec.js:296:3 › natural-disaster-rules inline search defaults to the section and shortcut stays scoped
+[59/172] [chromium] › tests/browser/handbook.spec.js:327:1 › global dialog stays all-scope on a loan page
+[60/172] [chromium] › tests/browser/handbook.spec.js:338:1 › homepage task is semantic, global and moves focus to results
+[61/172] [chromium] › tests/browser/handbook.spec.js:355:1 › appendix action and evidence catalog wording are correct
+[62/172] [chromium] › tests/browser/handbook.spec.js:370:1 › official update filters load from query and keep a shareable URL
+[63/172] [chromium] › tests/browser/handbook.spec.js:386:1 › official update layer preserves explicit matched and no-match states
+[64/172] [chromium] › tests/browser/handbook.spec.js:403:1 › disaster gateway is an AFNA official entry, not a local announcement index
+[65/172] [chromium] › tests/browser/handbook.spec.js:414:1 › disaster loan and section use the official gateway
+[66/172] [chromium] › tests/browser/handbook.spec.js:422:1 › Hagibis interest exemption is linked to both explicitly named loans
+[67/172] [chromium] › tests/browser/handbook.spec.js:427:1 › official update dates have unique labels and version-only forms do not claim publication
+[68/172] [chromium] › tests/browser/handbook.spec.js:436:1 › single-ended official application deadlines use ROC dates
+[69/172] [chromium] › tests/browser/handbook.spec.js:443:1 › home and updates keep 20 institutional updates without a disaster count
+[70/172] [chromium] › tests/browser/handbook.spec.js:453:1 › disaster index has no horizontal overflow at 390px
+[71/172] [chromium] › tests/browser/handbook.spec.js:459:1 › eligibility search excludes historic intent-only flood and exposes evidence labels
+[72/172] [chromium] › tests/browser/handbook.spec.js:474:1 › direct evidence label is backed by actual matched terms
+[73/172] [chromium] › tests/browser/handbook.spec.js:490:1 › related evidence label is backed by actual matched terms
+[74/172] [chromium] › tests/browser/handbook.spec.js:512:3 › 資格 stays lexical and does not trigger the full task concept
+[75/172] [chromium] › tests/browser/handbook.spec.js:512:3 › 文件 stays lexical and does not trigger the full task concept
+[76/172] [chromium] › tests/browser/handbook.spec.js:512:3 › 期限 stays lexical and does not trigger the full task concept
+[77/172] [chromium] › tests/browser/handbook.spec.js:512:3 › 管理 stays lexical and does not trigger the full task concept
+[78/172] [chromium] › tests/browser/handbook.spec.js:528:1 › indexed full document number ranks first with exact label
+[79/172] [chromium] › tests/browser/handbook.spec.js:537:1 › indexed document-number core resolves to the same first record
+[80/172] [chromium] › tests/browser/handbook.spec.js:545:3 › out-of-index document number 農授金字第1147467200A號 stays an honest no-result
+[81/172] [chromium] › tests/browser/handbook.spec.js:545:3 › out-of-index document number 1147467200A stays an honest no-result
+[82/172] [chromium] › tests/browser/handbook.spec.js:554:1 › loan eligibility search has no scope-group leak
+[83/172] [chromium] › tests/browser/handbook.spec.js:564:1 › section term search has no source-scope leak
+[84/172] [chromium] › tests/browser/handbook.spec.js:575:1 › 390px search results have no overflow or runtime errors
+[85/172] [chromium] › tests/browser/handbook.spec.js:585:1 › loan task navigation is complete and targets existing headings
+[86/172] [chromium] › tests/browser/handbook.spec.js:598:1 › loan task navigation updates hash and clears sticky-header overlap
+[87/172] [chromium] › tests/browser/handbook.spec.js:611:1 › loan task hash survives reload and browser back
+[88/172] [chromium] › tests/browser/handbook.spec.js:622:1 › section 本頁內容 TOC navigates in DOM order
+[89/172] [chromium] › tests/browser/handbook.spec.js:638:1 › loan previous and next links move through source pages
+[90/172] [chromium] › tests/browser/handbook.spec.js:650:1 › loan evidence links retain valid handbook page targets
+[91/172] [chromium] › tests/browser/handbook.spec.js:659:1 › 390px loan navigation wraps without horizontal overflow
+[92/172] [chromium] › tests/browser/handbook.spec.js:673:1 › 390px section TOC disclosure opens without nested scrolling
+[93/172] [chromium] › tests/browser/handbook.spec.js:693:1 › keyboard activates task links and section disclosure with visible focus
+[94/172] [chromium] › tests/browser/handbook.spec.js:714:1 › search result uses a deterministic deep link when mapping is unique
+[95/172] [chromium] › tests/browser/handbook.spec.js:726:1 › all published pages use beta 3.3
+[96/172] [chromium] › tests/browser/handbook.spec.js:732:3 › 390px has no horizontal or dialog overflow
+[97/172] [chromium] › tests/browser/handbook.spec.js:732:3 › 768px has no horizontal or dialog overflow
+[98/172] [chromium] › tests/browser/handbook.spec.js:732:3 › 1024px has no horizontal or dialog overflow
+[99/172] [chromium] › tests/browser/handbook.spec.js:732:3 › 1440px has no horizontal or dialog overflow
+[100/172] [chromium] › tests/browser/handbook.spec.js:760:1 › all HTML has one H1, unique IDs and no external runtime request
+[101/172] [chromium] › tests/browser/official-updates-lookup.spec.js:20:1 › Official Updates lookup loads 20 formal records
+[102/172] [chromium] › tests/browser/official-updates-lookup.spec.js:27:1 › Official Updates keyword search finds a real title
+[103/172] [chromium] › tests/browser/official-updates-lookup.spec.js:34:1 › Official Updates institutional disaster measure remains a formal record
+[104/172] [chromium] › tests/browser/official-updates-lookup.spec.js:41:1 › Short ordinary numbers do not mass-match official updates
+[105/172] [chromium] › tests/browser/official-updates-lookup.spec.js:49:3 › Official Updates document number query 農輔字第1150022928C號 is exact
+[106/172] [chromium] › tests/browser/official-updates-lookup.spec.js:49:3 › Official Updates document number query 1150022928C is exact
+[107/172] [chromium] › tests/browser/official-updates-lookup.spec.js:61:1 › Official Updates multi-keyword matching is non-contiguous AND
+[108/172] [chromium] › tests/browser/official-updates-lookup.spec.js:73:1 › Official Updates multi-keyword results require every token
+[109/172] [chromium] › tests/browser/official-updates-lookup.spec.js:86:1 › Official Updates negative multi-keyword query returns zero
+[110/172] [chromium] › tests/browser/official-updates-lookup.spec.js:94:1 › Official Updates whitespace variants preserve multi-keyword results
+[111/172] [chromium] › tests/browser/official-updates-lookup.spec.js:106:1 › Official Updates multi-keyword query survives reload
+[112/172] [chromium] › tests/browser/official-updates-lookup.spec.js:116:1 › Official Updates Back and Forward restore multi-keyword state
+[113/172] [chromium] › tests/browser/official-updates-lookup.spec.js:130:1 › Official Updates program filter is data-derived
+[114/172] [chromium] › tests/browser/official-updates-lookup.spec.js:138:1 › Official Updates type filter is data-derived
+[115/172] [chromium] › tests/browser/official-updates-lookup.spec.js:144:1 › Official Updates year filter uses the event date
+[116/172] [chromium] › tests/browser/official-updates-lookup.spec.js:150:1 › Official Updates filter state is reflected in URL parameters
+[117/172] [chromium] › tests/browser/official-updates-lookup.spec.js:158:1 › Official Updates combined filters keep only the expected record
+[118/172] [chromium] › tests/browser/official-updates-lookup.spec.js:167:1 › Official Updates clear removes all query state
+[119/172] [chromium] › tests/browser/official-updates-lookup.spec.js:176:1 › Official Updates URL state survives reload
+[120/172] [chromium] › tests/browser/official-updates-lookup.spec.js:186:1 › Official Updates Back and Forward restore filter state
+[121/172] [chromium] › tests/browser/official-updates-lookup.spec.js:198:1 › Official Updates empty result is explicit
+[122/172] [chromium] › tests/browser/official-updates-lookup.spec.js:206:1 › Official Updates cards expose official source and handbook links
+[123/172] [chromium] › tests/browser/official-updates-lookup.spec.js:214:1 › Official Updates source links open the formal source in a new tab
+[124/172] [chromium] › tests/browser/official-updates-lookup.spec.js:221:1 › Homepage keeps handbook search separate and exposes the updates entry
+[125/172] [chromium] › tests/browser/official-updates-lookup.spec.js:227:1 › Disaster route remains an AFNA gateway and has no local records
+[126/172] [chromium] › tests/browser/official-updates-lookup.spec.js:233:1 › Official Updates form is keyboard usable and announces count
+[127/172] [chromium] › tests/browser/official-updates-lookup.spec.js:244:3 › Official Updates has no horizontal overflow at 390px
+[128/172] [chromium] › tests/browser/official-updates-lookup.spec.js:244:3 › Official Updates has no horizontal overflow at 393px
+[129/172] [chromium] › tests/browser/official-updates-lookup.spec.js:252:3 › Official Updates has no horizontal overflow at 375px
+[130/172] [chromium] › tests/browser/official-updates-lookup.spec.js:252:3 › Official Updates has no horizontal overflow at 430px
+[131/172] [chromium] › tests/browser/official-updates-lookup.spec.js:259:1 › Official Updates remains usable at desktop width
+[132/172] [chromium] › tests/browser/official-updates-lookup.spec.js:265:1 › Official Updates lookup has no runtime errors or unexpected requests
+[133/172] [chromium] › tests/browser/reference-lookup.spec.js:29:1 › FAQ opens with all deterministic question-level records
+[134/172] [chromium] › tests/browser/reference-lookup.spec.js:36:1 › FAQ keyword search returns source questions
+[135/172] [chromium] › tests/browser/reference-lookup.spec.js:44:1 › FAQ group filter exposes the four real source groups
+[136/172] [chromium] › tests/browser/reference-lookup.spec.js:52:1 › FAQ combined query and source filter are deterministic
+[137/172] [chromium] › tests/browser/reference-lookup.spec.js:61:1 › FAQ clear resets filters and URL
+[138/172] [chromium] › tests/browser/reference-lookup.spec.js:70:1 › FAQ result count has aria-live semantics
+[139/172] [chromium] › tests/browser/reference-lookup.spec.js:78:1 › FAQ query state survives reload
+[140/172] [chromium] › tests/browser/reference-lookup.spec.js:87:1 › FAQ browser back and forward restore URL state
+[141/172] [chromium] › tests/browser/reference-lookup.spec.js:99:1 › FAQ cards expose Evidence and PDF links
+[142/172] [chromium] › tests/browser/reference-lookup.spec.js:106:1 › FAQ answer details is native and keyboard usable
+[143/172] [chromium] › tests/browser/reference-lookup.spec.js:115:1 › FAQ source group links preserve all four ranges
+[144/172] [chromium] › tests/browser/reference-lookup.spec.js:122:1 › FAQ search form has an accessible label and preserves group URL state
+[145/172] [chromium] › tests/browser/reference-lookup.spec.js:129:1 › FAQ first record evidence starts at its declared source page
+[146/172] [chromium] › tests/browser/reference-lookup.spec.js:136:1 › FAQ group filter exposes selected state to assistive technology
+[147/172] [chromium] › tests/browser/reference-lookup.spec.js:144:1 › FAQ group URL state survives reload without changing the record set
+[148/172] [chromium] › tests/browser/reference-lookup.spec.js:152:1 › interpretations opens with all 87 records
+[149/172] [chromium] › tests/browser/reference-lookup.spec.js:158:1 › interpretation full document number ranks interpretation-001 first
+[150/172] [chromium] › tests/browser/reference-lookup.spec.js:165:1 › interpretation numeric document number ranks interpretation-001 first
+[151/172] [chromium] › tests/browser/reference-lookup.spec.js:173:3 › interpretation subject query 借新還舊 returns source records
+[152/172] [chromium] › tests/browser/reference-lookup.spec.js:173:3 › interpretation subject query 支付憑證 returns source records
+[153/172] [chromium] › tests/browser/reference-lookup.spec.js:173:3 › interpretation subject query 動用期限 returns source records
+[154/172] [chromium] › tests/browser/reference-lookup.spec.js:182:1 › interpretation program filter is built from data
+[155/172] [chromium] › tests/browser/reference-lookup.spec.js:191:1 › interpretation year filter is built from data
+[156/172] [chromium] › tests/browser/reference-lookup.spec.js:199:1 › interpretation combined query and filters keep the record in scope
+[157/172] [chromium] › tests/browser/reference-lookup.spec.js:207:1 › interpretation clear removes query and filters
+[158/172] [chromium] › tests/browser/reference-lookup.spec.js:216:1 › interpretation URL state survives reload
+[159/172] [chromium] › tests/browser/reference-lookup.spec.js:225:1 › interpretation browser back restores previous query
+[160/172] [chromium] › tests/browser/reference-lookup.spec.js:236:1 › interpretation cards expose Evidence and PDF links
+[161/172] [chromium] › tests/browser/reference-lookup.spec.js:243:1 › interpretation empty result is explicit
+[162/172] [chromium] › tests/browser/reference-lookup.spec.js:251:1 › interpretation filters preserve program and year in the shareable URL
+[163/172] [chromium] › tests/browser/reference-lookup.spec.js:259:1 › interpretation result keeps start-only evidence semantics
+[164/172] [chromium] › tests/browser/reference-lookup.spec.js:268:1 › interpretation loan-program filter keeps every visible result in scope
+[165/172] [chromium] › tests/browser/reference-lookup.spec.js:276:1 › interpretation document number search keeps the result heading and source link together
+[166/172] [chromium] › tests/browser/reference-lookup.spec.js:286:3 › FAQ and interpretation have no overflow at 375px
+[167/172] [chromium] › tests/browser/reference-lookup.spec.js:286:3 › FAQ and interpretation have no overflow at 390px
+[168/172] [chromium] › tests/browser/reference-lookup.spec.js:286:3 › FAQ and interpretation have no overflow at 430px
+[169/172] [chromium] › tests/browser/reference-lookup.spec.js:295:1 › FAQ and interpretation have no overflow at the requested 393px width
+[170/172] [chromium] › tests/browser/reference-lookup.spec.js:303:1 › FAQ and interpretation lookup are usable at desktop width
+[171/172] [chromium] › tests/browser/reference-lookup.spec.js:311:1 › global search, loan reading and official updates remain separate
+[172/172] [chromium] › tests/browser/reference-lookup.spec.js:325:1 › lookup pages report no console, page, 404 or external errors
+  172 passed (49.9s)
+(node:8112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

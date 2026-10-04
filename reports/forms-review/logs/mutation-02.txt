@@ -1,0 +1,79 @@
+{
+  "status": "REFERENCE LOOKUP MUTATIONS PASSED",
+  "caught": "12/12",
+  "uncaught": 0,
+  "results": [
+    {
+      "mutation": 1,
+      "name": "duplicate FAQ ID",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 2,
+      "name": "FAQ page out of range",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 3,
+      "name": "fake FAQ group",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 4,
+      "name": "blank FAQ question",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 5,
+      "name": "invalid FAQ source page",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 6,
+      "name": "duplicate interpretation ID",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 7,
+      "name": "broken interpretation document number",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 8,
+      "name": "Evidence page becomes P.360",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 9,
+      "name": "FAQ Evidence anchor target is missing",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 10,
+      "name": "invalid FAQ filter option",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 11,
+      "name": "lookup data script removed",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 12,
+      "name": "interpretation Evidence target is missing",
+      "caught": true,
+      "evidence": "{"
+    }
+  ]
+}

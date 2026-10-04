@@ -1,0 +1,536 @@
+--- scripts/reading_navigation.py (before)
++++ scripts/reading_navigation.py (after)
+@@ -28,6 +28,16 @@
+ )
+ 
+ TASK_BY_KEY = {task.key: task for task in TASK_DEFINITIONS}
++
++# Direct PDF 211/213 source-point evidence, not the first incidental keyword.
++# Public task IDs stay unchanged. Missing/duplicate source markers fail build.
++SOURCE_POINT_TARGETS = {
++    'young-farmer-loan': {
++        'eligibility': (211, '三、本貸款之對象如下：'),
++        'amount': (213, '十二、本貸款借款人資格符合第三點第一項第一款或第二款者'),
++        'term': (213, '十一、本貸款期限依貸款額度及購置設備耐用年限覈實貸放'),
++    },
++}
+ 
+ 
+ def _compact(value: str) -> str:
+@@ -63,6 +73,19 @@
+     mappings: list[dict] = []
+     for task in TASK_DEFINITIONS:
+         found = None
++        explicit = SOURCE_POINT_TARGETS.get(loan['id'], {}).get(task.key)
++        if explicit:
++            number, source_prefix = explicit
++            matches = [(page, index) for page in candidates if page['pdfPage'] == number
++                       for index, paragraph in enumerate(normalize_display_text(page.get('rawText', '')))
++                       if _compact(paragraph).startswith(_compact(source_prefix))]
++            if len(matches) != 1:
++                raise ValueError(f'Unresolved source-point target: {loan["id"]}/{task.key}')
++            page, index = matches[0]
++            mappings.append({'taskKey': task.key, 'label': task.label, 'marker': source_prefix,
++                             'anchor': task_anchor_id(task.key), 'pdfPage': number,
++                             'printedPage': page.get('printedPage'), 'paragraphIndex': index})
++            continue
+         for page in candidates:
+             for paragraph_index, paragraph in enumerate(normalize_display_text(page.get("rawText", ""))):
+                 compact = _compact(paragraph)
+--- scripts/build_site.py (before)
++++ scripts/build_site.py (after)
+@@ -631,10 +631,31 @@
+     return f'<p class="lookup-actions"><a class="button-link" href="{e(evidence)}">在手冊中開啟</a><a class="button-link secondary" href="{e(pdf)}">開啟PDF原文</a></p>'
+ 
+ 
+-def faq_answer_html(answer_text: str | None) -> str:
++def faq_answer_html(answer_text: str | None, item: dict | None = None, relative: str = '') -> str:
+     if not answer_text:
+         return '<p class="layout-note">本題僅建立來源起始頁索引；答案範圍待人工確認。</p>'
+-    return '<div class="lookup-source-text">' + "".join(f"<p>{e(line)}</p>" for line in answer_text.splitlines() if line.strip()) + "</div>"
++    original = '<div class="lookup-source-text">' + "".join(f"<p>{e(line)}</p>" for line in answer_text.splitlines() if line.strip()) + "</div>"
++    if not item or item['id'] != 'faq-112-12-q02':
++        return original
++    figures = []
++    for number in (316, 317, 318, 319):
++        preview = MANIFEST[number]
++        image = rel(relative, f"assets/page-previews/114/{preview['file']}")
++        evidence = rel(relative, f'versions/114/pages/page-{number:03d}.html') + f'#pdf-page-{number}'
++        pdf = rel(relative, f'downloads/{PDF_NAME}') + f'#page={number}'
++        note = '；本頁下半部另含第3、4題，不併入本題回答。' if number == 319 else '。'
++        figures.append(
++            f'<figure class="source-preview" data-faq-table-page="{number}">'
++            f'<a class="source-preview-link" href="{e(image)}" aria-label="放大查看原始PDF第{number}頁表格">'
++            f'<img class="source-preview-image" src="{e(image)}" alt="112年12月FAQ原始PDF第{number}頁表格與原文" width="{preview["width"]}" height="{preview["height"]}" loading="lazy" decoding="async"></a>'
++            f'<figcaption>手冊頁 {number-2}｜PDF頁 {number}{note}</figcaption></figure>'
++            f'<nav class="preview-actions" aria-label="PDF第{number}頁表格操作">'
++            f'<a class="button-link secondary" href="{e(image)}">放大查看原頁表格（P.{number}）</a>'
++            f'<a class="button-link secondary" href="{e(evidence)}">在手冊中開啟（P.{number}）</a>'
++            f'<a class="button-link secondary" href="{e(pdf)}">開啟PDF原文（P.{number}）</a></nav>'
++        )
++    return ('<p class="layout-note">本題表格請依原頁圖片查閱；可點圖放大。文字層僅供對照，不能保留合併欄列。</p>'
++            + ''.join(figures) + '<details class="raw-text-details"><summary>查看原文文字層（表格請以原頁為準）</summary>' + original + '</details>')
+ 
+ 
+ def faq_group_source_list(relative: str) -> str:
+@@ -658,7 +679,7 @@
+             f'<article id="item-{e(lookup_key)}" class="lookup-result faq-lookup-result" data-lookup-result data-lookup-id="{e(item["id"])}" data-lookup-key="{e(lookup_key)}" data-lookup-group="{e(item["faqGroupId"])}" data-lookup-search="{e(search_text)}">'
+             f'<p class="lookup-kicker">{e(group_titles[item["faqGroupId"]])}</p><h3>{e(item["question"])}</h3>'
+             f'<p class="lookup-meta">FAQ第{e(item["questionLabel"])}題｜手冊頁 {e(item["printedPageStart"])}–{e(item["printedPageEnd"])}｜PDF頁 {item["pdfPageStart"]}–{item["pdfPageEnd"]}</p>'
+-            f'<details><summary>查看原文回答</summary>{faq_answer_html(item.get("answerText"))}</details>'
++            f'<details><summary>查看原文回答</summary>{faq_answer_html(item.get("answerText"), item, relative)}</details>'
+             f'{lookup_actions(relative, item["pdfPageStart"], item["evidenceUrl"])}'
+             '</article>'
+         )
+--- scripts/validate_reading_navigation.py (before)
++++ scripts/validate_reading_navigation.py (after)
+@@ -30,6 +30,9 @@
+         self.next_links: list[dict] = []
+         self.evidence_links: list[dict] = []
+         self.stack: list[tuple[str, dict[str, str]]] = []
++        self.reading_targets = {}
++        self.pending_targets = []
++        self.paragraph_text = None
+ 
+     def _in_class(self, class_name: str) -> bool:
+         return any(class_name in attrs.get("class", "").split() for _, attrs in self.stack)
+@@ -39,6 +42,11 @@
+         if "id" in attrs:
+             self.ids.append(attrs["id"])
+             self.id_tags.setdefault(attrs["id"], tag)
++        if tag == 'h3' and attrs.get('data-reading-anchor'):
++            source = next((a.get('id') for _, a in reversed(self.stack) if a.get('id', '').startswith('source-page-')), None)
++            self.pending_targets.append((attrs['data-reading-anchor'], source))
++        if tag == 'p' and self.pending_targets:
++            self.paragraph_text = []
+         if tag == "a" and "href" in attrs:
+             source_block = next((item_attrs.get("id") for item_tag, item_attrs in reversed(self.stack) if item_attrs.get("id", "").startswith("source-page-")), None)
+             link = {"href": attrs["href"], "attrs": attrs, "tag": tag, "sourceBlock": source_block}
+@@ -60,10 +68,28 @@
+         self.handle_endtag(tag)
+ 
+     def handle_endtag(self, tag: str) -> None:
++        if tag == 'p' and self.paragraph_text is not None:
++            for key, source in self.pending_targets:
++                self.reading_targets[key] = {'source': source, 'text': ''.join(self.paragraph_text)}
++            self.pending_targets = []
++            self.paragraph_text = None
+         for index in range(len(self.stack) - 1, -1, -1):
+             if self.stack[index][0] == tag:
+                 del self.stack[index:]
+                 break
++
++    def handle_data(self, text):
++        if self.paragraph_text is not None:
++            self.paragraph_text.append(text)
++
++
++def validate_young_targets(targets):
++    # Independent expectations: do not derive these from task_mappings.
++    expected = {'eligibility': ('source-page-211', '三、本貸款之對象如下：'),
++                'amount': ('source-page-213', '十二、本貸款借款人資格符合第三點第一項第一款或第二款者'),
++                'term': ('source-page-213', '十一、本貸款期限依貸款額度')}
++    return [f'young-source-point: {key}' for key, (source, prefix) in expected.items()
++            if targets.get(key, {}).get('source') != source or not targets.get(key, {}).get('text', '').startswith(prefix)]
+ 
+ 
+ def parse(path: Path) -> PageParser:
+@@ -93,6 +119,8 @@
+     html_files = sorted(SITE.rglob("*.html"))
+     parsers = {path: parse(path) for path in html_files}
+     id_sets = {path: set(parser.ids) for path, parser in parsers.items()}
++    young = parsers.get(SITE / 'loans/young-farmer-loan/index.html')
++    errors.extend(validate_young_targets(young.reading_targets if young else {}))
+ 
+     if len(html_files) != 399:
+         errors.append(f"HTML page count changed: expected 399, got {len(html_files)}")
+--- scripts/validate_reference_lookup.py (before)
++++ scripts/validate_reference_lookup.py (after)
+@@ -4,6 +4,7 @@
+ from __future__ import annotations
+ 
+ import json
++import hashlib
+ import re
+ import sys
+ from html.parser import HTMLParser
+@@ -50,9 +51,15 @@
+                 "hrefs": [],
+                 "text": [],
+                 "doc_number": [],
++                "images": [],
++                "table_pages": [],
+             }
+             self.cards.append(card)
+             self.card_stack.append(card)
++        if self.card_stack and tag == 'img':
++            self.card_stack[-1]['images'].append(attrs)
++        if self.card_stack and attrs.get('data-faq-table-page'):
++            self.card_stack[-1]['table_pages'].append(int(attrs['data-faq-table-page']))
+         if tag == "p" and "lookup-doc-number" in attrs.get("class", "").split() and self.card_stack:
+             self.current_doc_card = self.card_stack[-1]
+         if tag == "a" and attrs.get("href"):
+@@ -111,6 +118,26 @@
+         return None, None
+     match = re.search(r"page-(\d{3})\.html$", parsed.path)
+     return target, int(match.group(1)) if match else None
++
++
++def validate_faq_tables(card):
++    errors = []
++    if card.get('table_pages') != [316, 317, 318, 319] or len(card.get('images', [])) != 4:
++        errors.append('faq-table-preview: missing or incorrect source pages')
++    manifest = json.loads((ROOT / 'assets/page-previews/114/manifest.json').read_text())
++    for number, image in zip((316, 317, 318, 319), card.get('images', [])):
++        source = next(p for p in manifest if p['pdfPage'] == number)
++        expected = '../assets/page-previews/114/' + source['file']
++        path = ROOT / 'assets/page-previews/114' / source['file']
++        if image.get('src') != expected or image.get('width') != str(source['width']) or image.get('height') != str(source['height']) or hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
++            errors.append(f'faq-table-preview: {number}')
++        for href in (f'../versions/114/pages/page-{number:03d}.html#pdf-page-{number}',
++                     f'../downloads/policy-agri-loan-handbook-114.pdf#page={number}', expected):
++            if href not in card.get('hrefs', []):
++                errors.append(f'faq-table-source-link: {number} {href}')
++    if '另含第3、4題，不併入本題回答' not in ''.join(card.get('text', [])):
++        errors.append('faq-table-boundary: page 319 disclosure missing')
++    return errors
+ 
+ 
+ def main() -> int:
+@@ -197,17 +224,20 @@
+         if card["attrs"].get("data-lookup-group") != item["faqGroupId"]:
+             errors.append(f"FAQ card group mismatch: {card['id']}")
+         for href in card["hrefs"]:
+-            if "page-" not in href:
++            if not re.search(r"page-\d{3}\.html(?:#|$)", href):
+                 continue
+             target, page_number = page_target(faq_path, href)
+             if target is None or not target.is_file() or not page_number or not (1 <= page_number <= 359):
+                 errors.append(f"broken FAQ Evidence/PDF target: {card['id']} -> {href}")
+     for href in faq_parser.all_hrefs:
+-        if "page-" not in href:
++        if not re.search(r"page-\d{3}\.html(?:#|$)", href):
+             continue
+         target, page_number = page_target(faq_path, href)
+         if target is None or not target.is_file() or not page_number or not (1 <= page_number <= 359):
+             errors.append(f"broken FAQ route Evidence/PDF target: {href}")
++
++    q02 = next((card for card in faq_parser.cards if card['id'] == 'faq-112-12-q02'), {})
++    errors.extend(validate_faq_tables(q02))
+ 
+     interpretations = json.loads((DATA / "interpretations.json").read_text(encoding="utf-8"))
+     interpretation_ids = [item.get("id") for item in interpretations]
+--- scripts/validate_forms_source_review.py (before)
++++ scripts/validate_forms_source_review.py (after)
+@@ -25,6 +25,7 @@
+ PDF_SHA = '0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54'
+ REVIEW = 'curation/114/forms-source-review.json'
+ REPORT = ROOT / 'reports/forms-review'
++FOLLOWUP = REPORT / 'reading-faq-fix'
+ 
+ 
+ def load(path):
+@@ -63,7 +64,7 @@
+     download = ROOT / 'site/downloads/policy-agri-loan-handbook-114.pdf'
+     doc = FormsHTML(); doc.feed((ROOT / 'site/forms/index.html').read_text())
+     current = snapshot()
+-    return {
++    data = {
+         'forms': load('data/114/forms.json'), 'review': load(REVIEW),
+         'baseline': load('reports/forms-review/forms-baseline.json'),
+         'pages': load('data/114/pages.json'), 'loans': load('data/114/loan-programs.json'),
+@@ -79,6 +80,15 @@
+                      load('package.json')['version'], load('package-lock.json')['version'],
+                      load('package-lock.json')['packages']['']['version']],
+     }
++    if (FOLLOWUP / 'baseline.json').exists():
++        from validate_reading_navigation import parse as reading_parse
++        from validate_reference_lookup import parse as lookup_parse
++        data['followup'] = load('reports/forms-review/reading-faq-fix/baseline.json')
++        data['youngTargets'] = reading_parse(ROOT / 'site/loans/young-farmer-loan/index.html').reading_targets
++        data['faqCard'] = next(card for card in lookup_parse(ROOT / 'site/faq/index.html').cards if card['id'] == 'faq-112-12-q02')
++        data['retainedReports'] = {p: sha(p) for p in data['followup']['phaseReports']}
++        data['retainedForms'] = [sha('data/114/forms.json'), sha(REVIEW)]
++    return data
+ 
+ 
+ def validate(data):
+@@ -186,13 +196,25 @@
+         require(all(f.get(field) == value for field, value in old.items() if field not in mutable) and not set(f) - set(old) - mutable, 'unauthorized-form-field', key)
+     require(len(data['html']) == 28 and len(data['htmlIds']) == len(set(data['htmlIds'])), 'html-inventory')
+     current = data['currentSnapshot']; original = baseline['designIntegrity']
++    followup = data.get('followup')
++    if followup:
++        from validate_reading_navigation import validate_young_targets
++        from validate_reference_lookup import validate_faq_tables
++        errors.extend(validate_young_targets(data['youngTargets']))
++        errors.extend(validate_faq_tables(data['faqCard']))
++        require(data['retainedReports'] == followup['phaseReports'], 'phase-one-report-retained')
++        require(data['retainedForms'] == [followup['formsSha'], followup['reviewSha']], 'phase-one-forms-retained')
+     require(data['presentation'] == baseline['frozenPresentation'], 'presentation-frozen')
+     permitted = {'data/114/forms.json', REVIEW}
+     require(all(current['frozen'].get(p) == digest for p, digest in original['frozen'].items() if p not in permitted) and not set(current['frozen']) - set(original['frozen']) - permitted, 'frozen-source-official')
+     require(current['pages'].keys() == original['pages'].keys() and len(current['pages']) == 399 and current['sitemap'] == original['sitemap'], 'route-inventory')
+     for path, before in original['pages'].items():
+         after = current['pages'].get(path, {})
+-        require(all(after.get(k) == before[k] for k in ('canonical', 'sourceText', 'preview')) and set(before['ids']).issubset(after.get('ids', [])), 'rendered-source-frozen', path)
++        fields = ('canonical', 'sourceText') if followup and path == 'faq/index.html' else ('canonical', 'sourceText', 'preview')
++        require(all(after.get(k) == before[k] for k in fields) and set(before['ids']).issubset(after.get('ids', [])), 'rendered-source-frozen', path)
++        if followup and path == 'faq/index.html':
++            expected_preview = [{k: image.get(k) for k in ('src', 'width', 'height')} for image in data['faqCard']['images']]
++            require(after.get('preview') == expected_preview and len(expected_preview) == 4, 'faq-preview-delta')
+     old_index = {r['id']: r for r in baseline['searchIndex']}
+     changed = []
+     allowed_index_fields = {'title', 'text', 'headings', 'breadcrumb', 'scope', 'scopeGroup', 'contextTitle'}
+@@ -200,6 +222,10 @@
+         old = old_index.get(record['id'])
+         if old == record: continue
+         changed.append(record['id'])
++        if followup and record['id'] == 'page-211':
++            require(old is not None and {k for k in old.keys() | record.keys() if old.get(k) != record.get(k)} == {'url'}
++                    and record['url'] == 'loans/young-farmer-loan/index.html#task-eligibility', 'reading-url-only', record['id'])
++            continue
+         require(old is not None and record['id'].startswith('forms-form-'), 'non-form-search-change', record['id'])
+         if old and record['id'].startswith('forms-form-'):
+             f = by_id.get(record['id'].removeprefix('forms-'), {})
+@@ -225,7 +251,11 @@
+         for p in ('data/114/forms.json', REVIEW):
+             expected['frozen'][p] = data['currentSnapshot']['frozen'][p]
+         expected['searchIndex'] = data['currentSnapshot']['searchIndex']
+-        (REPORT / 'allowed-forms-design-manifest.json').write_text(json.dumps(expected, ensure_ascii=False, indent=2) + '\n')
++        destination = REPORT
++        if data.get('followup'):
++            expected['pages']['faq/index.html']['preview'] = data['currentSnapshot']['pages']['faq/index.html']['preview']
++            destination = FOLLOWUP
++        (destination / 'allowed-forms-design-manifest.json').write_text(json.dumps(expected, ensure_ascii=False, indent=2) + '\n')
+     print(json.dumps({'status': 'FORMS SOURCE REVIEW PASS', **summary}, ensure_ascii=False, indent=2))
+ 
+ 
+--- scripts/audit_forms_regression.py (before)
++++ scripts/audit_forms_regression.py (after)
+@@ -13,6 +13,9 @@
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ REPORT = ROOT / 'reports/forms-review'
++FOLLOWUP = REPORT / 'reading-faq-fix'
++if (FOLLOWUP / 'baseline.json').exists():
++    REPORT = FOLLOWUP
+ PYTHON_SCRIPTS = ['test_interpretation_parser', 'audit_content', 'validate_display_text',
+     'validate_interpretation_metadata', 'validate_interpretation_decisions',
+     'validate_index_quality', 'validate_navigation_targets', 'validate_page_rendering',
+@@ -28,20 +31,28 @@
+ 
+ def commands(mode):
+     if mode == 'build':
++        if REPORT == FOLLOWUP:
++            return [[sys.executable, '-B', '-c', 'import sys;sys.path.insert(0,"scripts");from build_site import build_site,SITE;from build_search_index import build_search_index;build_site(SITE);build_search_index(SITE)']]
+         return [[sys.executable, 'scripts/build_all.py']]
+     if mode == 'validation':
+         return [[sys.executable, f'scripts/{s}.py'] for s in PYTHON_SCRIPTS] + [
+             [sys.executable, 'scripts/validate_forms_source_review.py', '--write-design-manifest'],
+-            [sys.executable, 'scripts/design_integrity.py', 'verify', 'reports/forms-review/allowed-forms-design-manifest.json'],
+-            [sys.executable, 'scripts/audit_forms_source.py', 'report'],
++            [sys.executable, 'scripts/design_integrity.py', 'verify', str((REPORT / 'allowed-forms-design-manifest.json').relative_to(ROOT))],
+             ['node', 'scripts/test_search_core.cjs'], ['node', 'scripts/test_task_search_semantics.cjs'],
+             ['node', 'scripts/test_official_updates_lookup.cjs'],
+             ['node', 'scripts/benchmark_search_core.cjs'], ['node', 'scripts/benchmark_official_updates_lookup.cjs'],
+             ['git', 'diff', '--check']]
+     if mode == 'mutation':
++        if REPORT == FOLLOWUP:
++            return [[sys.executable, '-B', '-c', 'import sys;from pathlib import Path;sys.path.insert(0,"scripts");import test_forms_source_review_mutations as m;m.REPORT=Path("reports/forms-review/reading-faq-fix");m.main()'], [sys.executable, 'scripts/audit_forms_source.py', 'test-followup-mutations']]
+         return [[sys.executable, f'scripts/{s}.py'] for s in ['test_validator_mutations', 'test_reference_lookup_mutations', 'test_official_updates_lookup_mutations', 'test_forms_source_review_mutations']]
+     if mode == 'reproducibility':
++        if REPORT == FOLLOWUP:
++            return [[sys.executable, 'scripts/audit_forms_source.py', 'reproduce-followup']]
+         return [[sys.executable, 'scripts/test_build_reproducibility.py']]
++    if REPORT == FOLLOWUP:
++        import uuid
++        return [['node', 'node_modules/@playwright/test/cli.js', 'test', '--trace', 'off', '--output', 'tmp/reading-faq-browser-' + uuid.uuid4().hex]]
+     npm_cli = os.environ.get('FORM_REVIEW_NPM_CLI')
+     if npm_cli:
+         return [['node', npm_cli, 'ci'], ['node', npm_cli, 'exec', '--', 'playwright', 'install', 'chromium'], ['node', npm_cli, 'exec', '--', 'playwright', 'test']]
+@@ -57,7 +68,7 @@
+         if command[:2] == ['node', os.environ.get('FORM_REVIEW_NPM_CLI')]:
+             label = 'npm ' + ' '.join(command[2:])
+         print(label,flush=True)
+-        completed=subprocess.run(command,cwd=ROOT,text=True,capture_output=True,timeout=1800)
++        completed=subprocess.run(command,cwd=ROOT,text=True,capture_output=True,timeout=1800,env={**os.environ, 'PYTHONDONTWRITEBYTECODE':'1', 'GIT_OPTIONAL_LOCKS':'0'})
+         output=completed.stdout+completed.stderr
+         # Public evidence logs keep diagnostics, never machine-private paths.
+         output=output.replace(str(ROOT), '<repository>')
+--- tests/browser/handbook.spec.js (before)
++++ tests/browser/handbook.spec.js (after)
+@@ -619,6 +619,44 @@
+   await expect.poll(() => page.url().endsWith(paths.loan)).toBe(true);
+ });
+ 
++for (const [task, sourcePage, originalPoint] of [
++  ["eligibility", 211, "三、本貸款之對象如下："],
++  ["amount", 213, "十二、本貸款借款人資格符合第三點第一項第一款或第二款者"],
++  ["term", 213, "十一、本貸款期限依貸款額度及購置設備耐用年限覈實貸放"]
++]) {
++  test(`young farmer ${task} lands on the source-verified point`, async ({page}) => {
++    const runtime = observeRuntime(page);
++    for (const width of [390, 1440]) {
++      await page.setViewportSize({width, height: 844});
++      await page.goto(paths.loan);
++      const link = page.locator(`#loan-task-navigation a[data-reading-task="${task}"]`);
++      await link.focus();
++      await expect(link).toBeFocused();
++      await link.press("Enter");
++      await expect(page).toHaveURL(new RegExp(`#task-${task}$`));
++      const target = page.locator(`#task-${task}`);
++      const source = await target.evaluate((heading) => ({
++        page: heading.closest(".loan-source-page").id,
++        text: heading.nextElementSibling.textContent.replace(/\s/g, "")
++      }));
++      expect(source.page).toBe(`source-page-${sourcePage}`);
++      expect(source.text.startsWith(originalPoint)).toBe(true);
++      const notCovered = () => target.evaluate((heading) => {
++        const rect = heading.getBoundingClientRect();
++        return rect.top >= document.querySelector("header").getBoundingClientRect().bottom - 4 && rect.bottom <= innerHeight;
++      });
++      await expect.poll(notCovered).toBe(true);
++      await page.reload();
++      await expect(page).toHaveURL(new RegExp(`#task-${task}$`));
++      await expect.poll(notCovered).toBe(true);
++      await page.goBack();
++      await expect(page).toHaveURL(new RegExp(`${paths.loan}$`));
++      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
++    }
++    expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
++  });
++}
++
+ test("section 本頁內容 TOC navigates in DOM order", async ({page}) => {
+   const runtime = observeRuntime(page);
+   await page.goto(paths.section);
+--- tests/browser/reference-lookup.spec.js (before)
++++ tests/browser/reference-lookup.spec.js (after)
+@@ -25,6 +25,84 @@
+   await page.goto("/interpretations/");
+   return page.locator('[data-reference-lookup="interpretations"]');
+ }
++
++async function faqInterestTable(page) {
++  await page.goto("/faq/?q=補貼基準&group=faq-112-12");
++  const card = page.locator('[data-lookup-id="faq-112-12-q02"]');
++  await expect(card).toBeVisible();
++  await card.locator(":scope > details > summary").click();
++  return card;
++}
++
++for (const width of [390, 1440]) {
++  test(`FAQ interest and subsidy preserve source table layout at ${width}px`, async ({page}) => {
++    await page.setViewportSize({width, height: 844});
++    const card = await faqInterestTable(page);
++    await expect(card.locator("[data-faq-table-page]")).toHaveCount(4);
++    for (const sourcePage of [316, 317, 318, 319]) {
++      const figure = card.locator(`[data-faq-table-page="${sourcePage}"]`);
++      const image = figure.locator("img");
++      await image.scrollIntoViewIfNeeded();
++      await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth === 1400)).toBe(true);
++      await expect(figure.locator("a")).toHaveAttribute("href", new RegExp(`pdf-page-${sourcePage}\\.webp$`));
++      const actions = card.locator(`nav[aria-label="PDF第${sourcePage}頁表格操作"] a`);
++      expect(await actions.count()).toBe(3);
++      for (const action of await actions.all()) {
++        const box = await action.boundingBox();
++        expect(box.height).toBeGreaterThanOrEqual(44);
++      }
++    }
++    await expect(card).toContainText("本頁下半部另含第3、4題，不併入本題回答");
++    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
++    await expect(card.locator(".raw-text-details")).not.toHaveAttribute("open");
++  });
++}
++
++test("FAQ table retains the unedited answer in keyboard-accessible native details", async ({page}) => {
++  const card = await faqInterestTable(page);
++  const original = require("../../data/114/faq-items.json").find((item) => item.id === "faq-112-12-q02");
++  const raw = card.locator(".raw-text-details");
++  const summary = raw.locator("summary");
++  await summary.focus();
++  await expect(summary).toBeFocused();
++  await summary.press("Enter");
++  await expect(raw).toHaveAttribute("open", "");
++  const rendered = await raw.locator(".lookup-source-text p").allTextContents();
++  expect(rendered).toEqual(original.answerText.split(/\r?\n/).filter((line) => line.trim()));
++  await summary.press("Enter");
++  await expect(raw).not.toHaveAttribute("open");
++});
++
++test("FAQ table links each original image, Evidence page and PDF page without guessing", async ({page}) => {
++  const card = await faqInterestTable(page);
++  for (const sourcePage of [316, 317, 318, 319]) {
++    const actions = card.locator(`nav[aria-label="PDF第${sourcePage}頁表格操作"]`);
++    const evidence = actions.getByRole("link", {name: `在手冊中開啟（P.${sourcePage}）`});
++    const href = await evidence.getAttribute("href");
++    const response = await page.request.get(new URL(href, page.url()).href);
++    expect(response.status()).toBe(200);
++    expect(await response.text()).toContain(`id="pdf-page-${sourcePage}"`);
++    await expect(actions.getByRole("link", {name: `開啟PDF原文（P.${sourcePage}）`})).toHaveAttribute("href", `../downloads/policy-agri-loan-handbook-114.pdf#page=${sourcePage}`);
++    const imageHref = await actions.getByRole("link", {name: `放大查看原頁表格（P.${sourcePage}）`}).getAttribute("href");
++    expect((await page.request.get(new URL(imageHref, page.url()).href)).status()).toBe(200);
++  }
++  expect((await page.request.get("/downloads/policy-agri-loan-handbook-114.pdf")).status()).toBe(200);
++});
++
++test("FAQ table expansion has no runtime errors or unexpected external requests", async ({page}) => {
++  const runtime = observeRuntime(page);
++  await page.addInitScript(() => {
++    window.__unhandled = [];
++    addEventListener("unhandledrejection", (event) => window.__unhandled.push(String(event.reason)));
++  });
++  const card = await faqInterestTable(page);
++  for (const image of await card.locator("[data-faq-table-page] img").all()) {
++    await image.scrollIntoViewIfNeeded();
++    await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
++  }
++  expect(await page.evaluate(() => window.__unhandled)).toEqual([]);
++  expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
++});
+ 
+ test("FAQ opens with all deterministic question-level records", async ({page}) => {
+   const tool = await faq(page);
+--- .github/workflows/pages.yml (before)
++++ .github/workflows/pages.yml (after)
+@@ -63,7 +63,7 @@
+           python scripts/validate_reference_lookup.py
+           python scripts/validate_official_updates_lookup.py
+           python scripts/validate_forms_source_review.py --write-design-manifest
+-          python scripts/design_integrity.py verify reports/forms-review/allowed-forms-design-manifest.json
++          python scripts/design_integrity.py verify reports/forms-review/reading-faq-fix/allowed-forms-design-manifest.json
+           python scripts/audit_search_precision.py
+           python scripts/report_source_review_plan.py
+           python scripts/report_official_update_inventory.py
+--- README.md (before)
++++ README.md (after)
+@@ -36,7 +36,9 @@
+ 
+ ## 本機建置
+ 
+-114.0.0-beta.3.3「書表來源逐項覆核版」回到同一底本逐頁核對28份書表，合計46個來源頁，其中16份為多頁書表；題名、續頁及直接貸款關聯的核對證據見 [書表來源核對報告](reports/forms-review/forms-review.md)。這是模型來源交叉核對，不代表人工覆核完成；獨立Luna覆核仍為 pre-commit gate。未改PDF、原始文字、官方資料層或beta.3.2視覺系統。
++114.0.0-beta.3.3「書表來源逐項覆核版」回到同一底本逐頁核對28份書表，合計46個來源頁，其中16份為多頁書表；題名、續頁及直接貸款關聯的核對證據見 [書表來源核對報告](reports/forms-review/forms-review.md)。[獨立Luna唯讀覆核](reports/forms-review/luna-review.md)已通過；這是模型來源交叉核對，不代表人工覆核完成，`humanReviewed`仍為`false`。未改PDF、原始文字、官方資料層或beta.3.2視覺系統。
++
++另經批准進行兩項小範圍閱讀修正：青壯年農民貸款快速導覽依PDF原文定位至第三點貸款對象、第十二點額度及第十一點期限；112年12月FAQ第2題優先顯示PDF316–319既有原頁表格圖片，附放大、Evidence及PDF入口，原回答文字保留於次級展開區。P.319明示下半部另含第3、4題，不將整頁當作第2題回答；未重建或補寫表格數值。前後差異與本機驗證見 [小範圍修正報告](reports/forms-review/reading-faq-fix/report.md)。本階段未commit／push／部署。
+ 
+ 來源核對後請使用下列build入口重建；不要重新執行 `extract_manual.py` 覆蓋已核對的forms metadata。底本抽取與書表核對紀錄是不同階段。
+ 
+--- CHANGELOG.md (before)
++++ CHANGELOG.md (after)
+@@ -5,12 +5,15 @@
+ ### Verified
+ - 逐項核對114年度手冊28份書表的題名、來源頁及頁面範圍，建立可追溯的模型來源覆核紀錄；不宣稱人工覆核完成。
+ - 28份書表合計46個來源頁，其中16份為多頁書表；逐頁檢視欄位、簽章、備註、續頁及下一份獨立題名邊界。
++- 獨立Luna唯讀覆核通過28份書表的來源與搜尋影響檢查，8份含form-023、027完成圖像邊界抽查；`humanReviewed`維持`false`，不是人工確認。
+ 
+ ### Corrected
+ - 修正16份原為單頁索引的書表範圍（form-005、007、008、009、011、012、015、017、018、019、020、021、022、023、026、027）。
+ - form-003、004、009改回來源題名的原始括號；form-023恢復完整專用貸款題名；form-028移除來源主題名不存在的貸款前綴。
+ - form-010、027補上來源可見副題；form-023、027依表內直接「申貸某貸款專用」及末頁備註證據建立貸款scope，不依鄰近頁推定。
+ - 書表資料最小接線顯示來源首尾頁、Evidence、PDF與核對狀態；不改CSS或版型。
++- 青壯年農民貸款「申請資格」定位至第三點貸款對象、「貸款額度」定位至第十二點正文；期限保留第十一點，原文順序與既有hash不變。
++- 112年12月FAQ第2題以PDF316–319既有原頁圖片優先呈現利率／補貼表格，提供放大、Evidence及PDF入口；原回答文字保留於次級展開區，P.319其他題目明確分界。不補值、不重寫來源文字。
+ 
+ ### Preserved
+ - 359頁原始PDF及SHA-256、507筆手冊搜尋架構與搜尋演算法。

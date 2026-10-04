@@ -1,0 +1,26 @@
+[
+  {
+    "command": "python scripts/test_validator_mutations.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/mutation-01.txt"
+  },
+  {
+    "command": "python scripts/test_reference_lookup_mutations.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/mutation-02.txt"
+  },
+  {
+    "command": "python scripts/test_official_updates_lookup_mutations.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/mutation-03.txt"
+  },
+  {
+    "command": "python scripts/test_forms_source_review_mutations.py",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/logs/mutation-04.txt"
+  }
+]

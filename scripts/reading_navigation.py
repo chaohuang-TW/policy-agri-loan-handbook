@@ -29,6 +29,16 @@ TASK_DEFINITIONS: tuple[TaskDefinition, ...] = (
 
 TASK_BY_KEY = {task.key: task for task in TASK_DEFINITIONS}
 
+# Direct PDF 211/213 source-point evidence, not the first incidental keyword.
+# Public task IDs stay unchanged. Missing/duplicate source markers fail build.
+SOURCE_POINT_TARGETS = {
+    'young-farmer-loan': {
+        'eligibility': (211, '三、本貸款之對象如下：'),
+        'amount': (213, '十二、本貸款借款人資格符合第三點第一項第一款或第二款者'),
+        'term': (213, '十一、本貸款期限依貸款額度及購置設備耐用年限覈實貸放'),
+    },
+}
+
 
 def _compact(value: str) -> str:
     return "".join(value.split())
@@ -63,6 +73,19 @@ def task_mappings(loan: dict, pages: list[dict]) -> list[dict]:
     mappings: list[dict] = []
     for task in TASK_DEFINITIONS:
         found = None
+        explicit = SOURCE_POINT_TARGETS.get(loan['id'], {}).get(task.key)
+        if explicit:
+            number, source_prefix = explicit
+            matches = [(page, index) for page in candidates if page['pdfPage'] == number
+                       for index, paragraph in enumerate(normalize_display_text(page.get('rawText', '')))
+                       if _compact(paragraph).startswith(_compact(source_prefix))]
+            if len(matches) != 1:
+                raise ValueError(f'Unresolved source-point target: {loan["id"]}/{task.key}')
+            page, index = matches[0]
+            mappings.append({'taskKey': task.key, 'label': task.label, 'marker': source_prefix,
+                             'anchor': task_anchor_id(task.key), 'pdfPage': number,
+                             'printedPage': page.get('printedPage'), 'paragraphIndex': index})
+            continue
         for page in candidates:
             for paragraph_index, paragraph in enumerate(normalize_display_text(page.get("rawText", ""))):
                 compact = _compact(paragraph)

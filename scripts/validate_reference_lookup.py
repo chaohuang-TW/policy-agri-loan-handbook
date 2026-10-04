@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sys
 from html.parser import HTMLParser
@@ -50,9 +51,15 @@ class LookupParser(HTMLParser):
                 "hrefs": [],
                 "text": [],
                 "doc_number": [],
+                "images": [],
+                "table_pages": [],
             }
             self.cards.append(card)
             self.card_stack.append(card)
+        if self.card_stack and tag == 'img':
+            self.card_stack[-1]['images'].append(attrs)
+        if self.card_stack and attrs.get('data-faq-table-page'):
+            self.card_stack[-1]['table_pages'].append(int(attrs['data-faq-table-page']))
         if tag == "p" and "lookup-doc-number" in attrs.get("class", "").split() and self.card_stack:
             self.current_doc_card = self.card_stack[-1]
         if tag == "a" and attrs.get("href"):
@@ -111,6 +118,26 @@ def page_target(path: Path, href: str) -> tuple[Path | None, int | None]:
         return None, None
     match = re.search(r"page-(\d{3})\.html$", parsed.path)
     return target, int(match.group(1)) if match else None
+
+
+def validate_faq_tables(card):
+    errors = []
+    if card.get('table_pages') != [316, 317, 318, 319] or len(card.get('images', [])) != 4:
+        errors.append('faq-table-preview: missing or incorrect source pages')
+    manifest = json.loads((ROOT / 'assets/page-previews/114/manifest.json').read_text())
+    for number, image in zip((316, 317, 318, 319), card.get('images', [])):
+        source = next(p for p in manifest if p['pdfPage'] == number)
+        expected = '../assets/page-previews/114/' + source['file']
+        path = ROOT / 'assets/page-previews/114' / source['file']
+        if image.get('src') != expected or image.get('width') != str(source['width']) or image.get('height') != str(source['height']) or hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
+            errors.append(f'faq-table-preview: {number}')
+        for href in (f'../versions/114/pages/page-{number:03d}.html#pdf-page-{number}',
+                     f'../downloads/policy-agri-loan-handbook-114.pdf#page={number}', expected):
+            if href not in card.get('hrefs', []):
+                errors.append(f'faq-table-source-link: {number} {href}')
+    if '另含第3、4題，不併入本題回答' not in ''.join(card.get('text', [])):
+        errors.append('faq-table-boundary: page 319 disclosure missing')
+    return errors
 
 
 def main() -> int:
@@ -197,17 +224,20 @@ def main() -> int:
         if card["attrs"].get("data-lookup-group") != item["faqGroupId"]:
             errors.append(f"FAQ card group mismatch: {card['id']}")
         for href in card["hrefs"]:
-            if "page-" not in href:
+            if not re.search(r"page-\d{3}\.html(?:#|$)", href):
                 continue
             target, page_number = page_target(faq_path, href)
             if target is None or not target.is_file() or not page_number or not (1 <= page_number <= 359):
                 errors.append(f"broken FAQ Evidence/PDF target: {card['id']} -> {href}")
     for href in faq_parser.all_hrefs:
-        if "page-" not in href:
+        if not re.search(r"page-\d{3}\.html(?:#|$)", href):
             continue
         target, page_number = page_target(faq_path, href)
         if target is None or not target.is_file() or not page_number or not (1 <= page_number <= 359):
             errors.append(f"broken FAQ route Evidence/PDF target: {href}")
+
+    q02 = next((card for card in faq_parser.cards if card['id'] == 'faq-112-12-q02'), {})
+    errors.extend(validate_faq_tables(q02))
 
     interpretations = json.loads((DATA / "interpretations.json").read_text(encoding="utf-8"))
     interpretation_ids = [item.get("id") for item in interpretations]

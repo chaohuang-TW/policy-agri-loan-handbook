@@ -1,0 +1,9 @@
+{
+  "status": "OFFICIAL UPDATES LOOKUP VALIDATION PASSED",
+  "records": 20,
+  "renderedCards": 20,
+  "fixtureQueries": 14,
+  "fixtureFilters": 4,
+  "searchIndex": 507,
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "status": "READING NAVIGATION VALIDATION PASSED",
+  "loanPages": 23,
+  "taskNavItems": 148,
+  "hiddenUnavailableTasks": 13,
+  "taskMissingTargets": 0,
+  "fakeTaskMappings": 0,
+  "sectionPages": 7,
+  "sectionTocItems": 28,
+  "tocMissingTargets": 0,
+  "sectionOrderErrors": 0,
+  "totalHashLinks": 1186,
+  "brokenHashLinks": 0,
+  "duplicateIds": 0,
+  "totalEvidenceLinks": 215,
+  "validEvidenceLinks": 215,
+  "invalidEvidenceLinks": 0,
+  "prevNextLinks": 384,
+  "selfLinks": 0,
+  "orderingErrors": 0,
+  "errors": []
+}

@@ -1,0 +1,80 @@
+{
+  "searchStartDate": "2025-10-01",
+  "coverageStatus": "partial",
+  "globalVerifiedThrough": null,
+  "sources": [
+    {
+      "source": "農業金融署法規查詢系統",
+      "status": "partial",
+      "reviewedThrough": "2026-07-28",
+      "discoveryHitCount": 25,
+      "candidateCount": 25,
+      "outOfScopeDiscoveryHitCount": 0,
+      "candidateIds": [
+        "afna-policy-loan-regulations-20251231",
+        "afna-agri-development-fund-rules-20251231",
+        "afna-farmer-relief-announcement-20251216",
+        "afna-farmer-relief-faq-20251216",
+        "afna-farmer-relief-object-announcement-20251219",
+        "afna-farmer-relief-object-letter-20251219",
+        "afna-hagibis-existing-policy-loans-20251209",
+        "afna-pig-farm-transition-faq-20251224",
+        "afna-poultry-policy-loans-20260129",
+        "afna-mataian-disaster-loan-relief-20260130",
+        "afna-mataian-household-working-capital-rules-20260130",
+        "afna-mataian-existing-policy-loans-20260130",
+        "afna-young-farmer-mataian-20260130",
+        "afna-mataian-household-working-capital-faq-20260130",
+        "afna-disaster-relief-regulations-20260629",
+        "afna-disaster-certificate-form-20260330",
+        "afna-disaster-loan-application-form-current",
+        "afna-october-policy-loan-package-20251015",
+        "afna-subsidy-repayment-procedure-20251203",
+        "afna-credit-department-inspection-20260311",
+        "afna-central-bank-mortgage-rules-20260324",
+        "afna-disaster-relief-regulations-20260324",
+        "afna-pig-farm-transition-rules-20251223",
+        "afna-pig-farm-transition-application-review-form-20251223",
+        "afna-disaster-loan-interest-exemption-20251009"
+      ]
+    },
+    {
+      "source": "農業金融署正式網站",
+      "status": "partial",
+      "reviewedThrough": "2026-07-28",
+      "discoveryHitCount": 0,
+      "candidateCount": 0,
+      "outOfScopeDiscoveryHitCount": 0,
+      "candidateIds": []
+    },
+    {
+      "source": "農業部正式網站",
+      "status": "partial",
+      "reviewedThrough": "2026-07-28",
+      "discoveryHitCount": 6,
+      "candidateCount": 0,
+      "outOfScopeDiscoveryHitCount": 6,
+      "candidateIds": []
+    },
+    {
+      "source": "全國農業金庫",
+      "status": "partial",
+      "reviewedThrough": "2026-07-28",
+      "discoveryHitCount": 0,
+      "candidateCount": 0,
+      "outOfScopeDiscoveryHitCount": 0,
+      "candidateIds": []
+    }
+  ],
+  "officialUpdates": {
+    "total": 20,
+    "decisions": {
+      "include": 20,
+      "needs-human-review": 1,
+      "already-covered": 2,
+      "exclude-irrelevant": 2
+    }
+  },
+  "orphanDecisionCandidates": 0,
+  "unknownCandidateRefs": 0
+}

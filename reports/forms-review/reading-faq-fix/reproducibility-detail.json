@@ -1,0 +1,6 @@
+{
+  "consecutiveBuilds": "PASS",
+  "currentSite": "identical",
+  "atomicFailureProtection": "NOT RUN: existing test deletes temporary directories",
+  "retainedTemporaryOutputs": "tmp/reading-faq-repro-9dfa63ad129642adbab701a3843870d5"
+}

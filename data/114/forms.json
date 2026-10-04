@@ -9,7 +9,17 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=40",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業發展基金貸款利息差額補貼申請書",
+    "sourcePages": [
+      40
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": null,
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-002",
@@ -21,11 +31,21 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=43",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "專案農貸額度控管期限延長申請書",
+    "sourcePages": [
+      43
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": null,
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-003",
-    "title": "專案農貸延期還款案件申請書（甲式）",
+    "title": "專案農貸延期還款案件申請書(甲式)",
     "printedPageStart": 51,
     "printedPageEnd": 51,
     "pdfPageStart": 53,
@@ -33,11 +53,21 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=53",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "專案農貸延期還款案件申請書(甲式)",
+    "sourcePages": [
+      53
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": null,
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-004",
-    "title": "專案農貸延期還款案件申請書（乙式）",
+    "title": "專案農貸延期還款案件申請書(乙式)",
     "printedPageStart": 52,
     "printedPageEnd": 52,
     "pdfPageStart": 54,
@@ -45,19 +75,40 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=54",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "專案農貸延期還款案件申請書(乙式)",
+    "sourcePages": [
+      54
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": null,
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-005",
     "title": "專案農貸延期還款案件審核表",
     "printedPageStart": 53,
-    "printedPageEnd": 53,
+    "printedPageEnd": 54,
     "pdfPageStart": 55,
-    "pdfPageEnd": 55,
+    "pdfPageEnd": 56,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=55",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "專案農貸延期還款案件審核表",
+    "sourcePages": [
+      55,
+      56
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": null,
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-006",
@@ -69,43 +120,86 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=99",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農機貸款申請書",
+    "sourcePages": [
+      99
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:farm-machinery-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-007",
     "title": "輔導農糧業經營貸款申請書",
     "printedPageStart": 104,
-    "printedPageEnd": 104,
+    "printedPageEnd": 105,
     "pdfPageStart": 106,
-    "pdfPageEnd": 106,
+    "pdfPageEnd": 107,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=106",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "輔導農糧業經營貸款申請書",
+    "sourcePages": [
+      106,
+      107
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-food-business-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-008",
     "title": "輔導漁業經營貸款申請書",
     "printedPageStart": 115,
-    "printedPageEnd": 115,
+    "printedPageEnd": 116,
     "pdfPageStart": 117,
-    "pdfPageEnd": 117,
+    "pdfPageEnd": 118,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=117",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "輔導漁業經營貸款申請書",
+    "sourcePages": [
+      117,
+      118
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:fishery-business-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-009",
-    "title": "提升畜禽產業經營貸款（除污染防治類外）申請書",
+    "title": "提升畜禽產業經營貸款(除污染防治類外)申請書",
     "printedPageStart": 126,
-    "printedPageEnd": 126,
+    "printedPageEnd": 127,
     "pdfPageStart": 128,
-    "pdfPageEnd": 128,
+    "pdfPageEnd": 129,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=128",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "提升畜禽產業經營貸款(除污染防治類外)申請書",
+    "sourcePages": [
+      128,
+      129
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:livestock-poultry-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-010",
@@ -117,31 +211,64 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=131",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "提升畜禽產業經營貸款申請書",
+    "sourceSubtitle": "（畜牧污染防治類專用）",
+    "sourcePages": [
+      131
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:livestock-poultry-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-011",
     "title": "農民經營及產銷班貸款申請書",
     "printedPageStart": 150,
-    "printedPageEnd": 150,
+    "printedPageEnd": 151,
     "pdfPageStart": 152,
-    "pdfPageEnd": 152,
+    "pdfPageEnd": 153,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=152",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農民經營及產銷班貸款申請書",
+    "sourcePages": [
+      152,
+      153
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:farmer-production-group-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-012",
     "title": "農業科技園區進駐業者優惠貸款申請書",
     "printedPageStart": 161,
-    "printedPageEnd": 161,
+    "printedPageEnd": 162,
     "pdfPageStart": 163,
-    "pdfPageEnd": 163,
+    "pdfPageEnd": 164,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=163",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業科技園區進駐業者優惠貸款申請書",
+    "sourcePages": [
+      163,
+      164
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-tech-park-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-013",
@@ -153,7 +280,17 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=174",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農家綜合貸款申請書",
+    "sourcePages": [
+      174
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:farm-household-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-014",
@@ -165,19 +302,40 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=183",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農漁會事業發展貸款申請書",
+    "sourcePages": [
+      183
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:association-development-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-015",
     "title": "造林貸款申請書",
     "printedPageStart": 188,
-    "printedPageEnd": 188,
+    "printedPageEnd": 189,
     "pdfPageStart": 190,
-    "pdfPageEnd": 190,
+    "pdfPageEnd": 191,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=190",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "造林貸款申請書",
+    "sourcePages": [
+      190,
+      191
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:afforestation-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-016",
@@ -189,91 +347,179 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=193",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "造林貸款土地勘查申請書",
+    "sourcePages": [
+      193
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:afforestation-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-017",
     "title": "小地主大專業農貸款申請書",
     "printedPageStart": 200,
-    "printedPageEnd": 200,
+    "printedPageEnd": 201,
     "pdfPageStart": 202,
-    "pdfPageEnd": 202,
+    "pdfPageEnd": 203,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=202",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "小地主大專業農貸款申請書",
+    "sourcePages": [
+      202,
+      203
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:small-landlord-professional-farmer-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-018",
     "title": "農業節能減碳貸款申請書",
     "printedPageStart": 205,
-    "printedPageEnd": 205,
+    "printedPageEnd": 206,
     "pdfPageStart": 207,
-    "pdfPageEnd": 207,
+    "pdfPageEnd": 208,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=207",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業節能減碳貸款申請書",
+    "sourcePages": [
+      207,
+      208
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-energy-saving-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-019",
     "title": "青壯年農民從農貸款申請書",
     "printedPageStart": 213,
-    "printedPageEnd": 213,
+    "printedPageEnd": 215,
     "pdfPageStart": 215,
-    "pdfPageEnd": 215,
+    "pdfPageEnd": 217,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=215",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "青壯年農民從農貸款申請書",
+    "sourcePages": [
+      215,
+      216,
+      217
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:young-farmer-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-020",
     "title": "休閒農場貸款申請書",
     "printedPageStart": 225,
-    "printedPageEnd": 225,
+    "printedPageEnd": 226,
     "pdfPageStart": 227,
-    "pdfPageEnd": 227,
+    "pdfPageEnd": 228,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=227",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "休閒農場貸款申請書",
+    "sourcePages": [
+      227,
+      228
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:leisure-farm-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-021",
     "title": "農民組織及農企業產銷經營及研發創新貸款申請書",
     "printedPageStart": 232,
-    "printedPageEnd": 232,
+    "printedPageEnd": 233,
     "pdfPageStart": 234,
-    "pdfPageEnd": 234,
+    "pdfPageEnd": 235,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=234",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農民組織及農企業產銷經營及研發創新貸款申請書",
+    "sourcePages": [
+      234,
+      235
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-organization-enterprise-innovation-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-022",
     "title": "農民組織及農企業天然災害復耕復建貸款申請書",
     "printedPageStart": 245,
-    "printedPageEnd": 245,
+    "printedPageEnd": 246,
     "pdfPageStart": 247,
-    "pdfPageEnd": 247,
+    "pdfPageEnd": 248,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=247",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農民組織及農企業天然災害復耕復建貸款申請書",
+    "sourcePages": [
+      247,
+      248
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-023",
-    "title": "農業天然災害受災證明書（復耕復建貸款用）",
+    "title": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕復建貸款」專用)",
     "printedPageStart": 249,
-    "printedPageEnd": 249,
+    "printedPageEnd": 250,
     "pdfPageStart": 251,
-    "pdfPageEnd": 251,
+    "pdfPageEnd": 252,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=251",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業天然災害受災證明書(申貸「農民組織及農企業天然災害復耕\n復建貸款」專用)",
+    "sourcePages": [
+      251,
+      252
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agri-organization-disaster-recovery-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-024",
@@ -285,7 +531,17 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=254",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業保險貸款申請書",
+    "sourcePages": [
+      254
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agricultural-insurance-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-025",
@@ -297,35 +553,69 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=258",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農民紓困貸款申請書",
+    "sourcePages": [
+      258
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:farmer-relief-loan",
+    "sourceReviewStatus": "verified",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-026",
     "title": "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
     "printedPageStart": 263,
-    "printedPageEnd": 263,
+    "printedPageEnd": 265,
     "pdfPageStart": 265,
-    "pdfPageEnd": 265,
+    "pdfPageEnd": 267,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=265",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "擴大家庭農場經營規模協助農民購買耕地貸款申請書",
+    "sourcePages": [
+      265,
+      266,
+      267
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:farmland-purchase-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-027",
     "title": "農業天然災害受災證明書",
     "printedPageStart": 290,
-    "printedPageEnd": 290,
+    "printedPageEnd": 291,
     "pdfPageStart": 292,
-    "pdfPageEnd": 292,
+    "pdfPageEnd": 293,
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=292",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "農業天然災害受災證明書",
+    "sourceSubtitle": "(申貸「農業天然災害低利貸款」專用)",
+    "sourcePages": [
+      292,
+      293
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:natural-disaster-low-interest-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   },
   {
     "id": "form-028",
-    "title": "農業紮根貸款額度動用申請書",
+    "title": "額度動用申請書",
     "printedPageStart": 303,
     "printedPageEnd": 303,
     "pdfPageStart": 305,
@@ -333,6 +623,16 @@
     "kind": "form",
     "originalUrl": "../../downloads/policy-agri-loan-handbook-114.pdf#page=305",
     "verificationStatus": "source-indexed",
-    "indexBasis": "explicit-source-page-list"
+    "indexBasis": "explicit-source-page-list",
+    "sourceTitle": "額度動用申請書",
+    "sourcePages": [
+      305
+    ],
+    "rangeStatus": "source-verified",
+    "scopeGroup": "loan:agricultural-rooting-loan",
+    "sourceReviewStatus": "verified-with-correction",
+    "sourceVerified": true,
+    "reviewedByModel": true,
+    "requiresHumanReview": false
   }
 ]

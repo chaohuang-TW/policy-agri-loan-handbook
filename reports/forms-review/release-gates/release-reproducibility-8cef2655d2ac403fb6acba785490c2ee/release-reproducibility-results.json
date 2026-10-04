@@ -1,0 +1,8 @@
+[
+  {
+    "command": "python -B scripts/test_build_reproducibility.py --retain-workspace",
+    "status": "PASS",
+    "exitCode": 0,
+    "log": "reports/forms-review/release-gates/release-reproducibility-8cef2655d2ac403fb6acba785490c2ee/logs/release-reproducibility-01.txt"
+  }
+]

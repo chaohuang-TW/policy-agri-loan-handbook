@@ -30,6 +30,9 @@ class PageParser(HTMLParser):
         self.next_links: list[dict] = []
         self.evidence_links: list[dict] = []
         self.stack: list[tuple[str, dict[str, str]]] = []
+        self.reading_targets = {}
+        self.pending_targets = []
+        self.paragraph_text = None
 
     def _in_class(self, class_name: str) -> bool:
         return any(class_name in attrs.get("class", "").split() for _, attrs in self.stack)
@@ -39,6 +42,11 @@ class PageParser(HTMLParser):
         if "id" in attrs:
             self.ids.append(attrs["id"])
             self.id_tags.setdefault(attrs["id"], tag)
+        if tag == 'h3' and attrs.get('data-reading-anchor'):
+            source = next((a.get('id') for _, a in reversed(self.stack) if a.get('id', '').startswith('source-page-')), None)
+            self.pending_targets.append((attrs['data-reading-anchor'], source))
+        if tag == 'p' and self.pending_targets:
+            self.paragraph_text = []
         if tag == "a" and "href" in attrs:
             source_block = next((item_attrs.get("id") for item_tag, item_attrs in reversed(self.stack) if item_attrs.get("id", "").startswith("source-page-")), None)
             link = {"href": attrs["href"], "attrs": attrs, "tag": tag, "sourceBlock": source_block}
@@ -60,10 +68,28 @@ class PageParser(HTMLParser):
         self.handle_endtag(tag)
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == 'p' and self.paragraph_text is not None:
+            for key, source in self.pending_targets:
+                self.reading_targets[key] = {'source': source, 'text': ''.join(self.paragraph_text)}
+            self.pending_targets = []
+            self.paragraph_text = None
         for index in range(len(self.stack) - 1, -1, -1):
             if self.stack[index][0] == tag:
                 del self.stack[index:]
                 break
+
+    def handle_data(self, text):
+        if self.paragraph_text is not None:
+            self.paragraph_text.append(text)
+
+
+def validate_young_targets(targets):
+    # Independent expectations: do not derive these from task_mappings.
+    expected = {'eligibility': ('source-page-211', '三、本貸款之對象如下：'),
+                'amount': ('source-page-213', '十二、本貸款借款人資格符合第三點第一項第一款或第二款者'),
+                'term': ('source-page-213', '十一、本貸款期限依貸款額度')}
+    return [f'young-source-point: {key}' for key, (source, prefix) in expected.items()
+            if targets.get(key, {}).get('source') != source or not targets.get(key, {}).get('text', '').startswith(prefix)]
 
 
 def parse(path: Path) -> PageParser:
@@ -93,6 +119,8 @@ def main() -> int:
     html_files = sorted(SITE.rglob("*.html"))
     parsers = {path: parse(path) for path in html_files}
     id_sets = {path: set(parser.ids) for path, parser in parsers.items()}
+    young = parsers.get(SITE / 'loans/young-farmer-loan/index.html')
+    errors.extend(validate_young_targets(young.reading_targets if young else {}))
 
     if len(html_files) != 399:
         errors.append(f"HTML page count changed: expected 399, got {len(html_files)}")

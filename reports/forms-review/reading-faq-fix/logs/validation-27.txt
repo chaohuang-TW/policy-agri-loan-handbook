@@ -1,0 +1,1 @@
+DESIGN INTEGRITY PASS: frozen checksums, 399 routes/canonical, sitemap, existing anchors, original text, previews, 507 search records unchanged

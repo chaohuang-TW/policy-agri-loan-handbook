@@ -1,0 +1,4 @@
+SITE VALIDATION PASSED
+- HTML pages: 399
+- Search records: 507
+- Required keyword results: 青壯年農民=65, 農機貸款=26, 電子商務=7, 寬緩期=32, 農業天然災害=60, 週轉金=105, 購買耕地=40, 函釋=178, 農業保險=26, 中小企業認定標準=9

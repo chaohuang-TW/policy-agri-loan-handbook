@@ -1,0 +1,8 @@
+{
+  "samples": 3000,
+  "records": 20,
+  "averageMs": 0.217,
+  "p50Ms": 0.2242,
+  "p95Ms": 0.2589,
+  "maxMs": 5.8531
+}

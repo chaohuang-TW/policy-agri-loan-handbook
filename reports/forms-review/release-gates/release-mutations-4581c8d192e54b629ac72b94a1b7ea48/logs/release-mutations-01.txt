@@ -1,0 +1,11 @@
+Retained workspace: tmp/release-gates/validator-mutations-1e9b6d27d116486996f13659d79aef84
+Traceback (most recent call last):
+  File "<repository>/scripts/test_validator_mutations.py", line 517, in <module>
+    main()
+  File "<repository>/scripts/test_validator_mutations.py", line 476, in main
+    evidence = causal_failure(completed, expected[index - 1], name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repository>/scripts/audit_forms_regression.py", line 103, in causal_failure
+    raise AssertionError('Wrong mutation diagnostic: ' + label + '; expected ' + expected + '\n' + output[-2000:])
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+TypeError: can only concatenate str (not "dict") to str

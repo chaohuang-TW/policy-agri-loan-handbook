@@ -2,7 +2,7 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/forms-source-review]
   workflow_dispatch:
 
 permissions:
@@ -11,18 +11,18 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          # Source review must read the immutable baseline Git object.
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -62,7 +62,8 @@ jobs:
           python scripts/validate_reading_navigation.py
           python scripts/validate_reference_lookup.py
           python scripts/validate_official_updates_lookup.py
-          python scripts/design_integrity.py verify reports/design/frozen-baseline.json
+          python scripts/validate_forms_source_review.py --write-design-manifest
+          python scripts/design_integrity.py verify reports/forms-review/reading-faq-fix/allowed-forms-design-manifest.json
           python scripts/audit_search_precision.py
           python scripts/report_source_review_plan.py
           python scripts/report_official_update_inventory.py
@@ -79,20 +80,35 @@ jobs:
           node scripts/benchmark_search_core.cjs
           node scripts/benchmark_official_updates_lookup.cjs
       - name: Verify reproducible atomic builds
-        run: python scripts/test_build_reproducibility.py
+        run: python -B scripts/test_build_reproducibility.py --retain-workspace
       - name: Verify all validator mutations are caught
         run: |
-          python scripts/test_validator_mutations.py
-          python scripts/test_reference_lookup_mutations.py
-          python scripts/test_official_updates_lookup_mutations.py
+          python -B scripts/test_validator_mutations.py --retain-workspace
+          python -B scripts/test_reference_lookup_mutations.py --retain-workspace
+          python -B scripts/test_official_updates_lookup_mutations.py --retain-workspace
+          python -B -c 'import sys;from pathlib import Path;sys.path.insert(0,"scripts");from audit_forms_regression import retained_workspace;import test_forms_source_review_mutations as m;m.REPORT=retained_workspace("forms-mutations");m.main()'
+          python -B scripts/audit_forms_source.py test-followup-mutations --output tmp/release-gates/navigation-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Audit live official source and gateway URLs
+        run: |
+          python -B scripts/audit_official_update_sources.py
+          python -B scripts/audit_disaster_official_gateway.py
       - name: Start local server and run Playwright Chromium
         run: npx playwright test
       - name: Configure Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v6
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: site
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

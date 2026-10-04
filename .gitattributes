@@ -1,0 +1,3 @@
+# Preserve original evidence bytes; limit whitespace exceptions to these artifacts.
+reports/forms-review/reading-faq-fix/source-diff.patch whitespace=-blank-at-eol
+reports/forms-review/release-gates/release-mutations-8baf7e352f264aac85a5232d3ef5e8a3/logs/release-mutations-01.txt whitespace=-blank-at-eof

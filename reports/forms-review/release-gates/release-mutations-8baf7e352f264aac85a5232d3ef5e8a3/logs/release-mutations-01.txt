@@ -1,0 +1,34 @@
+Retained workspace: tmp/release-gates/validator-mutations-f94006b166d5409ea1cda3fdcf82d891
+Traceback (most recent call last):
+  File "<repository>/scripts/test_validator_mutations.py", line 520, in <module>
+    main()
+  File "<repository>/scripts/test_validator_mutations.py", line 478, in main
+    evidence = causal_failure(completed, expected[index - 1], name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repository>/scripts/audit_forms_regression.py", line 127, in causal_failure
+    raise AssertionError('Wrong mutation diagnostic: ' + label + '; expected ' + rendered_expected + '\n' + output[-2000:])
+AssertionError: Wrong mutation diagnostic: exact document evidence disabled; expected {"assertion": "assert(documentFixture.record.id === \"document\" && documentFixture.exactDocumentNumberMatch && documentFixture.matchKind === \"exact-document\");"}
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: top 3 missing expected result for: 農授金字第 ０９５５０８０１８１ 號
+    at topContains (<repository>/tmp/release-gates/validator-mutations-f94006b166d5409ea1cda3fdcf82d891/case-56/scripts/test_search_core.cjs:26:3)
+    at Object.<anonymous> (<repository>/tmp/release-gates/validator-mutations-f94006b166d5409ea1cda3fdcf82d891/case-56/scripts/test_search_core.cjs:75:5)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+

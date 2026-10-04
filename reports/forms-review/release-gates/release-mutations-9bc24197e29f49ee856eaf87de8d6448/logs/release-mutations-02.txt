@@ -1,0 +1,84 @@
+Retained workspace: tmp/release-gates/reference-mutations-ddd14de5d65945b1a82036bb47679313
+{
+  "status": "REFERENCE LOOKUP MUTATIONS PASSED",
+  "caught": "12/12",
+  "uncaught": 0,
+  "positiveControl": {
+    "status": "PASS"
+  },
+  "retainedWorkspace": "tmp/release-gates/reference-mutations-ddd14de5d65945b1a82036bb47679313",
+  "results": [
+    {
+      "mutation": 1,
+      "name": "duplicate FAQ ID",
+      "caught": true,
+      "evidence": "duplicate FAQ question ID"
+    },
+    {
+      "mutation": 2,
+      "name": "FAQ page out of range",
+      "caught": true,
+      "evidence": "invalid FAQ source pages: faq-112-12-q01"
+    },
+    {
+      "mutation": 3,
+      "name": "fake FAQ group",
+      "caught": true,
+      "evidence": "unknown FAQ group: faq-112-12-q01"
+    },
+    {
+      "mutation": 4,
+      "name": "blank FAQ question",
+      "caught": true,
+      "evidence": "blank FAQ question: faq-112-12-q01"
+    },
+    {
+      "mutation": 5,
+      "name": "invalid FAQ source page",
+      "caught": true,
+      "evidence": "invalid FAQ sourcePages: faq-112-12-q01"
+    },
+    {
+      "mutation": 6,
+      "name": "duplicate interpretation ID",
+      "caught": true,
+      "evidence": "rendered interpretation lookup keys differ from source order"
+    },
+    {
+      "mutation": 7,
+      "name": "broken interpretation document number",
+      "caught": true,
+      "evidence": "document number missing from rendered card: interpretation-001"
+    },
+    {
+      "mutation": 8,
+      "name": "Evidence page becomes P.360",
+      "caught": true,
+      "evidence": "broken FAQ Evidence/PDF target: faq-112-12-q01 -> ../versions/114/pages/page-360.html"
+    },
+    {
+      "mutation": 9,
+      "name": "FAQ Evidence anchor target is missing",
+      "caught": true,
+      "evidence": "broken FAQ Evidence/PDF target: faq-112-12-q01 -> ../versions/114/pages/page-999.html"
+    },
+    {
+      "mutation": 10,
+      "name": "invalid FAQ filter option",
+      "caught": true,
+      "evidence": "FAQ filter options do not match four source groups"
+    },
+    {
+      "mutation": 11,
+      "name": "lookup data script removed",
+      "caught": true,
+      "evidence": "FAQ embedded lookup data missing"
+    },
+    {
+      "mutation": 12,
+      "name": "interpretation Evidence target is missing",
+      "caught": true,
+      "evidence": "broken interpretation Evidence/PDF target: interpretation-001 -> ../versions/114/pages/page-999.html"
+    }
+  ]
+}

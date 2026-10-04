@@ -1,0 +1,3 @@
+DISPLAY TEXT VALIDATION PASSED
+- Source pages checked: 359
+- Built reflowed pages checked: 211

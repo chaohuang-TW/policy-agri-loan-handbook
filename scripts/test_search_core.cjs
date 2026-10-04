@@ -211,7 +211,12 @@ assert(!records.some((record) => /手冊頁 None|undefined|\[object Object\]|\bn
 assert(!records.some((record) => String(record.documentNumber || "").includes("日農授金字第")));
 assert.strictEqual(records.filter((record) => record.type === "原文頁面" && record.scopeGroup).length, 215);
 assert.strictEqual(records.filter((record) => record.type === "函釋" && record.scopeGroup).length, 56);
-assert.strictEqual(records.filter((record) => record.type === "書表附件" && record.scopeGroup).length, 21);
+assert.strictEqual(records.filter((record) => record.type === "書表附件" && record.scopeGroup).length, 23);
+// Direct form-title/subtitle evidence is preserved by the source review gate.
+assert.strictEqual(records.find(record => record.id === "forms-form-023").scopeGroup,
+  "loan:agri-organization-disaster-recovery-loan");
+assert.strictEqual(records.find(record => record.id === "forms-form-027").scopeGroup,
+  "loan:natural-disaster-low-interest-loan");
 
 console.log(JSON.stringify({
   status: "SEARCH CORE TEST PASSED",

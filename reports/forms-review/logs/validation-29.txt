@@ -1,0 +1,12 @@
+{
+  "status": "SEARCH CORE TEST PASSED",
+  "fixedQueries": "12/12",
+  "loanTitles": "23/23",
+  "documentNumbers": "87/87",
+  "formTitles": "28/28",
+  "faqTitles": "4/4",
+  "appendixTitles": "6/6",
+  "sections": "7/7",
+  "unicode": "20/20",
+  "longestSnippet": 240
+}

@@ -1,0 +1,3116 @@
+{
+  "stage": "local-only-no-commit-no-push",
+  "formsSummary": {
+    "forms": 28,
+    "reviews": 28,
+    "sourcePages": 46,
+    "multiPageForms": 16,
+    "corrected": 20,
+    "verified": 8,
+    "humanReviewItems": 0,
+    "routes": 399,
+    "searchCount": 507,
+    "changedSearchRecords": [
+      "page-211",
+      "forms-form-003",
+      "forms-form-004",
+      "forms-form-009",
+      "forms-form-023",
+      "forms-form-027",
+      "forms-form-028"
+    ]
+  },
+  "sourceIntegrity": {
+    "pdfPages": 359,
+    "pdfSha256": "0bcb266d2f1860c6038a5bc2eaad69dc6700d999770f5b40642f875c3343ed54",
+    "sourceDownloadBitIdentical": true,
+    "routes": 399,
+    "sitemap": 399,
+    "canonical": 399,
+    "loans": 23,
+    "interpretations": 87,
+    "forms": 28,
+    "faqQuestions": 52,
+    "faqGroups": 4,
+    "sections": 7,
+    "officialUpdates": 20,
+    "coverage": "partial",
+    "verifiedThrough": null
+  },
+  "phaseOneReportsRetained": true,
+  "formsDataRetained": true,
+  "humanReviewed": false,
+  "youngTargets": {
+    "eligibility": {
+      "source": "source-page-211",
+      "text": "三、本貸款之對象如下："
+    },
+    "post-loan-management": {
+      "source": "source-page-212",
+      "text": "(二)申請漁業類貸款，屬申辦養殖漁業登記中者，未於撥貸後三年內，補正養殖漁業登記證；屬漁船經營權移轉中者，未於撥貸後六個月內，補正漁業執照。有前述情形，視為未符合貸款資格。"
+    },
+    "purpose": {
+      "source": "source-page-212",
+      "text": "四、本貸款用途為提供青壯年從事農業生產與其相關之農產運銷及電子商務等所需之資本支出及週轉金。但借款人資格符合前點第一項第一款第八目或第三款者，得用於直接從事農產運銷及電子商務所需資金。"
+    },
+    "documents": {
+      "source": "source-page-212",
+      "text": "(一) 申請作物類貸款者，應檢附下列證明文件之一，如有興建固定設施者，應另檢附土地作農業設施容許使用證明："
+    },
+    "interest": {
+      "source": "source-page-213",
+      "text": "十、本貸款利率依辦理政策性農業專案貸款辦法相關規定辦理。"
+    },
+    "term": {
+      "source": "source-page-213",
+      "text": "十一、本貸款期限依貸款額度及購置設備耐用年限覈實貸放，其中資本支出最長十五年，週轉金最長五年。但週轉金採循環動用者，貸款期限最長一年。"
+    },
+    "amount": {
+      "source": "source-page-213",
+      "text": "十二、本貸款借款人資格符合第三點第一項第一款或第二款者，其最高貸款額度為新臺幣五百萬元，其中週轉金最高貸款額度為新臺幣一百萬元。首次辦理或辦理本貸款未滿一年者，每一借款人最高貸款額度為新臺幣三百萬元。"
+    }
+  },
+  "searchDeltas": [
+    {
+      "id": "page-211",
+      "before": {
+        "id": "page-211",
+        "type": "原文頁面",
+        "title": "青壯年農民從農貸款",
+        "category": "young-farmer-loan",
+        "version": "114年度",
+        "printedPage": 209,
+        "pdfPage": 211,
+        "text": "青壯年農民從農貸款 青壯年農民從農貸款要點中華民國 101 年 10 月 4 日行政院農業委員會農金字第 1015080473 號令訂定發布全文 19 點中華民國 102 年 4 月 26 日行政院農業委員會農金字第 1025080179 號令修正中華民國 103 年 2 月 28 日行政院農業委員會農金字第 1032080095 號令修正中華民國 103 年 10 月 28 日行政院農業委員會農金字第 1035084022 號令修正中華民國 105 年 3 月 18 日行政院農業委員會農金字第 1055084021M 號令修正部分規定, 並自 105 年 3 月 22 日生效中華民國 107 年 3 月 30 日行政院農業委員會農金字第 1075084075E 號令修正部分規定, 並自 107 年 4 月 16 日生效中華民國108 年11 月22 日行政院農業委員會農金字第 1085084745H 號令修正部分規定 , 並自 108 年 11 月 25 日生效中華民國109 年2 月27 日行政院農業委員會農授金字第 1095084100I 號令修正第14 點、 第 19 點,並自 109 年 3 月1 日生效中華民國 109 年10 月21 日行政院農業委員會農授金字第1095085177F 號令修正第5 點、 第 14 點、第 16 點,並自 109 年 11 月 1 日生效中華民國 110 年 7 月 29 日行政院農業委員會農授金字第 1105084732A 號令修正部分規定,名稱並修正為「青壯年農民從農貸款要點」 ,並自110 年 8 月 1 日生效中華民國 111 年 9 月 29 日行政院農業委員會農授金字第 1115085078E 號令修正第 3 點、 第 5 點,並自 111 年 10 月1 日生效中華民國 112 年 8 月 31 日農業部農授金字第 1125085048 號令修正部分規定,並自 112 年 9 月 1 日生效中華民國 112 年 12 月 12 日農業部農授金字第 1125085577 號令修正發布部分規定,並自 113 年 1 月1 日生效中華民國 114 年 10 月 9 日農業部農授金字第 1147467207 號令修正第 3 點、第18 點,並自中華民國 114 年 10 月 10 日生效一、 農業部為配合輔導及培育農業青年人力政策 , 並協助壯年農民持續從農 , 支應青壯年農民從農所需資金,特訂定本要點。 二、 青壯年農民從農貸款除依辦理政策性農業專案貸款辦法辦理外 , 依本要點規定辦理 。 本要點未規定者,依農業發展基金貸款作業規範及其他有關規定辦理。 三、 本貸款之對象如下: (一) 年齡十八歲以上四十五歲以下,並符合下列條件之一者: 1. 高中職以上學校農業相關科系畢業。 2. 申貸前五年內曾參加農業部所屬機關(構)、 直轄市 、 縣(市)政府 、 農(漁)會、 農業學校(院)舉辦之相關農業訓練滿八十小時。 3. 農會法第十二條所定農會會員或漁會法第十五條第一項第一款所定甲類會員。 4. 農民職業災害保險被保險人。 5. 依農業產銷班設立及輔導辦法規定完成登記且經評鑑合格產銷班之班員。 手冊頁 209 PDF頁 211",
+        "headings": [
+          "青壯年農民從農貸款"
+        ],
+        "scope": "section:young-farmer-loan",
+        "scopeGroup": "loan:young-farmer-loan",
+        "url": "versions/114/pages/page-211.html#pdf-page-211",
+        "breadcrumb": [
+          "114年度",
+          "青壯年農民從農貸款"
+        ],
+        "contextTitle": "青壯年農民從農貸款"
+      },
+      "after": {
+        "id": "page-211",
+        "type": "原文頁面",
+        "title": "青壯年農民從農貸款",
+        "category": "young-farmer-loan",
+        "version": "114年度",
+        "printedPage": 209,
+        "pdfPage": 211,
+        "text": "青壯年農民從農貸款 青壯年農民從農貸款要點中華民國 101 年 10 月 4 日行政院農業委員會農金字第 1015080473 號令訂定發布全文 19 點中華民國 102 年 4 月 26 日行政院農業委員會農金字第 1025080179 號令修正中華民國 103 年 2 月 28 日行政院農業委員會農金字第 1032080095 號令修正中華民國 103 年 10 月 28 日行政院農業委員會農金字第 1035084022 號令修正中華民國 105 年 3 月 18 日行政院農業委員會農金字第 1055084021M 號令修正部分規定, 並自 105 年 3 月 22 日生效中華民國 107 年 3 月 30 日行政院農業委員會農金字第 1075084075E 號令修正部分規定, 並自 107 年 4 月 16 日生效中華民國108 年11 月22 日行政院農業委員會農金字第 1085084745H 號令修正部分規定 , 並自 108 年 11 月 25 日生效中華民國109 年2 月27 日行政院農業委員會農授金字第 1095084100I 號令修正第14 點、 第 19 點,並自 109 年 3 月1 日生效中華民國 109 年10 月21 日行政院農業委員會農授金字第1095085177F 號令修正第5 點、 第 14 點、第 16 點,並自 109 年 11 月 1 日生效中華民國 110 年 7 月 29 日行政院農業委員會農授金字第 1105084732A 號令修正部分規定,名稱並修正為「青壯年農民從農貸款要點」 ,並自110 年 8 月 1 日生效中華民國 111 年 9 月 29 日行政院農業委員會農授金字第 1115085078E 號令修正第 3 點、 第 5 點,並自 111 年 10 月1 日生效中華民國 112 年 8 月 31 日農業部農授金字第 1125085048 號令修正部分規定,並自 112 年 9 月 1 日生效中華民國 112 年 12 月 12 日農業部農授金字第 1125085577 號令修正發布部分規定,並自 113 年 1 月1 日生效中華民國 114 年 10 月 9 日農業部農授金字第 1147467207 號令修正第 3 點、第18 點,並自中華民國 114 年 10 月 10 日生效一、 農業部為配合輔導及培育農業青年人力政策 , 並協助壯年農民持續從農 , 支應青壯年農民從農所需資金,特訂定本要點。 二、 青壯年農民從農貸款除依辦理政策性農業專案貸款辦法辦理外 , 依本要點規定辦理 。 本要點未規定者,依農業發展基金貸款作業規範及其他有關規定辦理。 三、 本貸款之對象如下: (一) 年齡十八歲以上四十五歲以下,並符合下列條件之一者: 1. 高中職以上學校農業相關科系畢業。 2. 申貸前五年內曾參加農業部所屬機關(構)、 直轄市 、 縣(市)政府 、 農(漁)會、 農業學校(院)舉辦之相關農業訓練滿八十小時。 3. 農會法第十二條所定農會會員或漁會法第十五條第一項第一款所定甲類會員。 4. 農民職業災害保險被保險人。 5. 依農業產銷班設立及輔導辦法規定完成登記且經評鑑合格產銷班之班員。 手冊頁 209 PDF頁 211",
+        "headings": [
+          "青壯年農民從農貸款"
+        ],
+        "scope": "section:young-farmer-loan",
+        "scopeGroup": "loan:young-farmer-loan",
+        "url": "loans/young-farmer-loan/index.html#task-eligibility",
+        "breadcrumb": [
+          "114年度",
+          "青壯年農民從農貸款"
+        ],
+        "contextTitle": "青壯年農民從農貸款"
+      }
+    }
+  ],
+  "searchRegression": {
+    "status": "PASS",
+    "comparisons": 125,
+    "unchanged": 125,
+    "baseline": "post-Luna-before-reading-FAQ-fix",
+    "urlOnlyDelta": "page-211",
+    "rows": [
+      {
+        "query": "申請資格",
+        "scope": "all",
+        "beforeCount": 103,
+        "afterCount": 103,
+        "beforeTop10": [
+          "page-231",
+          "page-263",
+          "page-100",
+          "page-108",
+          "page-117",
+          "page-119",
+          "page-130",
+          "page-148",
+          "page-154",
+          "page-163"
+        ],
+        "afterTop10": [
+          "page-231",
+          "page-263",
+          "page-100",
+          "page-108",
+          "page-117",
+          "page-119",
+          "page-130",
+          "page-148",
+          "page-154",
+          "page-163"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "資格",
+        "scope": "all",
+        "beforeCount": 117,
+        "afterCount": 117,
+        "beforeTop10": [
+          "interpretations-interpretation-021",
+          "interpretations-interpretation-022",
+          "interpretations-interpretation-053",
+          "interpretations-interpretation-056",
+          "interpretations-interpretation-069",
+          "interpretations-interpretation-071",
+          "interpretations-interpretation-029",
+          "page-005",
+          "page-006",
+          "page-055"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-021",
+          "interpretations-interpretation-022",
+          "interpretations-interpretation-053",
+          "interpretations-interpretation-056",
+          "interpretations-interpretation-069",
+          "interpretations-interpretation-071",
+          "interpretations-interpretation-029",
+          "page-005",
+          "page-006",
+          "page-055"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款用途",
+        "scope": "all",
+        "beforeCount": 150,
+        "afterCount": 150,
+        "beforeTop10": [
+          "interpretations-interpretation-005",
+          "interpretations-interpretation-010",
+          "interpretations-interpretation-044",
+          "page-028",
+          "page-149",
+          "page-153",
+          "page-253",
+          "page-015",
+          "page-035",
+          "page-058"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-005",
+          "interpretations-interpretation-010",
+          "interpretations-interpretation-044",
+          "page-028",
+          "page-149",
+          "page-153",
+          "page-253",
+          "page-015",
+          "page-035",
+          "page-058"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "用途",
+        "scope": "all",
+        "beforeCount": 160,
+        "afterCount": 160,
+        "beforeTop10": [
+          "interpretations-interpretation-002",
+          "interpretations-interpretation-005",
+          "interpretations-interpretation-044",
+          "interpretations-interpretation-010",
+          "interpretations-interpretation-025",
+          "page-005",
+          "page-006",
+          "page-035",
+          "page-047",
+          "page-096"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-002",
+          "interpretations-interpretation-005",
+          "interpretations-interpretation-044",
+          "interpretations-interpretation-010",
+          "interpretations-interpretation-025",
+          "page-005",
+          "page-006",
+          "page-035",
+          "page-047",
+          "page-096"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款額度",
+        "scope": "all",
+        "beforeCount": 75,
+        "afterCount": 75,
+        "beforeTop10": [
+          "interpretations-interpretation-001",
+          "interpretations-interpretation-020",
+          "interpretations-interpretation-036",
+          "page-058",
+          "page-014",
+          "page-018",
+          "page-033",
+          "page-097",
+          "page-103",
+          "page-104"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-001",
+          "interpretations-interpretation-020",
+          "interpretations-interpretation-036",
+          "page-058",
+          "page-014",
+          "page-018",
+          "page-033",
+          "page-097",
+          "page-103",
+          "page-104"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度",
+        "scope": "all",
+        "beforeCount": 105,
+        "afterCount": 105,
+        "beforeTop10": [
+          "forms-form-002",
+          "forms-form-028",
+          "interpretations-interpretation-001",
+          "interpretations-interpretation-020",
+          "interpretations-interpretation-036",
+          "interpretations-interpretation-072",
+          "page-005",
+          "page-006",
+          "page-033",
+          "page-043"
+        ],
+        "afterTop10": [
+          "forms-form-002",
+          "forms-form-028",
+          "interpretations-interpretation-001",
+          "interpretations-interpretation-020",
+          "interpretations-interpretation-036",
+          "interpretations-interpretation-072",
+          "page-005",
+          "page-006",
+          "page-033",
+          "page-043"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款期限",
+        "scope": "all",
+        "beforeCount": 50,
+        "afterCount": 50,
+        "beforeTop10": [
+          "page-005",
+          "page-006",
+          "page-036",
+          "page-037",
+          "page-097",
+          "page-101",
+          "page-103",
+          "page-114",
+          "page-124",
+          "page-150"
+        ],
+        "afterTop10": [
+          "page-005",
+          "page-006",
+          "page-036",
+          "page-037",
+          "page-097",
+          "page-101",
+          "page-103",
+          "page-114",
+          "page-124",
+          "page-150"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "期限",
+        "scope": "all",
+        "beforeCount": 101,
+        "afterCount": 101,
+        "beforeTop10": [
+          "forms-form-002",
+          "interpretations-interpretation-009",
+          "interpretations-interpretation-034",
+          "page-005",
+          "page-006",
+          "page-036",
+          "page-037",
+          "page-097",
+          "page-101",
+          "page-103"
+        ],
+        "afterTop10": [
+          "forms-form-002",
+          "interpretations-interpretation-009",
+          "interpretations-interpretation-034",
+          "page-005",
+          "page-006",
+          "page-036",
+          "page-037",
+          "page-097",
+          "page-101",
+          "page-103"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "寬緩期",
+        "scope": "all",
+        "beforeCount": 32,
+        "afterCount": 32,
+        "beforeTop10": [
+          "page-055",
+          "page-097",
+          "page-105",
+          "page-116",
+          "page-126",
+          "page-150",
+          "page-161",
+          "page-168",
+          "page-181",
+          "page-188"
+        ],
+        "afterTop10": [
+          "page-055",
+          "page-097",
+          "page-105",
+          "page-116",
+          "page-126",
+          "page-150",
+          "page-161",
+          "page-168",
+          "page-181",
+          "page-188"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "應備文件",
+        "scope": "all",
+        "beforeCount": 156,
+        "afterCount": 156,
+        "beforeTop10": [
+          "forms-form-001",
+          "forms-form-002",
+          "interpretations-interpretation-014",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "interpretations-interpretation-041",
+          "forms-form-011"
+        ],
+        "afterTop10": [
+          "forms-form-001",
+          "forms-form-002",
+          "interpretations-interpretation-014",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "interpretations-interpretation-041",
+          "forms-form-011"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "文件",
+        "scope": "all",
+        "beforeCount": 123,
+        "afterCount": 123,
+        "beforeTop10": [
+          "interpretations-interpretation-029",
+          "interpretations-interpretation-041",
+          "interpretations-interpretation-047",
+          "page-005",
+          "page-006",
+          "page-034",
+          "page-036",
+          "page-100",
+          "page-103",
+          "page-108"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-029",
+          "interpretations-interpretation-041",
+          "interpretations-interpretation-047",
+          "page-005",
+          "page-006",
+          "page-034",
+          "page-036",
+          "page-100",
+          "page-103",
+          "page-108"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸放後管理",
+        "scope": "all",
+        "beforeCount": 17,
+        "afterCount": 17,
+        "beforeTop10": [
+          "page-058",
+          "page-015",
+          "page-035",
+          "page-105",
+          "page-116",
+          "page-127",
+          "page-214",
+          "page-226",
+          "page-233",
+          "page-181"
+        ],
+        "afterTop10": [
+          "page-058",
+          "page-015",
+          "page-035",
+          "page-105",
+          "page-116",
+          "page-127",
+          "page-214",
+          "page-226",
+          "page-233",
+          "page-181"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "管理",
+        "scope": "all",
+        "beforeCount": 71,
+        "afterCount": 71,
+        "beforeTop10": [
+          "interpretations-interpretation-013",
+          "interpretations-interpretation-019",
+          "interpretations-interpretation-042",
+          "interpretations-interpretation-054",
+          "interpretations-interpretation-070",
+          "forms-attachment-1",
+          "interpretations-interpretation-025",
+          "page-002",
+          "page-008",
+          "page-010"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-013",
+          "interpretations-interpretation-019",
+          "interpretations-interpretation-042",
+          "interpretations-interpretation-054",
+          "interpretations-interpretation-070",
+          "forms-attachment-1",
+          "interpretations-interpretation-025",
+          "page-002",
+          "page-008",
+          "page-010"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農授金字第0955080181號",
+        "scope": "all",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "interpretations-interpretation-001",
+          "page-047"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-001",
+          "page-047"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "0955080181",
+        "scope": "all",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "interpretations-interpretation-001",
+          "page-047"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-001",
+          "page-047"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "1147467200A",
+        "scope": "all",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "青壯年農民",
+        "scope": "all",
+        "beforeCount": 79,
+        "afterCount": 79,
+        "beforeTop10": [
+          "loan-young-farmer-loan",
+          "forms-form-019",
+          "page-223",
+          "page-212",
+          "faq-faq-young-farmer-114-10",
+          "page-215",
+          "page-221",
+          "page-222",
+          "page-211",
+          "page-213"
+        ],
+        "afterTop10": [
+          "loan-young-farmer-loan",
+          "forms-form-019",
+          "page-223",
+          "page-212",
+          "faq-faq-young-farmer-114-10",
+          "page-215",
+          "page-221",
+          "page-222",
+          "page-211",
+          "page-213"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農機",
+        "scope": "all",
+        "beforeCount": 27,
+        "afterCount": 27,
+        "beforeTop10": [
+          "loan-farm-machinery-loan",
+          "forms-form-006",
+          "page-096",
+          "page-097",
+          "page-099",
+          "interpretations-interpretation-033",
+          "interpretations-interpretation-034",
+          "page-098",
+          "page-100",
+          "page-101"
+        ],
+        "afterTop10": [
+          "loan-farm-machinery-loan",
+          "forms-form-006",
+          "page-096",
+          "page-097",
+          "page-099",
+          "interpretations-interpretation-033",
+          "interpretations-interpretation-034",
+          "page-098",
+          "page-100",
+          "page-101"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "天然災害",
+        "scope": "all",
+        "beforeCount": 75,
+        "afterCount": 75,
+        "beforeTop10": [
+          "loan-natural-disaster-low-interest-loan",
+          "forms-form-023",
+          "forms-form-027",
+          "loan-agri-organization-disaster-recovery-loan",
+          "forms-form-022",
+          "interpretations-interpretation-055",
+          "page-272",
+          "page-273",
+          "interpretations-interpretation-082",
+          "interpretations-interpretation-085"
+        ],
+        "afterTop10": [
+          "loan-natural-disaster-low-interest-loan",
+          "forms-form-023",
+          "forms-form-027",
+          "loan-agri-organization-disaster-recovery-loan",
+          "forms-form-022",
+          "interpretations-interpretation-055",
+          "page-272",
+          "page-273",
+          "interpretations-interpretation-082",
+          "interpretations-interpretation-085"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "利率",
+        "scope": "all",
+        "beforeCount": 125,
+        "afterCount": 125,
+        "beforeTop10": [
+          "interpretations-interpretation-086",
+          "interpretations-interpretation-087",
+          "interpretations-interpretation-047",
+          "forms-form-001",
+          "interpretations-interpretation-004",
+          "interpretations-interpretation-018",
+          "interpretations-interpretation-028",
+          "page-005",
+          "page-006",
+          "page-038"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-086",
+          "interpretations-interpretation-087",
+          "interpretations-interpretation-047",
+          "forms-form-001",
+          "interpretations-interpretation-004",
+          "interpretations-interpretation-018",
+          "interpretations-interpretation-028",
+          "page-005",
+          "page-006",
+          "page-038"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請書",
+        "scope": "all",
+        "beforeCount": 136,
+        "afterCount": 136,
+        "beforeTop10": [
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "forms-form-011",
+          "forms-form-012",
+          "forms-form-013"
+        ],
+        "afterTop10": [
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "forms-form-011",
+          "forms-form-012",
+          "forms-form-013"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業紮根",
+        "scope": "all",
+        "beforeCount": 8,
+        "afterCount": 8,
+        "beforeTop10": [
+          "loan-agricultural-rooting-loan",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306",
+          "page-307",
+          "page-002"
+        ],
+        "afterTop10": [
+          "loan-agricultural-rooting-loan",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306",
+          "page-307",
+          "page-002"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度動用申請書",
+        "scope": "all",
+        "beforeCount": 136,
+        "afterCount": 136,
+        "beforeTop10": [
+          "forms-form-028",
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "forms-form-011",
+          "forms-form-012"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007",
+          "forms-form-008",
+          "forms-form-009",
+          "forms-form-010",
+          "forms-form-011",
+          "forms-form-012"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業天然災害受災證明書",
+        "scope": "all",
+        "beforeCount": 179,
+        "afterCount": 179,
+        "beforeTop10": [
+          "forms-form-027",
+          "forms-form-023",
+          "interpretations-interpretation-084",
+          "page-292",
+          "page-299",
+          "page-300",
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007"
+        ],
+        "afterTop10": [
+          "forms-form-027",
+          "forms-form-023",
+          "interpretations-interpretation-084",
+          "page-292",
+          "page-299",
+          "page-300",
+          "forms-form-001",
+          "forms-form-002",
+          "forms-form-006",
+          "forms-form-007"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農民組織及農企業天然災害復耕復建貸款",
+        "scope": "all",
+        "beforeCount": 74,
+        "afterCount": 74,
+        "beforeTop10": [
+          "loan-agri-organization-disaster-recovery-loan",
+          "page-244",
+          "page-245",
+          "page-246",
+          "forms-form-022",
+          "page-247",
+          "forms-form-023",
+          "page-248",
+          "page-249",
+          "page-250"
+        ],
+        "afterTop10": [
+          "loan-agri-organization-disaster-recovery-loan",
+          "page-244",
+          "page-245",
+          "page-246",
+          "forms-form-022",
+          "page-247",
+          "forms-form-023",
+          "page-248",
+          "page-249",
+          "page-250"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請資格",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "page-249",
+          "page-244",
+          "page-247"
+        ],
+        "afterTop10": [
+          "page-249",
+          "page-244",
+          "page-247"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "資格",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-247",
+          "page-249"
+        ],
+        "afterTop10": [
+          "page-247",
+          "page-249"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款用途",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-245",
+          "page-249",
+          "page-244",
+          "page-246",
+          "page-247",
+          "page-248"
+        ],
+        "afterTop10": [
+          "page-245",
+          "page-249",
+          "page-244",
+          "page-246",
+          "page-247",
+          "page-248"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "用途",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-244",
+          "page-245",
+          "page-246",
+          "page-247",
+          "page-248",
+          "page-249"
+        ],
+        "afterTop10": [
+          "page-244",
+          "page-245",
+          "page-246",
+          "page-247",
+          "page-248",
+          "page-249"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款額度",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-245"
+        ],
+        "afterTop10": [
+          "page-245"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-245"
+        ],
+        "afterTop10": [
+          "page-245"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款期限",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-245"
+        ],
+        "afterTop10": [
+          "page-245"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "期限",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "page-244",
+          "page-245",
+          "page-246"
+        ],
+        "afterTop10": [
+          "page-244",
+          "page-245",
+          "page-246"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "寬緩期",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-245"
+        ],
+        "afterTop10": [
+          "page-245"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "應備文件",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "forms-form-022",
+          "page-247",
+          "page-244",
+          "page-245",
+          "page-249",
+          "page-252"
+        ],
+        "afterTop10": [
+          "forms-form-022",
+          "page-247",
+          "page-244",
+          "page-245",
+          "page-249",
+          "page-252"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "文件",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "page-244",
+          "page-247",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "afterTop10": [
+          "page-244",
+          "page-247",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸放後管理",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-246"
+        ],
+        "afterTop10": [
+          "page-246"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "管理",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-251"
+        ],
+        "afterTop10": [
+          "page-251"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農授金字第0955080181號",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "0955080181",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "1147467200A",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "青壯年農民",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農機",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "天然災害",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "beforeTop10": [
+          "forms-form-023",
+          "loan-agri-organization-disaster-recovery-loan",
+          "forms-form-022",
+          "page-244",
+          "page-247",
+          "page-245",
+          "page-250",
+          "page-251",
+          "page-252",
+          "page-246"
+        ],
+        "afterTop10": [
+          "forms-form-023",
+          "loan-agri-organization-disaster-recovery-loan",
+          "forms-form-022",
+          "page-244",
+          "page-247",
+          "page-245",
+          "page-250",
+          "page-251",
+          "page-252",
+          "page-246"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "利率",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-245"
+        ],
+        "afterTop10": [
+          "page-245"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請書",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 8,
+        "afterCount": 8,
+        "beforeTop10": [
+          "forms-form-022",
+          "forms-form-023",
+          "page-247",
+          "page-244",
+          "page-245",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "afterTop10": [
+          "forms-form-022",
+          "forms-form-023",
+          "page-247",
+          "page-244",
+          "page-245",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業紮根",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度動用申請書",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 8,
+        "afterCount": 8,
+        "beforeTop10": [
+          "forms-form-022",
+          "forms-form-023",
+          "page-244",
+          "page-245",
+          "page-247",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "afterTop10": [
+          "forms-form-022",
+          "forms-form-023",
+          "page-244",
+          "page-245",
+          "page-247",
+          "page-249",
+          "page-251",
+          "page-252"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業天然災害受災證明書",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 9,
+        "afterCount": 9,
+        "beforeTop10": [
+          "forms-form-023",
+          "forms-form-022",
+          "page-244",
+          "page-251",
+          "page-247",
+          "page-245",
+          "page-252",
+          "page-249",
+          "page-250"
+        ],
+        "afterTop10": [
+          "forms-form-023",
+          "forms-form-022",
+          "page-244",
+          "page-251",
+          "page-247",
+          "page-245",
+          "page-252",
+          "page-249",
+          "page-250"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農民組織及農企業天然災害復耕復建貸款",
+        "scope": "loan:agri-organization-disaster-recovery-loan",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "beforeTop10": [
+          "loan-agri-organization-disaster-recovery-loan",
+          "page-244",
+          "page-245",
+          "page-246",
+          "forms-form-022",
+          "page-247",
+          "forms-form-023",
+          "page-248",
+          "page-249",
+          "page-250"
+        ],
+        "afterTop10": [
+          "loan-agri-organization-disaster-recovery-loan",
+          "page-244",
+          "page-245",
+          "page-246",
+          "forms-form-022",
+          "page-247",
+          "forms-form-023",
+          "page-248",
+          "page-249",
+          "page-250"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請資格",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "page-273",
+          "page-296",
+          "page-299"
+        ],
+        "afterTop10": [
+          "page-273",
+          "page-296",
+          "page-299"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "資格",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-275",
+          "page-296"
+        ],
+        "afterTop10": [
+          "page-275",
+          "page-296"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款用途",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-278",
+          "page-295",
+          "page-297",
+          "page-298",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "page-278",
+          "page-295",
+          "page-297",
+          "page-298",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "用途",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-278",
+          "page-295",
+          "page-297",
+          "page-298",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "page-278",
+          "page-295",
+          "page-297",
+          "page-298",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款額度",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290",
+          "page-291",
+          "page-299"
+        ],
+        "afterTop10": [
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290",
+          "page-291",
+          "page-299"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "beforeTop10": [
+          "page-274",
+          "page-276",
+          "page-281",
+          "page-282",
+          "page-283",
+          "page-284",
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290"
+        ],
+        "afterTop10": [
+          "page-274",
+          "page-276",
+          "page-281",
+          "page-282",
+          "page-283",
+          "page-284",
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款期限",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290"
+        ],
+        "afterTop10": [
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-288",
+          "page-290"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "期限",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 12,
+        "afterCount": 12,
+        "beforeTop10": [
+          "page-275",
+          "page-276",
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-287",
+          "page-288",
+          "page-289",
+          "page-290"
+        ],
+        "afterTop10": [
+          "page-275",
+          "page-276",
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-287",
+          "page-288",
+          "page-289",
+          "page-290"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "寬緩期",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 10,
+        "afterCount": 10,
+        "beforeTop10": [
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-287",
+          "page-288",
+          "page-289",
+          "page-290",
+          "page-291",
+          "page-295"
+        ],
+        "afterTop10": [
+          "page-277",
+          "page-278",
+          "page-285",
+          "page-286",
+          "page-287",
+          "page-288",
+          "page-289",
+          "page-290",
+          "page-291",
+          "page-295"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "應備文件",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-300",
+          "page-275",
+          "page-276",
+          "page-278",
+          "page-295",
+          "page-299"
+        ],
+        "afterTop10": [
+          "page-300",
+          "page-275",
+          "page-276",
+          "page-278",
+          "page-295",
+          "page-299"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "文件",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-275",
+          "page-276",
+          "page-292",
+          "page-294",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "page-275",
+          "page-276",
+          "page-292",
+          "page-294",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸放後管理",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "page-278",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "page-278",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "管理",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-287",
+          "page-292"
+        ],
+        "afterTop10": [
+          "page-287",
+          "page-292"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農授金字第0955080181號",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "0955080181",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "1147467200A",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "青壯年農民",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農機",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "天然災害",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 38,
+        "afterCount": 38,
+        "beforeTop10": [
+          "loan-natural-disaster-low-interest-loan",
+          "forms-form-027",
+          "page-272",
+          "page-273",
+          "interpretations-interpretation-082",
+          "interpretations-interpretation-085",
+          "page-274",
+          "interpretations-interpretation-086",
+          "page-275",
+          "interpretations-interpretation-087"
+        ],
+        "afterTop10": [
+          "loan-natural-disaster-low-interest-loan",
+          "forms-form-027",
+          "page-272",
+          "page-273",
+          "interpretations-interpretation-082",
+          "interpretations-interpretation-085",
+          "page-274",
+          "interpretations-interpretation-086",
+          "page-275",
+          "interpretations-interpretation-087"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "利率",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "interpretations-interpretation-086",
+          "interpretations-interpretation-087",
+          "page-277",
+          "page-301"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-086",
+          "interpretations-interpretation-087",
+          "page-277",
+          "page-301"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請書",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 9,
+        "afterCount": 9,
+        "beforeTop10": [
+          "forms-form-027",
+          "interpretations-interpretation-084",
+          "page-277",
+          "page-292",
+          "page-293",
+          "page-294",
+          "page-296",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "forms-form-027",
+          "interpretations-interpretation-084",
+          "page-277",
+          "page-292",
+          "page-293",
+          "page-294",
+          "page-296",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業紮根",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度動用申請書",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 9,
+        "afterCount": 9,
+        "beforeTop10": [
+          "forms-form-027",
+          "page-277",
+          "page-292",
+          "page-293",
+          "page-294",
+          "page-296",
+          "interpretations-interpretation-084",
+          "page-299",
+          "page-300"
+        ],
+        "afterTop10": [
+          "forms-form-027",
+          "page-277",
+          "page-292",
+          "page-293",
+          "page-294",
+          "page-296",
+          "interpretations-interpretation-084",
+          "page-299",
+          "page-300"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業天然災害受災證明書",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 38,
+        "afterCount": 38,
+        "beforeTop10": [
+          "forms-form-027",
+          "interpretations-interpretation-084",
+          "page-292",
+          "page-299",
+          "page-300",
+          "loan-natural-disaster-low-interest-loan",
+          "interpretations-interpretation-082",
+          "page-277",
+          "interpretations-interpretation-085",
+          "page-293"
+        ],
+        "afterTop10": [
+          "forms-form-027",
+          "interpretations-interpretation-084",
+          "page-292",
+          "page-299",
+          "page-300",
+          "loan-natural-disaster-low-interest-loan",
+          "interpretations-interpretation-082",
+          "page-277",
+          "interpretations-interpretation-085",
+          "page-293"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農民組織及農企業天然災害復耕復建貸款",
+        "scope": "loan:natural-disaster-low-interest-loan",
+        "beforeCount": 7,
+        "afterCount": 7,
+        "beforeTop10": [
+          "page-300",
+          "page-278",
+          "page-294",
+          "page-295",
+          "page-299",
+          "page-274",
+          "page-275"
+        ],
+        "afterTop10": [
+          "page-300",
+          "page-278",
+          "page-294",
+          "page-295",
+          "page-299",
+          "page-274",
+          "page-275"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請資格",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-302"
+        ],
+        "afterTop10": [
+          "page-302"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "資格",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款用途",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "page-302",
+          "page-305",
+          "page-304",
+          "page-306"
+        ],
+        "afterTop10": [
+          "page-302",
+          "page-305",
+          "page-304",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "用途",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "page-302",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "page-302",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款額度",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-302"
+        ],
+        "afterTop10": [
+          "page-302"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "forms-form-028",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款期限",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-303",
+          "page-305"
+        ],
+        "afterTop10": [
+          "page-303",
+          "page-305"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "期限",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "寬緩期",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-304"
+        ],
+        "afterTop10": [
+          "page-304"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "應備文件",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "文件",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-302",
+          "page-305"
+        ],
+        "afterTop10": [
+          "page-302",
+          "page-305"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸放後管理",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "管理",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-302",
+          "page-305"
+        ],
+        "afterTop10": [
+          "page-302",
+          "page-305"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農授金字第0955080181號",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "0955080181",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "1147467200A",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "青壯年農民",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農機",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "天然災害",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "利率",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請書",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業紮根",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 7,
+        "afterCount": 7,
+        "beforeTop10": [
+          "loan-agricultural-rooting-loan",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306",
+          "page-307"
+        ],
+        "afterTop10": [
+          "loan-agricultural-rooting-loan",
+          "page-302",
+          "page-303",
+          "page-304",
+          "page-305",
+          "page-306",
+          "page-307"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度動用申請書",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業天然災害受災證明書",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "afterTop10": [
+          "forms-form-028",
+          "page-303",
+          "page-305",
+          "page-306"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農民組織及農企業天然災害復耕復建貸款",
+        "scope": "loan:agricultural-rooting-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-302"
+        ],
+        "afterTop10": [
+          "page-302"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請資格",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 7,
+        "afterCount": 7,
+        "beforeTop10": [
+          "page-218",
+          "page-211",
+          "page-212",
+          "page-215",
+          "page-217",
+          "interpretations-interpretation-071",
+          "page-223"
+        ],
+        "afterTop10": [
+          "page-218",
+          "page-211",
+          "page-212",
+          "page-215",
+          "page-217",
+          "interpretations-interpretation-071",
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "資格",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 10,
+        "afterCount": 10,
+        "beforeTop10": [
+          "interpretations-interpretation-069",
+          "interpretations-interpretation-071",
+          "page-212",
+          "page-213",
+          "page-215",
+          "page-216",
+          "page-217",
+          "page-218",
+          "page-222",
+          "page-223"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-069",
+          "interpretations-interpretation-071",
+          "page-212",
+          "page-213",
+          "page-215",
+          "page-216",
+          "page-217",
+          "page-218",
+          "page-222",
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款用途",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 6,
+        "afterCount": 6,
+        "beforeTop10": [
+          "page-212",
+          "page-218",
+          "page-214",
+          "page-217",
+          "page-220",
+          "page-211"
+        ],
+        "afterTop10": [
+          "page-212",
+          "page-218",
+          "page-214",
+          "page-217",
+          "page-220",
+          "page-211"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "用途",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "page-212",
+          "page-214",
+          "page-217",
+          "page-218",
+          "page-220"
+        ],
+        "afterTop10": [
+          "page-212",
+          "page-214",
+          "page-217",
+          "page-218",
+          "page-220"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款額度",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 2,
+        "afterCount": 2,
+        "beforeTop10": [
+          "page-213",
+          "page-217"
+        ],
+        "afterTop10": [
+          "page-213",
+          "page-217"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "interpretations-interpretation-072",
+          "page-213",
+          "page-214",
+          "page-217",
+          "page-223"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-072",
+          "page-213",
+          "page-214",
+          "page-217",
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸款期限",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "page-213",
+          "page-214",
+          "page-223"
+        ],
+        "afterTop10": [
+          "page-213",
+          "page-214",
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "期限",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "page-212",
+          "page-213",
+          "page-214",
+          "page-216",
+          "page-223"
+        ],
+        "afterTop10": [
+          "page-212",
+          "page-213",
+          "page-214",
+          "page-216",
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "寬緩期",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-214"
+        ],
+        "afterTop10": [
+          "page-214"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "應備文件",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 9,
+        "afterCount": 9,
+        "beforeTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-213",
+          "page-216",
+          "page-214",
+          "page-215",
+          "page-217",
+          "page-218",
+          "page-222"
+        ],
+        "afterTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-213",
+          "page-216",
+          "page-214",
+          "page-215",
+          "page-217",
+          "page-218",
+          "page-222"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "文件",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 7,
+        "afterCount": 7,
+        "beforeTop10": [
+          "page-212",
+          "page-213",
+          "page-215",
+          "page-216",
+          "page-218",
+          "page-221",
+          "page-222"
+        ],
+        "afterTop10": [
+          "page-212",
+          "page-213",
+          "page-215",
+          "page-216",
+          "page-218",
+          "page-221",
+          "page-222"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "貸放後管理",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-214"
+        ],
+        "afterTop10": [
+          "page-214"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "管理",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeTop10": [
+          "interpretations-interpretation-070",
+          "page-218",
+          "page-222"
+        ],
+        "afterTop10": [
+          "interpretations-interpretation-070",
+          "page-218",
+          "page-222"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農授金字第0955080181號",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "0955080181",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "1147467200A",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "青壯年農民",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 21,
+        "afterCount": 21,
+        "beforeTop10": [
+          "loan-young-farmer-loan",
+          "forms-form-019",
+          "page-223",
+          "page-212",
+          "page-215",
+          "page-221",
+          "page-222",
+          "page-211",
+          "page-213",
+          "page-214"
+        ],
+        "afterTop10": [
+          "loan-young-farmer-loan",
+          "forms-form-019",
+          "page-223",
+          "page-212",
+          "page-215",
+          "page-221",
+          "page-222",
+          "page-211",
+          "page-213",
+          "page-214"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農機",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "天然災害",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "利率",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 9,
+        "afterCount": 9,
+        "beforeTop10": [
+          "page-213",
+          "page-214",
+          "page-217",
+          "page-220",
+          "page-223",
+          "page-212",
+          "page-215",
+          "page-216",
+          "page-218"
+        ],
+        "afterTop10": [
+          "page-213",
+          "page-214",
+          "page-217",
+          "page-220",
+          "page-223",
+          "page-212",
+          "page-215",
+          "page-216",
+          "page-218"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "申請書",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-215",
+          "page-214",
+          "page-218"
+        ],
+        "afterTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-215",
+          "page-214",
+          "page-218"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業紮根",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeTop10": [],
+        "afterTop10": [],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "額度動用申請書",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-214",
+          "page-215",
+          "page-218"
+        ],
+        "afterTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-214",
+          "page-215",
+          "page-218"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農業天然災害受災證明書",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 5,
+        "afterCount": 5,
+        "beforeTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-214",
+          "page-215",
+          "page-218"
+        ],
+        "afterTop10": [
+          "forms-form-019",
+          "page-212",
+          "page-214",
+          "page-215",
+          "page-218"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      },
+      {
+        "query": "農民組織及農企業天然災害復耕復建貸款",
+        "scope": "loan:young-farmer-loan",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeTop10": [
+          "page-223"
+        ],
+        "afterTop10": [
+          "page-223"
+        ],
+        "orderedEvidenceAndSnippetIdentical": true,
+        "intentOnly": 0,
+        "scopeLeak": 0
+      }
+    ]
+  },
+  "results": {
+    "build": [
+      {
+        "command": "python -B -c import sys;sys.path.insert(0,\"scripts\");from build_site import build_site,SITE;from build_search_index import build_search_index;build_site(SITE);build_search_index(SITE)",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/build-01.txt"
+      }
+    ],
+    "validation": [
+      {
+        "command": "python scripts/test_interpretation_parser.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-01.txt"
+      },
+      {
+        "command": "python scripts/audit_content.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-02.txt"
+      },
+      {
+        "command": "python scripts/validate_display_text.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-03.txt"
+      },
+      {
+        "command": "python scripts/validate_interpretation_metadata.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-04.txt"
+      },
+      {
+        "command": "python scripts/validate_interpretation_decisions.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-05.txt"
+      },
+      {
+        "command": "python scripts/validate_index_quality.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-06.txt"
+      },
+      {
+        "command": "python scripts/validate_navigation_targets.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-07.txt"
+      },
+      {
+        "command": "python scripts/validate_page_rendering.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-08.txt"
+      },
+      {
+        "command": "python scripts/validate_visual_theme.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-09.txt"
+      },
+      {
+        "command": "python scripts/validate_search_experience.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-10.txt"
+      },
+      {
+        "command": "python scripts/validate_ux_structure.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-11.txt"
+      },
+      {
+        "command": "python scripts/validate_official_updates.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-12.txt"
+      },
+      {
+        "command": "python scripts/validate_official_coverage.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-13.txt"
+      },
+      {
+        "command": "python scripts/validate_revision_consistency.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-14.txt"
+      },
+      {
+        "command": "python scripts/validate_disaster_official_gateway.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-15.txt"
+      },
+      {
+        "command": "python scripts/validate_reading_navigation.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-16.txt"
+      },
+      {
+        "command": "python scripts/validate_reference_lookup.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-17.txt"
+      },
+      {
+        "command": "python scripts/validate_official_updates_lookup.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-18.txt"
+      },
+      {
+        "command": "python scripts/validate_forms_source_review.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-19.txt"
+      },
+      {
+        "command": "python scripts/audit_search_precision.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-20.txt"
+      },
+      {
+        "command": "python scripts/audit_task_search_quality.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-21.txt"
+      },
+      {
+        "command": "python scripts/report_source_review_plan.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-22.txt"
+      },
+      {
+        "command": "python scripts/report_official_update_inventory.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-23.txt"
+      },
+      {
+        "command": "python scripts/report_official_coverage.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-24.txt"
+      },
+      {
+        "command": "python scripts/validate_site.py",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-25.txt"
+      },
+      {
+        "command": "python scripts/validate_forms_source_review.py --write-design-manifest",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-26.txt"
+      },
+      {
+        "command": "python scripts/design_integrity.py verify reports/forms-review/reading-faq-fix/allowed-forms-design-manifest.json",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-27.txt"
+      },
+      {
+        "command": "node scripts/test_search_core.cjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-28.txt"
+      },
+      {
+        "command": "node scripts/test_task_search_semantics.cjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-29.txt"
+      },
+      {
+        "command": "node scripts/test_official_updates_lookup.cjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-30.txt"
+      },
+      {
+        "command": "node scripts/benchmark_search_core.cjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-31.txt"
+      },
+      {
+        "command": "node scripts/benchmark_official_updates_lookup.cjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-32.txt"
+      },
+      {
+        "command": "git diff --check",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/validation-33.txt"
+      }
+    ],
+    "mutation": [
+      {
+        "command": "python -B -c import sys;from pathlib import Path;sys.path.insert(0,\"scripts\");import test_forms_source_review_mutations as m;m.REPORT=Path(\"reports/forms-review/reading-faq-fix\");m.main()",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/mutation-01.txt"
+      },
+      {
+        "command": "python scripts/audit_forms_source.py test-followup-mutations",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/mutation-02.txt"
+      }
+    ],
+    "reproducibility": [
+      {
+        "command": "python scripts/audit_forms_source.py reproduce-followup",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/reproducibility-01.txt"
+      }
+    ],
+    "browser": [
+      {
+        "command": "node node_modules/@playwright/test/cli.js test --trace off --output tmp/reading-faq-browser-ae7d67f672c147b9a2fd11953abc3d86",
+        "status": "PASS",
+        "exitCode": 0,
+        "log": "reports/forms-review/reading-faq-fix/logs/browser-01.txt"
+      }
+    ]
+  },
+  "notRun": [
+    "build_all.py atomic cleanup entry",
+    "test_validator_mutations.py (70)",
+    "test_reference_lookup_mutations.py (12)",
+    "test_official_updates_lookup_mutations.py (16)",
+    "test_build_reproducibility.py atomic failure/cleanup checks",
+    "CI/production/deployment"
+  ]
+}

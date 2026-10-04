@@ -1,0 +1,12 @@
+{
+  "status": "REFERENCE LOOKUP VALIDATION PASSED",
+  "faqGroups": 4,
+  "faqQuestionRecords": 52,
+  "faqRenderedCards": 52,
+  "interpretations": 87,
+  "interpretationRenderedCards": 87,
+  "faqDuplicateIds": 0,
+  "interpretationSourceDuplicateIds": 0,
+  "interpretationRenderedDuplicateKeys": 0,
+  "errors": []
+}

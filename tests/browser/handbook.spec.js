@@ -619,6 +619,44 @@ test("loan task hash survives reload and browser back", async ({page}) => {
   await expect.poll(() => page.url().endsWith(paths.loan)).toBe(true);
 });
 
+for (const [task, sourcePage, originalPoint] of [
+  ["eligibility", 211, "三、本貸款之對象如下："],
+  ["amount", 213, "十二、本貸款借款人資格符合第三點第一項第一款或第二款者"],
+  ["term", 213, "十一、本貸款期限依貸款額度及購置設備耐用年限覈實貸放"]
+]) {
+  test(`young farmer ${task} lands on the source-verified point`, async ({page}) => {
+    const runtime = observeRuntime(page);
+    for (const width of [390, 1440]) {
+      await page.setViewportSize({width, height: 844});
+      await page.goto(paths.loan);
+      const link = page.locator(`#loan-task-navigation a[data-reading-task="${task}"]`);
+      await link.focus();
+      await expect(link).toBeFocused();
+      await link.press("Enter");
+      await expect(page).toHaveURL(new RegExp(`#task-${task}$`));
+      const target = page.locator(`#task-${task}`);
+      const source = await target.evaluate((heading) => ({
+        page: heading.closest(".loan-source-page").id,
+        text: heading.nextElementSibling.textContent.replace(/\s/g, "")
+      }));
+      expect(source.page).toBe(`source-page-${sourcePage}`);
+      expect(source.text.startsWith(originalPoint)).toBe(true);
+      const notCovered = () => target.evaluate((heading) => {
+        const rect = heading.getBoundingClientRect();
+        return rect.top >= document.querySelector("header").getBoundingClientRect().bottom - 4 && rect.bottom <= innerHeight;
+      });
+      await expect.poll(notCovered).toBe(true);
+      await page.reload();
+      await expect(page).toHaveURL(new RegExp(`#task-${task}$`));
+      await expect.poll(notCovered).toBe(true);
+      await page.goBack();
+      await expect(page).toHaveURL(new RegExp(`${paths.loan}$`));
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+    expect(runtime).toEqual({consoleErrors: [], pageErrors: [], badResponses: [], external: []});
+  });
+}
+
 test("section 本頁內容 TOC navigates in DOM order", async ({page}) => {
   const runtime = observeRuntime(page);
   await page.goto(paths.section);
@@ -723,9 +761,9 @@ test("search result uses a deterministic deep link when mapping is unique", asyn
   await expect(page.locator(new URL(href, "http://127.0.0.1").hash)).toBeVisible();
 });
 
-test("all published pages use beta 3.2", async ({page}) => {
+test("all published pages use beta 3.3", async ({page}) => {
   await page.goto("/");
-  await expect(page.locator("body")).toContainText("114.0.0-beta.3.2");
+  await expect(page.locator("body")).toContainText("114.0.0-beta.3.3");
 });
 
 for (const width of [390, 768, 1024, 1440]) {

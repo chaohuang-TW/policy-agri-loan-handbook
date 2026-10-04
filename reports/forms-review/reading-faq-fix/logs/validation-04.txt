@@ -1,0 +1,2 @@
+INTERPRETATION METADATA VALIDATION PASSED
+- Source-indexed records: 87; known searches: 8; bad searches: 0

@@ -1,0 +1,497 @@
+{
+  "status": "VALIDATOR MUTATIONS PASSED",
+  "caught": "70/70",
+  "uncaught": 0,
+  "results": [
+    {
+      "mutation": 1,
+      "name": "missing record scopeGroup",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 2,
+      "name": "unknown loan page scopeGroup",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 3,
+      "name": "invalid loan-programs section scope",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 4,
+      "name": "missing internal fragment",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 5,
+      "name": "document number bad date prefix",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 6,
+      "name": "search URL 404",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 7,
+      "name": "unsafe innerHTML rendering",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 8,
+      "name": "wrong theme-color",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 9,
+      "name": "wrong single-page print label",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 10,
+      "name": "506 search records",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 11,
+      "name": "source page wrong loan group",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 12,
+      "name": "source/site search core mismatch",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 13,
+      "name": "Unicode mark offset",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:assert:152"
+    },
+    {
+      "mutation": 14,
+      "name": "1000-character snippet",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 15,
+      "name": "section scope with no records",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 16,
+      "name": "loan inline default scope changed to all",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "UX STRUCTURE VALIDATION FAILED"
+    },
+    {
+      "mutation": 17,
+      "name": "section inline default scope changed to all",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "UX STRUCTURE VALIDATION FAILED"
+    },
+    {
+      "mutation": 18,
+      "name": "global dialog default scope changed to context",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "UX STRUCTURE VALIDATION FAILED"
+    },
+    {
+      "mutation": 19,
+      "name": "loan shortcut context scope removed",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "UX STRUCTURE VALIDATION FAILED"
+    },
+    {
+      "mutation": 20,
+      "name": "appendix action changed back to 查看書表",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "UX STRUCTURE VALIDATION FAILED"
+    },
+    {
+      "mutation": 21,
+      "name": "official update uses untrusted domain",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 22,
+      "name": "official update has invalid source type",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 23,
+      "name": "official update relation evidence is empty",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 24,
+      "name": "official update references unknown loan",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 25,
+      "name": "include decision has no update record",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 26,
+      "name": "official coverage included count is false",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 27,
+      "name": "candidate decision is empty",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 28,
+      "name": "official update leaks into handbook search",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 29,
+      "name": "official update uses http",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 30,
+      "name": "official update invalid calendar date",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 31,
+      "name": "official update reverse application period",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 32,
+      "name": "coverage complete while Agribank partial",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "OFFICIAL COVERAGE VALIDATION FAILED"
+    },
+    {
+      "mutation": 33,
+      "name": "global coverage exceeds source review",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "OFFICIAL COVERAGE VALIDATION FAILED"
+    },
+    {
+      "mutation": 34,
+      "name": "local disaster JSON restored",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 35,
+      "name": "homepage restores disaster count",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 36,
+      "name": "gateway restores local announcement list",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 37,
+      "name": "gateway removes official URL",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 38,
+      "name": "gateway URL becomes HTTP",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 39,
+      "name": "gateway URL changes host",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 40,
+      "name": "natural-disaster loan removes gateway CTA",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 41,
+      "name": "natural-disaster section removes gateway CTA",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "DISASTER OFFICIAL GATEWAY VALIDATION FAILED"
+    },
+    {
+      "mutation": 42,
+      "name": "README revision becomes wrong",
+      "validator": "validate_revision_consistency.py",
+      "caught": true,
+      "evidence": "REVISION CONSISTENCY VALIDATION FAILED"
+    },
+    {
+      "mutation": 43,
+      "name": "package revision becomes inconsistent",
+      "validator": "validate_revision_consistency.py",
+      "caught": true,
+      "evidence": "REVISION CONSISTENCY VALIDATION FAILED"
+    },
+    {
+      "mutation": 44,
+      "name": "official update unknown related section",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 45,
+      "name": "official update verifiedOn null",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "OFFICIAL UPDATE VALIDATION FAILED"
+    },
+    {
+      "mutation": 46,
+      "name": "source review candidate count mismatch",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "OFFICIAL COVERAGE VALIDATION FAILED"
+    },
+    {
+      "mutation": 47,
+      "name": "source review unknown candidate",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "OFFICIAL COVERAGE VALIDATION FAILED"
+    },
+    {
+      "mutation": 48,
+      "name": "decision candidate has no source lineage",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "OFFICIAL COVERAGE VALIDATION FAILED"
+    },
+    {
+      "mutation": 49,
+      "name": "retrieval evidence filter removed",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 50,
+      "name": "intent boost creates a pre-gate positive score",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 51,
+      "name": "UI labels direct from legacy originalTerms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 52,
+      "name": "task trigger uses bidirectional substring",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 53,
+      "name": "matchedOriginalTerms returns all query terms",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:assert:152"
+    },
+    {
+      "mutation": 54,
+      "name": "matchedRelatedTerms returns all expanded terms",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 55,
+      "name": "snippet uses unmatched related terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 56,
+      "name": "exact document evidence disabled",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 57,
+      "name": "context scope filtering disabled",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 58,
+      "name": "false retrieval evidence allowed",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "node:internal/assert/utils:77"
+    },
+    {
+      "mutation": 59,
+      "name": "direct label has no matched terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 60,
+      "name": "related label has no matched terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "SEARCH EXPERIENCE VALIDATION FAILED"
+    },
+    {
+      "mutation": 61,
+      "name": "loan task nav points to missing anchor",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 62,
+      "name": "duplicate task anchor id",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 63,
+      "name": "section TOC points to missing target",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 64,
+      "name": "Evidence page number becomes P.360",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 65,
+      "name": "prev/next points to missing target",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 66,
+      "name": "prev/next points to itself",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 67,
+      "name": "fake task mapping is force-inserted",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 68,
+      "name": "search deep link loses deterministic task anchor",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 69,
+      "name": "Section mobile TOC is removed",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    },
+    {
+      "mutation": 70,
+      "name": "published loan route is removed",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "{"
+    }
+  ]
+}

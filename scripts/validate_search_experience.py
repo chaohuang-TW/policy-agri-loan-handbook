@@ -18,7 +18,7 @@ EXPECTED_TYPES = {
     "書表附件": 28,
     "附錄附件": 6,
 }
-EXPECTED_GROUPED = {"原文頁面": 215, "函釋": 56, "書表附件": 21}
+EXPECTED_GROUPED = {"原文頁面": 215, "函釋": 56, "書表附件": 23}
 UNSAFE = (
     "results.innerHTML", "innerHTML =", "insertAdjacentHTML", "document.write",
     "eval(", "new Function", "Function(", "localStorage", "sessionStorage",

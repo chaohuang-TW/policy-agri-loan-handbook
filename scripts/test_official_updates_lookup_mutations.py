@@ -7,8 +7,10 @@ import json
 import shutil
 import subprocess
 import sys
-import tempfile
+import argparse
 from pathlib import Path
+from audit_forms_regression import (retained_workspace, copy_retained_tree,
+    mutation_command, positive_control, causal_failure)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,12 +18,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in ("assets", "curation", "data", "scripts", "site", "templates", "tests"):
-        shutil.copytree(ROOT / name, destination / name, copy_function=shutil.copy2)
+        copy_retained_tree(ROOT / name, destination / name)
     for name in ("README.md", "CHANGELOG.md", "package.json", "package-lock.json"):
-        shutil.copy2(ROOT / name, destination / name)
+        shutil.copyfile(ROOT / name, destination / name)
 
 
 def write(path: Path, value: str) -> None:
+    if ROOT / 'tmp/release-gates' not in path.absolute().parents or path.is_symlink():
+        raise ValueError('Mutation writes must stay in retained fixtures')
     path.write_text(value, encoding="utf-8")
 
 
@@ -46,6 +50,7 @@ def replace_all(path: Path, old: str, new: str) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(); parser.add_argument('--retain-workspace', action='store_true'); parser.parse_args()
     cases = [
         ("delete official update", lambda root: mutate_json(root / "data/current/official-updates.json", lambda items: items.pop())),
         ("duplicate official update ID", lambda root: mutate_json(root / "data/current/official-updates.json", lambda items: items[1].update(id=items[0]["id"]))),
@@ -64,23 +69,27 @@ def main() -> None:
         ("only first multi-keyword token checked", lambda root: replace(root / "assets/js/official-updates-lookup.js", "terms.length >= 2 && terms.every((term) => body.includes(term))", "terms.length >= 2 && terms.slice(0, 1).every((term) => body.includes(term))")),
         ("full-width whitespace tokenization removed", lambda root: replace(root / "assets/js/official-updates-lookup.js", "split(/\\s+/)", "split(/[ \\t]+/)")),
     ]
-    results = []
-    with tempfile.TemporaryDirectory(prefix="handbook-official-updates-mutations-") as raw:
-        base = Path(raw)
-        for index, (name, mutation) in enumerate(cases, 1):
-            fixture = base / f"case-{index:02d}"
-            copy_fixture(fixture)
-            mutation(fixture)
-            completed = subprocess.run(
-                [sys.executable, "scripts/validate_official_updates_lookup.py"],
-                cwd=fixture, text=True, capture_output=True, timeout=120,
-            )
-            if completed.returncode == 0:
-                raise AssertionError(f"mutation not caught: {index}. {name}")
-            evidence = (completed.stdout + completed.stderr).strip().splitlines()
-            results.append({"mutation": index, "name": name, "caught": True, "evidence": evidence[0][:160] if evidence else f"exit {completed.returncode}"})
-            shutil.rmtree(fixture)
-    print(json.dumps({"status": "OFFICIAL UPDATES LOOKUP MUTATIONS PASSED", "caught": f"{len(results)}/{len(cases)}", "uncaught": 0, "results": results}, ensure_ascii=False, indent=2))
+    expected = ['official update count is', 'duplicate official update ID', 'fixture top result mismatch:',
+                'lookup JS missing required behavior: replace(/字第/g', 'rendered program relation missing:',
+                'year filter is not derived from official update dates', 'handbook search index is not 507',
+                'invalid official update source type:', 'official source link missing:',
+                'lookup JS missing required behavior: URLSearchParams', 'coverage changed from partial/null',
+                'version metadata is not beta.3.3', 'lookup JS does not tokenize from raw query boundaries',
+                'lookup JS does not enforce multi-keyword AND matching',
+                'lookup JS does not enforce multi-keyword AND matching', 'lookup JS whitespace tokenization is incomplete']
+    size = sum(p.stat().st_size for folder in ('assets', 'curation', 'data', 'scripts', 'site', 'templates', 'tests') for p in (ROOT / folder).rglob('*') if p.is_file())
+    results = []; base = retained_workspace('official-mutations', required_bytes=size * (len(cases) + 1))
+    control = base / 'positive-control'; copy_fixture(control)
+    command = [sys.executable, 'scripts/validate_official_updates_lookup.py']
+    baseline = positive_control(command, control)
+    for index, (name, mutation) in enumerate(cases, 1):
+        fixture = base / f"case-{index:02d}"
+        copy_fixture(fixture)
+        mutation(fixture)
+        completed = mutation_command(command, fixture)
+        evidence = causal_failure(completed, expected[index - 1], name)
+        results.append({"mutation": index, "name": name, "caught": True, "evidence": evidence})
+    print(json.dumps({"status": "OFFICIAL UPDATES LOOKUP MUTATIONS PASSED", "caught": f"{len(results)}/{len(cases)}", "uncaught": 0, "positiveControl": baseline, "retainedWorkspace": str(base.relative_to(ROOT)), "results": results}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

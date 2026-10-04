@@ -1,0 +1,22 @@
+OK afna-disaster-relief-regulations-20260629 200 match=title https://law.afna.gov.tw/view.php?id=50
+OK afna-mataian-household-working-capital-faq-20260130 200 match=title https://law.afna.gov.tw/view.php?id=1551
+OK afna-young-farmer-mataian-20260130 200 match=title https://law.afna.gov.tw/view.php?id=1550
+OK afna-mataian-existing-policy-loans-20260130 200 match=title https://law.afna.gov.tw/view.php?id=1549
+OK afna-mataian-household-working-capital-rules-20260130 200 match=title https://law.afna.gov.tw/view.php?id=1548
+OK afna-mataian-disaster-loan-relief-20260130 200 match=title https://law.afna.gov.tw/view.php?id=1547
+OK afna-poultry-policy-loans-20260129 200 match=title https://law.afna.gov.tw/view.php?id=1546
+OK afna-agri-development-fund-rules-20251231 200 match=title https://law.afna.gov.tw/view.php?id=45
+OK afna-policy-loan-regulations-20251231 200 match=title https://law.afna.gov.tw/view.php?id=1383
+OK afna-pig-farm-transition-faq-20251224 200 match=title https://law.afna.gov.tw/view.php?id=1545
+OK afna-farmer-relief-object-letter-20251219 200 match=title https://law.afna.gov.tw/view.php?id=1543
+OK afna-farmer-relief-object-announcement-20251219 200 match=title https://law.afna.gov.tw/view.php?id=1542
+OK afna-farmer-relief-faq-20251216 200 match=title https://law.afna.gov.tw/view.php?id=1541
+OK afna-farmer-relief-announcement-20251216 200 match=title https://law.afna.gov.tw/view.php?id=1540
+OK afna-hagibis-existing-policy-loans-20251209 200 match=title https://law.afna.gov.tw/view.php?id=1539
+OK afna-disaster-certificate-form-20260330 200 match=title https://law.afna.gov.tw/files/boaf/law/50/A01_7.pdf
+OK afna-disaster-relief-regulations-20260324 200 match=title https://law.afna.gov.tw/view.php?id=50
+OK afna-pig-farm-transition-rules-20251223 200 match=title https://law.afna.gov.tw/view.php?id=1544
+OK afna-pig-farm-transition-application-review-form-20251223 200 match=title https://law.afna.gov.tw/files/boaf/law/1544/A01_2.pdf
+OK afna-disaster-loan-interest-exemption-20251009 200 match=title https://law.afna.gov.tw/view.php?id=1521
+SUMMARY urls=20 httpSuccess=20 redirects=0 titleMatches=20 documentNumberMatches=0 nonAllowlisted=0 failures=0
+OFFICIAL SOURCE ONLINE AUDIT PASSED: 20/20

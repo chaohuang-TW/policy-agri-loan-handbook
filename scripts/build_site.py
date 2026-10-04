@@ -588,6 +588,26 @@ def index_items(relative: str, items: list[dict], kind: str) -> str:
     for item in items:
         printed = item.get("printedPage", item.get("printedPageStart"))
         pdf = item.get("pdfPage", item.get("pdfPageStart"))
+        if kind == "書表" and item.get("sourceReviewStatus"):
+            end_pdf = item.get("pdfPageEnd")
+            end_printed = item.get("printedPageEnd")
+            pdf_range = f"{pdf}–{end_pdf}" if end_pdf and end_pdf != pdf else str(pdf)
+            printed_range = f"{printed}–{end_printed}" if end_printed and end_printed != printed else str(printed)
+            owner = loan_for_form(item)
+            scope_label = owner["title"] if owner else "共通作業書表（未指定單一貸款）"
+            status = "待人工覆核" if item.get("requiresHumanReview") else "來源核對完成"
+            subtitle = f'<span>{e(item["sourceSubtitle"])}</span>' if item.get("sourceSubtitle") else ""
+            evidence = ""
+            for page in dict.fromkeys((pdf, end_pdf or pdf)):
+                target = rel(relative, f"versions/114/pages/page-{page:03d}.html") + f"#pdf-page-{page}"
+                evidence += f'<a data-form-evidence="{page}" href="{e(target)}">查看原始頁面（PDF P.{page}）</a>'
+            url = rel(relative, f"downloads/{PDF_NAME}") + f"#page={pdf}"
+            blocks.append(
+                f'<li id="item-{e(item["id"])}" data-form-id="{e(item["id"])}" data-form-scope="{e(item.get("scopeGroup") or "")}" data-form-review="{e(item["sourceReviewStatus"])}">'
+                f'<div><strong>{e(item["title"])}</strong>{subtitle}<span>書表｜手冊頁 {e(printed_range)}｜PDF頁 {e(pdf_range)}</span><span>關聯：{e(scope_label)}</span><span>{status}</span>{evidence}</div>'
+                f'<a data-form-pdf="{pdf}" href="{e(url)}">開啟PDF原文</a></li>'
+            )
+            continue
         extra = ""
         if item.get("documentNumber"):
             extra += f'<span>文號：{e(item["documentNumber"])}</span>'
@@ -611,10 +631,31 @@ def lookup_actions(relative: str, pdf_page: int, evidence_target: str) -> str:
     return f'<p class="lookup-actions"><a class="button-link" href="{e(evidence)}">在手冊中開啟</a><a class="button-link secondary" href="{e(pdf)}">開啟PDF原文</a></p>'
 
 
-def faq_answer_html(answer_text: str | None) -> str:
+def faq_answer_html(answer_text: str | None, item: dict | None = None, relative: str = '') -> str:
     if not answer_text:
         return '<p class="layout-note">本題僅建立來源起始頁索引；答案範圍待人工確認。</p>'
-    return '<div class="lookup-source-text">' + "".join(f"<p>{e(line)}</p>" for line in answer_text.splitlines() if line.strip()) + "</div>"
+    original = '<div class="lookup-source-text">' + "".join(f"<p>{e(line)}</p>" for line in answer_text.splitlines() if line.strip()) + "</div>"
+    if not item or item['id'] != 'faq-112-12-q02':
+        return original
+    figures = []
+    for number in (316, 317, 318, 319):
+        preview = MANIFEST[number]
+        image = rel(relative, f"assets/page-previews/114/{preview['file']}")
+        evidence = rel(relative, f'versions/114/pages/page-{number:03d}.html') + f'#pdf-page-{number}'
+        pdf = rel(relative, f'downloads/{PDF_NAME}') + f'#page={number}'
+        note = '；本頁下半部另含第3、4題，不併入本題回答。' if number == 319 else '。'
+        figures.append(
+            f'<figure class="source-preview" data-faq-table-page="{number}">'
+            f'<a class="source-preview-link" href="{e(image)}" aria-label="放大查看原始PDF第{number}頁表格">'
+            f'<img class="source-preview-image" src="{e(image)}" alt="112年12月FAQ原始PDF第{number}頁表格與原文" width="{preview["width"]}" height="{preview["height"]}" loading="lazy" decoding="async"></a>'
+            f'<figcaption>手冊頁 {number-2}｜PDF頁 {number}{note}</figcaption></figure>'
+            f'<nav class="preview-actions" aria-label="PDF第{number}頁表格操作">'
+            f'<a class="button-link secondary" href="{e(image)}">放大查看原頁表格（P.{number}）</a>'
+            f'<a class="button-link secondary" href="{e(evidence)}">在手冊中開啟（P.{number}）</a>'
+            f'<a class="button-link secondary" href="{e(pdf)}">開啟PDF原文（P.{number}）</a></nav>'
+        )
+    return ('<p class="layout-note">本題表格請依原頁圖片查閱；可點圖放大。文字層僅供對照，不能保留合併欄列。</p>'
+            + ''.join(figures) + '<details class="raw-text-details"><summary>查看原文文字層（表格請以原頁為準）</summary>' + original + '</details>')
 
 
 def faq_group_source_list(relative: str) -> str:
@@ -638,7 +679,7 @@ def faq_result_cards(relative: str) -> str:
             f'<article id="item-{e(lookup_key)}" class="lookup-result faq-lookup-result" data-lookup-result data-lookup-id="{e(item["id"])}" data-lookup-key="{e(lookup_key)}" data-lookup-group="{e(item["faqGroupId"])}" data-lookup-search="{e(search_text)}">'
             f'<p class="lookup-kicker">{e(group_titles[item["faqGroupId"]])}</p><h3>{e(item["question"])}</h3>'
             f'<p class="lookup-meta">FAQ第{e(item["questionLabel"])}題｜手冊頁 {e(item["printedPageStart"])}–{e(item["printedPageEnd"])}｜PDF頁 {item["pdfPageStart"]}–{item["pdfPageEnd"]}</p>'
-            f'<details><summary>查看原文回答</summary>{faq_answer_html(item.get("answerText"))}</details>'
+            f'<details><summary>查看原文回答</summary>{faq_answer_html(item.get("answerText"), item, relative)}</details>'
             f'{lookup_actions(relative, item["pdfPageStart"], item["evidenceUrl"])}'
             '</article>'
         )

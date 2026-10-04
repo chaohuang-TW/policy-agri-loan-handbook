@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prove that 28 high-risk content, search, context and official-update mutations are rejected."""
+"""Prove 70 causal validator rejections using independent retained fixtures."""
 from __future__ import annotations
 
 import json
@@ -7,8 +7,10 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
+import argparse
 from pathlib import Path
+from audit_forms_regression import (retained_workspace, copy_retained_tree,
+    mutation_command, positive_control, causal_failure)
 
 ROOT = Path(__file__).resolve().parents[1]
 COPY_DIRS = ("assets", "curation", "data", "scripts", "site", "templates")
@@ -16,13 +18,14 @@ COPY_FILES = ("README.md", "CHANGELOG.md", "package.json", "package-lock.json")
 def copy_fixture(destination: Path) -> None:
     destination.mkdir()
     for name in COPY_DIRS:
-        shutil.copytree(ROOT / name, destination / name, copy_function=shutil.copy2)
+        copy_retained_tree(ROOT / name, destination / name)
     for name in COPY_FILES:
-        shutil.copy2(ROOT / name, destination / name)
+        shutil.copyfile(ROOT / name, destination / name)
 
 
 def safe_write(path: Path, value: str) -> None:
-    path.unlink()
+    if ROOT / 'tmp/release-gates' not in path.absolute().parents or path.is_symlink():
+        raise ValueError('Mutation writes must stay in retained fixtures')
     path.write_text(value, encoding="utf-8")
 
 
@@ -62,6 +65,9 @@ def insert_in_element(path: Path, opening: str, value: str) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--retain-workspace', action='store_true')
+    parser.parse_args()
     node = shutil.which("node")
     if not node:
         raise SystemExit("Node.js is required for mutation tests")
@@ -225,10 +231,10 @@ def main() -> None:
         replace(root / "site/versions/114/sections/natural-disaster-rules/index.html", "updates/disasters/", "updates/missing/")
 
     def readme_revision_wrong(root: Path):
-        replace(root / "README.md", "114.0.0-beta.3.2", "114.0.0-beta.2.7.1.1.1")
+        replace(root / "README.md", "114.0.0-beta.3.3", "114.0.0-beta.2.7.1.1.1")
 
     def package_revision_wrong(root: Path):
-        replace(root / "package.json", "114.0.0-beta.3.2", "114.0.0-beta.0.0.0")
+        replace(root / "package.json", "114.0.0-beta.3.3", "114.0.0-beta.0.0.0")
 
     def update_unknown_section(root: Path):
         mutate_json(root / "data/current/official-updates.json", lambda items: items[0].update(relatedSectionIds=["not-a-section"]))
@@ -334,7 +340,9 @@ def main() -> None:
         safe_write(path, text[:start] + text[end + len("</details>"):])
 
     def remove_published_loan_route(root: Path):
-        (root / "site/loans/young-farmer-loan/index.html").unlink()
+        retained = root / 'retained-route'
+        retained.mkdir(exist_ok=False)
+        (root / "site/loans/young-farmer-loan/index.html").rename(retained / 'young-farmer-index.html')
 
     cases = [
         ("missing record scopeGroup", remove_group, "python"),
@@ -409,56 +417,90 @@ def main() -> None:
         ("published loan route is removed", remove_published_loan_route, "reading"),
     ]
 
-    results = []
-    with tempfile.TemporaryDirectory(prefix="handbook-mutations-") as raw:
-        base = Path(raw)
-        for index, (name, mutation, validator) in enumerate(cases, 1):
-            fixture = base / f"case-{index:02d}"
-            copy_fixture(fixture)
-            mutation(fixture)
-            if validator == "python":
-                command = [sys.executable, "scripts/validate_search_experience.py", "--root", str(fixture)]
-            elif validator == "official":
-                command = [sys.executable, "scripts/validate_official_updates.py", "--root", str(fixture)]
-            elif validator == "gateway":
-                command = [sys.executable, "scripts/validate_disaster_official_gateway.py"]
-            elif validator == "revision":
-                command = [sys.executable, "scripts/validate_revision_consistency.py"]
-            elif validator == "coverage":
-                command = [sys.executable, "scripts/validate_official_coverage.py", "--root", str(fixture)]
-            elif validator == "ux":
-                command = [sys.executable, "scripts/validate_ux_structure.py"]
-            elif validator == "reading":
-                command = [sys.executable, "scripts/validate_reading_navigation.py"]
-            else:
-                command = [node, "scripts/test_search_core.cjs"]
-            completed = subprocess.run(
-                command, cwd=fixture, text=True, capture_output=True, timeout=120
-            )
-            if completed.returncode == 0:
-                raise AssertionError(f"mutation not caught: {index}. {name}")
-            evidence = (completed.stdout + completed.stderr).strip().splitlines()
-            results.append({
-                "mutation": index,
-                "name": name,
-                "validator": (
-                    "validate_search_experience.py" if validator == "python"
-                    else "validate_official_updates.py" if validator == "official"
-                    else "validate_disaster_official_gateway.py" if validator == "gateway"
-                    else "validate_revision_consistency.py" if validator == "revision"
-                    else "validate_official_coverage.py" if validator == "coverage"
-                    else "validate_ux_structure.py" if validator == "ux"
-                    else "validate_reading_navigation.py" if validator == "reading"
-                    else "test_search_core.cjs"
-                ),
-                "caught": True,
-                "evidence": evidence[0][:160] if evidence else f"exit {completed.returncode}",
-            })
-            shutil.rmtree(fixture)
+    expected = [
+        'page-096 scopeGroup', 'page scopeGroup unknown:', 'section loan-programs scopes',
+        'search fragment missing:', 'invalid document number prefix:', 'search URL target missing:',
+        'unsafe search implementation:', 'theme-color mismatch', 'wrong print label',
+        'expected 507 records, got 506', 'page-096 scopeGroup', 'source and site JavaScript differ:',
+        {'assertion': 'assert.strictEqual(text.slice(match.start, match.end), expected);'},
+        'snippet exceeded 320 UTF-16 units', 'section natural-disaster-rules has no source search records',
+        'loan inline search is not context by default:', 'section inline search is not context by default:',
+        'global dialog search default scope is not all', 'loan task shortcut does not force context:',
+        'appendix search action is not 查看附錄', 'non-HTTPS allowlisted official source:',
+        'invalid metadata:', 'invalid metadata:', 'unknown related loan:',
+        'include decisions and official-updates records do not match exactly',
+        'coverage counts do not match data', 'invalid decision:',
+        'official updates leaked into the 507-record handbook search index',
+        'non-HTTPS allowlisted official source:', 'invalid date:', 'invalid application period:',
+        'complete coverage has incomplete source', 'global verifiedThrough exceeds source review',
+        'local disaster JSON exists', 'generated HTML has disaster announcement attributes',
+        'gateway contains local announcement data', 'gateway CTA missing or unsafe',
+        'gateway CTA missing or unsafe', 'gateway CTA missing or unsafe',
+        'missing gateway link: loans/natural-disaster-low-interest-loan/index.html',
+        'missing gateway link: versions/114/sections/natural-disaster-rules/index.html',
+        'README.md', 'package.json', 'unknown related section:', 'invalid date:',
+        'invalid candidate count lineage:', 'unknown candidate refs:', 'orphan decision candidates',
+        'retrieval evidence gate missing', 'intent-only record entered results',
+        'UI still labels direct match from legacy originalTerms', 'short task token triggered concept',
+        {'assertion': 'assert.deepStrictEqual(relatedFixture.matchedOriginalTerms, []);'},
+        # All expanded terms fabricate related evidence before the narrower
+        # matchedRelatedTerms assertion runs. Require this exact earlier gate.
+        {'assertion': 'assert(!syntheticResults.some((item) => item.record.id === "intent-only"), "intent-only record entered results");'},
+        'snippet is not constrained to actual body evidence',
+        # Disabling exact document evidence first breaks the real-data
+        # full-width document fixture, before the synthetic assertion runs.
+        'top 3 missing expected result for: 農授金字第 ０９５５０８０１８１ 號',
+        'leaked another group', 'intent-only record entered results',
+        'direct label is not backed by matchedOriginalTerms', 'related label is not backed by matchedRelatedTerms',
+        'broken hash link:', 'duplicate id:', 'broken hash link:', 'invalid evidence link:',
+        'next target missing:', 'next self-link:', 'loan task mapping mismatch:',
+        'search deep link mismatch: page-105', 'section has no 本頁內容 TOC:',
+        'loan task navigation page count is 22, expected 23',
+    ]
+    if len(expected) != len(cases): raise AssertionError('Causal diagnostic inventory mismatch')
+    size = sum(p.stat().st_size for folder in COPY_DIRS for p in (ROOT / folder).rglob('*') if p.is_file())
+    results = []; controls = {}; base = retained_workspace('validator-mutations', required_bytes=size * (len(cases) + 1))
+    control = base / 'positive-control'; copy_fixture(control)
+    def command_for(validator, fixture):
+        scripts = {'python': 'validate_search_experience', 'official': 'validate_official_updates',
+                   'gateway': 'validate_disaster_official_gateway', 'revision': 'validate_revision_consistency',
+                   'coverage': 'validate_official_coverage', 'ux': 'validate_ux_structure',
+                   'reading': 'validate_reading_navigation'}
+        if validator == 'node': return [node, 'scripts/test_search_core.cjs']
+        cmd = [sys.executable, 'scripts/' + scripts[validator] + '.py']
+        if validator in ('python', 'official', 'coverage'):cmd += ['--root', str(fixture)]
+        return cmd
+    for validator in sorted({c[2] for c in cases}):
+        controls[validator] = positive_control(command_for(validator, control), control)
+    for index, (name, mutation, validator) in enumerate(cases, 1):
+        fixture = base / f"case-{index:02d}"
+        copy_fixture(fixture)
+        mutation(fixture)
+        completed = mutation_command(command_for(validator, fixture), fixture)
+        evidence = causal_failure(completed, expected[index - 1], name)
+        results.append({
+            "mutation": index,
+            "name": name,
+            "validator": (
+                "validate_search_experience.py" if validator == "python"
+                else "validate_official_updates.py" if validator == "official"
+                else "validate_disaster_official_gateway.py" if validator == "gateway"
+                else "validate_revision_consistency.py" if validator == "revision"
+                else "validate_official_coverage.py" if validator == "coverage"
+                else "validate_ux_structure.py" if validator == "ux"
+                else "validate_reading_navigation.py" if validator == "reading"
+                else "test_search_core.cjs"
+            ),
+            "caught": True,
+            "evidence": evidence,
+            "rawDiagnosticLog": completed.retained_log,
+        })
     print(json.dumps({
         "status": "VALIDATOR MUTATIONS PASSED",
         "caught": f"{len(results)}/{len(cases)}",
         "uncaught": 0,
+        "positiveControls": controls,
+        "retainedWorkspace": str(base.relative_to(ROOT)),
         "results": results,
     }, ensure_ascii=False, indent=2))
 

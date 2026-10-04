@@ -1,0 +1,87 @@
+{
+  "sourceReviewPlan": [
+    {
+      "source": "afna-law",
+      "dateRange": [
+        "2025-10-01",
+        "2026-07-28"
+      ],
+      "queries": [
+        "政策性農業專案貸款",
+        "農業天然災害低利貸款",
+        "農業天然災害救助辦法",
+        "廚餘養豬場轉型貸款",
+        "青壯年農民從農貸款",
+        "提升畜禽產業經營貸款"
+      ],
+      "listingPages": [
+        "https://law.afna.gov.tw/view.php?id=50",
+        "https://law.afna.gov.tw/view.php?id=1521",
+        "https://law.afna.gov.tw/view.php?id=1544",
+        "https://law.afna.gov.tw/view.php?id=1545"
+      ],
+      "status": "partial",
+      "writesFormalData": false
+    },
+    {
+      "source": "afna-main",
+      "dateRange": [
+        "2025-10-01",
+        "2026-07-28"
+      ],
+      "queries": [
+        "政策性農業專案貸款",
+        "天然災害貸款",
+        "農民紓困貸款",
+        "公告",
+        "表單"
+      ],
+      "listingPages": [
+        "https://www.afna.gov.tw/"
+      ],
+      "status": "partial",
+      "writesFormalData": false
+    },
+    {
+      "source": "moa",
+      "dateRange": [
+        "2025-10-01",
+        "2026-07-28"
+      ],
+      "queries": [
+        "天然災害 低利貸款",
+        "辦理現金救助及低利貸款",
+        "辦理低利貸款",
+        "115年 巴威颱風",
+        "115年 6月下旬豪雨"
+      ],
+      "listingPages": [
+        "https://www.moa.gov.tw/theme_data.php?id=9725&theme=publication",
+        "https://www.moa.gov.tw/sp_theme_data.php?id=9650&theme=publication",
+        "https://www.moa.gov.tw/theme_data.php?id=9758&theme=publication"
+      ],
+      "status": "partial",
+      "writesFormalData": false
+    },
+    {
+      "source": "agribank",
+      "dateRange": [
+        "2025-10-01",
+        "2026-07-28"
+      ],
+      "queries": [
+        "農業紮根貸款",
+        "稻穀收購產銷調節週轉金貸款",
+        "輔導鹹水漁業改善經營貸款",
+        "政策性農業專案貸款",
+        "天然災害貸款"
+      ],
+      "listingPages": [
+        "https://www.agribank.com.tw/"
+      ],
+      "status": "partial",
+      "writesFormalData": false
+    }
+  ],
+  "isCrawler": false
+}

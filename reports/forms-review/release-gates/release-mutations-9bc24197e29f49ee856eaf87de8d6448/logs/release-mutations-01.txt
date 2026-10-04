@@ -1,0 +1,595 @@
+Retained workspace: tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0
+{
+  "status": "VALIDATOR MUTATIONS PASSED",
+  "caught": "70/70",
+  "uncaught": 0,
+  "positiveControls": {
+    "coverage": {
+      "status": "PASS"
+    },
+    "gateway": {
+      "status": "PASS"
+    },
+    "node": {
+      "status": "PASS"
+    },
+    "official": {
+      "status": "PASS"
+    },
+    "python": {
+      "status": "PASS"
+    },
+    "reading": {
+      "status": "PASS"
+    },
+    "revision": {
+      "status": "PASS"
+    },
+    "ux": {
+      "status": "PASS"
+    }
+  },
+  "retainedWorkspace": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0",
+  "results": [
+    {
+      "mutation": 1,
+      "name": "missing record scopeGroup",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- page-096 scopeGroup None, expected loan:farm-machinery-loan",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-01/9a0f8ef111664d8c92ce15028cb9db18.json"
+    },
+    {
+      "mutation": 2,
+      "name": "unknown loan page scopeGroup",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- page scopeGroup unknown: loans/rice-purchase-working-capital-loan/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-02/683de229b6b441c2ac4f2d9fdeead817.json"
+    },
+    {
+      "mutation": 3,
+      "name": "invalid loan-programs section scope",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- section loan-programs scopes ['section:not-present'], expected ['section:afforestation-loan', 'section:agri-energy-saving-loan', 'section:agri-food-business-loan', 'section:agri-organization-disaster-recovery-loan', 'section:agri-organization-enterprise-innovation-loan', 'section:agri-tech-park-loan', 'section:agricultural-insurance-loan', 'section:association-development-loan', 'section:farm-household-loan', 'section:farm-machinery-loan', 'section:farmer-production-group-loan', 'section:farmer-relief-loan', 'section:farmland-purchase-loan', 'section:fishery-business-loan', 'section:hillside-conservation-loan', 'section:leisure-farm-loan', 'section:livestock-poultry-loan', 'section:small-landlord-professional-farmer-loan', 'section:young-farmer-loan']",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-03/00c02628f1ce489ea27b87534151d538.json"
+    },
+    {
+      "mutation": 4,
+      "name": "missing internal fragment",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- search fragment missing: versions/114/pages/page-001.html#missing-id",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-04/065771c0d595463b9d35428eb9a4c632.json"
+    },
+    {
+      "mutation": 5,
+      "name": "document number bad date prefix",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- invalid document number prefix: interpretations-interpretation-001",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-05/ae7ce6baead349adaa49f695e931715e.json"
+    },
+    {
+      "mutation": 6,
+      "name": "search URL 404",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- search URL target missing: missing/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-06/d82142c262d74a90bcc246681790e764.json"
+    },
+    {
+      "mutation": 7,
+      "name": "unsafe innerHTML rendering",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- unsafe search implementation: results.innerHTML",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-07/8406e12e7e71422c91ff1f9826fae741.json"
+    },
+    {
+      "mutation": 8,
+      "name": "wrong theme-color",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- theme-color mismatch",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-08/93c38f74386c4ebda4923a690d3dd90d.json"
+    },
+    {
+      "mutation": 9,
+      "name": "wrong single-page print label",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- wrong print label 列印本章, expected 列印本頁: versions/114/pages/page-003.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-09/bc40e4194e0c4e1c8a6e9d689c53a027.json"
+    },
+    {
+      "mutation": 10,
+      "name": "506 search records",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- expected 507 records, got 506",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-10/ccc5607b1e89423da2b751edfd631d49.json"
+    },
+    {
+      "mutation": 11,
+      "name": "source page wrong loan group",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- page-096 scopeGroup loan:young-farmer-loan, expected loan:farm-machinery-loan",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-11/5bbebdad220c46af939e5dff1514b851.json"
+    },
+    {
+      "mutation": 12,
+      "name": "source/site search core mismatch",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- source and site JavaScript differ: search-core.js",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-12/293d2825f2ce495d9fe645dbf456faa7.json"
+    },
+    {
+      "mutation": 13,
+      "name": "Unicode mark offset",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "assert.strictEqual(text.slice(match.start, match.end), expected);",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-13/13d8eec4e3ef44d5a910844774fd4951.json"
+    },
+    {
+      "mutation": 14,
+      "name": "1000-character snippet",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: snippet exceeded 320 UTF-16 units",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-14/0775b1389798473b990d262ccfac3449.json"
+    },
+    {
+      "mutation": 15,
+      "name": "section scope with no records",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- section natural-disaster-rules has no source search records",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-15/dc216b2d04114aec85b5f703c10bb8cc.json"
+    },
+    {
+      "mutation": 16,
+      "name": "loan inline default scope changed to all",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "- loan inline search is not context by default: rice-purchase-working-capital-loan",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-16/3665b7fa52394f1094e4f7008fd8e5d5.json"
+    },
+    {
+      "mutation": 17,
+      "name": "section inline default scope changed to all",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "- section inline search is not context by default: agricultural-development-fund-rules",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-17/0bbdf1773fe24f0ebb447cfac2f07bbc.json"
+    },
+    {
+      "mutation": 18,
+      "name": "global dialog default scope changed to context",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "- global dialog search default scope is not all",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-18/0d5d4a92f1db440c9f3239f690041dcd.json"
+    },
+    {
+      "mutation": 19,
+      "name": "loan shortcut context scope removed",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "- loan task shortcut does not force context: rice-purchase-working-capital-loan",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-19/4afab9261a3743029cd944b42390746e.json"
+    },
+    {
+      "mutation": 20,
+      "name": "appendix action changed back to 查看書表",
+      "validator": "validate_ux_structure.py",
+      "caught": true,
+      "evidence": "- appendix search action is not 查看附錄",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-20/081a955661e242f0baa51674ae54ddfb.json"
+    },
+    {
+      "mutation": 21,
+      "name": "official update uses untrusted domain",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- non-HTTPS allowlisted official source: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-21/2dfbca036658486180e19b8d54e3e3bd.json"
+    },
+    {
+      "mutation": 22,
+      "name": "official update has invalid source type",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid metadata: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-22/4fcfb1b14f124db78c17cbfa149d43e4.json"
+    },
+    {
+      "mutation": 23,
+      "name": "official update relation evidence is empty",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid metadata: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-23/22b990ad8a6c44fb972bd096e030a71e.json"
+    },
+    {
+      "mutation": 24,
+      "name": "official update references unknown loan",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- unknown related loan: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-24/9e910931da934648a26cd54d57353b36.json"
+    },
+    {
+      "mutation": 25,
+      "name": "include decision has no update record",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- include decisions and official-updates records do not match exactly",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-25/2b1bfb4a571a4f49bd2c3611489bd863.json"
+    },
+    {
+      "mutation": 26,
+      "name": "official coverage included count is false",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- coverage counts do not match data",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-26/353088d65527423bbf0db3358ee61524.json"
+    },
+    {
+      "mutation": 27,
+      "name": "candidate decision is empty",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid decision: afna-policy-loan-regulations-20251231",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-27/a808d11a459344bb9088a067d516b03a.json"
+    },
+    {
+      "mutation": 28,
+      "name": "official update leaks into handbook search",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- official updates leaked into the 507-record handbook search index",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-28/0e211ae0cb134da78b9be705be2ae133.json"
+    },
+    {
+      "mutation": 29,
+      "name": "official update uses http",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- non-HTTPS allowlisted official source: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-29/58c475a2af1e42849540a1404adab4b8.json"
+    },
+    {
+      "mutation": 30,
+      "name": "official update invalid calendar date",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid date: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-30/1d780057d6ee427ebeeccf63a33df0ae.json"
+    },
+    {
+      "mutation": 31,
+      "name": "official update reverse application period",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid application period: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-31/c809c3a4f0d846d8a35df01b1bacd06b.json"
+    },
+    {
+      "mutation": 32,
+      "name": "coverage complete while Agribank partial",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "- complete coverage has incomplete source",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-32/df0bfbd77e1348cbb113ad0b63012799.json"
+    },
+    {
+      "mutation": 33,
+      "name": "global coverage exceeds source review",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "- global verifiedThrough exceeds source review",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-33/a9678a50e86d4fe795aa46ec66edd5fb.json"
+    },
+    {
+      "mutation": 34,
+      "name": "local disaster JSON restored",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- local disaster JSON exists",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-34/7231fc14f06445cea1d055c1c308b3ff.json"
+    },
+    {
+      "mutation": 35,
+      "name": "homepage restores disaster count",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- generated HTML has disaster announcement attributes",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-35/d62987e8c7ee44c1b7db1c85291aa4d9.json"
+    },
+    {
+      "mutation": 36,
+      "name": "gateway restores local announcement list",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- gateway contains local announcement data",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-36/1208ad1efc714f90a55d0286337a66c7.json"
+    },
+    {
+      "mutation": 37,
+      "name": "gateway removes official URL",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- gateway CTA missing or unsafe",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-37/1102f3d410f54ac88c377f6b20867366.json"
+    },
+    {
+      "mutation": 38,
+      "name": "gateway URL becomes HTTP",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- gateway CTA missing or unsafe",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-38/e694e7954a7449e9a930e8bea81ba830.json"
+    },
+    {
+      "mutation": 39,
+      "name": "gateway URL changes host",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- gateway CTA missing or unsafe",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-39/5ece06eaa8ee47a59515945b91695f27.json"
+    },
+    {
+      "mutation": 40,
+      "name": "natural-disaster loan removes gateway CTA",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- missing gateway link: loans/natural-disaster-low-interest-loan/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-40/3c790119062542beb4b68d32177132ca.json"
+    },
+    {
+      "mutation": 41,
+      "name": "natural-disaster section removes gateway CTA",
+      "validator": "validate_disaster_official_gateway.py",
+      "caught": true,
+      "evidence": "- missing gateway link: versions/114/sections/natural-disaster-rules/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-41/f77ff986159e47cdaaf8916f7a6b862e.json"
+    },
+    {
+      "mutation": 42,
+      "name": "README revision becomes wrong",
+      "validator": "validate_revision_consistency.py",
+      "caught": true,
+      "evidence": "- README.md",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-42/17949968d0d74084b6e547720352ec5e.json"
+    },
+    {
+      "mutation": 43,
+      "name": "package revision becomes inconsistent",
+      "validator": "validate_revision_consistency.py",
+      "caught": true,
+      "evidence": "- package.json",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-43/326cecdf1402462a8985f674362a37bd.json"
+    },
+    {
+      "mutation": 44,
+      "name": "official update unknown related section",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- unknown related section: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-44/7fc175ea99264af2ab2290e9d632c7c5.json"
+    },
+    {
+      "mutation": 45,
+      "name": "official update verifiedOn null",
+      "validator": "validate_official_updates.py",
+      "caught": true,
+      "evidence": "- invalid date: afna-disaster-relief-regulations-20260629",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-45/af0e98ab7b034b9d9f3ebe6058f4e7b7.json"
+    },
+    {
+      "mutation": 46,
+      "name": "source review candidate count mismatch",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "- invalid candidate count lineage: afna-law",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-46/81ebcf7fe31e4ccbae2f805f966d12b6.json"
+    },
+    {
+      "mutation": 47,
+      "name": "source review unknown candidate",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "- unknown candidate refs: afna-law",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-47/04eb89bd984a47aeba944da7968f5eb5.json"
+    },
+    {
+      "mutation": 48,
+      "name": "decision candidate has no source lineage",
+      "validator": "validate_official_coverage.py",
+      "caught": true,
+      "evidence": "- orphan decision candidates",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-48/2e502984965246b3a5d4ce10b3fbb568.json"
+    },
+    {
+      "mutation": 49,
+      "name": "retrieval evidence filter removed",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- retrieval evidence gate missing",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-49/47d8a917edc54207b372a7f6af4eac6d.json"
+    },
+    {
+      "mutation": 50,
+      "name": "intent boost creates a pre-gate positive score",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: intent-only record entered results",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-50/068f14dd422047f6a51d4943f1184cae.json"
+    },
+    {
+      "mutation": 51,
+      "name": "UI labels direct from legacy originalTerms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- UI still labels direct match from legacy originalTerms",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-51/2997614c0b9a44fb9fb224c25de898e5.json"
+    },
+    {
+      "mutation": 52,
+      "name": "task trigger uses bidirectional substring",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: short task token triggered concept",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-52/6fe707ade9124294a0c68b6313101785.json"
+    },
+    {
+      "mutation": 53,
+      "name": "matchedOriginalTerms returns all query terms",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "assert.deepStrictEqual(relatedFixture.matchedOriginalTerms, []);",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-53/959fb3e5718147c9a694eccd99aa70c7.json"
+    },
+    {
+      "mutation": 54,
+      "name": "matchedRelatedTerms returns all expanded terms",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "assert(!syntheticResults.some((item) => item.record.id === \"intent-only\"), \"intent-only record entered results\");",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-54/86bafffdce9c45f285ea6ea03c0a23d1.json"
+    },
+    {
+      "mutation": 55,
+      "name": "snippet uses unmatched related terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- snippet is not constrained to actual body evidence",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-55/f1759a42df8548fcbd043166887d6598.json"
+    },
+    {
+      "mutation": 56,
+      "name": "exact document evidence disabled",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: top 3 missing expected result for: 農授金字第 ０９５５０８０１８１ 號",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-56/79cfd315d981475a805c21b86fde606c.json"
+    },
+    {
+      "mutation": 57,
+      "name": "context scope filtering disabled",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: loan:farm-machinery-loan leaked another group",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-57/ba0e3955b8454edfae95ceeba9e958ce.json"
+    },
+    {
+      "mutation": 58,
+      "name": "false retrieval evidence allowed",
+      "validator": "test_search_core.cjs",
+      "caught": true,
+      "evidence": "AssertionError [ERR_ASSERTION]: intent-only record entered results",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-58/5d9062cc9652432e84f396d8cde33877.json"
+    },
+    {
+      "mutation": 59,
+      "name": "direct label has no matched terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- direct label is not backed by matchedOriginalTerms",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-59/396ae341ab9f4f3eb38139d9923c49d2.json"
+    },
+    {
+      "mutation": 60,
+      "name": "related label has no matched terms",
+      "validator": "validate_search_experience.py",
+      "caught": true,
+      "evidence": "- related label is not backed by matchedRelatedTerms",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-60/a53b6e0a9d7f4697869c538007d530cd.json"
+    },
+    {
+      "mutation": 61,
+      "name": "loan task nav points to missing anchor",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "broken hash link: loans/young-farmer-loan/index.html -> #task-does-not-exist",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-61/3418ce5d1c854331ac2878334b5d8756.json"
+    },
+    {
+      "mutation": 62,
+      "name": "duplicate task anchor id",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "duplicate id: loans/young-farmer-loan/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-62/3aabadab9fc446d6aa8ae73c98535555.json"
+    },
+    {
+      "mutation": 63,
+      "name": "section TOC points to missing target",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "broken hash link: versions/114/sections/loan-programs/index.html -> #missing-section-target",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-63/33cf9e6b8e1347a8ad440845d93eacb2.json"
+    },
+    {
+      "mutation": 64,
+      "name": "Evidence page number becomes P.360",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "invalid evidence link: loans/rice-purchase-working-capital-loan/index.html -> ../../versions/114/pages/page-360.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-64/983961ba141b4fba977e15ee3e32d633.json"
+    },
+    {
+      "mutation": 65,
+      "name": "prev/next points to missing target",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "next target missing: loans/young-farmer-loan/index.html -> #source-page-999",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-65/3919a616834a46fc82606b377b67fc1b.json"
+    },
+    {
+      "mutation": 66,
+      "name": "prev/next points to itself",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "next self-link: loans/young-farmer-loan/index.html -> #source-page-211",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-66/363eb4d282be4571861d3d34bb047ab3.json"
+    },
+    {
+      "mutation": 67,
+      "name": "fake task mapping is force-inserted",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "loan task mapping mismatch: loans/young-farmer-loan/index.html expected=['amount', 'documents', 'eligibility', 'interest', 'post-loan-management', 'purpose', 'term'] actual=['amount', 'documents', 'eligibility', 'fake-task', 'interest', 'post-loan-management', 'purpose', 'term']",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-67/99e8cc82abe1403d939bb962d9bcd61f.json"
+    },
+    {
+      "mutation": 68,
+      "name": "search deep link loses deterministic task anchor",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "search deep link mismatch: page-105 expected=loans/agri-food-business-loan/index.html#task-post-loan-management actual=versions/114/pages/page-105.html#pdf-page-105",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-68/8eadc9bdde4344bd9dc118069576cfbe.json"
+    },
+    {
+      "mutation": 69,
+      "name": "Section mobile TOC is removed",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "section has no 本頁內容 TOC: versions/114/sections/loan-programs/index.html",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-69/bf795b1f33fa4c62b4de2f1c4c0d6a20.json"
+    },
+    {
+      "mutation": 70,
+      "name": "published loan route is removed",
+      "validator": "validate_reading_navigation.py",
+      "caught": true,
+      "evidence": "loan task navigation page count is 22, expected 23",
+      "rawDiagnosticLog": "tmp/release-gates/validator-mutations-e0ee3b7e2f774010b4e23b3a6641f2a0/validator-logs/case-70/72aaeb8ed6f24b96b054500d7332f4b2.json"
+    }
+  ]
+}
