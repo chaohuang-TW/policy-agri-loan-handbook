@@ -1,0 +1,238 @@
+name: Official source network diagnostics (not a release gate)
+
+on:
+  push:
+    branches: [codex/official-source-network-diagnosis]
+    paths:
+      - .github/workflows/source-network-diagnostics.yml
+      - scripts/test_source_network_diagnostics.py
+
+jobs:
+  network-diagnostics:
+    if: github.ref == 'refs/heads/codex/official-source-network-diagnosis'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Probe fixed official URLs without checkout, installation, or deployment
+        shell: bash
+        run: |
+          python3.12 -B - <<'PY'
+          # BEGIN_NETWORK_DIAGNOSTICS
+          import contextlib
+          import ipaddress
+          import json
+          import os
+          import re
+          import signal
+          import socket
+          import ssl
+          import subprocess
+          import sys
+          import time
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+
+          URLS = (
+              'https://law.afna.gov.tw/',
+              'https://law.afna.gov.tw/view.php?id=50',
+              'https://law.afna.gov.tw/view.php?id=1551',
+              'https://law.afna.gov.tw/files/boaf/law/50/A01_7.pdf',
+              'https://www.afna.gov.tw/',
+          )
+          HOSTS = ('law.afna.gov.tw', 'www.afna.gov.tw')
+          USER_AGENT = 'policy-agri-loan-handbook-source-audit/1.0'
+          CONNECT_TIMEOUT = 8
+          REQUEST_TIMEOUT = 25
+
+          def emit(stage, ok, **fields):
+              record = {'stage': stage, 'ok': bool(ok), **fields}
+              print(json.dumps(record, sort_keys=True), flush=True)
+              return record
+
+          def failure(stage, error, **fields):
+              # Never print raw exception text, stderr, proxy values, or bodies.
+              return emit(stage, False, errorType=type(error).__name__,
+                          errno=getattr(error, 'errno', None), **fields)
+
+          def location_origin(value):
+              try:
+                  parsed = urllib.parse.urlsplit(value)
+                  if parsed.scheme in ('https', 'http') and parsed.hostname in HOSTS:
+                      return parsed.scheme + '://' + parsed.hostname
+              except ValueError:
+                  pass
+              return 'relative-or-non-allowlisted-location' if value else None
+
+          def dns_probe(host, record_type):
+              try:
+                  result = subprocess.run(
+                      ['dig', '+time=3', '+tries=1', host, record_type],
+                      capture_output=True, text=True, timeout=5, check=False)
+                  status = re.search(r'status: ([A-Z0-9]+),', result.stdout)
+                  code = status.group(1) if status else 'UNKNOWN'
+                  addresses = []
+                  for line in result.stdout.splitlines():
+                      parts = line.split()
+                      if (len(parts) == 5 and parts[0].rstrip('.').lower() == host
+                              and parts[3] == record_type):
+                          address = ipaddress.ip_address(parts[4])
+                          if address.version == (4 if record_type == 'A' else 6):
+                              addresses.append(str(address))
+                  ok = result.returncode == 0 and code == 'NOERROR'
+                  if record_type == 'A' and not addresses:
+                      ok = False
+                  return emit('dns', ok, host=host, recordType=record_type,
+                              rcode=code, addresses=addresses, exitCode=result.returncode)
+              except Exception as error:
+                  return failure('dns', error, host=host, recordType=record_type, addresses=[])
+
+          def transport_probe(host, addresses):
+              # One resolved IPv4 connection per host; original host remains TLS SNI.
+              if not addresses:
+                  return [emit('tcp', False, host=host, skipped='no-A-answer')]
+              stage = 'tcp'
+              started = time.monotonic()
+              records = []
+              try:
+                  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as raw:
+                      raw.settimeout(CONNECT_TIMEOUT)
+                      raw.connect((addresses[0], 443))
+                      records.append(emit('tcp', True, host=host, address=addresses[0],
+                                          seconds=round(time.monotonic() - started, 6)))
+                      stage = 'tls'
+                      started = time.monotonic()
+                      with ssl.create_default_context().wrap_socket(raw, server_hostname=host) as secured:
+                          records.append(emit('tls', True, host=host, version=secured.version(),
+                                              seconds=round(time.monotonic() - started, 6)))
+              except Exception as error:
+                  records.append(failure(stage, error, host=host,
+                                         seconds=round(time.monotonic() - started, 6)))
+              return records
+
+          def curl_phase(exit_code, metrics):
+              if exit_code == 6:
+                  return 'dns'
+              if exit_code == 7:
+                  return 'tcp'
+              if exit_code in (35, 51, 60):
+                  return 'tls'
+              if exit_code == 28:
+                  if metrics.get('http_code', 0):
+                      return 'body'
+                  if metrics.get('time_appconnect', 0):
+                      return 'waiting-for-http-headers'
+                  if metrics.get('time_connect', 0):
+                      return 'before-tls-completion'
+                  return 'before-tcp-completion-not-localized'
+              return 'http-or-client' if exit_code else 'complete'
+
+          def curl_probe(url):
+              try:
+                  result = subprocess.run(
+                      ['curl', '-q', '--silent', '--show-error', '--http1.1',
+                       '--connect-timeout', str(CONNECT_TIMEOUT), '--max-time', str(REQUEST_TIMEOUT),
+                       '--proto', '=https', '--user-agent', USER_AGENT,
+                       '--output', '/dev/null', '--write-out', '%{json}', url],
+                      capture_output=True, text=True, timeout=REQUEST_TIMEOUT + 5, check=False)
+                  metrics = json.loads(result.stdout)
+                  selected = {key: metrics.get(key) for key in (
+                      'http_code', 'remote_ip', 'time_namelookup', 'time_connect',
+                      'time_appconnect', 'time_starttransfer', 'time_total', 'ssl_verify_result')}
+                  status = metrics.get('http_code', 0)
+                  ok = (result.returncode == 0 and 200 <= status < 300
+                        and metrics.get('ssl_verify_result') == 0)
+                  return emit('curl', ok, url=url, exitCode=result.returncode,
+                              lastObservedPhase=curl_phase(result.returncode, metrics),
+                              locationOrigin=location_origin(metrics.get('redirect_url', '')), **selected)
+              except Exception as error:
+                  return failure('curl', error, url=url)
+
+          class FirstResponseOnly(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, headers, newurl):
+                  return None
+
+          @contextlib.contextmanager
+          def request_deadline():
+              # A diagnostic-only wall-clock cap; production urllib uses socket timeout.
+              previous = signal.getsignal(signal.SIGALRM)
+              def expired(signum, frame):
+                  raise TimeoutError('diagnostic request deadline')
+              signal.signal(signal.SIGALRM, expired)
+              signal.setitimer(signal.ITIMER_REAL, REQUEST_TIMEOUT)
+              try:
+                  yield
+              finally:
+                  signal.setitimer(signal.ITIMER_REAL, 0)
+                  signal.signal(signal.SIGALRM, previous)
+
+          def urllib_probe(url):
+              stage = 'urllib-open-before-headers-not-localized'
+              started = time.monotonic()
+              records = []
+              try:
+                  opener = urllib.request.build_opener(
+                      urllib.request.HTTPSHandler(context=ssl.create_default_context()), FirstResponseOnly())
+                  request = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
+                  with request_deadline():
+                      with opener.open(request, timeout=REQUEST_TIMEOUT) as response:
+                          records.append(emit('urllib-headers', 200 <= response.status < 300,
+                                              url=url, httpCode=response.status,
+                                              seconds=round(time.monotonic() - started, 6)))
+                          stage = 'urllib-body'
+                          byte_count = 0
+                          while True:
+                              chunk = response.read(65536)
+                              if not chunk:
+                                  break
+                              byte_count += len(chunk)
+                          records.append(emit(stage, True, url=url, byteCount=byte_count,
+                                              totalSeconds=round(time.monotonic() - started, 6)))
+              except urllib.error.HTTPError as error:
+                  records.append(emit('urllib-headers', False, url=url, httpCode=error.code,
+                                      locationOrigin=location_origin(error.headers.get('Location', '')),
+                                      seconds=round(time.monotonic() - started, 6)))
+                  error.close()
+              except Exception as error:
+                  cause = error.reason if isinstance(error, urllib.error.URLError) else error
+                  records.append(failure(stage, cause, url=url,
+                                         totalSeconds=round(time.monotonic() - started, 6)))
+              return records
+
+          def main():
+              records = [emit('runtime', True, python=sys.version.split()[0],
+                              platform=' '.join((os.uname().sysname, os.uname().release, os.uname().machine)),
+                              openssl=ssl.OPENSSL_VERSION,
+                              purpose='network-diagnostics-NOT-source-content-verification')]
+              proxy_names = ('http_proxy', 'https_proxy', 'all_proxy', 'no_proxy',
+                             'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'NO_PROXY')
+              records.append(emit('proxy-presence', True,
+                                  variables={key: bool(os.environ.get(key)) for key in proxy_names},
+                                  schemes=sorted(key for key in urllib.request.getproxies()
+                                                 if key in ('http', 'https', 'all', 'no', 'ftp'))))
+              try:
+                  version = subprocess.run(['curl', '-q', '--version'], capture_output=True,
+                                           text=True, timeout=5, check=False)
+                  # Only version/SSL implementation line, not arbitrary environment.
+                  records.append(emit('curl-version', version.returncode == 0,
+                                      version=version.stdout.splitlines()[0]))
+              except Exception as error:
+                  records.append(failure('curl-version', error))
+              for host in HOSTS:
+                  ipv4 = dns_probe(host, 'A')
+                  records.extend((ipv4, dns_probe(host, 'AAAA')))
+                  records.extend(transport_probe(host, ipv4['addresses'] if ipv4['ok'] else []))
+              for url in URLS:
+                  records.append(curl_probe(url))
+              for url in URLS:
+                  records.extend(urllib_probe(url))
+              failures = sum(not record['ok'] for record in records)
+              emit('summary', failures == 0, failures=failures, urls=len(URLS),
+                   scope='first-response-network-only-NOT-a-release-gate',
+                   releaseSourceGate='unchanged-and-still-unpassed')
+              return 1 if failures else 0
+
+          if __name__ == '__main__':
+              raise SystemExit(main())
+          # END_NETWORK_DIAGNOSTICS
+          PY
